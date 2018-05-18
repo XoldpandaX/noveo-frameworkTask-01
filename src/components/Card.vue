@@ -71,7 +71,7 @@
             id: `#${this.cards.length + 1}`,
             title: title,
             description: description,
-            like: false,
+            like: false
           };
           this.addCardDataToStore(data);
           this.redirect();
