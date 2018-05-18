@@ -1,5 +1,9 @@
 import * as types from './action-types.js';
 
-export default {
+function addCardDataToStore({commit}, data) {
+  commit(types.SAVE_CARD_DATA, data);
+}
 
+export default {
+  addCardDataToStore
 };

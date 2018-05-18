@@ -3,11 +3,12 @@
     .card-list__cards-container
       .card-list__element
         add-card-btn
-      .card-list__element(v-for="el in 3")
-        card
+      .card-list__element(v-for="card in cards")
+        card(:cardData="card", :key="card.id")
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
   import AddCardBtn from './../components/AddCardBtn.vue';
   import Card from './../components/Card.vue';
 
@@ -16,6 +17,9 @@
     components: {
       AddCardBtn,
       Card
+    },
+    computed: {
+      ...mapGetters('cards', ['cards'])
     }
   };
 </script>

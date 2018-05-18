@@ -38,8 +38,9 @@
       }
 
       button {
-        @include reusable-button(#fff,$violet);
+        @include reusable-button(#fff,$orange);
         font-weight: bold;
+        text-transform: uppercase;
       }
     }
   }

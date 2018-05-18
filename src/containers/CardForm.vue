@@ -1,7 +1,7 @@
 <template lang="pug">
   .card-form
     form
-      card(:transformComponent="'denis'")
+      card(:transformComponent="'form-card'")
 </template>
 
 <script>

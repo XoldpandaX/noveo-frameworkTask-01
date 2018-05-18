@@ -2,31 +2,38 @@
   .card
     template(v-if="cardView === 'text-card'")
       .card__content
-        h2 Its Title
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt eos facere iure laboriosam nam non odit vitae. Aliquam expedita necessitatibus ratione temporibus? Dolores, necessitatibus, quam.
+        h2 {{cardData.title}}
+        p {{cardData.description}}
       footer(v-if="cardView === 'text-card'")
         .edit-btn
         .like-btn(@click="active = !active", :class="{ 'like-btn--active' : active }")
 
-    template(v-if="cardView === 'denis'")
+    template(v-if="cardView === 'form-card'")
       .card__content.card__content--form
         input(type="text",
-              placeholder="Enter title", maxlength="42")
+              placeholder="Enter title",
+              maxlength="42",
+              v-model="userInput.title")
         div
           textarea(placeholder="Enter description",
                    :maxlength="maxSymbols",
                    v-model="userInput.description")
           span {{symbolsLeft}}/{{maxSymbols}}
-        button add
+        button(@click.prevent="formDataToStore") save
 </template>
 
 <script>
+  import {mapGetters, mapActions} from 'vuex';
+
   export default {
     name: 'card',
     props: {
       transformComponent: {
         type: String,
         default: 'text-card'
+      },
+      cardData: {
+        type: Object
       }
     },
     data() {
@@ -40,16 +47,40 @@
       };
     },
     computed: {
+      ...mapGetters('cards', ['cards']),
+
       cardView() {
         switch (this.transformComponent) {
           case 'text-card':
             return 'text-card';
-          case 'denis':
-            return 'denis';
+          case 'form-card':
+            return 'form-card';
         }
       },
       symbolsLeft() {
         return this.userInput.description.length;
+      }
+    },
+    methods: {
+      ...mapActions('cards', ['addCardDataToStore']),
+
+      formDataToStore() {
+        const {title, description} = this.userInput;
+        if (title !== '' && description !== '') {
+          const data = {
+            id: `#${this.cards.length + 1}`,
+            title: title,
+            description: description,
+            like: false,
+          };
+          this.addCardDataToStore(data);
+          this.redirect();
+        } else {
+          alert('Enter some text');
+        }
+      },
+      redirect() {
+        this.$router.push({name: 'home'});
       }
     }
   };
