@@ -1,6 +1,16 @@
 .add-new-card {
 
   h1 {
+    @extend %page-title;
+  }
 
+  &__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card-form {
+      max-width: 500*$rem;
+    }
   }
 }
