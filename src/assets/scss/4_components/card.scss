@@ -35,6 +35,10 @@
     .like-btn {
       @include icon-like($card-like-btn-color);
 
+      &--active {
+        @include icon-like-full-background($red);
+      }
+
       width: 25px;
       height: 25px;
       cursor: pointer;
