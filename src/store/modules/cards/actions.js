@@ -17,8 +17,19 @@ function cardsDataInit({commit}) {
   commit(types.INIT_CARD_DATA, cards);
 }
 
+function likeToggle({commit, dispatch, state}, cardId) {
+  const storageData = JSON.parse(localStorage.getItem(cardId));
+  const regEXP = /\D+/ig;
+  const numFromId = cardId.replace(regEXP, '');
+  
+  storageData.like = !storageData.like;
+  dispatch('addToLocalStorage', storageData);
+  dispatch('cardsDataInit');
+}
+
 export default {
   addCardDataToStore,
   addToLocalStorage,
-  cardsDataInit
+  cardsDataInit,
+  likeToggle
 };

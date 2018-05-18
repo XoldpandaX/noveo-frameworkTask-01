@@ -6,7 +6,7 @@
         p {{cardData.description}}
       footer(v-if="cardView === 'text-card'")
         .edit-btn
-        .like-btn(@click="active = !active", :class="{ 'like-btn--active' : active }")
+        .like-btn(@click="sendCardID" :class="{'like-btn--active' : cardData.like}")
 
     template(v-if="cardView === 'form-card'")
       .card__content.card__content--form
@@ -38,7 +38,6 @@
     },
     data() {
       return {
-        active: false,
         maxSymbols: 196,
         userInput: {
           title: '',
@@ -62,7 +61,7 @@
       }
     },
     methods: {
-      ...mapActions('cards', ['addCardDataToStore']),
+      ...mapActions('cards', ['addCardDataToStore', 'likeToggle']),
 
       formDataToStore() {
         const {title, description} = this.userInput;
@@ -78,6 +77,10 @@
         } else {
           alert('Enter some text');
         }
+      },
+      sendCardID() {
+        const cardId = this.cardData.id;
+        this.likeToggle(cardId);
       },
       redirect() {
         this.$router.push({name: 'home'});
