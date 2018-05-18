@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.add-new-card.page
+  section.add-new-card.page-fixed
     .container
       h1 Add New Card
       .add-new-card__row

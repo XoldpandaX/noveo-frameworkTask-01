@@ -8,6 +8,8 @@
 // каждого flex элемента
 @mixin equal-flex-element-in-a-row($margin-right, $num-of-elements) {
   flex-basis: calc((100% / #{$num-of-elements}) - #{$margin-right} + (#{$margin-right} / 4));
+  max-width: calc((100% / #{$num-of-elements}) - #{$margin-right} + (#{$margin-right} / 4));
+  word-break: break-all;
   margin-right: $margin-right;
 
   &:nth-child(4n + 4) {
