@@ -1,0 +1,9 @@
+.add-card-btn {
+
+  .icon-plus {
+    @include icon-plus($pure-white);
+
+    width: 20*$rem;
+    height: 20*$rem;
+  }
+}

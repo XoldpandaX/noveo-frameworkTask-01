@@ -1,5 +1,6 @@
 <template lang="pug">
-  .add-card-btn Button
+  .add-card-btn
+    svg.icon-plus
 </template>
 
 <script>
