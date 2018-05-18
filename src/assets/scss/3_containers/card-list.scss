@@ -1,0 +1,21 @@
+.card-list {
+  h1 {
+    text-align: center;
+  }
+
+  &__cards-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &__element {
+    // из за того, что каждый последний элемент(4й) не имеет отступа,
+    // оставишеся 10px делим между количеством элементов которые
+    // будут у нас в строке, чтобы получить одинаковую длину
+    // каждого flex элемента
+    @include equal-flex-element-in-a-row(10px, 4);
+    border: 1px solid red;
+  }
+}

@@ -1,0 +1,11 @@
+// служит для отображения flex элементов с одинаковой шириной
+// в каждом ряду, при том что каждый(в ряду) элемент кроме,
+// каждого(в ряду) №N последнего, отступа справа не имеет
+@mixin equal-flex-element-in-a-row($margin-right, $num-of-elements) {
+  flex-basis: calc((100% / #{$num-of-elements}) - #{$margin-right} + (#{$margin-right} / 4));
+  margin-right: $margin-right;
+
+  &:nth-child(4n + 4) {
+    margin-right: 0;
+  }
+}

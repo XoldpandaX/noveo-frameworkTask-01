@@ -1,9 +1,12 @@
 @import '0_helpers/normalize.scss';
 @import '0_helpers/variables.scss';
-@import '0_helpers/svg-mixins';
+@import '0_helpers/common-mixins.scss';
+@import '0_helpers/svg-mixins.scss';
 
 @import '1_basic/layout.scss';
 
 @import '2_views/home.scss';
+
+@import '3_containers/card-list.scss';
 
 @import '4_components/add-card-btn.scss';
