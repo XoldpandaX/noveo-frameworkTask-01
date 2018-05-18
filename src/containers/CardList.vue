@@ -4,7 +4,7 @@
     .card-list__cards-container
       .card-list__element
         add-card-btn
-      .card-list__element(v-for="el in 7")
+      .card-list__element(v-for="el in 1")
         card
 </template>
 

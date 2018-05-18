@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.home
+  section.home.page
     .container
       card-list
 </template>
