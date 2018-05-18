@@ -1,9 +1,16 @@
 .add-card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  background-color: $card-background-color;
+  border: 2*$rem dashed $add-card-btn-border-color;
+  border-radius: 4*$rem;
 
   .icon-plus {
     @include icon-plus($pure-white);
 
-    width: 20*$rem;
-    height: 20*$rem;
+    width: 30*$rem;
+    height: 30*$rem;
   }
 }
