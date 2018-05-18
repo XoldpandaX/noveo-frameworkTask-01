@@ -2,10 +2,10 @@
   cursor: pointer;
 
   .icon-plus {
-    @include icon-plus($pure-white);
+    @include icon-plus($add-card-btn-color);
 
     &:hover {
-      @include icon-plus($blood-red);
+      @include icon-plus($add-card-btn-color-hover);
       transition: all .3s;
     }
 
