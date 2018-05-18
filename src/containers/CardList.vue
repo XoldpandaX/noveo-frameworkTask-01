@@ -1,10 +1,9 @@
 <template lang="pug">
   .card-list
-    h1 Card List
     .card-list__cards-container
       .card-list__element
         add-card-btn
-      .card-list__element(v-for="el in 1")
+      .card-list__element(v-for="el in 3")
         card
 </template>
 

@@ -8,7 +8,7 @@
     name: 'add-card-btn',
     methods: {
       redirect() {
-        this.$router.push({name: 'about'});
+        this.$router.push({name: 'add-new-card'});
       }
     }
   }
