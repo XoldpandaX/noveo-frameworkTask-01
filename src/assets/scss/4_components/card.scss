@@ -7,6 +7,30 @@
 
   &__content {
     flex: 1 0 auto;
+
+    &--form {
+      display: flex;
+      flex-flow: column;
+      padding: 10px;
+      align-items: center;
+
+      input {
+        width: 100%;
+        margin-bottom: 10px;
+        height: 40px;
+      }
+
+      textarea {
+        resize: none;
+        width: 100%;
+        margin-bottom: 15px;
+        height: 150px;
+      }
+
+      button {
+        width: 100px;
+      }
+    }
   }
 
   h2 {
