@@ -1,16 +1,15 @@
 .add-card-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  background-color: $card-background-color;
-  border: 2*$rem dashed $add-card-btn-border-color;
-  border-radius: 4*$rem;
+  cursor: pointer;
 
   .icon-plus {
     @include icon-plus($pure-white);
 
-    width: 30*$rem;
-    height: 30*$rem;
+    &:hover {
+      @include icon-plus($blood-red);
+      transition: all .3s;
+    }
+
+    width: 40*$rem;
+    height: 40*$rem;
   }
 }

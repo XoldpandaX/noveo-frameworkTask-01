@@ -8,9 +8,19 @@ $pure-black: #000;
 $pure-white: #FFF;
 $grey: #0e0e0e;
 $blood-red: #a60716;
+$orange: #cc7832;
+$green: #5c7e58;
+$violet: #9376aa;
+$yellow: #e8bf6a;
+$red: #f77669;
 
 // colors for ...
 $body-background: $pure-black;
 $main-text-color: $pure-white;
+
 $card-background-color: $grey;
-$add-card-btn-border-color: #a60716;
+$card-title-color: $orange;
+$card-text-color: $green;
+$card-edit-btn-color: $yellow;
+$card-like-btn-color: $red;
+$add-card-btn-border-color: $violet

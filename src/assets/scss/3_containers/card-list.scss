@@ -11,11 +11,21 @@
   }
 
   &__element {
-    // из за того, что каждый последний элемент(4й) не имеет отступа,
-    // оставишеся 10px делим между количеством элементов которые
-    // будут у нас в строке, чтобы получить одинаковую длину
-    // каждого flex элемента
-    @include equal-flex-element-in-a-row(10px, 4);
-    border: 1px solid red;
+    $num-of-elements-in-a-row: 4;
+    $margin-right: 10px;
+    @include equal-flex-element-in-a-row($margin-right, $num-of-elements-in-a-row);
+
+    display: flex;
+    min-height: 250px;
+
+    &:first-child {
+      background-color: $card-background-color;
+      border: 2*$rem dashed $add-card-btn-border-color;
+      border-radius: 4*$rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    margin-bottom: 10px;
   }
 }
