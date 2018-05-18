@@ -10,8 +10,13 @@
 
     template(v-if="cardView === 'denis'")
       .card__content.card__content--form
-        input(type="text", placeholder="Enter title")
-        textarea(placeholder="Enter description")
+        input(type="text",
+              placeholder="Enter title", maxlength="42")
+        div
+          textarea(placeholder="Enter description",
+                   :maxlength="maxSymbols",
+                   v-model="userInput.description")
+          span {{symbolsLeft}}/{{maxSymbols}}
         button add
 </template>
 
@@ -26,7 +31,12 @@
     },
     data() {
       return {
-        active: false
+        active: false,
+        maxSymbols: 196,
+        userInput: {
+          title: '',
+          description: ''
+        }
       };
     },
     computed: {
@@ -37,6 +47,9 @@
           case 'denis':
             return 'denis';
         }
+      },
+      symbolsLeft() {
+        return this.userInput.description.length;
       }
     }
   };
