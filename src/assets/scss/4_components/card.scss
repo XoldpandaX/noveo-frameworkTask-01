@@ -20,15 +20,26 @@
         height: 40px;
       }
 
-      textarea {
-        resize: none;
+      div {
         width: 100%;
-        margin-bottom: 15px;
-        height: 150px;
+        display: flex;
+        flex-flow: column;
+
+        textarea {
+          resize: none;
+          height: 150px;
+        }
+
+        span {
+          margin-top: 2*$rem;
+          margin-bottom: 15*$rem;
+          color: $textarea-counter-color;
+        }
       }
 
       button {
-        width: 100px;
+        @include reusable-button(#fff,$violet);
+        font-weight: bold;
       }
     }
   }
