@@ -1,4 +1,5 @@
 import {mapGetters, mapActions} from 'vuex';
+import {getRandomID} from './../../helpers/helpFunctions.js';
 
 export default {
   name: 'card',
@@ -41,7 +42,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('cards', ['addCardDataToStore', 'likeToggle']),
+    ...mapActions('cards', ['addCardDataToStore', 'likeToggle', 'deleteCardDataFromStore']),
   
     formDataToStore() {
       const {title, description} = this.userInput;
@@ -71,6 +72,9 @@ export default {
         this.userInput.title = title;
         this.userInput.description = description;
       }
+    },
+    deleteCard() {
+      this.deleteCardDataFromStore(this.editData.id);
     },
     sendCardID() {
       const cardId = this.cardData.id;

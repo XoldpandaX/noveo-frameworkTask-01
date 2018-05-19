@@ -21,7 +21,7 @@
           span {{symbolsLeft}}/{{maxSymbols}}
         .card__button-row
           button(v-if="cardView !== 'form-card'" ,
-               @click.prevent="formDataToStore") delete
+                 @click.prevent="deleteCard") delete
           button(@click.prevent="formDataToStore") save
 </template>
 <script src="./Card.js"></script>
