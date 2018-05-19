@@ -5,29 +5,35 @@ function addCardDataToStore({commit, dispatch}, data) {
     dispatch('addToLocalStorage', data.storeData);
     commit(types.SAVE_CARD_DATA, data.storeData);
   } else {
-    dispatch('replaceEditedData', data);
+    dispatch('addCardDataToStoreAfterEdit', data);
   }
 }
 
-function addToLocalStorage({commit, state}, card) {
+function addToLocalStorage({commit, state, dispatch}, card) {
   localStorage.setItem(card.id, JSON.stringify(card));
 }
 
-function replaceEditedData({commit, state}, cardData) {
+function addCardDataToStoreAfterEdit({commit, state, dispatch}, cardData) {
   const currentCardsState = state.cards;
   const {id, title, description, like} = cardData.storeData;
   
   currentCardsState.forEach((el, i) => {
     if (el.id === id) {
-      commit(types.SAVE_EDITED_CARD_DATA, {
+      let cardData = {
         positionInCurrentState: i,
         id: id,
         title: title,
         description: description,
         like: like
-      });
+      };
+      commit(types.SAVE_EDITED_CARD_DATA, cardData);
+      dispatch('updateLocalStorage', cardData);
     }
   });
+}
+
+function updateLocalStorage({state}, editedCardData) {
+  localStorage.setItem(editedCardData.id, JSON.stringify(editedCardData));
 }
 
 function cardsDataInit({commit}) {
@@ -39,7 +45,7 @@ function cardsDataInit({commit}) {
 }
 
 function likeToggle({commit, dispatch, state}, cardId) {
-  const storageData = JSON.parse(localStorage.getItem(cardId));
+  let storageData = JSON.parse(localStorage.getItem(cardId));
   
   storageData.like = !storageData.like;
   dispatch('addToLocalStorage', storageData);
@@ -49,7 +55,8 @@ function likeToggle({commit, dispatch, state}, cardId) {
 export default {
   addCardDataToStore,
   addToLocalStorage,
+  updateLocalStorage,
   cardsDataInit,
   likeToggle,
-  replaceEditedData
+  addCardDataToStoreAfterEdit
 };
