@@ -49,7 +49,7 @@ export default {
     
       if (title !== '' && description !== '') {
         const storeData = {
-          id: this.editData ? this.editData.id : `#${this.cards.length + 1}`,
+          id: this.editData ? this.editData.id : `#${getRandomID()}`,
           title: title,
           description: description,
           like: false
@@ -75,6 +75,7 @@ export default {
     },
     deleteCard() {
       this.deleteCardDataFromStore(this.editData.id);
+      this.redirectToHome();
     },
     sendCardID() {
       const cardId = this.cardData.id;
@@ -84,9 +85,7 @@ export default {
       this.$router.push({name: 'home'});
     },
     redirectToEditCard() {
-      const regExp = /\D+/ig;
-      const id = this.cardData.id.replace(regExp, '');
-      
+      const id = this.cardData.id.split('').splice(1).join('');
       this.$router.push({path: `/edit-card/${id}`})
     }
   },

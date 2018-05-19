@@ -22,7 +22,7 @@ export default new Router({
       component: AddNewCard
     },
     {
-      path: '/edit-card/:id(\\d+)?',
+      path: '/edit-card/:id',
       name: 'edit-card',
       component: EditCard,
       props: (route) => ({
