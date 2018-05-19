@@ -19,8 +19,6 @@ function cardsDataInit({commit}) {
 
 function likeToggle({commit, dispatch, state}, cardId) {
   const storageData = JSON.parse(localStorage.getItem(cardId));
-  const regEXP = /\D+/ig;
-  const numFromId = cardId.replace(regEXP, '');
   
   storageData.like = !storageData.like;
   dispatch('addToLocalStorage', storageData);

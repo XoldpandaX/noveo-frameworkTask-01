@@ -65,6 +65,7 @@
 
       formDataToStore() {
         const {title, description} = this.userInput;
+
         if (title !== '' && description !== '') {
           const data = {
             id: `#${this.cards.length + 1}`,
