@@ -21,6 +21,14 @@ body {
 .container {
   max-width: 70%;
   margin: 0 auto;
+
+  @media(max-width: 1280px) {
+    max-width: 90%;
+  }
+
+  @media(max-width: 800px) {
+    max-width: 95%;
+  }
 }
 
 // to smooth animation jump between pages

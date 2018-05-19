@@ -1,6 +1,6 @@
 <template lang="pug">
-  .add-card-btn(@click="redirect")
-    svg.icon-plus
+  .add-card-btn
+    svg.icon-plus(@click="redirect")
 </template>
 
 <script>

@@ -6,15 +6,12 @@
 // оставишеся $margin-right делим между количеством элементов которые
 // будут у нас в строке, чтобы получить одинаковую длину
 // каждого flex элемента
-@mixin equal-flex-element-in-a-row($margin-right, $num-of-elements) {
-  flex-basis: calc((100% / #{$num-of-elements}) - #{$margin-right} + (#{$margin-right} / 4));
-  max-width: calc((100% / #{$num-of-elements}) - #{$margin-right} + (#{$margin-right} / 4));
+@mixin equal-flex-element-in-a-row($num-of-elements) {
+  flex-basis: calc((100% / #{$num-of-elements}));
+  max-width: calc((100% / #{$num-of-elements}));
   word-break: break-all;
-  margin-right: $margin-right;
-
-  &:nth-child(4n + 4) {
-    margin-right: 0;
-  }
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 @mixin reusable-button($background-color, $text-color) {

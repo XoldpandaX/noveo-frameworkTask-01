@@ -8,17 +8,23 @@
   }
 
   &__element {
-    $num-of-elements-in-a-row: 4;
-    $margin-right: 10px;
-    @include equal-flex-element-in-a-row($margin-right, $num-of-elements-in-a-row);
-
+    @include equal-flex-element-in-a-row(4);
     display: flex;
     min-height: 250px;
 
+    @media(max-width: 1290px) {
+      @include equal-flex-element-in-a-row(3);
+    }
+
+    @media(max-width: 800px) {
+      @include equal-flex-element-in-a-row(2);
+    }
+
+    @media(max-width: 480px) {
+      @include equal-flex-element-in-a-row(1);
+    }
+
     &:first-child {
-      background-color: $card-background-color;
-      border: 2*$rem dashed $add-card-btn-border-color;
-      border-radius: 4*$rem;
       align-items: center;
       justify-content: center;
     }
