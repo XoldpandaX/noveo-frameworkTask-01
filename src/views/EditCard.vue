@@ -3,7 +3,7 @@
     .container
       h1 Edit Selected Card Data
       .edit-card__row
-        card-edit
+        card-edit(:data="cardData")
 </template>
 
 <script>
@@ -22,7 +22,12 @@
     },
     data() {
       return {
-        showPage: false
+        showPage: false,
+        cardData: {
+          id: '',
+          title: '',
+          description: ''
+        }
       };
     },
     computed: {
@@ -37,6 +42,11 @@
 
         this.cards.some(el => {
           if (el.id === `#${this.id}`) {
+            let {title, description, id} = el;
+            this.cardData.title = title;
+            this.cardData.description = description;
+            this.cardData.id = id;
+
             this.showPage = true;
           }
         });

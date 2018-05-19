@@ -9,6 +9,9 @@ export default {
     },
     cardData: {
       type: Object
+    },
+    editData: {
+      type: Object
     }
   },
   data() {
@@ -41,19 +44,27 @@ export default {
     ...mapActions('cards', ['addCardDataToStore', 'likeToggle']),
     
     formDataToStore() {
-      const {title, description} = this.userInput;
-      
-      if (title !== '' && description !== '') {
-        const data = {
-          id: `#${this.cards.length + 1}`,
-          title: title,
-          description: description,
-          like: false
-        };
-        this.addCardDataToStore(data);
-        this.redirectToHome();
-      } else {
-        alert('Enter some text');
+      switch(this.editData) {
+        case undefined:
+          const {title, description} = this.userInput;
+  
+          if (title !== '' && description !== '') {
+            const data = {
+              id: `#${this.cards.length + 1}`,
+              title: title,
+              description: description,
+              like: false
+            };
+            this.addCardDataToStore(data);
+            this.redirectToHome();
+          } else {
+            alert('Enter some text');
+          }
+          break;
+          
+        default:
+          
+          break;
       }
     },
     sendCardID() {

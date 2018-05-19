@@ -1,6 +1,6 @@
 <template lang="pug">
   .card-edit
-    card(:transformComponent="'edit-form-card'")
+    card(:transformComponent="'edit-form-card'", :editData="data")
 </template>
 
 <script>
@@ -8,6 +8,11 @@
 
   export default {
     name: 'card-edit',
+    props: {
+      data: {
+        type: Object
+      }
+    },
     components: {
       Card
     }
