@@ -54,6 +54,12 @@
     color: $card-text-color;
   }
 
+  &__button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   footer {
     display: flex;
     justify-content: space-between;

@@ -10,7 +10,7 @@
 <script>
   import {mapGetters} from 'vuex';
   import AddCardBtn from './../components/AddCardBtn.vue';
-  import Card from './../components/Card.vue';
+  import Card from '../components/Card/Card.vue';
 
   export default {
     name: 'card-list',
