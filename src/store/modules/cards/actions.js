@@ -3,8 +3,13 @@ import * as types from './action-types.js';
 
 function cardsDataInit({commit}) {
   let cards = [];
-  for (let i = 1; i < localStorage.length; i++) {
-    cards.push(JSON.parse(localStorage.getItem(`#${i}`)));
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    let firstSymbol = '#';
+    
+    if (key[0] === firstSymbol) {
+      cards.push(JSON.parse(localStorage.getItem(key)));
+    }
   }
   commit(types.INIT_CARD_DATA, cards);
 }
