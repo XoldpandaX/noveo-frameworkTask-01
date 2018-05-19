@@ -1,12 +1,33 @@
 import * as types from './action-types.js';
 
 function addCardDataToStore({commit, dispatch}, data) {
-  dispatch('addToLocalStorage', data);
-  commit(types.SAVE_CARD_DATA, data);
+  if (!data.edited) {
+    dispatch('addToLocalStorage', data.storeData);
+    commit(types.SAVE_CARD_DATA, data.storeData);
+  } else {
+    dispatch('replaceEditedData', data);
+  }
 }
 
 function addToLocalStorage({commit, state}, card) {
   localStorage.setItem(card.id, JSON.stringify(card));
+}
+
+function replaceEditedData({commit, state}, cardData) {
+  const currentCardsState = state.cards;
+  const {id, title, description, like} = cardData.storeData;
+  
+  currentCardsState.forEach((el, i) => {
+    if (el.id === id) {
+      commit(types.SAVE_EDITED_CARD_DATA, {
+        positionInCurrentState: i,
+        id: id,
+        title: title,
+        description: description,
+        like: like
+      });
+    }
+  });
 }
 
 function cardsDataInit({commit}) {
@@ -29,5 +50,6 @@ export default {
   addCardDataToStore,
   addToLocalStorage,
   cardsDataInit,
-  likeToggle
+  likeToggle,
+  replaceEditedData
 };

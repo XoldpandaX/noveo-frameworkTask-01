@@ -42,29 +42,34 @@ export default {
   },
   methods: {
     ...mapActions('cards', ['addCardDataToStore', 'likeToggle']),
-    
-    formDataToStore() {
-      switch(this.editData) {
-        case undefined:
-          const {title, description} = this.userInput;
   
-          if (title !== '' && description !== '') {
-            const data = {
-              id: `#${this.cards.length + 1}`,
-              title: title,
-              description: description,
-              like: false
-            };
-            this.addCardDataToStore(data);
-            this.redirectToHome();
-          } else {
-            alert('Enter some text');
-          }
-          break;
-          
-        default:
-          
-          break;
+    formDataToStore() {
+      const {title, description} = this.userInput;
+    
+      if (title !== '' && description !== '') {
+        const storeData = {
+          id: this.editData ? this.editData.id : `#${this.cards.length + 1}`,
+          title: title,
+          description: description,
+          like: false
+        };
+        
+        const sendData = {
+          storeData,
+          edited: !!this.editData
+        };
+        
+        this.addCardDataToStore(sendData);
+        this.redirectToHome();
+      } else {
+        alert('Enter some text');
+      }
+    },
+    displayEditData() {
+      if (this.editData) {
+        const {title, description} = this.editData;
+        this.userInput.title = title;
+        this.userInput.description = description;
       }
     },
     sendCardID() {
@@ -80,5 +85,8 @@ export default {
       
       this.$router.push({path: `/edit-card/${id}`})
     }
+  },
+  created() {
+    this.displayEditData();
   }
 };
