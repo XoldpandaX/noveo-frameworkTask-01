@@ -53,12 +53,12 @@ function deleteCardDataFromStore({commit, dispatch, state}, cardIdToDelete) {
 
 function likeToggle({commit, dispatch, state}, cardId) {
   let storageData = JSON.parse(localStorage.getItem(cardId));
-  
   storageData.like = !storageData.like;
   dispatch('addToLocalStorage', storageData);
-  state.cards.forEach(el => {
+  
+  state.cards.forEach((el, i) => {
     if (el.id === cardId) {
-      el.like = !el.like;
+      commit(types.LIKE_CARD, i);
     }
   });
 }

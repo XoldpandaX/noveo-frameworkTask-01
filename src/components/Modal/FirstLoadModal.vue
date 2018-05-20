@@ -1,6 +1,6 @@
 <template lang="pug">
   .first-view-modal
-    .cross-btn
+    .cross-btn(@click="closeModal")
     .first-view-modal__media
       img(src="./../../assets/media/gifs/giphy.gif")
     footer
@@ -14,11 +14,16 @@
     props: {
       message: {
         type: Object,
-        default: {
+        default: () => ({
           welcomeText: 'Hello !',
           description: 'This is the first time when you load this app.' +
                        'To add a new card, please, push on black plus icon. Enjoy it :)'
-        }
+        })
+      }
+    },
+    methods: {
+      closeModal() {
+        this.$emit('closeModal')
       }
     }
   }

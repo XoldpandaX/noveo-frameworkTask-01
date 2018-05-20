@@ -42,7 +42,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('cards', ['addCardDataToStore', 'likeToggle', 'deleteCardDataFromStore']),
+    ...mapActions('cards', ['addCardDataToStore', 'likeToggle', 'deleteCardDataFromStore', 'cardsDataInit']),
   
     formDataToStore() {
       const {title, description} = this.userInput;
@@ -91,5 +91,10 @@ export default {
   },
   created() {
     this.displayEditData();
+  },
+  destroyed() {
+    if (this.editData) {
+      
+    }
   }
 };

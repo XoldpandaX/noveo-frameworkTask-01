@@ -19,10 +19,15 @@
       ...mapGetters('cards', ['cards'])
     },
     methods: {
-      ...mapActions('cards', ['cardsDataInit'])
+      ...mapActions('cards', ['cardsDataInit']),
+      ...mapActions('ui', ['showModal'])
     },
     created() {
       this.cardsDataInit();
+
+      setTimeout(() => {
+        this.showModal('first-load-modal');
+      }, 750);
     }
   }
 </script>
@@ -34,24 +39,4 @@
     animation-duration: .7s;
     animation-fill-mode: both;
   }
-
-  /*.col {*/
-    /*position: fixed;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
-    /*background-color: black;*/
-    /*z-index: 500;*/
-
-    /*div {*/
-      /*width: 100px;*/
-      /*height: 100px;*/
-      /*background-color: red;*/
-      /*z-index: 1000;*/
-      /*position: absolute;*/
-      /*top: calc(50% - 50px);*/
-      /*left: calc(50% - 50px);*/
-      /*margin: 0;*/
-    /*}*/
-
-  //}
 </style>

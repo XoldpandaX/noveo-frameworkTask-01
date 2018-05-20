@@ -22,3 +22,11 @@ export const INIT_CARD_DATA = '@@cards/INIT_CARD_DATA';
  */
 
 export const DELETE_CARD_DATA = '@@cards/DELETE_CARD_DATA';
+
+/**
+ * @const LIKE_CARD
+ * @type {string}
+ */
+
+export const LIKE_CARD = '@@cards/LIKE_CARD';
+
