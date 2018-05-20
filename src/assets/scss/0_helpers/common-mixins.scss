@@ -1,11 +1,3 @@
-// служит для отображения flex элементов с одинаковой шириной
-// в каждом ряду, при том что каждый(в ряду) элемент кроме,
-// каждого(в ряду) №N последнего, отступа справа не имеет
-
-// из за того, что каждый последний элемент(n) не имеет отступа,
-// оставишеся $margin-right делим между количеством элементов которые
-// будут у нас в строке, чтобы получить одинаковую длину
-// каждого flex элемента
 @mixin equal-flex-element-in-a-row($num-of-elements) {
   flex-basis: calc((100% / #{$num-of-elements}));
   max-width: calc((100% / #{$num-of-elements}));
@@ -19,12 +11,21 @@
   width: 100px;
   padding: .2em .4em;
   border-radius: 3*$rem;
-  border: 1px solid rgba(0,0,0,.1);
-  background: #{$background-color} linear-gradient(hsla(0,0%,100%,.2), transparent);
+  border: 1px solid rgba(0, 0, 0, .1);
+  background: #{$background-color} linear-gradient(hsla(0, 0%, 100%, .2), transparent);
   border-radius: .2em;
-  box-shadow: 0 .05em .25em rgba(0,0,0,.5);
+  box-shadow: 0 .05em .25em rgba(0, 0, 0, .5);
   color: $text-color;
-  text-shadow: 0 -.05em .05em rgba(0,0,0,.5);
+  text-shadow: 0 -.05em .05em rgba(0, 0, 0, .5);
   font-size: 125%;
   line-height: 1.5;
+}
+
+@mixin modal-positioning($modal-width) {
+  z-index: 1000;
+  position: absolute;
+  width: $modal-width;
+  top: calc(12%);
+  left: calc(50% - (#{$modal-width / 2}));
+  margin: 0;
 }

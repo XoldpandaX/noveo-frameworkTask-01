@@ -1,8 +1,7 @@
 <template lang="pug">
   div(id="app")
     modals
-    transition(name="router-animation"
-               enter-active-class="animated fadeInLeft"
+    transition(name="router-animation", enter-active-class="animated fadeInLeft",
                leave-active-class="animated fadeOutRight")
       router-view
 </template>
