@@ -1,5 +1,6 @@
 <template lang="pug">
   .first-view-modal
+    .cross-btn
     .first-view-modal__media
       img(src="./../../assets/media/gifs/giphy.gif")
     footer
@@ -16,7 +17,7 @@
         default: {
           welcomeText: 'Hello !',
           description: 'This is the first time when you load this app.' +
-                       'To add a new card, you can push on plus icon. Enjoy it :)'
+                       'To add a new card, please, push on black plus icon. Enjoy it :)'
         }
       }
     }

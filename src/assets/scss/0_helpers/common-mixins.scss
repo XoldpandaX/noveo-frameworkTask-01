@@ -21,11 +21,11 @@
   line-height: 1.5;
 }
 
-@mixin modal-positioning($modal-width) {
+@mixin modal-positioning($modal-width, $top) {
   z-index: 1000;
   position: absolute;
   width: $modal-width;
-  top: calc(12%);
+  top: $top;
   left: calc(50% - (#{$modal-width / 2}));
   margin: 0;
 }
