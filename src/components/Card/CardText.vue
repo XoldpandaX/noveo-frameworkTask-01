@@ -22,7 +22,7 @@
     },
 
     methods: {
-      ...mapActions('cards', ['likeToggle', 'cardsDataInit']),
+      ...mapActions('cards', ['likeToggle']),
 
       likeCard() {
         const cardId = this.cardData.id;
