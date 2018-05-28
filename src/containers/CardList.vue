@@ -4,19 +4,19 @@
       .card-list__element
         add-card-btn
       .card-list__element(v-for="card in cards")
-        card(:cardData="card", :key="card.id")
+        card-text(:cardData="card", :key="card.id")
 </template>
 
 <script>
   import {mapGetters} from 'vuex';
   import AddCardBtn from './../components/AddCardBtn.vue';
-  import Card from '../components/Card/Card.vue';
+  import CardText from '../components/Card/CardText.vue';
 
   export default {
     name: 'card-list',
     components: {
       AddCardBtn,
-      Card
+      CardText
     },
     computed: {
       ...mapGetters('cards', ['cards'])

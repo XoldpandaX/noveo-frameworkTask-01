@@ -91,10 +91,5 @@ export default {
   },
   created() {
     this.displayEditData();
-  },
-  destroyed() {
-    if (this.editData) {
-      
-    }
   }
 };
