@@ -1,11 +1,3 @@
-/**
- * @const SHOW_MODAL
- * @type {string}
- */
-export const SHOW_MODAL = '@@ui/SHOW_MODAL';
+export const SHOW_MODAL = 'SHOW_MODAL';
 
-/**
- * @const CLOSE_ALL_MODALS
- * @type {string}
- */
-export const CLOSE_ALL_MODALS = '@@ui/CLOSE_ALL_MODALS';
+export const CLOSE_ALL_MODALS = 'CLOSE_ALL_MODALS';
