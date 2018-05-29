@@ -5,7 +5,7 @@
       p {{cardData.description}}
     footer
       .edit-btn(@click="redirectToEditCard")
-      .like-btn(@click="likeCard" :class="{'like-btn--active' : cardData.like}")
+      .like-btn(@click="likeCard" :class="changeLikeIconStyle")
 </template>
 
 <script>
@@ -18,6 +18,12 @@
       cardData: {
         type: Object,
         required: true
+      }
+    },
+
+    computed: {
+      changeLikeIconStyle() {
+        return this.cardData.like ? 'like-btn--active' : '';
       }
     },
 
