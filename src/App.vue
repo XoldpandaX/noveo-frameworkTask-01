@@ -28,6 +28,9 @@
       setTimeout(() => {
         this.showModal('first-load-modal');
       }, 750);
+    },
+    updated() {
+      this.cardsDataInit();
     }
   }
 </script>

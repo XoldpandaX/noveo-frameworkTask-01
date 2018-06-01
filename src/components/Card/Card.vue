@@ -79,7 +79,7 @@
             id: this.editData ? this.editData.id : `#${getRandomID()}`,
             title: title,
             description: description,
-            like: false
+            like: this.editData ? this.editData.like : false
           };
 
           const sendData = {

@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.edit-card.page(v-if="showPage")
+  section.edit-card.page
     .container
       h1 Edit Selected Card Data
       .edit-card__row
@@ -29,7 +29,8 @@
         cardData: {
           id: '',
           title: '',
-          description: ''
+          description: '',
+          like: false
         }
       };
     },
@@ -43,27 +44,19 @@
         this.$router.push({path: '/'});
       },
       routeDataHandler() {
-        let redirect = false;
-        const isIdExist = this.getCardByID(`#${this.id}`);
+        const card = this.getCardByID(`#${this.id}`);
 
-        // if (isIdExist) {
-        //
-        // }
-        console.log(isIdExist);
-        this.cards.some(el => {
-          if (el.id === `#${this.id}`) {
-            let {title, description, id} = el;
-            this.cardData.title = title;
-            this.cardData.description = description;
-            this.cardData.id = id;
+        if (card !== undefined) {
+          let { id, title, description, like } = card;
 
-            this.showPage = true;
-          }
-        });
-
-        if(redirect === this.showPage) {
-          this.redirectTo();
+          this.cardData.id = id;
+          this.cardData.title = title;
+          this.cardData.description = description;
+          this.cardData.like = like;
+          return;
         }
+
+        this.redirectTo();
       }
     },
     created() {
