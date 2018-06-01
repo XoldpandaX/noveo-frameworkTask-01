@@ -59,7 +59,6 @@
       }
     },
     created() {
-      console.log(this.getCardByID(`#${this.id}`));
       this.routeDataHandler();
     }
   }

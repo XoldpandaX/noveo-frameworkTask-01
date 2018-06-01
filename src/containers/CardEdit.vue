@@ -1,6 +1,7 @@
 <template lang="pug">
   .card-edit
-    card(:transformComponent="'edit-form-card'", :editData="data")
+    card(:transformComponent="'edit-form-card'",
+         :editData="data")
 </template>
 
 <script>

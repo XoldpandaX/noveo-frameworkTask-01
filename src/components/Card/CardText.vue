@@ -1,8 +1,8 @@
 <template lang="pug">
   .card
     .card__content
-      h2 {{cardData.title}}
-      p {{cardData.description}}
+      h2 {{ cardData.title }}
+      p {{ cardData.description }}
     footer
       .edit-btn(@click="redirectToEditCard")
       .like-btn(@click="likeCard" :class="changeLikeIconStyle")
