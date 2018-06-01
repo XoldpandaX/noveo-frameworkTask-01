@@ -1,14 +1,14 @@
 <template lang="pug">
   section.edit-card.page
-    .container
+    .container(v-if="showPage")
       h1 Edit Selected Card Data
       .edit-card__row
-        card-edit(:data="cardData")
+        container-card-edit(:data="cardData")
 </template>
 
 <script>
   import { mapGetters, mapActions } from 'vuex';
-  import CardEdit from './../containers/CardEdit.vue';
+  import ContainerCardEdit from '../containers/ContainerCardEdit.vue';
 
   export default {
     name: 'edit-card',
@@ -21,7 +21,7 @@
       }
     },
     components: {
-      CardEdit
+      ContainerCardEdit
     },
     data() {
       return {
@@ -53,6 +53,7 @@
           this.cardData.title = title;
           this.cardData.description = description;
           this.cardData.like = like;
+          this.showPage = true;
           return;
         }
 

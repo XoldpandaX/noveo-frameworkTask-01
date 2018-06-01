@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import CardForm from './../containers/CardForm.vue';
+  import CardForm from '../containers/ContainerCardForm.vue';
 
   export default {
     name: 'add-new-card',

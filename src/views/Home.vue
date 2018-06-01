@@ -2,16 +2,16 @@
   section.home.page
     .container
       h1 Card List
-      card-list
+      container-card-list
 </template>
 
 <script>
-  import CardList from './../containers/CardList.vue';
+  import ContainerCardList from '../containers/ContainerCardList.vue';
 
   export default {
     name: 'home',
     components: {
-      CardList
+      ContainerCardList
     }
   }
 </script>

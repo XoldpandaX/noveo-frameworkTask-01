@@ -8,7 +8,7 @@
 
 <script>
   import {mapGetters, mapActions} from 'vuex';
-  import Modals from './containers/ModalWrapper.vue';
+  import Modals from './containers/ContainerModalWrapper.vue';
 
   export default {
     name: 'app',

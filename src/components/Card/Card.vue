@@ -1,13 +1,5 @@
 <template lang="pug">
   .card
-    template(v-if="cardView === 'text-card'")
-      .card__content
-        h2 {{cardData.title}}
-        p {{cardData.description}}
-      footer(v-if="cardView === 'text-card'")
-        .edit-btn(@click="redirectToEditCard")
-        .like-btn(@click="sendCardID" :class="{'like-btn--active' : cardData.like}")
-
     template(v-if="cardView !== 'text-card'")
       .card__content.card__content--form
         input(type="text",
@@ -18,9 +10,9 @@
           textarea(placeholder="Enter description",
                    :maxlength="maxSymbols",
                    v-model="userInput.description")
-          span {{symbolsLeft}}/{{maxSymbols}}
+          span {{ symbolsLeft }}/{{ maxSymbols }}
         .card__button-row
-          button(v-if="cardView !== 'form-card'" ,
+          button(v-if="cardView === 'edit-form-card'" ,
                  @click.prevent="deleteCard") delete
           button(@click.prevent="formDataToStore") save
 </template>
@@ -60,8 +52,6 @@
             return 'edit-form-card';
           case 'form-card':
             return 'form-card';
-          default:
-            return 'text-card';
         }
       },
       symbolsLeft() {
