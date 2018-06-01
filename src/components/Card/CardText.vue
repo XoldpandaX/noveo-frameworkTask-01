@@ -4,7 +4,7 @@
       h2 {{ cardData.title }}
       p {{ cardData.description }}
     footer
-      .edit-btn(@click="redirectToEditCard")
+      .edit-btn(@click="redirectToEditCardPage")
       .like-btn(@click="likeCard" :class="changeLikeIconStyle")
 </template>
 
@@ -35,7 +35,7 @@
         this.likeToggle(cardId);
       },
 
-      redirectToEditCard() {
+      redirectToEditCardPage() {
         const id = this.cardData.id.split('').splice(1).join('');
         this.$router.push({path: `/edit-card/${id}`})
       }

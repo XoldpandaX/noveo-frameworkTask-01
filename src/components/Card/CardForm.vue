@@ -90,11 +90,9 @@
       },
 
       displayEditData() {
-        if (this.editData) {
-          const {title, description} = this.editData;
-          this.userInput.title = title;
-          this.userInput.description = description;
-        }
+        const { title, description } = this.cardData;
+        this.userInput.title = title;
+        this.userInput.description = description;
       },
 
       deleteCard() {
@@ -104,17 +102,12 @@
 
       redirectToHome() {
         this.$router.push({name: 'home'});
-      },
-
-      redirectToEditCard() {
-        const id = this.cardData.id.split('').splice(1).join('');
-        this.$router.push({path: `/edit-card/${id}`})
       }
     },
 
     created() {
-      this.displayEditData();
-      console.log(this.cardData);
+      if (this.cardData) this.displayEditData();
+
     }
   };
 </script>

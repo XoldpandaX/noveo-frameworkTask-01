@@ -46,7 +46,7 @@
       routeDataHandler() {
         const card = this.getCardByID(`#${this.id}`);
 
-        if (card !== undefined) {
+        if (card) {
           let { id, title, description, like } = card;
 
           this.cardData.id = id;
