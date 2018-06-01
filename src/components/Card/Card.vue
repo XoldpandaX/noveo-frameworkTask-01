@@ -1,24 +1,23 @@
 <template lang="pug">
   .card
-    template(v-if="cardView !== 'text-card'")
-      .card__content.card__content--form
-        input(type="text",
-              placeholder="Enter title",
-              maxlength="42",
-              v-model="userInput.title")
-        div
-          textarea(placeholder="Enter description",
-                   :maxlength="maxSymbols",
-                   v-model="userInput.description")
-          span {{ symbolsLeft }}/{{ maxSymbols }}
-        .card__button-row
-          button(v-if="cardView === 'edit-form-card'" ,
-                 @click.prevent="deleteCard") delete
-          button(@click.prevent="formDataToStore") save
+    .card__content.card__content--form
+      input(type="text",
+      placeholder="Enter title",
+      maxlength="42",
+      v-model="userInput.title")
+      div
+        textarea(placeholder="Enter description",
+        :maxlength="maxSymbols",
+        v-model="userInput.description")
+        span {{ symbolsLeft }}/{{ maxSymbols }}
+      .card__button-row
+        button(v-if="cardView === 'edit-form-card'" ,
+        @click.prevent="deleteCard") delete
+        button(@click.prevent="formDataToStore") save
 </template>
 <script>
-  import { mapGetters, mapActions } from 'vuex';
-  import { getRandomID } from './../../helpers/helpFunctions.js';
+  import {mapGetters, mapActions} from 'vuex';
+  import {getRandomID} from './../../helpers/helpFunctions.js';
 
   export default {
     name: 'card',
