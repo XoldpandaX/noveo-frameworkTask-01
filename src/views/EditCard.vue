@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex';
+  import { mapGetters, mapActions } from 'vuex';
   import CardEdit from './../containers/CardEdit.vue';
 
   export default {
@@ -31,9 +31,11 @@
       };
     },
     computed: {
-      ...mapGetters('cards', ['cards'])
+      ...mapGetters('cards', ['cards', 'isCardIdExist'])
     },
     methods: {
+      ...mapActions('cards', ['searchCardsById']),
+
       redirectTo() {
         this.$router.push({path: '/'});
       },
