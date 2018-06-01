@@ -15,6 +15,9 @@
     props: {
       id: {
         type: String
+      },
+      name: {
+        type: String
       }
     },
     components: {
@@ -41,7 +44,12 @@
       },
       routeDataHandler() {
         let redirect = false;
+        const isIdExist = this.getCardByID(`#${this.id}`);
 
+        // if (isIdExist) {
+        //
+        // }
+        console.log(isIdExist);
         this.cards.some(el => {
           if (el.id === `#${this.id}`) {
             let {title, description, id} = el;
