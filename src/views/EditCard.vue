@@ -31,7 +31,7 @@
       };
     },
     computed: {
-      ...mapGetters('cards', ['cards', 'isCardIdExist'])
+      ...mapGetters('cards', ['cards', 'getCardByID'])
     },
     methods: {
       ...mapActions('cards', ['searchCardsById']),
@@ -59,6 +59,7 @@
       }
     },
     created() {
+      console.log(this.getCardByID(`#${this.id}`));
       this.routeDataHandler();
     }
   }
