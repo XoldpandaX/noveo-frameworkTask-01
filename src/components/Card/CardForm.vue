@@ -2,17 +2,17 @@
   .card
     .card__content.card__content--form
       input(type="text",
-      placeholder="Enter title",
-      maxlength="42",
-      v-model="userInput.title")
+            placeholder="Enter title",
+            maxlength="42",
+            v-model="userInput.title")
       div
         textarea(placeholder="Enter description",
-        :maxlength="maxSymbols",
-        v-model="userInput.description")
+                 :maxlength="maxSymbols",
+                 v-model="userInput.description")
         span {{ symbolsLeft }}/{{ maxSymbols }}
       .card__button-row
         button(v-if="cardView === 'edit-form-card'" ,
-        @click.prevent="deleteCard") delete
+               @click.prevent="deleteCard") delete
         button(@click.prevent="formDataToStore") save
 </template>
 <script>
@@ -64,7 +64,7 @@
       }
     },
     methods: {
-      ...mapActions('cards', ['addCardDataToStore', 'deleteCardDataFromStore', 'cardsDataInit']),
+      ...mapActions('cards', ['addCardDataToStore', 'deleteCardDataFromStore']),
 
       formDataToStore() {
         const {title, description} = this.userInput;
@@ -114,6 +114,7 @@
 
     created() {
       this.displayEditData();
+      console.log(this.cardData);
     }
   };
 </script>
