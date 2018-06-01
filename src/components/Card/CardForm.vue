@@ -11,7 +11,7 @@
                  v-model="userInput.description")
         span {{ symbolsLeft }}/{{ maxSymbols }}
       .card__button-row
-        button(v-if="cardView === 'edit-form-card'" ,
+        button(v-if="cardView === 'edit-form-card'",
                @click.prevent="deleteCard") delete
         button(@click.prevent="formDataToStore") save
 </template>
@@ -67,14 +67,14 @@
       ...mapActions('cards', ['addCardDataToStore', 'deleteCardDataFromStore']),
 
       formDataToStore() {
-        const {title, description} = this.userInput;
+        const { title, description } = this.userInput;
 
         if (title !== '' && description !== '') {
           const storeData = {
-            id: this.editData ? this.editData.id : `#${getRandomID()}`,
+            id: this.cardData ? this.cardData.id : `#${getRandomID()}`,
             title: title,
             description: description,
-            like: this.editData ? this.editData.like : false
+            like: this.cardData ? this.cardData.like : false
           };
 
           const sendData = {
@@ -96,7 +96,7 @@
       },
 
       deleteCard() {
-        this.deleteCardDataFromStore(this.editData.id);
+        this.deleteCardDataFromStore(this.cardData.id);
         this.redirectToHome();
       },
 
@@ -107,7 +107,6 @@
 
     created() {
       if (this.cardData) this.displayEditData();
-
     }
   };
 </script>

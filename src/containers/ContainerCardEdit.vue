@@ -2,7 +2,7 @@
   .card-edit
     <!--card-form(transformComponent="'edit-form-card'",-->
               <!--:editData="data")-->
-    card-form(transformComponent="'edit-form-card'",
+    card-form(transformComponent="edit-form-card",
               :cardData="data")
 </template>
 

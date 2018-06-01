@@ -7,9 +7,7 @@ export default {
   
   [types.SAVE_EDITED_CARD_DATA] (state, data) {
     const position = data.positionInCurrentState;
-    delete data.positionInCurrentState;
-    
-    state.cards[position] = data;
+    state.cards[position] = data.storeData;
   },
   
   [types.INIT_CARD_DATA] (state, data) {
