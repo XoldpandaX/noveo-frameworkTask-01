@@ -1,5 +1,5 @@
 import * as types from './mutation-types';
-import { sortByObjValue } from './../../../helpers/helpFunctions.js';
+import { sortByObjValue } from '../../../helpers/index.js';
 
 export default {
   [types.SAVE_CARD_DATA] (state, data) {

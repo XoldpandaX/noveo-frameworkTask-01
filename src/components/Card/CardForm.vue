@@ -16,8 +16,8 @@
         button(@click.prevent="formDataToStore") save
 </template>
 <script>
-  import {mapGetters, mapActions} from 'vuex';
-  import {getRandomID} from './../../helpers/helpFunctions.js';
+  import { mapGetters, mapActions } from 'vuex';
+  import { getRandomID } from '../../helpers/index.js';
 
   export default {
     name: 'card',

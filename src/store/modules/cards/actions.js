@@ -60,6 +60,7 @@ function deleteCardDataFromStore({commit, dispatch, state}, cardIdToDelete) {
 function likeToggle({commit, dispatch, state, getters}, cardId) {
   let storageData = JSON.parse(localStorage.getItem(cardId));
   storageData.like = !storageData.like;
+  
   dispatch('addToLocalStorage', storageData);
   commit(types.LIKE_CARD, cardId)
 }
@@ -71,10 +72,6 @@ function deleteFromLocalStorage({commit}, cardID) {
 function addToLocalStorage({commit, state, dispatch, getters}, data) {
   localStorage.setItem(data.id, JSON.stringify(data));
 }
-
-// function updateLocalStorage({state}, editedCardData) {
-//   localStorage.setItem(editedCardData.storeData.id, JSON.stringify(editedCardData.storeData));
-// }
 
 export default {
   addCardDataToStore,
