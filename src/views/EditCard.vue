@@ -12,6 +12,7 @@
 
   export default {
     name: 'edit-card',
+
     props: {
       id: {
         type: String
@@ -20,9 +21,11 @@
         type: String
       }
     },
+
     components: {
       ContainerCardEdit
     },
+
     data() {
       return {
         showPage: false,
@@ -35,9 +38,11 @@
         }
       };
     },
+
     computed: {
       ...mapGetters('cards', ['cards', 'getCardByID'])
     },
+
     methods: {
       ...mapActions('cards', ['searchCardsById']),
 
@@ -62,6 +67,7 @@
         this.redirectTo();
       }
     },
+
     created() {
       this.routeDataHandler();
     }

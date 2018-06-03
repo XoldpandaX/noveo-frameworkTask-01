@@ -20,7 +20,7 @@
   import { getRandomID } from '../../helpers/index.js';
 
   export default {
-    name: 'card',
+    name: 'card-form',
 
     props: {
       transformComponent: {

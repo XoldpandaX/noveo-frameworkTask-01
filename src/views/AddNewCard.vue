@@ -11,6 +11,7 @@
 
   export default {
     name: 'add-new-card',
+
     components: {
       CardForm
     }

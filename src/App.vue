@@ -1,7 +1,8 @@
 <template lang="pug">
   div(id="app")
     modals
-    transition(name="router-animation", enter-active-class="animated fadeInLeft",
+    transition(name="router-animation",
+               enter-active-class="animated fadeInLeft",
                leave-active-class="animated fadeOutRight")
       router-view
 </template>
@@ -12,22 +13,27 @@
 
   export default {
     name: 'app',
+
     components: {
       Modals
     },
+
     computed: {
       ...mapGetters('cards', ['cards'])
     },
+
     methods: {
       ...mapActions('cards', ['cardsDataInit']),
       ...mapActions('ui', ['showModal'])
     },
+
     created() {
       this.cardsDataInit();
       setTimeout(() => {
         this.showModal('first-load-modal');
       }, 750);
     },
+
     updated() {
       this.cardsDataInit();
     }
