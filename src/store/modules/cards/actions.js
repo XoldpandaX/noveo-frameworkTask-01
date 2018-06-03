@@ -42,8 +42,8 @@ function addCardDataToStoreAfterEdit({commit, state, dispatch}, cardData) {
         positionInCurrentState: i,
       };
       
+      dispatch('addToLocalStorage', storeData);
       commit(types.SAVE_EDITED_CARD_DATA, sendData);
-      dispatch('updateLocalStorage', sendData);
     }
   });
 }
@@ -68,19 +68,18 @@ function deleteFromLocalStorage({commit}, cardID) {
   localStorage.removeItem(cardID);
 }
 
-function addToLocalStorage({commit, state, dispatch}, card) {
-  localStorage.setItem(card.id, JSON.stringify(card));
+function addToLocalStorage({commit, state, dispatch, getters}, data) {
+  localStorage.setItem(data.id, JSON.stringify(data));
 }
 
-function updateLocalStorage({state}, editedCardData) {
-  localStorage.setItem(editedCardData.storeData.id, JSON.stringify(editedCardData.storeData));
-}
+// function updateLocalStorage({state}, editedCardData) {
+//   localStorage.setItem(editedCardData.storeData.id, JSON.stringify(editedCardData.storeData));
+// }
 
 export default {
   addCardDataToStore,
   addToLocalStorage,
   deleteCardDataFromStore,
-  updateLocalStorage,
   deleteFromLocalStorage,
   cardsDataInit,
   likeToggle,
