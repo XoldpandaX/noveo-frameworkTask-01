@@ -6,6 +6,7 @@
 <script>
   export default {
     name: 'add-card-btn',
+
     methods: {
       redirect() {
         this.$router.push({name: 'add-new-card'});

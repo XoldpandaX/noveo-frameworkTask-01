@@ -1,6 +1,6 @@
 <template lang="pug">
   div(id="app")
-    modals
+    container-modal-wrapper
     transition(name="router-animation",
                enter-active-class="animated fadeInLeft",
                leave-active-class="animated fadeOutRight")
@@ -9,13 +9,13 @@
 
 <script>
   import {mapGetters, mapActions} from 'vuex';
-  import Modals from './containers/ContainerModalWrapper.vue';
+  import containerModalWrapper from './containers/ContainerModalWrapper.vue';
 
   export default {
     name: 'app',
 
     components: {
-      Modals
+      containerModalWrapper
     },
 
     computed: {

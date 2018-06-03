@@ -9,6 +9,7 @@
 
   export default {
     name: "card-form",
+
     components: {
       Card
     }

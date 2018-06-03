@@ -14,10 +14,12 @@
 
   export default {
     name: 'card-list',
+
     components: {
       AddCardBtn,
       CardText
     },
+
     computed: {
       ...mapGetters('cards', ['cards'])
     }

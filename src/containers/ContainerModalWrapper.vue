@@ -9,13 +9,16 @@
   import {mapGetters, mapActions} from 'vuex';
 
   export default {
-    name: 'modals',
+    name: 'container-modal-wrapper',
+
     components: {
       FirstLoadModal
     },
+
     computed: {
       ...mapGetters('ui', ['modals'])
     },
+
     methods: {
       ...mapActions('ui', ['closeAllModals']),
 

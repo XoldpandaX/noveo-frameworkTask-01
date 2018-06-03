@@ -9,11 +9,13 @@
 
   export default {
     name: 'container-card-edit',
+
     props: {
       data: {
         type: Object
       }
     },
+
     components: {
       CardForm
     }

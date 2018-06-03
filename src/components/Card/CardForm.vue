@@ -63,6 +63,7 @@
         return this.userInput.description.length;
       }
     },
+
     methods: {
       ...mapActions('cards', ['addCardDataToStore', 'deleteCardDataFromStore']),
 
