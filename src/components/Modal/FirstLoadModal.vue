@@ -4,8 +4,8 @@
     .first-view-modal__media
       img(src="./../../assets/media/gifs/giphy.gif")
     footer
-      h2 {{message.welcomeText}}
-      p {{message.description}}
+      h2 {{ message.welcomeText }}
+      p {{ message.description }}
 </template>
 
 <script>
