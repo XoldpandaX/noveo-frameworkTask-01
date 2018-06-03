@@ -1,4 +1,4 @@
-import * as types from './action-types';
+import * as types from './mutation-types';
 import { sortByObjValue } from './../../../helpers/helpFunctions.js';
 
 export default {

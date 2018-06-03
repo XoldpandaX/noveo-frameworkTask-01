@@ -1,4 +1,4 @@
-import * as types from './action-types.js';
+import * as types from './mutation-types.js';
 
 function closeAllModals({commit}, data) {
   commit(types.CLOSE_ALL_MODALS);

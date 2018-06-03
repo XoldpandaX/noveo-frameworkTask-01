@@ -1,23 +1,22 @@
-import * as types from './action-types.js';
+import * as types from './mutation-types.js';
 
 function cardsDataInit({commit}) {
   let cards = [];
-  for (let i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
-    let firstSymbol = '#';
+  Object.keys(localStorage).forEach(key => {
+    const firstSymbol = '#';
     
     if (key[0] === firstSymbol) {
       cards.push(JSON.parse(localStorage.getItem(key)));
     }
-  }
+  });
   commit(types.INIT_CARD_DATA, cards);
 }
 
 function addCardDataToStore({commit, dispatch, getters}, data) {
-  const isIdExist = getters.getCardByID(data.storeData.id);
+  const isIdExist = getters.getCardByID(data.id);
   if (!isIdExist) {
-    dispatch('addToLocalStorage', data.storeData);
-    commit(types.SAVE_CARD_DATA, data.storeData);
+    dispatch('addToLocalStorage', data);
+    commit(types.SAVE_CARD_DATA, data);
   } else {
     dispatch('addCardDataToStoreAfterEdit', data);
   }
@@ -25,7 +24,7 @@ function addCardDataToStore({commit, dispatch, getters}, data) {
 
 function addCardDataToStoreAfterEdit({commit, state, dispatch}, cardData) {
   const currentCardsState = state.cards;
-  const {id, title, description, like, order} = cardData.storeData;
+  const {id, title, description, like, order} = cardData;
   
   currentCardsState.forEach((el, i) => {
     if (el.id === id) {

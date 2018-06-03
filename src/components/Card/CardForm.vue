@@ -78,14 +78,12 @@
             like: this.cardData ? this.cardData.like : false
           };
 
-          const sendData = {
-            storeData,
-            edited: !!this.editData
-          };
+          // const sendData = {
+          //   storeData,
+          //   edited: !!this.editData
+          // };
 
-          console.log(sendData);
-
-          this.addCardDataToStore(sendData);
+          this.addCardDataToStore(storeData);
           this.redirectToHome();
         } else {
           alert('Enter some text');
