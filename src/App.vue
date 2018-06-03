@@ -24,7 +24,6 @@
     },
     created() {
       this.cardsDataInit();
-
       setTimeout(() => {
         this.showModal('first-load-modal');
       }, 750);

@@ -14,8 +14,9 @@ function cardsDataInit({commit}) {
   commit(types.INIT_CARD_DATA, cards);
 }
 
-function addCardDataToStore({commit, dispatch}, data) {
-  if (!data.edited) {
+function addCardDataToStore({commit, dispatch, getters}, data) {
+  const isIdExist = getters.getCardByID(data.storeData.id);
+  if (!isIdExist) {
     dispatch('addToLocalStorage', data.storeData);
     commit(types.SAVE_CARD_DATA, data.storeData);
   } else {
@@ -43,7 +44,7 @@ function addCardDataToStoreAfterEdit({commit, state, dispatch}, cardData) {
       };
       
       commit(types.SAVE_EDITED_CARD_DATA, sendData);
-      dispatch('updateLocalStorage', cardData);
+      dispatch('updateLocalStorage', sendData);
     }
   });
 }
@@ -78,7 +79,7 @@ function addToLocalStorage({commit, state, dispatch}, card) {
 }
 
 function updateLocalStorage({state}, editedCardData) {
-  localStorage.setItem(editedCardData.id, JSON.stringify(editedCardData));
+  localStorage.setItem(editedCardData.storeData.id, JSON.stringify(editedCardData.storeData));
 }
 
 export default {
