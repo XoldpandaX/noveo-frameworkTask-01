@@ -1,4 +1,5 @@
 import * as types from './action-types';
+import { sortByObjValue } from './../../../helpers/helpFunctions.js';
 
 export default {
   [types.SAVE_CARD_DATA] (state, data) {
@@ -11,7 +12,7 @@ export default {
   },
   
   [types.INIT_CARD_DATA] (state, data) {
-    state.cards = data;
+    state.cards = data.sort(sortByObjValue('order'));
   },
   
   [types.DELETE_CARD_DATA](state, cardIndex) {

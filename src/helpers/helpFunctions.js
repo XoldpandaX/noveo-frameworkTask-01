@@ -2,7 +2,7 @@ export function getRandomID() {
   return '_' + Math.random().toString(36).substr(2, 9);
 }
 
-function sortByObjValue(key, order='asc') {
+export function sortByObjValue(key, order='asc') {
   return function(a, b) {
     if(!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
       return 0;
@@ -20,5 +20,3 @@ function sortByObjValue(key, order='asc') {
     return ((order === 'desc') ? (comparison * -1) : comparison);
   };
 }
-
-console.log(bands.sort(compareValues('albums')));

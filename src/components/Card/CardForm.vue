@@ -72,6 +72,7 @@
         if (title !== '' && description !== '') {
           const storeData = {
             id: this.cardData ? this.cardData.id : `#${getRandomID()}`,
+            order: this.cardData ? this.cardData.order : this.cards.length,
             title: title,
             description: description,
             like: this.cardData ? this.cardData.like : false
@@ -81,6 +82,8 @@
             storeData,
             edited: !!this.editData
           };
+
+          console.log(sendData);
 
           this.addCardDataToStore(sendData);
           this.redirectToHome();

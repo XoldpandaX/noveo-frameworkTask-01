@@ -1,6 +1,5 @@
 import * as types from './action-types.js';
 
-
 function cardsDataInit({commit}) {
   let cards = [];
   for (let i = 0; i < localStorage.length; i++) {
@@ -26,16 +25,17 @@ function addCardDataToStore({commit, dispatch, getters}, data) {
 
 function addCardDataToStoreAfterEdit({commit, state, dispatch}, cardData) {
   const currentCardsState = state.cards;
-  const {id, title, description, like} = cardData.storeData;
+  const {id, title, description, like, order} = cardData.storeData;
   
   currentCardsState.forEach((el, i) => {
     if (el.id === id) {
       
       const storeData = {
         id: id,
+        order: order,
         title: title,
         description: description,
-        like: like
+        like: like,
       };
       
       let sendData = {

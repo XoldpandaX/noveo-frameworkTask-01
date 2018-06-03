@@ -28,6 +28,7 @@
         showPage: false,
         cardData: {
           id: '',
+          order: '',
           title: '',
           description: '',
           like: false
@@ -47,9 +48,10 @@
         const card = this.getCardByID(`#${this.id}`);
 
         if (card) {
-          let { id, title, description, like } = card;
+          let { id, title, description, like, order } = card;
 
           this.cardData.id = id;
+          this.cardData.order = order;
           this.cardData.title = title;
           this.cardData.description = description;
           this.cardData.like = like;
