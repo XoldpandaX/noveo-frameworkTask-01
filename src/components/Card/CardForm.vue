@@ -78,11 +78,6 @@
             like: this.cardData ? this.cardData.like : false
           };
 
-          // const sendData = {
-          //   storeData,
-          //   edited: !!this.editData
-          // };
-
           this.addCardDataToStore(storeData);
           this.redirectToHome();
         } else {

@@ -19,11 +19,11 @@ export default {
     state.cards.splice(cardIndex, 1);
   },
   
-  [types.LIKE_CARD] (state, cardIndex) {
-    if (!state.cards[cardIndex].like) {
-      state.cards[cardIndex].like = true;
-    } else {
-      state.cards[cardIndex].like = false;
-    }
+  [types.LIKE_CARD] (state, cardId) {
+    state.cards.forEach((el) => {
+      if (el.id === cardId) {
+        el.like = !el.like;
+      }
+    });
   }
 }
