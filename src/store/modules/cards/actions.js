@@ -15,7 +15,7 @@ function cardsDataInit({commit}) {
 function addCardDataToStore({commit, dispatch, getters}, data) {
   const isIdExist = getters.getCardByID(data.id);
   if (!isIdExist) {
-    dispatch('addToLocalStorage', data);
+    dispatch('localStorage/addToLocalStorageByID', data, { root: true });
     commit(types.SAVE_CARD_DATA, data);
   } else {
     dispatch('addCardDataToStoreAfterEdit', data);
@@ -42,7 +42,7 @@ function addCardDataToStoreAfterEdit({commit, state, dispatch}, cardData) {
         positionInCurrentState: i,
       };
       
-      dispatch('addToLocalStorage', storeData);
+      dispatch('localStorage/addToLocalStorageByID', storeData, { root: true });
       commit(types.SAVE_EDITED_CARD_DATA, sendData);
     }
   });
@@ -52,7 +52,7 @@ function deleteCardDataFromStore({commit, dispatch, state}, cardIdToDelete) {
   state.cards.forEach((el, i) => {
     if (el.id === cardIdToDelete) {
       commit(types.DELETE_CARD_DATA, i);
-      dispatch('deleteFromLocalStorage', el.id);
+      dispatch('localStorage/deleteFromLocalStorageByID', el.id, { root: true });
     }
   });
 }
@@ -61,23 +61,13 @@ function likeToggle({commit, dispatch, state, getters}, cardId) {
   let storageData = JSON.parse(localStorage.getItem(cardId));
   storageData.like = !storageData.like;
   
-  dispatch('addToLocalStorage', storageData);
+  dispatch('localStorage/addToLocalStorageByID', storageData, { root: true });
   commit(types.LIKE_CARD, cardId)
-}
-
-function deleteFromLocalStorage({commit}, cardID) {
-  localStorage.removeItem(cardID);
-}
-
-function addToLocalStorage({commit, state, dispatch, getters}, data) {
-  localStorage.setItem(data.id, JSON.stringify(data));
 }
 
 export default {
   addCardDataToStore,
-  addToLocalStorage,
   deleteCardDataFromStore,
-  deleteFromLocalStorage,
   cardsDataInit,
   likeToggle,
   addCardDataToStoreAfterEdit
