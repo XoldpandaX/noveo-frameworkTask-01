@@ -1,5 +1,5 @@
 <template>
-  <h1>Hello</h1>
+  <h1>red</h1>
 </template>
 
 <script>
@@ -7,3 +7,5 @@
     name: 'container-header'
   }
 </script>
+
+<style src="./container-header.scss"></style>

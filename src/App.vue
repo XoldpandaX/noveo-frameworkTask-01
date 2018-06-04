@@ -1,21 +1,24 @@
 <template lang="pug">
   div(id="app")
-    container-modal-wrapper
+    container-header
     transition(name="router-animation",
                enter-active-class="animated fadeInLeft",
                leave-active-class="animated fadeOutRight")
       router-view
+    container-modal-wrapper
 </template>
 
 <script>
   import { mapActions } from 'vuex';
   import containerModalWrapper from './containers/ModalContainer/ContainerModalWrapper.vue';
+  import ContainerHeader from './containers/HeaderContainer/ContainerHeader.vue';
 
   export default {
     name: 'app',
 
     components: {
-      containerModalWrapper
+      containerModalWrapper,
+      ContainerHeader
     },
 
     methods: {
