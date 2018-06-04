@@ -9,7 +9,7 @@
 
 <script>
   import { mapActions } from 'vuex';
-  import containerModalWrapper from './containers/ContainerModalWrapper.vue';
+  import containerModalWrapper from './containers/ModalContainer/ContainerModalWrapper.vue';
 
   export default {
     name: 'app',

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import CardForm from '../components/Card/CardForm.vue';
+  import CardForm from '../../components/Cards/CardForm.vue';
 
   export default {
     name: 'container-card-edit',

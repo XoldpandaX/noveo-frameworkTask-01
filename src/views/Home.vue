@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import ContainerCardList from '../containers/ContainerCardList.vue';
+  import ContainerCardList from '../containers/CardContainers/ContainerCardList.vue';
 
   export default {
     name: 'home',

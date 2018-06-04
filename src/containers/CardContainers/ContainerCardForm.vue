@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import Card from '../components/Card/CardForm.vue';
+  import Card from '../../components/Cards/CardForm.vue';
 
   export default {
     name: "card-form",

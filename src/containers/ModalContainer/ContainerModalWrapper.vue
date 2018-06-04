@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import FirstLoadModal from './../components/Modal/FirstLoadModal.vue';
+  import FirstLoadModal from '../../components/Modals/FirstLoadModal.vue';
   import { mapGetters, mapActions } from 'vuex';
 
   export default {

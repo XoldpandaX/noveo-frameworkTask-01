@@ -8,7 +8,7 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex';
-  import ContainerCardEdit from '../containers/ContainerCardEdit.vue';
+  import ContainerCardEdit from '../containers/CardContainers/ContainerCardEdit.vue';
 
   export default {
     name: 'edit-card',

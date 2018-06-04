@@ -9,8 +9,8 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import AddCardBtn from './../components/AddCardBtn.vue';
-  import CardText from '../components/Card/CardText.vue';
+  import AddCardBtn from '../../components/Buttons/AddCardBtn.vue';
+  import CardText from '../../components/Cards/CardText.vue';
 
   export default {
     name: 'card-list',
