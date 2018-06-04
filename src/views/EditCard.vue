@@ -1,6 +1,6 @@
 <template lang="pug">
   section.edit-card.page
-    .container(v-if="showPage")
+    .container(v-show="showPage")
       h1 Edit Selected Card Data
       .edit-card__row
         container-card-edit(:data="cardData")
@@ -49,6 +49,7 @@
       redirectTo() {
         this.$router.push({path: '/'});
       },
+
       routeDataHandler() {
         const card = this.getCardByID(`#${this.id}`);
 
