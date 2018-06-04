@@ -15,7 +15,11 @@
 @import '3_containers/card-list.scss';
 @import '3_containers/card-edit.scss';
 @import '3_containers/modal-wrapper';
+// styles in components folder
+@import '../../containers/HeaderContainer/container-header.scss';
 
 @import '4_components/add-card-btn.scss';
 @import '4_components/card.scss';
 @import '4_components/modals/first-view-modal.scss';
+// styles in components folder
+@import '../../components/Logo/logo.scss';

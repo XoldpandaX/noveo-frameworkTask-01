@@ -6,7 +6,8 @@ $line-height: 1;
 // palette
 $pure-black: #000;
 $pure-white: #FFF;
-$grey: #0e0e0e;
+$charcoal: #0e0e0e;
+$grey: lighten($pure-black, 40%);
 $blood-red: #a60716;
 $orange: #cc7832;
 $green: #5c7e58;
@@ -17,18 +18,19 @@ $storm-grey: #b6afa4;
 $storm-background: #3c3f41;
 
 // colors for ...
-$body-background: $pure-black;
+$body-background: $grey;
 $main-text-color: $pure-white;
+$container-header: $blood-red;
 
 // card colors
-$card-background-color: $grey;
+$card-background-color: $charcoal;
 $card-title-color: $orange;
 $card-text-color: $green;
 $card-edit-btn-color: $yellow;
 $card-like-btn-color: $red;
-$add-card-btn-border-color: $violet;
+$add-card-btn-border-color: $yellow;
 $add-card-btn-color: $pure-black;
-$add-card-btn-color-hover: $violet;
+$add-card-btn-color-hover: $yellow;
 $textarea-counter-color: $green;
 
 // modal colors

@@ -1,11 +1,16 @@
-<template>
-  <h1>red</h1>
+<template lang="pug">
+  .container-header
+    logo Materializer
 </template>
 
 <script>
+  import Logo from '../../components/Logo/Logo.vue';
+
   export default {
-    name: 'container-header'
+    name: 'container-header',
+
+    components: {
+      Logo
+    }
   }
 </script>
-
-<style src="./container-header.scss"></style>

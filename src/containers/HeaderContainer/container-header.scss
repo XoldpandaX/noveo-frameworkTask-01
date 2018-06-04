@@ -1,3 +1,8 @@
-h1 {
-  color: red;
+.container-header {
+  @extend %convex-lower-shadow;
+
+  display: flex;
+  align-items: center;
+  background-color: $container-header;
+  padding: 15*$rem 40*$rem;
 }
