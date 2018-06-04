@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex';
+  import { mapGetters } from 'vuex';
   import AddCardBtn from './../components/AddCardBtn.vue';
   import CardText from '../components/Card/CardText.vue';
 

@@ -54,8 +54,8 @@
         switch (this.transformComponent) {
           case 'edit-form-card':
             return 'edit-form-card';
-          case 'form-card':
-            return 'form-card';
+          case 'add-form-card':
+            return 'add-form-card';
         }
       },
 

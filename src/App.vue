@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex';
+  import { mapActions } from 'vuex';
   import containerModalWrapper from './containers/ContainerModalWrapper.vue';
 
   export default {
@@ -16,10 +16,6 @@
 
     components: {
       containerModalWrapper
-    },
-
-    computed: {
-      ...mapGetters('cards', ['cards'])
     },
 
     methods: {

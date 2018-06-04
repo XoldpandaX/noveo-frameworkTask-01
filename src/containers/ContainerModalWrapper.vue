@@ -6,7 +6,7 @@
 
 <script>
   import FirstLoadModal from './../components/Modal/FirstLoadModal.vue';
-  import {mapGetters, mapActions} from 'vuex';
+  import { mapGetters, mapActions } from 'vuex';
 
   export default {
     name: 'container-modal-wrapper',
