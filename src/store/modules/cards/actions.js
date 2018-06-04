@@ -1,6 +1,6 @@
 import * as types from './mutation-types.js';
 
-function cardsDataInit({commit}) {
+function cardsDataInit({ commit }) {
   let cards = [];
   Object.keys(localStorage).forEach(key => {
     const firstSymbol = '#';
@@ -12,7 +12,7 @@ function cardsDataInit({commit}) {
   commit(types.INIT_CARD_DATA, cards);
 }
 
-function addCardDataToStore({commit, dispatch, getters}, data) {
+function addCardDataToStore({ commit, dispatch, getters }, data) {
   const isIdExist = getters.getCardByID(data.id);
   if (!isIdExist) {
     dispatch('localStorage/addToLocalStorageByID', data, { root: true });
@@ -22,9 +22,9 @@ function addCardDataToStore({commit, dispatch, getters}, data) {
   }
 }
 
-function addCardDataToStoreAfterEdit({commit, state, dispatch}, cardData) {
+function addCardDataToStoreAfterEdit({ commit, state, dispatch }, cardData) {
   const currentCardsState = state.cards;
-  const {id, title, description, like, order} = cardData;
+  const { id, title, description, like, order } = cardData;
   
   currentCardsState.forEach((el, i) => {
     if (el.id === id) {
@@ -48,7 +48,7 @@ function addCardDataToStoreAfterEdit({commit, state, dispatch}, cardData) {
   });
 }
 
-function deleteCardDataFromStore({commit, dispatch, state}, cardIdToDelete) {
+function deleteCardDataFromStore({ commit, dispatch, state }, cardIdToDelete) {
   state.cards.forEach((el, i) => {
     if (el.id === cardIdToDelete) {
       commit(types.DELETE_CARD_DATA, i);
@@ -57,7 +57,7 @@ function deleteCardDataFromStore({commit, dispatch, state}, cardIdToDelete) {
   });
 }
 
-function likeToggle({commit, dispatch, state, getters}, cardId) {
+function likeToggle({ commit, dispatch, state }, cardId) {
   let storageData = JSON.parse(localStorage.getItem(cardId));
   storageData.like = !storageData.like;
   
