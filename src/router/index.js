@@ -1,15 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import { store } from './../store';
 
 // route-level
-const Home = () => import('../views/Home.vue');
-const AddNewCard = () => import('../views/AddNewCard.vue');
-const EditCard = () => import('../views/EditCard.vue');
+import Home from '../views/Home.vue';
+import AddNewCard from '../views/AddNewCard.vue';
+import EditCard from '../views/EditCard.vue';
 
 Vue.use(Router);
-
-import { mapGetters } from 'vuex';
 
 export default new Router({
   mode: 'history',
