@@ -1,7 +1,7 @@
 <template lang="pug">
   .modal-wrapper(v-if="modals.length > 0")
-    template(v-if="modal.id", v-for="modal in modals")
-      first-load-modal(v-if="modal.id === 'first-load-modal'", @closeModal="closeModal")
+    template(v-for="modal in modals")
+      component(:is="modal.id",  @closeModal="closeModal")
 </template>
 
 <script>
