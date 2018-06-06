@@ -2,17 +2,17 @@ const navigationElements = {
   defaultNav: [
     {
       id: 0,
-      title: 'Register',
       isActive: false,
-      icon: '',
+      title: 'sign up',
+      iconClass: '-violet',
       action: '',
       whichModalIsShow: 'modal-name'
     },
     {
       id: 1,
-      title: 'Log in',
       isActive: false,
-      icon: '',
+      title: 'sign in',
+      iconClass: '-orange',
       action: '',
       whichModalIsShow: 'modal-name'
     }

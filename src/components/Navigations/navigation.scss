@@ -1,13 +1,49 @@
 .navigation {
-  font-size: 25*$rem;
+  font-size: 18*$rem;
+  text-transform: uppercase;
+
   ul {
     display: flex;
     @extend %reset-ul;
+  }
 
-    li {
-      &:not(:last-child) {
-        margin-right: 20px;
+  &__element {
+    display: flex;
+    flex-flow: row-reverse;
+    align-items: center;
+    cursor: pointer;
+    transition: box-shadow .5s, color .5s;
+
+    &:hover {
+      @include border-bottom-imitation($charcoal);
+
+      .navigation__icon {
+        background-color: $pure-white;
       }
+    }
+
+    &:not(:last-child) {
+      margin-right: 1.5em;
+    }
+
+    &.-active {
+      @include border-bottom-imitation($charcoal);
+    }
+  }
+
+  &__icon {
+    width: .6em;
+    height: .6em;
+    background-color: $violet;
+    transition: background-color .5s;
+    margin-right: .6em;
+
+    &.-violet {
+      background-color: $violet;
+    }
+
+    &.-orange {
+      background-color: $orange;
     }
   }
 }
