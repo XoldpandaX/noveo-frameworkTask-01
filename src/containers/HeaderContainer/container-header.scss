@@ -5,4 +5,10 @@
   align-items: center;
   background-color: $container-header;
   padding: 15*$rem 40*$rem;
+
+  &__element {
+    &:first-child {
+      margin-right: auto;
+    }
+  }
 }
