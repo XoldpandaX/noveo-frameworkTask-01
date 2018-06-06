@@ -1,3 +1,4 @@
 export default {
-  modals: state => state.modals
+  modals: state => state.modals,
+  navigation: state => state.navigationBar
 }
