@@ -15,7 +15,7 @@
     transition: box-shadow .5s, color .5s;
 
     &:hover {
-      @include border-bottom-imitation($charcoal);
+      @include border-bottom-imitation($pure-white);
 
       .navigation__icon {
         background-color: $pure-white;
@@ -27,7 +27,7 @@
     }
 
     &.-active {
-      @include border-bottom-imitation($charcoal);
+      @include border-bottom-imitation($pure-white);
     }
   }
 

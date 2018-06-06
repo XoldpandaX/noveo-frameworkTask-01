@@ -5,7 +5,7 @@ const navigationElements = {
       isActive: false,
       title: 'sign up',
       iconClass: '-violet',
-      action: '',
+      action: 'showModal',
       whichModalIsShow: 'modal-name'
     },
     {
@@ -13,7 +13,7 @@ const navigationElements = {
       isActive: false,
       title: 'sign in',
       iconClass: '-orange',
-      action: '',
+      action: 'showModal',
       whichModalIsShow: 'modal-name'
     }
   ]
