@@ -1,5 +1,7 @@
 <template lang="pug">
-  p(class="tr") hello
+  nav(class="navigation")
+    ul
+      li denis
 </template>
 
 <script>
