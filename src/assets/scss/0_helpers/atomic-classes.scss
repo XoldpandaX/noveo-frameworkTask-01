@@ -1,0 +1,15 @@
+.-margin {
+  &-auto {
+    &-left {
+      margin-left: auto;
+    }
+
+    &-right {
+      margin-right: auto;
+    }
+  }
+
+  &-block-center {
+    margin: 0 auto;
+  }
+}
