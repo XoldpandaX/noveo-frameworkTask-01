@@ -5,16 +5,12 @@ const navigationElements = {
       isActive: false,
       title: 'sign up',
       iconClass: '-violet',
-      action: 'showModal',
-      whichModalIsShow: 'modal-name'
     },
     {
       id: 1,
       isActive: false,
       title: 'sign in',
       iconClass: '-orange',
-      action: 'showModal',
-      whichModalIsShow: 'modal-name'
     }
   ]
 };

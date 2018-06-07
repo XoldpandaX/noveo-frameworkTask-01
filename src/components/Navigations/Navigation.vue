@@ -1,8 +1,11 @@
 <template lang="pug">
   nav.navigation
     ul
-      li.navigation__element(v-for="navEl in navigation") {{ navEl.title }}
-        div.navigation__icon(:class="navEl.iconClass")
+      router-link(v-for="el in navigation",
+                  to="#",
+                  tag="li",
+                  class="navigation__element") {{ el.title }}
+        div.navigation__icon(:class="el.iconClass")
 </template>
 
 <script>

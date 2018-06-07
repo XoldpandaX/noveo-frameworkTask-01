@@ -1,7 +1,8 @@
 <template lang="pug">
   .container-header
-    logo(class="-margin-auto-right") Materializer
-    navigation
+    .container-header__inner
+      logo(class="-margin-auto-right") Materializer
+      navigation
 </template>
 
 <script>
