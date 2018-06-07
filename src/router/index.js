@@ -28,6 +28,14 @@ export default new Router({
       props: (route) => ({
         id: route.params.id
       })
+    },
+    {
+      path: '/sign-up',
+      name: 'register'
+    },
+    {
+      path: '/sign-in',
+      name: 'login'
     }
   ]
 });

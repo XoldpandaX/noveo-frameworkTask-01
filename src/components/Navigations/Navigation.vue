@@ -2,7 +2,8 @@
   nav.navigation
     ul
       router-link(v-for="el in navigation",
-                  to="#",
+                  :key="el.id",
+                  :to="el.route",
                   tag="li",
                   class="navigation__element") {{ el.title }}
         div.navigation__icon(:class="el.iconClass")
