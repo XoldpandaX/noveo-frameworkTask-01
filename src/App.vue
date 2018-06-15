@@ -9,6 +9,7 @@
 </template>
 
 <script>
+  import Vue from 'vue';
   import { mapActions } from 'vuex';
   import containerModalWrapper from './containers/ModalContainer/ContainerModalWrapper.vue';
   import ContainerHeader from './containers/HeaderContainer/ContainerHeader.vue';
@@ -31,6 +32,12 @@
       setTimeout(() => {
         this.showModal('first-load-modal');
       }, 750);
+    },
+
+    mounted() {
+      Vue.axios
+        .get('users?order_by=id&sort=asc&per_page=8')
+        .then(response => (console.log(response)));
     },
 
     updated() {
