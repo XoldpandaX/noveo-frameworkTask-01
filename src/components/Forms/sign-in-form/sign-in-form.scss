@@ -1,13 +1,12 @@
 .form-wrapper {
   @extend %form-box-shadow;
   color: $main-text-color;
-  padding: 20*$rem 30*$rem;
+  padding: 20*$rem 30*$rem 30*$rem 30*$rem;
   background-color: #fff;
   border-radius: 3px;
 
   &.-sign-in {
     width: 360*$rem;
-    height: 320*$rem;
   }
 
   h3 {
@@ -15,5 +14,23 @@
     color: #777;
     font-weight: normal;
     text-align: center;
+    text-decoration: underline;
+  }
+
+  &__button {
+    display: block;
+    padding: 15*$rem 40*$rem;
+    border: none;
+    cursor: pointer;
+    background-color: #6a1b9a;
+    color: $pure-white;
+
+    &:hover {
+      background-color: $orange;
+    }
+
+    &.-center {
+      margin: 0 auto;
+    }
   }
 }
