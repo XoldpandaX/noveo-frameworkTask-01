@@ -9,6 +9,12 @@
     }
   }
 
+  &-bottom {
+    &-l {
+      margin-bottom: 20*$rem;
+    }
+  }
+
   &-block-center {
     margin: 0 auto;
   }
