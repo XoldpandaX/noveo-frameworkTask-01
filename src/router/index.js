@@ -36,7 +36,7 @@ export default new Router({
       name: 'sign-up'
     },
     {
-      path: '/sign-in-page.scss',
+      path: '/sign-in',
       name: 'sign-in',
       component: SignIn
     }
