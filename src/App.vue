@@ -34,12 +34,6 @@
       }, 750);
     },
 
-    mounted() {
-      Vue.axios
-        .get('users?order_by=id&sort=asc&per_page=8')
-        .then(response => (console.log(response)));
-    },
-
     updated() {
       this.cardsDataInit();
     }
