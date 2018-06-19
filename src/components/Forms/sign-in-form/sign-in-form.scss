@@ -1,0 +1,19 @@
+.form-wrapper {
+  @extend %form-box-shadow;
+  color: $main-text-color;
+  padding: 20*$rem 30*$rem;
+  background-color: #fff;
+  border-radius: 3px;
+
+  &.-sign-in {
+    width: 360*$rem;
+    height: 320*$rem;
+  }
+
+  h3 {
+    margin-top: 0;
+    color: #777;
+    font-weight: normal;
+    text-align: center;
+  }
+}

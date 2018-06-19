@@ -1,9 +1,16 @@
 <template lang="pug">
-  form.sign-in-form
+  form.form-wrapper.-sign-in
     h3 sign-in
     input(name="email",
           type="email",
           placeholder="Email")
+    input(name="password",
+          type="password",
+          placeholder="Password")
+    input(name="confirm-password",
+          type="password",
+          placeholder="Confirm Password")
+
 </template>
 
 <script>
