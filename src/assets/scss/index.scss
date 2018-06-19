@@ -12,6 +12,7 @@
 @import '2_views/home.scss';
 @import '2_views/add-new-card.scss';
 @import '2_views/edit-card.scss';
+@import '2_views/sign-in-page.scss';
 
 @import '3_containers/card-list.scss';
 @import '3_containers/card-edit.scss';
@@ -25,3 +26,4 @@
 // styles in components folder
 @import '../../components/Logo/logo.scss';
 @import '../../components/Navigations/navigation.scss';
+@import '../../components/Forms/sign-in-form/sign-in-form';
