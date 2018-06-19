@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import SignIn from '../views/SignIn.vue';
+
 // route-level
 const Home = () => import('../views/Home.vue');
 const AddNewCard = () => import('../views/AddNewCard.vue');
@@ -31,11 +33,12 @@ export default new Router({
     },
     {
       path: '/sign-up',
-      name: 'register'
+      name: 'sign-up'
     },
     {
-      path: '/sign-in',
-      name: 'login'
+      path: '/sign-in-page.scss',
+      name: 'sign-in',
+      component: SignIn
     }
   ]
 });
