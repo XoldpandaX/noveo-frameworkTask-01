@@ -17,8 +17,8 @@
           placeholder="Confirm Password",
           autocomplete="foo",
           v-model="fieldsData.confirmPassword")
-    button(class="form-wrapper__button -center",
-           @click.prevent="fieldsDataHandler()") Sign In
+    button.form-wrapper__button.-center(:class="{ 'disabled-button': isButtonDisabled }",
+                                        @click.prevent="fieldsDataHandler()") Sign In
 </template>
 
 <script>
@@ -35,9 +35,23 @@
       };
     },
 
+    computed: {
+      isButtonDisabled() {
+        let error = 0;
+
+        // for (let field of this.fieldsData) {
+        //   if (field === '') {
+        //     error++;
+        //   }
+        // }
+
+        return true;
+      }
+    },
+
     methods: {
       fieldsDataHandler() {
-        console.log(this.fieldsData);
+        console.log('denis');
       }
     }
   }
