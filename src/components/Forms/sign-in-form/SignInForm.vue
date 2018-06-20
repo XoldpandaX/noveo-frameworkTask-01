@@ -7,8 +7,10 @@
             placeholder="Email",
             autocomplete="foo",
             v-model="email")
-      .form-wrapper__error(v-if="isMailValid")
-        span sss
+      transition(enter-active-class="animated bounceIn",
+                 leave-active-class="animated fadeOut")
+        .form-wrapper__error(v-if="isEmailValid")
+          span {{ errorsMessages.email }}
 
     .form-wrapper__field
       input(name="password",
@@ -39,13 +41,23 @@
       return {
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        errorsMessages: {
+          email: 'incorrect mail format',
+          password: '',
+          confirmPassword: ''
+        },
+        errors: 0
       };
     },
 
     computed: {
-      isMailValid() {
+      isEmailValid() {
+        if (this.email !== '') {
+          let mail = this.email;
 
+          return mail.length === 0 || mail.length < 10;
+        }
       },
 
       isPasswordValid() {
