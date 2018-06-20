@@ -1,7 +1,13 @@
 export default {
   data() {
     return {
-      name: 'denis'
+      errorsMessages: {}
     };
+  },
+  
+  methods: {
+    setErrorsMessages(obj) {
+      this.errorsMessages = obj;
+    }
   }
 }
