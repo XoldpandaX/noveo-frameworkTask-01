@@ -5,20 +5,20 @@
           type="email",
           placeholder="Email",
           autocomplete="foo",
-          v-model="fieldsData.email")
+          v-model="email")
     input(name="password",
           type="password",
           placeholder="Password",
           autocomplete="foo",
-          v-model="fieldsData.password")
+          v-model="password")
     input(class="-margin-bottom-xl",
           name="confirm-password",
           type="password",
           placeholder="Confirm Password",
           autocomplete="foo",
-          v-model="fieldsData.confirmPassword")
-    button.form-wrapper__button.-center(:class="{ 'disabled-button': isButtonDisabled }",
-                                        @click.prevent="fieldsDataHandler()") Sign In
+          v-model="confirmPassword")
+    div {{ isButtonDisabled }}
+    button.form-wrapper__button.-center(@click.prevent="fieldsDataHandler()") Sign In
 </template>
 
 <script>
@@ -27,25 +27,15 @@
 
     data() {
       return {
-        fieldsData: {
-          email: '',
-          password: '',
-          confirmPassword: ''
-        }
+        email: '',
+        password: '',
+        confirmPassword: ''
       };
     },
 
     computed: {
       isButtonDisabled() {
-        let error = 0;
 
-        // for (let field of this.fieldsData) {
-        //   if (field === '') {
-        //     error++;
-        //   }
-        // }
-
-        return true;
       }
     },
 
