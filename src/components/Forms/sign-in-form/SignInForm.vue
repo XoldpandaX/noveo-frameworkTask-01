@@ -17,8 +17,7 @@
           placeholder="Confirm Password",
           autocomplete="foo",
           v-model="confirmPassword")
-    div {{ isButtonDisabled }}
-    button.form-wrapper__button.-center(@click.prevent="fieldsDataHandler()") Sign In
+    button.form-wrapper__button.-margin-block-center(@click.prevent="fieldsDataHandler()") Sign In
 </template>
 
 <script>
@@ -34,9 +33,7 @@
     },
 
     computed: {
-      isButtonDisabled() {
 
-      }
     },
 
     methods: {

@@ -3,7 +3,7 @@
     .container
       h1 Please Sign In
       .sign-in__form-container
-        sign-in-form
+        sign-in-form(class="-margin-block-center")
 </template>
 
 <script>
