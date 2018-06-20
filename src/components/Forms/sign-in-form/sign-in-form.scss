@@ -17,6 +17,19 @@
     text-decoration: underline;
   }
 
+  &__field {
+    margin: 5*$rem 0;
+  }
+
+  &__error {
+    margin-bottom: 10*$rem;
+    padding-bottom: 2*$rem;
+    border-bottom: 1px solid lighten(grey, 40%);
+    font-style: italic;
+    font-size: 13*$rem;
+    color: red;
+  }
+
   &__button {
     display: block;
     padding: 15*$rem 40*$rem;
