@@ -1,21 +1,24 @@
 <template lang="pug">
   form.form-wrapper.-sign-in
-    h3 write in fields
+    h3 write-in fields
     input(name="email",
           type="email",
           placeholder="Email",
-          autocomplete="foo")
+          autocomplete="foo",
+          v-model="fieldsData.email")
     input(name="password",
           type="password",
           placeholder="Password",
-          autocomplete="foo")
-    input(name="confirm-password",
+          autocomplete="foo",
+          v-model="fieldsData.password")
+    input(class="-margin-bottom-xl",
+          name="confirm-password",
           type="password",
           placeholder="Confirm Password",
           autocomplete="foo",
-          class="-margin-bottom-xl")
+          v-model="fieldsData.confirmPassword")
     button(class="form-wrapper__button -center",
-           @click.prevent="run()") Sign In
+           @click.prevent="fieldsDataHandler()") Sign In
 </template>
 
 <script>
@@ -24,7 +27,7 @@
 
     data() {
       return {
-        fildsData: {
+        fieldsData: {
           email: '',
           password: '',
           confirmPassword: ''
@@ -33,8 +36,8 @@
     },
 
     methods: {
-      chickInputData() {
-
+      fieldsDataHandler() {
+        console.log(this.fieldsData);
       }
     }
   }
