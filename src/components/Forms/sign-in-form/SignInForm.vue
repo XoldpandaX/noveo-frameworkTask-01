@@ -53,28 +53,6 @@
       };
     },
 
-    computed: {
-      isEmailValid() {
-        if (this.email !== '') {
-          let mail = this.email;
-
-          if (mail.length === 0 || mail.length < 10) {
-            return true;
-          } else {
-            return false;
-          }
-        }
-      },
-
-      isPasswordValid() {
-
-      },
-
-      isPasswordsAreEqual() {
-
-      }
-    },
-
     methods: {
       fieldsDataHandler() {
         console.log('denis');
