@@ -50,11 +50,6 @@
         email: '',
         password: '',
         confirmPassword: '',
-        errorsMessages: {
-          email: 'incorrect mail format',
-          password: 'password length must be at least 6 characters',
-          confirmPassword: 'password are not equal'
-        }
       };
     },
 
@@ -84,6 +79,14 @@
       fieldsDataHandler() {
         console.log('denis');
       }
+    },
+
+    created() {
+      this.setErrorsMessages({
+        email: 'incorrect mail format',
+        password: 'password length must be at least 6 characters',
+        confirmPassword: 'password are not equal'
+      });
     }
   }
 </script>
