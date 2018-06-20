@@ -18,8 +18,10 @@
             placeholder="Password",
             autocomplete="foo",
             v-model="password")
-      .form-wrapper__error
-        span sss
+      transition(enter-active-class="animated bounceIn",
+      leave-active-class="animated fadeOut")
+        .form-wrapper__error(v-if="isPasswordValid")
+          span {{ errorsMessages.password }}
 
     .form-wrapper__field.-margin-bottom-xl
       input(name="confirm-password",
@@ -27,15 +29,21 @@
             placeholder="Confirm Password",
             autocomplete="foo",
             v-model="confirmPassword")
-      .form-wrapper__error
-        span sss
+      transition(enter-active-class="animated bounceIn",
+      leave-active-class="animated fadeOut")
+        .form-wrapper__error(v-if="isPasswordsAreEqual")
+          span {{ errorsMessages.confirmPassword }}
 
     button.form-wrapper__button.-margin-block-center(@click.prevent="fieldsDataHandler()") Sign In
 </template>
 
 <script>
+  import mixin from '../../../vue-mixins';
+
   export default {
     name: 'sign-in-form',
+
+    mixins: [mixin.checkFormFields],
 
     data() {
       return {
@@ -44,10 +52,9 @@
         confirmPassword: '',
         errorsMessages: {
           email: 'incorrect mail format',
-          password: '',
-          confirmPassword: ''
-        },
-        errors: 0
+          password: 'password length must be at least 6 characters',
+          confirmPassword: 'password are not equal'
+        }
       };
     },
 
@@ -56,7 +63,11 @@
         if (this.email !== '') {
           let mail = this.email;
 
-          return mail.length === 0 || mail.length < 10;
+          if (mail.length === 0 || mail.length < 10) {
+            return true;
+          } else {
+            return false;
+          }
         }
       },
 
