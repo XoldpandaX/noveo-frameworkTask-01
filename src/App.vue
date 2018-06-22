@@ -3,7 +3,9 @@
     container-header
     main.main-content
       .container
-        transition(name="router-anim")
+        transition(name="router-animation",
+                   enter-active-class="animated fadeInLeft",
+                   leave-active-class="animated fadeOutRight")
           router-view
     container-modal-wrapper
 </template>
@@ -45,34 +47,5 @@
   .animated {
     animation-duration: .7s;
     animation-fill-mode: both;
-  }
-
-  .router-anim-enter-active {
-    animation: coming 1s;
-    //animation-delay: .5s;
-    opacity: 0;
-  }
-  .router-anim-leave-active {
-    animation: going 1s;
-  }
-
-  @keyframes going {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-90%);
-      opacity: 0;
-    }
-  }
-  @keyframes coming {
-    from {
-      transform: translateX(-90%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
   }
 </style>
