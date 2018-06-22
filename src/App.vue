@@ -1,15 +1,17 @@
 <template lang="pug">
   div(id="app")
     container-header
-    transition(name="router-animation",
-               enter-active-class="animated fadeInLeft",
-               leave-active-class="animated fadeOutRight")
-      router-view
+    main.main-content
+      .container
+        transition(name="router-animation",
+        mode="out-in",
+        enter-active-class="animated fadeInLeft",
+        leave-active-class="animated fadeOutRight")
+          router-view
     container-modal-wrapper
 </template>
 
 <script>
-  import Vue from 'vue';
   import { mapActions } from 'vuex';
   import containerModalWrapper from './containers/ModalContainer/ContainerModalWrapper.vue';
   import ContainerHeader from './containers/HeaderContainer/ContainerHeader.vue';
@@ -44,7 +46,7 @@
   @import 'assets/scss/index.scss';
 
   .animated {
-    animation-duration: .7s;
+    animation-duration: .5s;
     animation-fill-mode: both;
   }
 </style>
