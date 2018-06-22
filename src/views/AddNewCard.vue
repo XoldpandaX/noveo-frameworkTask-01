@@ -1,9 +1,8 @@
 <template lang="pug">
-  section.add-new-card.page-fixed
-    .container
-      h1 Add New Card
-      .add-new-card__row
-        card-form
+  section.add-new-card.page
+    h1 Add New Card
+    .add-new-card__row
+      card-form
 </template>
 
 <script>

@@ -1,8 +1,7 @@
 <template lang="pug">
   section.home.page
-    .container
-      h1 Card List
-      container-card-list
+    h1 Card List
+    container-card-list
 </template>
 
 <script>

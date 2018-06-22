@@ -1,9 +1,8 @@
 <template lang="pug">
-  section.edit-card.page
-    .container(v-show="showPage")
-      h1 Edit Selected Card Data
-      .edit-card__row
-        container-card-edit(:data="cardData")
+  section.edit-card.page(v-if="showPage")
+    h1 Edit Selected Card Data
+    .edit-card__row
+      container-card-edit(:data="cardData")
 </template>
 
 <script>
