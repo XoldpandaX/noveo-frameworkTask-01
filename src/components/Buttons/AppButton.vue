@@ -1,6 +1,6 @@
 <template lang="pug">
   button.app-button(@click="onClick")
-    slot Button
+    slot
 </template>
 
 <script>
