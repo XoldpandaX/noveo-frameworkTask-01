@@ -12,6 +12,7 @@ $blood-red: #a60716;
 $orange: #cc7832;
 $green: #5c7e58;
 $violet: #9376aa;
+$deep-violet: #6a1b9a;
 $yellow: #e8bf6a;
 $red: #f77669;
 $storm-grey: #b6afa4;
@@ -21,6 +22,11 @@ $storm-background: #3c3f41;
 $body-background: $grey;
 $main-text-color: $pure-white;
 $container-header: $blood-red;
+
+// app-button color
+$app-button-background: $deep-violet;
+$app-button-background-hover: $orange;
+$app-button-text: $pure-white;
 
 // card colors
 $card-background-color: $charcoal;
