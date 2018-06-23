@@ -4,7 +4,7 @@
 </template>
 
 <script>
-  import AppButton from '../Buttons/AppButton.vue';
+  import AppButton from '../AppButton.vue';
 
   export default {
     name: "CardButtonAdd",
