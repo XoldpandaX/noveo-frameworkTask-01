@@ -1,6 +1,6 @@
 <template lang="pug">
   section.home.page
-    h1 Card List
+    h1.page__title Card List
     container-card-list
 </template>
 

@@ -41,4 +41,8 @@ body {
   position: absolute;
   width: 100%;
   height: inherit;
+
+  &__title {
+    @extend %page-title;
+  }
 }

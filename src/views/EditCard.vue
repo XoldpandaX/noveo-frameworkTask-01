@@ -1,6 +1,6 @@
 <template lang="pug">
   section.edit-card.page(v-if="showPage")
-    h1 Edit Selected Card Data
+    h1.page__title Edit Selected Card Data
     .edit-card__row
       container-card-edit(:data="cardData")
 </template>

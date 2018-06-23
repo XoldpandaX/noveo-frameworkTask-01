@@ -1,6 +1,6 @@
 <template lang="pug">
   section.sign-in.page
-    h1 Please Sign In
+    h1.page__title Please Sign In
     .sign-in__form-container
       sign-in-form(class="-margin-block-center")
 </template>
