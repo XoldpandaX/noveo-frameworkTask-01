@@ -1,0 +1,27 @@
+.app-button {
+  cursor: pointer;
+  border: none;
+  padding: 15*$rem 20*$rem;
+  background-color: $app-button-background;
+  color: $app-button-text;
+  text-transform: capitalize;
+
+  &:hover {
+    background-color: $app-button-background-hover;
+  }
+
+  &.-round {
+    @include drawCircle(40*$rem, 40*$rem);
+    padding: 0;
+  }
+
+  &.-no-background-color {
+    background-color: transparent;
+  }
+
+
+  // svg as background
+  &.-plus {
+    @include icon-plus($pure-black);
+  }
+}
