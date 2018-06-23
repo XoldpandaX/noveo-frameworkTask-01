@@ -1,5 +1,6 @@
 <template lang="pug">
-  app-button.-round.-no-background-color.-plus
+  .card-button-add
+    app-button.-round.-no-background-color.-plus(:onClick="redirect")
 </template>
 
 <script>
@@ -10,6 +11,12 @@
 
     components: {
       AppButton
+    },
+
+    methods: {
+      redirect() {
+        this.$router.push({name: 'add-new-card'});
+      }
     }
   }
 </script>
