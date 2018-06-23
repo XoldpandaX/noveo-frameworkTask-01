@@ -1,4 +1,4 @@
-.add-card-btn {
+.card-button-add {
   width: 100%;
   min-height: 250px;
   display: flex;
@@ -6,17 +6,4 @@
   justify-content: center;
   background: $card-background-color;
   border: 2px dashed $add-card-btn-border-color;
-
-  .icon-plus {
-    @include icon-plus($add-card-btn-color);
-    cursor: pointer;
-
-    &:hover {
-      @include icon-plus($add-card-btn-color-hover);
-      transition: all .3s;
-    }
-
-    width: 40*$rem;
-    height: 40*$rem;
-  }
 }

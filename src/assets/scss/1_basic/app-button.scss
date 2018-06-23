@@ -23,5 +23,9 @@
   // svg as background
   &.-plus {
     @include icon-plus($pure-black);
+
+    &:hover {
+      @include icon-plus($pure-white);
+    }
   }
 }
