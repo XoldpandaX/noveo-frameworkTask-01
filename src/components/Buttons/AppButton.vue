@@ -1,11 +1,17 @@
-<template>
-  <button class="app-button">
-    <slot></slot>
-  </button>
+<template lang="pug">
+  button.app-button(@click="onClick")
+    slot Button
 </template>
 
 <script>
   export default {
-    name: "AppButton"
+    name: "AppButton",
+
+    props: {
+      onClick: {
+        type: Function,
+        required: true
+      }
+    }
   }
 </script>
