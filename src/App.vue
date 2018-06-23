@@ -2,7 +2,7 @@
   div(id="app")
     container-header
     main.main-content
-      .container
+      .layout-container
         transition(name="router-animation",
                    enter-active-class="animated fadeInLeft",
                    leave-active-class="animated fadeOutRight")
@@ -12,14 +12,14 @@
 
 <script>
   import { mapActions } from 'vuex';
-  import containerModalWrapper from './containers/ModalContainer/ContainerModalWrapper.vue';
+  import ContainerModalWrapper from './containers/ModalContainer/ContainerModalWrapper.vue';
   import ContainerHeader from './containers/HeaderContainer/ContainerHeader.vue';
 
   export default {
     name: 'app',
 
     components: {
-      containerModalWrapper,
+      ContainerModalWrapper,
       ContainerHeader
     },
 
