@@ -1,6 +1,6 @@
-import constants from '../../../constants';
+import CONSTANTS from '../../../constants';
 
 export const defaultState = {
   modals: [],
-  navigationBar: constants.navigationElements.defaultNav
+  navigationBar: CONSTANTS.navigationElements.defaultNav
 };
