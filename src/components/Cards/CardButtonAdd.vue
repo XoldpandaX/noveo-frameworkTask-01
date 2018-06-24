@@ -1,6 +1,7 @@
 <template lang="pug">
   .card-button-add
-    app-button.-round.-no-background-color.-plus(:onClick="redirect")
+    app-button(:onClick="redirect",
+               :propButtonType="buttonAppearence")
 </template>
 
 <script>
@@ -11,6 +12,12 @@
 
     components: {
       AppButton
+    },
+
+    data() {
+      return {
+        buttonAppearence: 'roundWithPlusIcon'
+      };
     },
 
     methods: {
