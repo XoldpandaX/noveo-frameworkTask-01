@@ -1,6 +1,7 @@
 <template lang="pug">
   button.app-button(@click="onClick",
-                    :class="arrayOfClasses")
+                    :class="arrayOfClasses"
+                    :style="buttonSize")
     slot
 </template>
 
@@ -11,13 +12,17 @@
     name: 'AppButton',
 
     props: {
+      onClick: {
+        type: Function,
+        required: true
+      },
+
       propButtonType: {
         type: String
       },
 
-      onClick: {
-        type: Function,
-        required: true
+      size: {
+        type: Object
       }
     },
 
@@ -32,6 +37,12 @@
         if (!!this.propButtonType) {
           let obj = this.componentButtonTypes.find(el => el.type === this.propButtonType);
           return obj.classes;
+        }
+      },
+
+      buttonSize() {
+        if (!!this.size) {
+          return this.size;
         }
       }
     },
