@@ -10,9 +10,14 @@
 
 <script>
   import { mapActions } from 'vuex';
+  import AppButton from '../../components/AppButton.vue';
 
   export default {
-    name: 'card-text',
+    name: 'cardInfo',
+
+    components: {
+      AppButton
+    },
 
     props: {
       cardData: {
