@@ -6,5 +6,9 @@ export default [
   {
     type: 'editButton',
     classes: ['-edit-btn', '-no-background-color', '-no-padding']
+  },
+  {
+    type: 'likeButton',
+    classes: ['-like-btn', '-no-background-color', '-no-padding']
   }
 ];
