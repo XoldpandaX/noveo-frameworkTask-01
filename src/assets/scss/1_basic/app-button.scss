@@ -38,4 +38,12 @@
     width: 25*$rem;
     height: 25*$rem;
   }
+
+  &.-like-btn {
+    @include icon-like($card-like-btn-color);
+
+    &.-active {
+      @include icon-like-full-background($red);
+    }
+  }
 }
