@@ -1,6 +1,7 @@
 <template lang="pug">
   AppButton(:onClick="redirectToEditPage",
-            :propButtonType="buttonAppearence")
+            :propButtonType="buttonAppearence",
+            :size="buttonSize")
 </template>
 
 <script>
@@ -22,7 +23,11 @@
 
     data() {
       return {
-        buttonAppearence: 'editButton'
+        buttonAppearence: 'editButton',
+        buttonSize: {
+          width: '25px',
+          height: '25px'
+        }
       };
     },
 
