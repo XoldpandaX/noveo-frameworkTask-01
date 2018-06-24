@@ -5,39 +5,26 @@
       p {{ cardData.description }}
     footer
       card-button-edit(:cardID="cardData.id")
-      .like-btn(@click="likeCard" :class="changeLikeIconStyle")
+      card-button-like(:cardID="cardData.id",
+                       :isCardLike="cardData.like")
 </template>
 
 <script>
   import CardButtonEdit from '../../components/Cards/CardButtonEdit.vue';
-  import { mapActions } from 'vuex';
+  import CardButtonLike from '../../components/Cards/CardButtonLike.vue';
 
   export default {
     name: 'cardInfo',
 
     components: {
-      CardButtonEdit
+      CardButtonEdit,
+      CardButtonLike
     },
 
     props: {
       cardData: {
         type: Object,
         required: true
-      }
-    },
-
-    computed: {
-      changeLikeIconStyle() {
-        return this.cardData.like ? 'like-btn--active' : '';
-      }
-    },
-
-    methods: {
-      ...mapActions('cards', ['likeToggle']),
-
-      likeCard() {
-        const cardId = this.cardData.id;
-        this.likeToggle(cardId);
       }
     }
   }
