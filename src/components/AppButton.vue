@@ -5,15 +5,16 @@
 </template>
 
 <script>
-  import constants from '../constants';
+  import CONSTANTS from '../constants';
 
   export default {
-    name: "AppButton",
+    name: 'AppButton',
 
     props: {
       propButtonType: {
         type: String
       },
+
       onClick: {
         type: Function,
         required: true
@@ -36,7 +37,7 @@
     },
 
     created() {
-      this.componentButtonTypes = constants.buttonTypes;
+      this.componentButtonTypes = CONSTANTS.buttonTypes;
     }
   }
 </script>
