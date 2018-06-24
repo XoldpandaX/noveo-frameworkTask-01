@@ -1,6 +1,6 @@
 <template lang="pug">
   button.app-button(@click="onClick",
-                    :class="arrayOfClasses"
+                    :class="arrayOfClasses",
                     :style="buttonSize")
     slot
 </template>
