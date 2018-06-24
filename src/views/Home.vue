@@ -1,17 +1,17 @@
 <template lang="pug">
   section.home.page
     h1.page__title Card List
-    container-card-list
+    card-list
 </template>
 
 <script>
-  import ContainerCardList from '../containers/CardContainers/ContainerCardList.vue';
+  import CardList from '../components/Cards/CardList.vue';
 
   export default {
-    name: 'home',
+    name: 'Home',
 
     components: {
-      ContainerCardList
+      CardList
     }
   }
 </script>
