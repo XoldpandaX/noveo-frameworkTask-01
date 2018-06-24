@@ -10,5 +10,9 @@ export default [
   {
     type: 'likeButton',
     classes: ['-like-btn', '-no-background-color', '-no-padding']
+  },
+  {
+    type: 'formButton',
+    classes: ['-radius-corners']
   }
 ];
