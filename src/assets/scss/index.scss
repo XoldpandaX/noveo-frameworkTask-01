@@ -18,14 +18,15 @@
 
 @import '3_containers/card-list.scss';
 @import '3_containers/card-edit.scss';
-@import '3_containers/modal-wrapper';
+@import '3_containers/modal-wrapper.scss';
 // styles in components folder
 @import '../../containers/HeaderContainer/container-header.scss';
 
-@import '4_components/card-button-add';
-@import '4_components/card.scss';
+@import '4_components/cards/card-button-add.scss';
+@import '4_components/cards/card.scss';
+@import '4_components/forms/form-new-card.scss';
 @import '4_components/modals/first-view-modal.scss';
 // styles in components folder
 @import '../../components/Logo/logo.scss';
 @import '../../components/Navigations/navigation.scss';
-@import '../../components/Forms/sign-in-form/sign-in-form';
+@import '../../components/Forms/sign-in-form/sign-in-form.scss';
