@@ -10,3 +10,9 @@ input {
     font-size: .9rem;
   }
 }
+
+textarea {
+  resize: none;
+  height: 150px;
+  width: 100%;
+}
