@@ -66,14 +66,6 @@
     align-items: center;
     flex: 0 0 auto;
 
-    .edit-btn {
-      @include edit-icon($card-edit-btn-color);
-
-      width: 25px;
-      height: 25px;
-      cursor: pointer;
-    }
-
     .like-btn {
       @include icon-like($card-like-btn-color);
 

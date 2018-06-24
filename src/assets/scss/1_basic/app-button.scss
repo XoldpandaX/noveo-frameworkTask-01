@@ -19,13 +19,23 @@
     background-color: transparent;
   }
 
+  &.-no-padding {
+    padding: 0;
+  }
+
 
   // svg as background
-  &.-plus {
+  &.-plus-btn {
     @include icon-plus($pure-black);
 
     &:hover {
       @include icon-plus($pure-white);
     }
+  }
+
+  &.-edit-btn {
+    @include edit-icon($card-edit-btn-color);
+    width: 25*$rem;
+    height: 25*$rem;
   }
 }
