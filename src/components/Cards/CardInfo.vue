@@ -4,19 +4,19 @@
       h2 {{ cardData.title }}
       p {{ cardData.description }}
     footer
-      .edit-btn(@click="redirectToEditCardPage")
+      card-button-edit(:cardID="cardData.id")
       .like-btn(@click="likeCard" :class="changeLikeIconStyle")
 </template>
 
 <script>
+  import CardButtonEdit from '../../components/Cards/CardButtonEdit.vue';
   import { mapActions } from 'vuex';
-  import AppButton from '../../components/AppButton.vue';
 
   export default {
     name: 'cardInfo',
 
     components: {
-      AppButton
+      CardButtonEdit
     },
 
     props: {
@@ -38,11 +38,6 @@
       likeCard() {
         const cardId = this.cardData.id;
         this.likeToggle(cardId);
-      },
-
-      redirectToEditCardPage() {
-        const id = this.cardData.id.split('').splice(1).join('');
-        this.$router.push({path: `/edit-card/${id}`})
       }
     }
   }
