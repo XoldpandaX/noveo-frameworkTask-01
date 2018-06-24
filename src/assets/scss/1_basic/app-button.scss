@@ -1,10 +1,11 @@
 .app-button {
   cursor: pointer;
   border: none;
-  padding: 15*$rem 20*$rem;
+  padding: 15*$rem 40*$rem;
   background-color: $app-button-background;
   color: $app-button-text;
   text-transform: capitalize;
+  font-weight: bold;
 
   &:hover {
     background-color: $app-button-background-hover;
@@ -21,6 +22,10 @@
 
   &.-no-padding {
     padding: 0;
+  }
+
+  &.-radius-corners {
+    border-radius: 6*$rem;
   }
 
 
@@ -45,5 +50,11 @@
     &.-active {
       @include icon-like-full-background($red);
     }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
