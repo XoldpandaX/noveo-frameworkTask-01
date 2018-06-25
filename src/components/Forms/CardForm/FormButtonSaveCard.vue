@@ -1,15 +1,23 @@
 <template lang="pug">
-  app-button(:propButtonType="buttonAppearence") save
+  app-button(:onClick="formDataToStore",
+             :propButtonType="buttonAppearence") save
 </template>
 
 <script>
   import AppButton from '../../AppButton.vue';
 
   export default {
-    name: 'FormButtonSave',
+    name: 'FormButtonSaveCard',
 
     components: {
       AppButton
+    },
+
+    props: {
+      formDataToStore: {
+        type: Function,
+        required: true
+      }
     },
 
     data() {
