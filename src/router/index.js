@@ -5,7 +5,7 @@ import SignIn from '../views/SignIn.vue';
 
 // route-level
 const Home = () => import('../views/Home.vue');
-const AddNewCard = () => import('../views/AddNewCard.vue');
+const NewCard = () => import('../views/NewCard.vue');
 const EditCard = () => import('../views/EditCard.vue');
 
 Vue.use(Router);
@@ -20,8 +20,8 @@ export default new Router({
     },
     {
       path: '/new-card',
-      name: 'add-new-card',
-      component: AddNewCard
+      name: 'new-card',
+      component: NewCard
     },
     {
       path: '/edit-card/:id',
