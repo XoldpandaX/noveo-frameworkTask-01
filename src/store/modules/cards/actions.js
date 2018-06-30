@@ -23,26 +23,17 @@ function addCardDataToStore({ commit, dispatch, getters }, data) {
 }
 
 function addCardDataToStoreAfterEdit({ commit, state, dispatch }, cardData) {
-  const currentCardsState = state.cards;
-  const { id, title, description, like, order } = cardData;
+  const { id } = cardData;
   
-  currentCardsState.forEach((el, i) => {
+  state.cards.forEach((el, i) => {
     if (el.id === id) {
       
-      const storeData = {
-        id: id,
-        order: order,
-        title: title,
-        description: description,
-        like: like,
-      };
-      
       let sendData = {
-        storeData,
+        cardData,
         positionInCurrentState: i,
       };
       
-      dispatch('localStorage/addToLocalStorageByID', storeData, { root: true });
+      dispatch('localStorage/addToLocalStorageByID', cardData, { root: true });
       commit(types.SAVE_EDITED_CARD_DATA, sendData);
     }
   });

@@ -8,7 +8,7 @@ export default {
   
   [types.SAVE_EDITED_CARD_DATA] (state, data) {
     const position = data.positionInCurrentState;
-    state.cards[position] = data.storeData;
+    state.cards.splice(position, 1, data.cardData);
   },
   
   [types.INIT_CARD_DATA] (state, data) {
