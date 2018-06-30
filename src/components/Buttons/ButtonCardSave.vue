@@ -7,7 +7,7 @@
   import AppButton from '../AppButton.vue';
 
   export default {
-    name: 'FormButtonSaveCard',
+    name: 'ButtonCardSave',
 
     components: {
       AppButton
@@ -25,5 +25,5 @@
         buttonAppearence: 'formButton'
       };
     }
-  }
+  };
 </script>

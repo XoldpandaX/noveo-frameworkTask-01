@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import SignIn from '../views/SignIn.vue';
+import PageSignIn from '../views/PageSignIn.vue';
 
 // route-level
-const Home = () => import('../views/Home.vue');
-const NewCard = () => import('../views/NewCard.vue');
-const EditCard = () => import('../views/EditCard.vue');
+const PageHome = () => import('../views/PageHome.vue');
+const PageNewCard = () => import('../views/PageNewCard.vue');
+const PageEditCard = () => import('../views/PageEditCard.vue');
 
 Vue.use(Router);
 
@@ -16,17 +16,17 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: PageHome
     },
     {
       path: '/new-card',
       name: 'new-card',
-      component: NewCard
+      component: PageNewCard
     },
     {
       path: '/edit-card/:id',
       name: 'edit-card',
-      component: EditCard,
+      component: PageEditCard,
       props: (route) => ({
         id: route.params.id
       })
@@ -38,7 +38,7 @@ export default new Router({
     {
       path: '/sign-in',
       name: 'sign-in',
-      component: SignIn
+      component: PageSignIn
     }
   ]
 });

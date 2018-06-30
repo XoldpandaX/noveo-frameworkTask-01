@@ -8,7 +8,7 @@
   import AppButton from '../AppButton.vue';
 
   export default {
-    name: 'CardButtonEdit',
+    name: 'ButtonCardEdit',
 
     components: {
       AppButton
@@ -37,5 +37,5 @@
         this.$router.push({path: `/edit-card/${id}`})
       }
     }
-  }
+  };
 </script>

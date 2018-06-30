@@ -9,7 +9,7 @@
   import SignInForm from '../components/Forms/sign-in-form/SignInForm.vue'
 
   export default {
-    name: 'sign-in',
+    name: 'PageSignIn',
 
     components: {
       SignInForm

@@ -8,7 +8,7 @@
   import CardList from '../components/Cards/CardList.vue';
 
   export default {
-    name: 'Home',
+    name: 'PageHome',
 
     components: {
       CardList

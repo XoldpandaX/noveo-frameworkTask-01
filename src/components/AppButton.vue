@@ -50,5 +50,5 @@
     created() {
       this.componentButtonTypes = CONSTANTS.buttonTypes;
     }
-  }
+  };
 </script>

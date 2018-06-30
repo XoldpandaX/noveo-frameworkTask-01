@@ -5,11 +5,11 @@
 </template>
 
 <script>
-  import FirstLoadModal from '../../components/Modals/FirstLoadModal.vue';
   import { mapGetters, mapActions } from 'vuex';
+  import FirstLoadModal from '../../components/Modals/FirstLoadModal.vue';
 
   export default {
-    name: 'container-modal-wrapper',
+    name: 'ContainerModalWrapper',
 
     components: {
       FirstLoadModal
@@ -26,5 +26,5 @@
         this.closeAllModals();
       }
     }
-  }
+  };
 </script>

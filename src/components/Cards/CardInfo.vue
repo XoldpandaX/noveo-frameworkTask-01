@@ -14,7 +14,7 @@
   import ButtonCardLike from '../Buttons/ButtonCardLike.vue';
 
   export default {
-    name: 'cardInfo',
+    name: 'CardInfo',
 
     components: {
       ButtonCardEdit,
@@ -27,5 +27,5 @@
         required: true
       }
     }
-  }
+  };
 </script>

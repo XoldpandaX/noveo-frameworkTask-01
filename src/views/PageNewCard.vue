@@ -9,7 +9,7 @@
   import FormAddChangeCard from '../components/Forms/CardForm/FormAddChangeCard.vue';
 
   export default {
-    name: 'AddNewCard',
+    name: 'PageNewCard',
 
     components: {
       FormAddChangeCard

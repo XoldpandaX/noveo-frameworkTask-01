@@ -4,8 +4,8 @@
 </template>
 
 <script>
-  import AppButton from '../AppButton.vue';
   import { mapActions } from 'vuex';
+  import AppButton from '../AppButton.vue';
 
   export default {
     name: 'ButtonCardDelete',
@@ -35,5 +35,5 @@
         this.$router.push({name: 'home'});
       },
     }
-  }
+  };
 </script>

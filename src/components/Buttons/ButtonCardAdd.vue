@@ -8,7 +8,7 @@
   import AppButton from '../AppButton.vue';
 
   export default {
-    name: "CardButtonAdd",
+    name: 'ButtonCardAdd',
 
     components: {
       AppButton
@@ -25,5 +25,5 @@
         this.$router.push({name: 'new-card'});
       }
     }
-  }
+  };
 </script>

@@ -90,5 +90,5 @@
     created() {
       if (this.cardData) this.displayEditData();
     }
-  }
+  };
 </script>

@@ -10,7 +10,7 @@
 
 <script>
   export default {
-    name: 'first-load-modal',
+    name: 'FirstLoadModal',
 
     props: {
       message: {
@@ -28,5 +28,5 @@
         this.$emit('closeModal')
       }
     }
-  }
+  };
 </script>

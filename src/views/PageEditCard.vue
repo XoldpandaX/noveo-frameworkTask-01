@@ -10,7 +10,7 @@
   import FormAddChangeCard from '../components/Forms/CardForm/FormAddChangeCard.vue'
 
   export default {
-    name: 'EditCard',
+    name: 'PageEditCard',
 
     props: {
       id: {

@@ -13,10 +13,10 @@
   import { mapGetters } from 'vuex';
 
   export default {
-    name: 'navigation',
+    name: 'Navigation',
 
     computed: {
       ...mapGetters('ui', ['navigation'])
     }
-  }
+  };
 </script>

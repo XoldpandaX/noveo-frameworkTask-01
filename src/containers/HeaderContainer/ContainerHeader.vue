@@ -10,11 +10,11 @@
   import Navigation from '../../components/Navigations/Navigation.vue';
 
   export default {
-    name: 'container-header',
+    name: 'ContainerHeader',
 
     components: {
       Logo,
       Navigation
     }
-  }
+  };
 </script>

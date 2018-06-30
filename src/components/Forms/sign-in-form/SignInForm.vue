@@ -41,7 +41,7 @@
   import mixin from '../../../vue-mixins';
 
   export default {
-    name: 'sign-in-form',
+    name: 'SignInForm',
 
     mixins: [mixin.checkFormFields],
 
@@ -66,5 +66,5 @@
         confirmPassword: 'password are not equal'
       });
     }
-  }
+  };
 </script>
