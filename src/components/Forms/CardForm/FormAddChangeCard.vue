@@ -58,7 +58,7 @@
     },
 
     methods: {
-      ...mapActions('cards', ['addCardDataToStore', 'cardsDataInit']),
+      ...mapActions('cards', ['addCardDataToStore']),
 
       formDataToStore() {
         const { title, description } = this.userInput;
@@ -74,7 +74,6 @@
 
           this.addCardDataToStore(storeData);
           this.$router.push({name: 'home'});
-          this.cardsDataInit();
         } else {
           alert('Enter some text');
         }
