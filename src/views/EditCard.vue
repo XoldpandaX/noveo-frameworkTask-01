@@ -3,11 +3,13 @@
     h1.page__title Edit Selected Card Data
     .edit-card__row
       container-card-edit(:data="cardData")
+      FormAddChangeCard(:cardData="cardData", transform="edit-form")
 </template>
 
 <script>
   import { mapGetters, mapActions } from 'vuex';
   import ContainerCardEdit from '../containers/CardContainers/ContainerCardEdit.vue';
+  import FormAddChangeCard from '../components/Forms/CardForm/FormAddChangeCard.vue'
 
   export default {
     name: 'edit-card',
@@ -22,7 +24,8 @@
     },
 
     components: {
-      ContainerCardEdit
+      ContainerCardEdit,
+      FormAddChangeCard
     },
 
     data() {
