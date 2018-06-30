@@ -2,14 +2,14 @@
   .card-list
     .card-list__cards-container
       .card-list__element
-        card-button-add
+        button-card-add
       .card-list__element(v-for="card in cards")
         card-info(:cardData="card",
                   :key="card.id")
 </template>
 
 <script>
-  import CardButtonAdd from './CardButtonAdd.vue';
+  import ButtonCardAdd from '../Buttons/ButtonCardAdd.vue';
   import CardInfo from './CardInfo.vue';
   import { mapGetters } from 'vuex';
 
@@ -17,7 +17,7 @@
     name: 'CardList',
 
     components: {
-      CardButtonAdd,
+      ButtonCardAdd,
       CardInfo
     },
 
