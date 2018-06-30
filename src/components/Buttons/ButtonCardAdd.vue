@@ -22,7 +22,7 @@
 
     methods: {
       redirect() {
-        this.$router.push({name: 'add-new-card'});
+        this.$router.push({name: 'new-card'});
       }
     }
   }
