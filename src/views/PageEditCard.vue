@@ -10,7 +10,7 @@
   import FormAddChangeCard from '../components/Forms/CardForm/FormAddChangeCard.vue'
 
   export default {
-    name: 'edit-card',
+    name: 'EditCard',
 
     props: {
       id: {
@@ -57,5 +57,5 @@
     created() {
       this.routeDataHandler();
     }
-  }
+  };
 </script>
