@@ -1,12 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import PageSignIn from '../views/PageSignIn.vue';
-
 // route-level
-const PageHome = () => import('../views/PageHome.vue');
-const PageNewCard = () => import('../views/PageNewCard.vue');
-const PageEditCard = () => import('../views/PageEditCard.vue');
+import PageHome from '../views/PageHome.vue';
+import PageNewCard from '../views/PageHome.vue';
+import PageEditCard from '../views/PageEditCard.vue';
+import PageSignIn from '../views/PageSignIn.vue';
 
 Vue.use(Router);
 
