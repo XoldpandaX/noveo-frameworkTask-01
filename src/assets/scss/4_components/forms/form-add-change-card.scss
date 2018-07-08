@@ -1,8 +1,9 @@
-.new-card {
+.add-change-card-form {
   width: 320*$rem;
   height: 100%;
   padding: 20*$rem;
   background-color: $card-background-color;
+  border-radius: 6*$rem;
 
   &__row {
     margin-bottom: 15*$rem;
