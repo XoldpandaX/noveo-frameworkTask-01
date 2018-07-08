@@ -20,3 +20,15 @@ export function sortByObjValue(key, order='asc') {
     return ((order === 'desc') ? (comparison * -1) : comparison);
   };
 }
+
+export function checkObjectFieldsForTrueValue(obj) {
+  let falseResult = 0;
+  
+  
+  for (let key in obj) {
+    if (!obj[key]) {
+      falseResult++;
+    }
+  }
+  return falseResult <= 0;
+}
