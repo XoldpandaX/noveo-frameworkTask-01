@@ -1,15 +1,15 @@
 <template lang="pug">
-  form.new-card
-    .new-card__row
+  form.add-change-card-form
+    .add-change-card-form__row
       input(type="text",
             placeholder="Enter title",
             maxlength="42",
             v-model="userInput.title")
-    .new-card__row
+    .add-change-card-form__row
       textarea(placeholder="Enter description",
                :maxlength="maxSymbols",
                v-model="userInput.description")
-      span.new-card__counter {{ symbolsLeft }}/{{ maxSymbols }}
+      span.add-change-card-form__counter {{ symbolsLeft }}/{{ maxSymbols }}
     .app-button__row
       button-card-delete(v-if="transform === 'edit-form'",
                            :cardID="cardData.id") Delete
