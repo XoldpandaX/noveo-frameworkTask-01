@@ -10,7 +10,7 @@
       transition(enter-active-class="animated bounceIn",
                  leave-active-class="animated fadeOut")
         .form-wrapper__error(v-if="isEmailValid")
-          span {{ errorsMessages.email }}
+          span {{ errorMsg.emailIsIncorrect }}
 
     .form-wrapper__field
       input(name="password",
@@ -21,7 +21,7 @@
       transition(enter-active-class="animated bounceIn",
       leave-active-class="animated fadeOut")
         .form-wrapper__error(v-if="isPasswordValid")
-          span {{ errorsMessages.password }}
+          span {{ errorMsg.passwordIsIncorrect }}
 
     .form-wrapper__field.-margin-bottom-xl
       input(name="confirm-password",
@@ -32,39 +32,30 @@
       transition(enter-active-class="animated bounceIn",
       leave-active-class="animated fadeOut")
         .form-wrapper__error(v-if="isPasswordsAreEqual")
-          span {{ errorsMessages.confirmPassword }}
-
+          span {{ errorMsg.confirmPasswordIsIncorrect }}
     button.form-wrapper__button.-margin-block-center(@click.prevent="fieldsDataHandler()") Sign In
 </template>
 
 <script>
-  import mixin from '../../../vue-mixins';
 
   export default {
     name: 'SignInForm',
-
-    mixins: [mixin.checkFormFields],
 
     data() {
       return {
         email: '',
         password: '',
         confirmPassword: '',
+        errorMsg: {
+          emailIsIncorrect: '',
+          passwordIsIncorrect: '',
+          confirmPasswordIsIncorrect: ''
+        }
       };
     },
 
     methods: {
-      fieldsDataHandler() {
-        console.log('denis');
-      }
-    },
 
-    created() {
-      this.setErrorsMessages({
-        email: 'incorrect mail format',
-        password: 'password length must be at least 6 characters',
-        confirmPassword: 'password are not equal'
-      });
     }
   };
 </script>
