@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 // route-level
 import PageHome from '../views/PageHome.vue';
-import PageNewCard from '../views/PageHome.vue';
+import PageNewCard from '../views/PageNewCard.vue';
 import PageEditCard from '../views/PageEditCard.vue';
 import PageSignIn from '../views/PageSignIn.vue';
 
