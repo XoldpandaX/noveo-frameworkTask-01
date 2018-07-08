@@ -34,11 +34,12 @@
         .form-wrapper__error(v-if="errors.confirmPassword.error")
           span {{ errors.confirmPassword.errorMessage }}
     .app-button__row
-      app-button(propButtonType="formButton", :onClick="checkEmail") Sign Up
+      app-button(propButtonType="formButton", :onClick="confirmForm") Sign Up
 </template>
 
 <script>
   import AppButton from '../../../components/AppButton.vue';
+  import CONSTANTS from '../../../constants';
 
   export default {
     name: 'SignInForm',
@@ -52,6 +53,14 @@
         email: '',
         password: '',
         confirmPassword: '',
+        rules: {
+          email: {
+            regExp: CONSTANTS.regularExpressions.mailRegExp
+          },
+          password: {
+            necessaryLength: 6
+          }
+        },
         errors: {
           email: {
             errorMessage: '',
@@ -69,23 +78,24 @@
       };
     },
 
-    computed: {
-      isEmailValid() {
-        return true;
-      },
-
-      isPasswordValid() {
-        return true;
-      },
-
-      isPasswordsAreEqual() {
-        return true;
-      }
-    },
-
     methods: {
-      checkEmail(mail) {
-        console.log('name');
+      checkEmail() {
+        const { regExp } = this.rules.email;
+        return regExp.test(this.email);
+      },
+
+      checkPassword() {
+        const currentPassLength = this.password.length;
+        const necessaryPassLength = this.rules.password.necessaryLength;
+        return currentPassLength >= necessaryPassLength;
+      },
+
+      checkPasswordEquality() {
+        return this.password !== '' && this.checkPassword() && this.password === this.confirmPassword;
+      },
+
+      confirmForm() {
+        
       }
     }
   };
