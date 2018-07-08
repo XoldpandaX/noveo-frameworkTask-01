@@ -1,4 +1,4 @@
-import checkFormFields from './checkFormFields.js';
+import checkFormFields from './formValidation.js';
 
 export default {
   checkFormFields
