@@ -79,6 +79,10 @@
     },
 
     methods: {
+      setErrorMsg(msg, target) {
+        this.errors[target].errorMessage = msg;
+      },
+
       checkEmail() {
         const { regExp } = this.rules.email;
         return regExp.test(this.email);
