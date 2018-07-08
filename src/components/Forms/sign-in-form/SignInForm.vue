@@ -10,7 +10,7 @@
       transition(enter-active-class="animated bounceIn",
                  leave-active-class="animated fadeOut")
         .form-wrapper__error(v-if="errors.email.error")
-          span {{ errors.email.errorMessage }}
+          span {{ errors.email.errorMessage | makeUppercase }}
 
     .form-wrapper__field
       input(name="password",
@@ -21,7 +21,7 @@
       transition(enter-active-class="animated bounceIn",
       leave-active-class="animated fadeOut")
         .form-wrapper__error(v-if="errors.password.error")
-          span {{ errors.password.errorMessage }}
+          span {{ errors.password.errorMessage | makeUppercase }}
 
     .form-wrapper__field.-margin-bottom-xl
       input(name="confirm-password",
@@ -32,12 +32,13 @@
       transition(enter-active-class="animated bounceIn",
       leave-active-class="animated fadeOut")
         .form-wrapper__error(v-if="errors.confirmPassword.error")
-          span {{ errors.confirmPassword.errorMessage }}
+          span {{ errors.confirmPassword.errorMessage | makeUppercase }}
     .app-button__row
       app-button(propButtonType="formButton", :onClick="confirmForm") Sign Up
 </template>
 
 <script>
+  import { checkObjectFieldsForTrueValue } from '../../../helpers';
   import AppButton from '../../../components/AppButton.vue';
   import CONSTANTS from '../../../constants';
 
@@ -63,15 +64,15 @@
         },
         errors: {
           email: {
-            errorMessage: '',
+            errorMessage: 'invalid mail format',
             error: false
           },
           password: {
-            errorMessage: '',
+            errorMessage: 'password must be at least 6 characters',
             error: false
           },
           confirmPassword: {
-            errorMessage: '',
+            errorMessage: 'passwords do not match',
             error: false
           }
         }
@@ -79,10 +80,6 @@
     },
 
     methods: {
-      setErrorMsg(msg, target) {
-        this.errors[target].errorMessage = msg;
-      },
-
       checkEmail() {
         const { regExp } = this.rules.email;
         return regExp.test(this.email);
@@ -98,8 +95,30 @@
         return this.password !== '' && this.checkPassword() && this.password === this.confirmPassword;
       },
 
+      toggleErrors(results) {
+        for (let key in results) {
+          this.errors[key].error = !results[key];
+        }
+      },
+
       confirmForm() {
-        
+        if (this.email !== '' && this.password !== '') {
+          const checkResults = {
+            email: this.checkEmail(),
+            password: this.checkPassword(),
+            confirmPassword: this.checkPasswordEquality()
+          };
+          this.toggleErrors(checkResults)
+
+          if (checkObjectFieldsForTrueValue(checkResults)) this.sendConfirmedData(checkResults)
+
+        } else {
+          alert('Nothing data to validate'); // add modal to show error
+        }
+      },
+
+      sendConfirmedData() {
+        console.log('denis');
       }
     }
   };
