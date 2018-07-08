@@ -8,7 +8,7 @@
             autocomplete="foo",
             v-model="email")
       transition(enter-active-class="animated bounceIn",
-                 leave-active-class="animated fadeOut")
+                 leave-active-class="animated bounceOut")
         .form-wrapper__error(v-if="errors.email.error")
           span {{ errors.email.errorMessage | makeUppercase }}
 
@@ -102,22 +102,22 @@
       },
 
       confirmForm() {
-        if (this.email !== '' && this.password !== '') {
+        if (this.email !== '' && this.password !== '' && this.confirmPassword !== '') {
           const checkResults = {
             email: this.checkEmail(),
             password: this.checkPassword(),
             confirmPassword: this.checkPasswordEquality()
           };
-          this.toggleErrors(checkResults)
+          this.toggleErrors(checkResults);
 
-          if (checkObjectFieldsForTrueValue(checkResults)) this.sendConfirmedData(checkResults)
+          if (checkObjectFieldsForTrueValue(checkResults)) this.prepareAndSendConfirmData(checkResults);
 
         } else {
-          alert('Nothing data to validate'); // add modal to show error
+          alert('Fill in all fields'); // add modal to show error
         }
       },
 
-      sendConfirmedData() {
+      prepareAndSendConfirmData() {
         console.log('denis');
       }
     }
