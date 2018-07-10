@@ -2,13 +2,25 @@
   form.form-wrapper.-sign-in
     h3 write-in fields
     .form-wrapper__field
+      // выводить форму циклом, и добавить данные инпотов в константу
+      input(name="name",
+            type="text",
+            placeholder="Name",
+            autocomplete="foo",
+            v-model="name")
+      transition(enter-active-class="animated bounceIn",
+                 leave-active-class="animated fadeOutRight")
+        .form-wrapper__error(v-if="errors.email.error")
+          span {{ errors.name.errorMessage | makeUppercase }}
+
+    .form-wrapper__field
       input(name="email",
             type="email",
             placeholder="Email",
             autocomplete="foo",
             v-model="email")
       transition(enter-active-class="animated bounceIn",
-                 leave-active-class="animated bounceOut")
+                 leave-active-class="animated fadeOutRight")
         .form-wrapper__error(v-if="errors.email.error")
           span {{ errors.email.errorMessage | makeUppercase }}
 
@@ -43,7 +55,7 @@
   import CONSTANTS from '../../../constants';
 
   export default {
-    name: 'SignInForm',
+    name: 'FormSignUp',
 
     components: {
       AppButton
@@ -51,6 +63,7 @@
 
     data() {
       return {
+        name: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -63,6 +76,10 @@
           }
         },
         errors: {
+          name: {
+            errorMessage: 'name must be a string',
+            error: false
+          },
           email: {
             errorMessage: 'invalid mail format',
             error: false
@@ -80,6 +97,11 @@
     },
 
     methods: {
+      checkName() {
+        console.log(typeof this.name); // сделать проверку что это введена строка а не цифры
+        return typeof this.name === string;
+      },
+
       checkEmail() {
         const { regExp } = this.rules.email;
         return regExp.test(this.email);
@@ -104,11 +126,13 @@
       confirmForm() {
         if (this.email !== '' && this.password !== '' && this.confirmPassword !== '') {
           const checkResults = {
+            name: this.checkName(),
             email: this.checkEmail(),
             password: this.checkPassword(),
             confirmPassword: this.checkPasswordEquality()
           };
           this.toggleErrors(checkResults);
+          console.log(this.checkName());
 
           if (checkObjectFieldsForTrueValue(checkResults)) this.prepareAndSendConfirmData(checkResults);
 
@@ -118,7 +142,12 @@
       },
 
       prepareAndSendConfirmData() {
-        console.log('denis');
+        const sendData = {
+          email: this.email,
+          password: this.password
+        };
+
+        console.log(sendData);
       }
     }
   };

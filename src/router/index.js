@@ -5,6 +5,7 @@ import Router from 'vue-router';
 import PageHome from '../views/PageHome.vue';
 import PageNewCard from '../views/PageNewCard.vue';
 import PageEditCard from '../views/PageEditCard.vue';
+import PageSignUp from '../views/PageSignUp.vue';
 import PageSignIn from '../views/PageSignIn.vue';
 
 Vue.use(Router);
@@ -32,7 +33,8 @@ export default new Router({
     },
     {
       path: '/sign-up',
-      name: 'sign-up'
+      name: 'sign-up',
+      component: PageSignUp
     },
     {
       path: '/sign-in',
