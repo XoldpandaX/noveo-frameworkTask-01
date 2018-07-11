@@ -51,7 +51,6 @@
 <script>
   import { checkObjectFieldsForTrueValue } from '../../../helpers';
   import AppButton from '../../../components/AppButton.vue';
-  import CONSTANTS from '../../../constants';
 
   export default {
     name: 'FormSignUp',
@@ -69,7 +68,7 @@
         confirmPassword: '',
         rules: {
           email: {
-            regExp: CONSTANTS.regularExpressions.mailRegExp
+            regExp: this.$appConstants.regularExpressions.mailRegExp
           },
           password: {
             necessaryLength: 6
