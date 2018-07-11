@@ -1,19 +1,18 @@
 <template lang="pug">
   form.form-wrapper.-sign-in
     h3 write-in fields
-    .form-wrapper__field
-      // выводить форму циклом, и добавить данные инпотов в константу
-      input(name="name",
-            type="text",
-            placeholder="Name",
-            autocomplete="foo",
-            v-model="name")
+    .form-wrapper__field(v-for="input in fieldData")
+      input(:name="input.name",
+            :type="input.type",
+            :placeholder="input.placeholder",
+            :autocomplete="input.autocomplete",
+            v-model="input.value")
       transition(enter-active-class="animated bounceIn",
                  leave-active-class="animated fadeOutRight")
-        .form-wrapper__error(v-if="errors.email.error")
-          span {{ errors.name.errorMessage | makeUppercase }}
+        .form-wrapper__error(v-if="errors[`${input.name}`].error")
+          span {{ errors[`${input.name}`].errorMessage | makeUppercase }}
 
-    .form-wrapper__field
+    //.form-wrapper__field
       input(name="email",
             type="email",
             placeholder="Email",
@@ -24,7 +23,7 @@
         .form-wrapper__error(v-if="errors.email.error")
           span {{ errors.email.errorMessage | makeUppercase }}
 
-    .form-wrapper__field
+    //.form-wrapper__field
       input(name="password",
             type="password",
             placeholder="Password",
@@ -35,7 +34,7 @@
         .form-wrapper__error(v-if="errors.password.error")
           span {{ errors.password.errorMessage | makeUppercase }}
 
-    .form-wrapper__field.-margin-bottom-xl
+    //.form-wrapper__field.-margin-bottom-xl
       input(name="confirm-password",
             type="password",
             placeholder="Confirm Password",
@@ -63,6 +62,7 @@
 
     data() {
       return {
+        fieldData: [],
         name: '',
         email: '',
         password: '',
@@ -97,20 +97,25 @@
     },
 
     methods: {
+      findFormField(place, findEl) {
+        return place.findIndex((el) => el.name === findEl); // сделать так чтобы возращалось поле найденное по индексу
+        // так как нам не нужно менять данные, а только проверить, то можно вернуть только данные
+      },
+
       checkName() {
-        console.log(typeof this.name); // сделать проверку что это введена строка а не цифры
         return typeof this.name === string;
       },
 
       checkEmail() {
         const { regExp } = this.rules.email;
-        return regExp.test(this.email);
+        const emailIndex = this.findFormField(this.fieldData, 'email');
+        return regExp.test(this.fieldData[emailIndex].value);
       },
 
       checkPassword() {
-        const currentPassLength = this.password.length;
-        const necessaryPassLength = this.rules.password.necessaryLength;
-        return currentPassLength >= necessaryPassLength;
+        const passwordIndex = this.findFormField(this.fieldData, 'password');
+        const currentPassLength = this.fieldData[passwordIndex].value.length;
+        return currentPassLength >= this.rules.password.necessaryLength;
       },
 
       checkPasswordEquality() {
@@ -124,15 +129,15 @@
       },
 
       confirmForm() {
+        console.log(this.checkPassword());
         if (this.email !== '' && this.password !== '' && this.confirmPassword !== '') {
           const checkResults = {
-            name: this.checkName(),
+            //name: this.checkName(),
             email: this.checkEmail(),
             password: this.checkPassword(),
             confirmPassword: this.checkPasswordEquality()
           };
           this.toggleErrors(checkResults);
-          console.log(this.checkName());
 
           if (checkObjectFieldsForTrueValue(checkResults)) this.prepareAndSendConfirmData(checkResults);
 
@@ -149,6 +154,10 @@
 
         console.log(sendData);
       }
+    },
+
+    created() {
+      this.fieldData = this.$appConstants.forms.signInForm.inputs;
     }
   };
 </script>
