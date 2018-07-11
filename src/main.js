@@ -4,11 +4,19 @@ import router from './router';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import filters from './filters';
+import constants from './constants';
 import {store} from './store';
 
 // FILTERS
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key]);
+});
+
+// CONSTANTS
+Object.defineProperty(Vue.prototype, '$appConstants', {
+  get () {
+    return constants;
+  }
 });
 
 Vue.config.productionTip = false;
