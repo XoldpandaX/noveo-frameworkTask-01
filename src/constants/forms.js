@@ -33,6 +33,10 @@ export default {
       }
     ],
     fieldRules: {
+      name: {
+        necessaryLength: 2,
+        regExp: regularExpressions.onlyLetters
+      },
       email: {
         regExp: regularExpressions.mailRegExp
       },
@@ -42,7 +46,7 @@ export default {
     },
     errors: {
       name: {
-        errorMessage: 'name must be a string',
+        errorMessage: 'name can\'t be a digit and must contain at least two characters',
         error: false
       },
       email: {
