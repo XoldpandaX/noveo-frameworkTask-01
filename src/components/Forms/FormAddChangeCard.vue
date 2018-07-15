@@ -17,9 +17,9 @@
 </template>
 <script>
   import { mapGetters, mapActions } from 'vuex';
-  import { getRandomID } from '../../../helpers/index.js';
-  import ButtonCardSave from '../../Buttons/ButtonCardSave.vue';
-  import ButtonCardDelete from '../../Buttons/ButtonCardDelete.vue';
+  import { getRandomID } from '../../helpers/index.js';
+  import ButtonCardSave from '../Buttons/ButtonCardSave.vue';
+  import ButtonCardDelete from '../Buttons/ButtonCardDelete.vue';
 
   export default {
     name: 'FormAddChangeCard',

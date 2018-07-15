@@ -22,9 +22,9 @@
     isNumeric,
     capitaliseFirstLetter,
     isObjFieldsAreEmpty
-  } from '../../../helpers';
+  } from '../../helpers/index';
   import { mapActions } from 'vuex';
-  import AppButton from '../../../components/AppButton.vue';
+  import AppButton from '../AppButton.vue';
 
   export default {
     name: 'FormSignUp',
