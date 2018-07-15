@@ -49,7 +49,9 @@
 </template>
 
 <script>
-  import { checkObjectFieldsForTrueValue } from '../../../helpers';
+  import { checkObjectFieldsForTrueValue,
+           returnObjFieldByValue
+  } from '../../../helpers';
   import AppButton from '../../../components/AppButton.vue';
 
   export default {
@@ -96,19 +98,14 @@
     },
 
     methods: {
-      findFormField(place, findEl) {
-        return place.findIndex((el) => el.name === findEl); // сделать так чтобы возращалось поле найденное по индексу
-        // так как нам не нужно менять данные, а только проверить, то можно вернуть только данные
-      },
-
       checkName() {
         return typeof this.name === string;
       },
 
       checkEmail() {
         const { regExp } = this.rules.email;
-        const emailIndex = this.findFormField(this.fieldData, 'email');
-        return regExp.test(this.fieldData[emailIndex].value);
+        const email = returnObjFieldByValue(this.fieldData, 'email');
+        return regExp.test(email);
       },
 
       checkPassword() {
@@ -128,7 +125,7 @@
       },
 
       confirmForm() {
-        console.log(this.checkPassword());
+        console.log(this.checkEmail());
         if (this.email !== '' && this.password !== '' && this.confirmPassword !== '') {
           const checkResults = {
             //name: this.checkName(),
