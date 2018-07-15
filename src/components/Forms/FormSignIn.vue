@@ -25,7 +25,7 @@
   import AppButton from '../AppButton.vue';
 
   export default {
-    name: 'signUpForm',
+    name: 'FormSignIn',
 
     components: {
       AppButton
@@ -89,10 +89,6 @@
           }
         });
         this.registerUser(JSON.stringify(sendData)); // vuex action
-      },
-
-      ret() {
-        console.log('denis');
       }
     },
 
