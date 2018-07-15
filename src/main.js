@@ -22,7 +22,7 @@ Object.defineProperty(Vue.prototype, '$appConstants', {
 Vue.config.productionTip = false;
 
 const axiosConfig = axios.create({
-  baseURL: 'http://rest-api.noveogroup.com/api/v1/',
+  baseURL: 'http://rest-api.noveogroup.com/api/v1',
   headers: {
     'Content-Type': 'application/json; charset=UTF-8',
     'X-Application-Key': 's6EbiHU1o4EZtI6Q5D6vvPPUtOwUf6Fa7fMPTcJC'
