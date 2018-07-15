@@ -1,7 +1,7 @@
 import regularExpressions from "./regularExpressions";
 
 export default {
-  signInForm: {
+  signInUp: {
     inputs: [
       {
         name: 'name',
@@ -59,6 +59,42 @@ export default {
       },
       confirmPassword: {
         errorMessage: 'passwords do not match',
+        error: false
+      }
+    }
+  },
+  signIn: {
+    inputs: [
+      {
+        name: 'email',
+        type: 'email',
+        placeholder: 'Email',
+        autocomplete: 'foo',
+        value: ''
+      },
+      {
+        name: 'password',
+        type: 'password',
+        placeholder: 'Password',
+        autocomplete: 'foo',
+        value: ''
+      }
+    ],
+    fieldRules: {
+      email: {
+        regExp: regularExpressions.mailRegExp
+      },
+      password: {
+        necessaryLength: 6
+      }
+    },
+    errors: {
+      email: {
+        errorMessage: 'invalid mail format',
+        error: false
+      },
+      password: {
+        errorMessage: 'password must be at least 6 characters',
         error: false
       }
     }
