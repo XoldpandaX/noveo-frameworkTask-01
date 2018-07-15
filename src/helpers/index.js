@@ -41,3 +41,7 @@ export function objFieldByValue(searchObj, searchField , value) {
 export function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
+
+export function capitaliseFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
