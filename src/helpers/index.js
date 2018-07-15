@@ -33,7 +33,7 @@ export function checkObjectFieldsForTrueValue(obj) {
   return falseResult <= 0;
 }
 
-export function returnObjFieldByValue(searchObj, value) {
-  const index = searchObj.findIndex((el) => el.name === value);
+export function returnObjFieldByValue(searchObj, searchField , value) {
+  const index = searchObj.findIndex((el) => el[searchField] === value);
   return searchObj[index].value;
 }
