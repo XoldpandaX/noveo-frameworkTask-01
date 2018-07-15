@@ -37,3 +37,7 @@ export function objFieldByValue(searchObj, searchField , value) {
   const index = searchObj.findIndex((el) => el[searchField] === value);
   return searchObj[index].value;
 }
+
+export function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
