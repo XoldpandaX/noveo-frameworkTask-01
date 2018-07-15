@@ -44,7 +44,11 @@
       checkName() {
         const { regExp } = this.rules.name;
         const name = objFieldByValue(this.fieldData, 'name', 'name');
-        return !isNumeric(name) && name.length >= this.rules.name.necessaryLength && !regExp.test(name);
+        return(
+          !isNumeric(name)
+          && name.length >= this.rules.name.necessaryLength
+          && !regExp.test(name)
+        );
       },
 
       checkEmail() {
@@ -61,7 +65,11 @@
       checkPasswordEquality() {
         const currentPassword = objFieldByValue(this.fieldData, 'name', 'password');
         const confirmPassword = objFieldByValue(this.fieldData, 'name', 'confirmPassword');
-        return currentPassword !== '' && this.checkPassword() && currentPassword === confirmPassword;
+        return(
+          currentPassword !== ''
+          && this.checkPassword()
+          && currentPassword === confirmPassword
+        );
       },
 
       checkResults(arrOfFields) {
@@ -87,7 +95,8 @@
           const checkResults = this.checkResults(this.fieldData);
           this.toggleErrors(checkResults);
 
-          (checkObjectFieldsForTrueValue(checkResults)) && this.prepareAndSendConfirmData(checkResults);
+          (checkObjectFieldsForTrueValue(checkResults)) &&
+          this.prepareAndSendConfirmData(checkResults);
         } else {
           alert('Fill in all fields'); // add modal to show error
         }
