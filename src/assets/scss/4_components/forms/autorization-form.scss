@@ -5,7 +5,8 @@
   background-color: #fff;
   border-radius: 3px;
 
-  &.-sign-in {
+  &.-sign-in,
+  &.-sign-up {
     width: 360*$rem;
   }
 
