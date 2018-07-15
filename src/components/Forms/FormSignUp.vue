@@ -11,7 +11,7 @@
                  leave-active-class="animated fadeOutRight")
         .form-wrapper__error(v-if="errors[`${input.name}`].error")
           span {{ errors[`${input.name}`].errorMessage | makeUppercase }}
-    .app-button__row
+    .app-button__row.-margin-top-l
       app-button(propButtonType="formButton", :onClick.enter="confirmForm") Sign Up
 </template>
 
@@ -117,7 +117,7 @@
     },
 
     created() {
-      const { inputs, fieldRules, errors } = this.$appConstants.forms.signInForm;
+      const { inputs, fieldRules, errors } = this.$appConstants.forms.signUp;
       this.fieldData = inputs;
       this.rules = fieldRules;
       this.errors = errors;
