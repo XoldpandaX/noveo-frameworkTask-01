@@ -38,6 +38,10 @@ export function objFieldByValue(searchObj, searchField , value) {
   return searchObj[index].value;
 }
 
+export function isObjFieldsAreEmpty(arrOfFields, fieldForCheck) {
+  return arrOfFields.some(val => val[fieldForCheck] === '');
+}
+
 export function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
