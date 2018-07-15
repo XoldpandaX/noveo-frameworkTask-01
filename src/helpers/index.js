@@ -32,3 +32,8 @@ export function checkObjectFieldsForTrueValue(obj) {
   }
   return falseResult <= 0;
 }
+
+export function returnObjFieldByValue(searchObj, value) {
+  const index = searchObj.findIndex((el) => el.name === value);
+  return searchObj[index].value;
+}
