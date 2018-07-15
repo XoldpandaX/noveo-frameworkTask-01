@@ -11,46 +11,17 @@
                  leave-active-class="animated fadeOutRight")
         .form-wrapper__error(v-if="errors[`${input.name}`].error")
           span {{ errors[`${input.name}`].errorMessage | makeUppercase }}
-
-    //.form-wrapper__field
-      input(name="email",
-            type="email",
-            placeholder="Email",
-            autocomplete="foo",
-            v-model="email")
-      transition(enter-active-class="animated bounceIn",
-                 leave-active-class="animated fadeOutRight")
-        .form-wrapper__error(v-if="errors.email.error")
-          span {{ errors.email.errorMessage | makeUppercase }}
-
-    //.form-wrapper__field
-      input(name="password",
-            type="password",
-            placeholder="Password",
-            autocomplete="foo",
-            v-model="password")
-      transition(enter-active-class="animated bounceIn",
-      leave-active-class="animated fadeOut")
-        .form-wrapper__error(v-if="errors.password.error")
-          span {{ errors.password.errorMessage | makeUppercase }}
-
-    //.form-wrapper__field.-margin-bottom-xl
-      input(name="confirm-password",
-            type="password",
-            placeholder="Confirm Password",
-            autocomplete="foo",
-            v-model="confirmPassword")
-      transition(enter-active-class="animated bounceIn",
-      leave-active-class="animated fadeOut")
-        .form-wrapper__error(v-if="errors.confirmPassword.error")
-          span {{ errors.confirmPassword.errorMessage | makeUppercase }}
     .app-button__row
       app-button(propButtonType="formButton", :onClick="confirmForm") Sign Up
 </template>
 
 <script>
-  import { checkObjectFieldsForTrueValue,
-           returnObjFieldByValue
+  import {
+    checkObjectFieldsForTrueValue,
+    objFieldByValue,
+    isNumeric,
+    capitaliseFirstLetter,
+    isObjFieldsAreEmpty
   } from '../../../helpers';
   import AppButton from '../../../components/AppButton.vue';
 
@@ -64,58 +35,45 @@
     data() {
       return {
         fieldData: [],
-        name: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        rules: {
-          email: {
-            regExp: this.$appConstants.regularExpressions.mailRegExp
-          },
-          password: {
-            necessaryLength: 6
-          }
-        },
-        errors: {
-          name: {
-            errorMessage: 'name must be a string',
-            error: false
-          },
-          email: {
-            errorMessage: 'invalid mail format',
-            error: false
-          },
-          password: {
-            errorMessage: 'password must be at least 6 characters',
-            error: false
-          },
-          confirmPassword: {
-            errorMessage: 'passwords do not match',
-            error: false
-          }
-        }
+        rules: {},
+        errors: {}
       };
     },
 
     methods: {
       checkName() {
-        return typeof this.name === string;
+        const { regExp } = this.rules.name;
+        const name = objFieldByValue(this.fieldData, 'name', 'name');
+        return !isNumeric(name) && name.length >= this.rules.name.necessaryLength && !regExp.test(name);
       },
 
       checkEmail() {
         const { regExp } = this.rules.email;
-        const email = returnObjFieldByValue(this.fieldData, 'email');
+        const email = objFieldByValue(this.fieldData, 'name', 'email');
         return regExp.test(email);
       },
 
       checkPassword() {
-        const passwordIndex = this.findFormField(this.fieldData, 'password');
-        const currentPassLength = this.fieldData[passwordIndex].value.length;
-        return currentPassLength >= this.rules.password.necessaryLength;
+        const password = objFieldByValue(this.fieldData, 'name', 'password');
+        return password.length >= this.rules.password.necessaryLength;
       },
 
       checkPasswordEquality() {
-        return this.password !== '' && this.checkPassword() && this.password === this.confirmPassword;
+        const currentPassword = objFieldByValue(this.fieldData, 'name', 'password');
+        const confirmPassword = objFieldByValue(this.fieldData, 'name', 'confirmPassword');
+        return currentPassword !== '' && this.checkPassword() && currentPassword === confirmPassword;
+      },
+
+      checkResults(arrOfFields) {
+        let checkResults = {};
+
+        arrOfFields.forEach(el => {
+          let functionName = `check${capitaliseFirstLetter(el.name)}`;
+          el.name !== 'confirmPassword' ?
+            checkResults[el.name] = this[functionName]() :
+            checkResults[el.name] = this.checkPasswordEquality();
+        });
+        return checkResults;
       },
 
       toggleErrors(results) {
@@ -125,35 +83,32 @@
       },
 
       confirmForm() {
-        console.log(this.checkEmail());
-        if (this.email !== '' && this.password !== '' && this.confirmPassword !== '') {
-          const checkResults = {
-            //name: this.checkName(),
-            email: this.checkEmail(),
-            password: this.checkPassword(),
-            confirmPassword: this.checkPasswordEquality()
-          };
+        if (!isObjFieldsAreEmpty(this.fieldData, 'value')) {
+          const checkResults = this.checkResults(this.fieldData);
           this.toggleErrors(checkResults);
 
-          if (checkObjectFieldsForTrueValue(checkResults)) this.prepareAndSendConfirmData(checkResults);
-
+          (checkObjectFieldsForTrueValue(checkResults)) && this.prepareAndSendConfirmData(checkResults);
         } else {
           alert('Fill in all fields'); // add modal to show error
         }
       },
 
       prepareAndSendConfirmData() {
-        const sendData = {
-          email: this.email,
-          password: this.password
-        };
-
+        const sendData = {};
+        this.fieldData.forEach(el => {
+          if (el.name !== 'confirmPassword') {
+            sendData[el.name] = el.value;
+          }
+        });
         console.log(sendData);
       }
     },
 
     created() {
-      this.fieldData = this.$appConstants.forms.signInForm.inputs;
+      const { inputs, fieldRules, errors } = this.$appConstants.forms.signInForm;
+      this.fieldData = inputs;
+      this.rules = fieldRules;
+      this.errors = errors;
     }
   };
 </script>
