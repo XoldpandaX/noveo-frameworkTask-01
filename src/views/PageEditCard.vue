@@ -7,7 +7,7 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import FormAddChangeCard from '../components/Forms/CardForm/FormAddChangeCard.vue'
+  import FormAddChangeCard from '../components/Forms/FormAddChangeCard.vue'
 
   export default {
     name: 'PageEditCard',
