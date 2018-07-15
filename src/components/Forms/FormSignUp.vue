@@ -12,7 +12,7 @@
         .form-wrapper__error(v-if="errors[`${input.name}`].error")
           span {{ errors[`${input.name}`].errorMessage | makeUppercase }}
     .app-button__row
-      app-button(propButtonType="formButton", :onClick="confirmForm") Sign Up
+      app-button(propButtonType="formButton", :onClick.enter="confirmForm") Sign Up
 </template>
 
 <script>
@@ -23,6 +23,7 @@
     capitaliseFirstLetter,
     isObjFieldsAreEmpty
   } from '../../../helpers';
+  import { mapActions } from 'vuex';
   import AppButton from '../../../components/AppButton.vue';
 
   export default {
@@ -41,6 +42,8 @@
     },
 
     methods: {
+      ...mapActions('auth', ['registerUser']),
+
       checkName() {
         const { regExp } = this.rules.name;
         const name = objFieldByValue(this.fieldData, 'name', 'name');
@@ -109,8 +112,8 @@
             sendData[el.name] = el.value;
           }
         });
-        console.log(sendData);
-      }
+        this.registerUser(JSON.stringify(sendData)); // vuex action
+      },
     },
 
     created() {
