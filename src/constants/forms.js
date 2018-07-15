@@ -1,7 +1,7 @@
 import regularExpressions from "./regularExpressions";
 
 export default {
-  signInUp: {
+  signUp: {
     inputs: [
       {
         name: 'name',
