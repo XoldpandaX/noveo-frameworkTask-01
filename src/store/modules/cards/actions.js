@@ -1,14 +1,7 @@
 import * as types from './mutation-types.js';
 
 function cardsDataInit({ commit }) {
-  let cards = [];
-  Object.keys(localStorage).forEach(key => {
-    const firstSymbol = '#';
-    
-    if (key[0] === firstSymbol) {
-      cards.push(JSON.parse(localStorage.getItem(key)));
-    }
-  });
+  const cards = JSON.parse(localStorage.getItem('cards'));
   commit(types.INIT_CARD_DATA, cards);
 }
 
