@@ -33,8 +33,7 @@
 
     methods: {
       redirectToEditPage() {
-        const id = this.cardID.split('').splice(1).join('');
-        this.$router.push({path: `/edit-card/${id}`})
+        this.$router.push({path: `/edit-card/${this.cardID}`})
       }
     }
   };

@@ -1,8 +1,9 @@
 import * as types from './mutation-types.js';
+import _ from 'lodash/lang.js';
 
 function cardsDataInit({ commit }) {
   const cards = JSON.parse(localStorage.getItem('cards'));
-  commit(types.INIT_CARD_DATA, cards);
+  !_.isNull(cards) && commit(types.INIT_CARD_DATA, cards);
 }
 
 function addCardDataToStore({ commit, dispatch, getters }, data) {
@@ -42,11 +43,17 @@ function deleteCardDataFromStore({ commit, dispatch, state }, cardIdToDelete) {
 }
 
 function likeToggle({ commit, dispatch, state }, cardId) {
-  let storageData = JSON.parse(localStorage.getItem(cardId));
-  storageData.like = !storageData.like;
+  let storageData = JSON.parse(localStorage.getItem('cards'));
+  let exportObj = {};
+  storageData.forEach(el => {
+    if (el.id === cardId) {
+      exportObj = {...el};
+      exportObj.like = !exportObj.like;
+    }
+  });
   
-  dispatch('localStorage/addToLocalStorageByID', storageData, { root: true });
-  commit(types.LIKE_CARD, cardId)
+  dispatch('localStorage/addToLocalStorageByID', exportObj, { root: true });
+  // commit(types.LIKE_CARD, cardId)
 }
 
 export default {

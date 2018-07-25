@@ -65,7 +65,7 @@
 
         if (title !== '' && description !== '') {
           const storeData = {
-            id: this.cardData ? this.cardData.id : `#${getRandomID()}`,
+            id: this.cardData ? this.cardData.id : getRandomID(),
             order: this.cardData ? this.cardData.order : this.cards.length,
             title: title,
             description: description,

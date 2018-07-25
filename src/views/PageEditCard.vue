@@ -34,12 +34,8 @@
     },
 
     methods: {
-      redirectTo() {
-        this.$router.push({path: '/'});
-      },
-
       routeDataHandler() {
-        const card = this.getCardByID(`#${this.id}`);
+        const card = this.getCardByID(this.id);
 
         if (card) {
           this.cardData = {
@@ -50,7 +46,7 @@
           return;
         }
 
-        this.redirectTo();
+        this.$router.push({path: '/'});
       }
     },
 
