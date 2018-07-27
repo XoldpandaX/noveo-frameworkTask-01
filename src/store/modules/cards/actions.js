@@ -53,7 +53,7 @@ function likeToggle({ commit, dispatch, state }, cardId) {
   });
   
   dispatch('localStorage/addToLocalStorageByID', exportObj, { root: true });
-  // commit(types.LIKE_CARD, cardId)
+  commit(types.LIKE_CARD, cardId)
 }
 
 export default {
