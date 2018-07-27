@@ -9,19 +9,10 @@ export default {
     if (_.isNull(currentLocalStorage)) {
       localStorage.setItem('cards', JSON.stringify([data]));
     } else {
-      // currentLocalStorage.forEach((el, i, arr) => {
-      //   // if (el.id === data.id) {
-      //   //   arr.splice(i, 1, data);
-      //   // } else {
-      //   //   arr.push(data)
-      //   // }
-      //   //el.id === data.id ? arr.splice(i, 1, data) : arr.push(data);
-      // });
       const index = currentLocalStorage.findIndex(el => el.id === data.id);
-      index ? currentLocalStorage[index].push(data) : currentLocalStorage.push(data);
-      console.log(data);
-      // currentLocalStorage.push(data);
-      //localStorage.setItem('cards', JSON.stringify(currentLocalStorage));
+      index >= 0 ? currentLocalStorage.splice(index, 1, data) : currentLocalStorage.push(data);
+      
+      localStorage.setItem('cards', JSON.stringify(currentLocalStorage));
     }
   },
   
