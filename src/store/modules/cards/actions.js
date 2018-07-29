@@ -34,15 +34,6 @@ function addCardDataToStoreAfterEdit({ commit, state, dispatch }, cardData) {
   });
 }
 
-function deleteCardDataFromStore({ commit, dispatch, state }, cardIdToDelete) {
-  state.cards.forEach((el, i) => {
-    if (el.id === cardIdToDelete) {
-      commit(types.DELETE_CARD_DATA, i);
-      dispatch('localStorage/deleteFromLocalStorageByID', el.id, { root: true });
-    }
-  });
-}
-
 function likeToggle({ commit, dispatch, state }, cardId) {
   state.cards.forEach((el, i) => {
     if (el.id === cardId) {
@@ -54,6 +45,15 @@ function likeToggle({ commit, dispatch, state }, cardId) {
       
       localStorageInstance.addData(el, el.id);
       commit(types.SAVE_EDITED_CARD_DATA, sendData);
+    }
+  });
+}
+
+function deleteCardDataFromStore({ commit, dispatch, state }, cardIdToDelete) {
+  state.cards.forEach((el, i) => {
+    if (el.id === cardIdToDelete) {
+      commit(types.DELETE_CARD_DATA, i);
+      dispatch('localStorage/deleteFromLocalStorageByID', el.id, { root: true });
     }
   });
 }
