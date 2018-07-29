@@ -3,7 +3,8 @@ import localStorageInstance from '../../../services/localStorage.js';
 import _ from 'lodash/lang.js';
 
 function cardsDataInit({ commit }) {
-  const cards = JSON.parse(localStorage.getItem('cards'));
+  //const cards = JSON.parse(localStorage.getItem('cards'));
+  const cards = localStorageInstance.getData;
   !_.isNull(cards) && commit(types.INIT_CARD_DATA, cards);
 }
 
