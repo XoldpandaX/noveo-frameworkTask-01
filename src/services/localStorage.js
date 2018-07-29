@@ -42,7 +42,7 @@ class localStorageInstance {
   }
   
   get getData() {
-    return this._data;
+    return [...this._data];
   }
 }
 
