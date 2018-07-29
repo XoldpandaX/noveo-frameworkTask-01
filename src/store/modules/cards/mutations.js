@@ -3,6 +3,7 @@ import { sortByObjValue } from '../../../helpers/index.js';
 
 export default {
   [types.SAVE_CARD_DATA] (state, data) {
+    console.log(data);
     state.cards.push(data);
   },
   

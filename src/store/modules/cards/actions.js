@@ -1,4 +1,5 @@
 import * as types from './mutation-types.js';
+import localStorageInstance from '../../../services/localStorage.js';
 import _ from 'lodash/lang.js';
 
 function cardsDataInit({ commit }) {
@@ -9,7 +10,7 @@ function cardsDataInit({ commit }) {
 function addCardDataToStore({ commit, dispatch, getters }, data) {
   const isIdExist = getters.getCardByID(data.id);
   if (!isIdExist) {
-    dispatch('localStorage/addToLocalStorageByID', data, { root: true });
+    localStorageInstance.addData(data);
     commit(types.SAVE_CARD_DATA, data);
   } else {
     dispatch('addCardDataToStoreAfterEdit', data);
@@ -27,7 +28,7 @@ function addCardDataToStoreAfterEdit({ commit, state, dispatch }, cardData) {
         positionInCurrentState: i,
       };
       
-      dispatch('localStorage/addToLocalStorageByID', cardData, { root: true });
+      localStorageInstance.addData(cardData, cardData.id);
       commit(types.SAVE_EDITED_CARD_DATA, sendData);
     }
   });
@@ -43,17 +44,18 @@ function deleteCardDataFromStore({ commit, dispatch, state }, cardIdToDelete) {
 }
 
 function likeToggle({ commit, dispatch, state }, cardId) {
-  let storageData = JSON.parse(localStorage.getItem('cards'));
-  let exportObj = {};
-  storageData.forEach(el => {
+  state.cards.forEach((el, i) => {
     if (el.id === cardId) {
-      exportObj = {...el};
-      exportObj.like = !exportObj.like;
+      el.like = !el.like;
+      let sendData = {
+        cardData: el,
+        positionInCurrentState: i
+      };
+      
+      localStorageInstance.addData(el, el.id);
+      commit(types.SAVE_EDITED_CARD_DATA, sendData);
     }
   });
-  
-  dispatch('localStorage/addToLocalStorageByID', exportObj, { root: true });
-  commit(types.LIKE_CARD, cardId)
 }
 
 export default {
