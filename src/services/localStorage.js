@@ -33,6 +33,14 @@ class localStorageInstance {
     this[setNewData](this._key, currData);
   }
   
+  deleteData(id) {
+    const currData = this._data;
+    const index = this[getIndexOfDataById](currData, id);
+    
+    currData.splice(index, 1);
+    this[setNewData](this._key, currData);
+  }
+  
   get getData() {
     return this._data;
   }
