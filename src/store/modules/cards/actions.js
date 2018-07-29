@@ -53,7 +53,7 @@ function deleteCardDataFromStore({ commit, dispatch, state }, cardIdToDelete) {
   state.cards.forEach((el, i) => {
     if (el.id === cardIdToDelete) {
       commit(types.DELETE_CARD_DATA, i);
-      dispatch('localStorage/deleteFromLocalStorageByID', el.id, { root: true });
+      localStorageInstance.deleteData(cardIdToDelete);
     }
   });
 }
