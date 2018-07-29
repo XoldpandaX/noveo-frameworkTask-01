@@ -18,13 +18,5 @@ export default {
   
   [types.DELETE_CARD_DATA](state, cardIndex) {
     state.cards.splice(cardIndex, 1);
-  },
-  
-  [types.LIKE_CARD] (state, cardId) {
-    state.cards.forEach((el) => {
-      if (el.id === cardId) {
-        el.like = !el.like;
-      }
-    });
   }
 }
