@@ -1,4 +1,4 @@
-import _ from 'lodash/lang.js';
+import isNull from 'lodash/isNull.js';
 
 const getIndexOfDataById = Symbol('getIndexOfDataById');
 const setNewData = Symbol('setNewData');
@@ -12,7 +12,7 @@ class localStorageInstance {
   //static methods
   static dataInit(localStorageKey) {
     let localStorageData = JSON.parse(localStorage.getItem(localStorageKey));
-    return _.isNull(localStorageData) ? [] : localStorageData;
+    return isNull(localStorageData) ? [] : localStorageData;
   }
   
   //private methods
