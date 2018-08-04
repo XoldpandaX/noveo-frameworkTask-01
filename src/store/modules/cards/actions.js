@@ -19,45 +19,33 @@ function addCardDataToStore({ commit, dispatch, getters }, data) {
   }
 }
 
-function addCardDataToStoreAfterEdit({ commit, state, dispatch }, cardData) {
+function addCardDataToStoreAfterEdit({ commit, getters }, cardData) {
   const { id } = cardData;
+  const sendData = {
+    cardData,
+    currStatePosition: getters.getCardIndexByID(id)
+  };
   
-  state.cards.forEach((el, i) => {
-    if (el.id === id) {
-      
-      let sendData = {
-        cardData,
-        positionInCurrentState: i,
-      };
-      
-      LocalStorageProvider.setObjItemInArray('cards', cardData);
-      commit(types.SAVE_EDITED_CARD_DATA, sendData);
-    }
-  });
+  LocalStorageProvider.setObjItemInArray('cards', cardData);
+  commit(types.SAVE_EDITED_CARD_DATA, sendData);
 }
 
-function likeToggle({ commit, dispatch, state }, cardId) {
-  state.cards.forEach((el, i) => {
-    if (el.id === cardId) {
-      el.like = !el.like;
-      let sendData = {
-        cardData: el,
-        positionInCurrentState: i
-      };
+function likeToggle({ commit, getters }, cardId) {
+  const card = getters.getCardByID(cardId);
+  card.like = !card.like;
   
-      LocalStorageProvider.setObjItemInArray('cards', sendData.cardData);
-      commit(types.SAVE_EDITED_CARD_DATA, sendData);
-    }
-  });
+  const sendData = {
+    cardData: card,
+    currStatePosition: getters.getCardIndexByID(cardId)
+  };
+  
+  LocalStorageProvider.setObjItemInArray('cards', sendData.cardData);
+  commit(types.SAVE_EDITED_CARD_DATA, sendData);
 }
 
-function deleteCardDataFromStore({ commit, dispatch, state }, cardIdToDelete) {
-  state.cards.forEach((el, i) => {
-    if (el.id === cardIdToDelete) {
-      commit(types.DELETE_CARD_DATA, i);
-      LocalStorageProvider.removeObjItemFromArray('cards', cardIdToDelete);
-    }
-  });
+function deleteCardDataFromStore({ commit, getters }, cardId) {
+  commit(types.DELETE_CARD_DATA, getters.getCardIndexByID(cardId));
+  LocalStorageProvider.removeObjItemFromArray('cards', cardId);
 }
 
 export default {
