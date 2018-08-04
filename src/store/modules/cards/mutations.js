@@ -7,7 +7,7 @@ export default {
   },
   
   [types.SAVE_EDITED_CARD_DATA] (state, data) {
-    state.cards.splice(data.currStatePosition, 1, data.cardData);
+    state.cards.splice(data.currStatePosition, 1, data.card);
   },
   
   [types.INIT_CARD_DATA] (state, data) {

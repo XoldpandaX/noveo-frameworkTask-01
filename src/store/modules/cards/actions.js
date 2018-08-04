@@ -19,14 +19,13 @@ function addCardDataToStore({ commit, dispatch, getters }, data) {
   }
 }
 
-function addCardDataToStoreAfterEdit({ commit, getters }, cardData) {
-  const { id } = cardData;
+function addCardDataToStoreAfterEdit({ commit, getters }, card) {
   const sendData = {
-    cardData,
-    currStatePosition: getters.getCardIndexByID(id)
+    card,
+    currStatePosition: getters.getCardIndexByID(card.id)
   };
   
-  LocalStorageProvider.setObjItemInArray('cards', cardData);
+  LocalStorageProvider.setObjItemInArray('cards', card);
   commit(types.SAVE_EDITED_CARD_DATA, sendData);
 }
 
@@ -35,11 +34,11 @@ function likeToggle({ commit, getters }, cardId) {
   card.like = !card.like;
   
   const sendData = {
-    cardData: card,
+    card,
     currStatePosition: getters.getCardIndexByID(cardId)
   };
   
-  LocalStorageProvider.setObjItemInArray('cards', sendData.cardData);
+  LocalStorageProvider.setObjItemInArray('cards', card);
   commit(types.SAVE_EDITED_CARD_DATA, sendData);
 }
 
