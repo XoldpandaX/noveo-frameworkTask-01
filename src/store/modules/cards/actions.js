@@ -1,17 +1,18 @@
 import * as types from './mutation-types.js';
-import localStorageInstance from '../../../services/localStorage.js';
-import _ from 'lodash/lang.js';
+import LocalStorageProvider from '../../../services/localStorageProvider'
+import { isUndefined } from 'lodash';
 
 function cardsDataInit({ commit }) {
-  //const cards = JSON.parse(localStorage.getItem('cards'));
-  const cards = localStorageInstance.getData;
-  !_.isNull(cards) && commit(types.INIT_CARD_DATA, cards);
+  const cards = LocalStorageProvider.getItem('cards');
+  if (!isUndefined(cards) && cards.length !== 0) {
+    commit(types.INIT_CARD_DATA, LocalStorageProvider.getParseItem('cards'));
+  }
 }
 
 function addCardDataToStore({ commit, dispatch, getters }, data) {
   const isIdExist = getters.getCardByID(data.id);
   if (!isIdExist) {
-    localStorageInstance.addData(data);
+    LocalStorageProvider.setObjItemInArray('cards', data);
     commit(types.SAVE_CARD_DATA, data);
   } else {
     dispatch('addCardDataToStoreAfterEdit', data);
@@ -29,7 +30,7 @@ function addCardDataToStoreAfterEdit({ commit, state, dispatch }, cardData) {
         positionInCurrentState: i,
       };
       
-      localStorageInstance.addData(cardData, cardData.id);
+      LocalStorageProvider.setObjItemInArray('cards', cardData);
       commit(types.SAVE_EDITED_CARD_DATA, sendData);
     }
   });
@@ -43,8 +44,8 @@ function likeToggle({ commit, dispatch, state }, cardId) {
         cardData: el,
         positionInCurrentState: i
       };
-      
-      localStorageInstance.addData(el, el.id);
+  
+      LocalStorageProvider.setObjItemInArray('cards', sendData.cardData);
       commit(types.SAVE_EDITED_CARD_DATA, sendData);
     }
   });
@@ -54,7 +55,7 @@ function deleteCardDataFromStore({ commit, dispatch, state }, cardIdToDelete) {
   state.cards.forEach((el, i) => {
     if (el.id === cardIdToDelete) {
       commit(types.DELETE_CARD_DATA, i);
-      localStorageInstance.deleteData(cardIdToDelete);
+      LocalStorageProvider.removeObjItemFromArray('cards', cardIdToDelete);
     }
   });
 }
