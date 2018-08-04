@@ -5,7 +5,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import filters from './filters';
 import constants from './constants';
-import {store} from './store';
+import { store } from './store';
 
 // FILTERS
 Object.keys(filters).forEach(key => {
