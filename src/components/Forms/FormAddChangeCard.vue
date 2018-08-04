@@ -12,7 +12,7 @@
       span.add-change-card-form__counter {{ symbolsLeft }}/{{ maxSymbols }}
     .app-button__row
       button-card-delete(v-if="transform === 'edit-form'",
-                           :cardID="cardData.id") Delete
+                         :cardID="cardData.id") Delete
       button-card-save(:formDataToStore="formDataToStore") Save
 </template>
 <script>
