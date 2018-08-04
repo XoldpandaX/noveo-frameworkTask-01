@@ -29,7 +29,7 @@ function addCardDataToStoreAfterEdit({ commit, getters }, card) {
   commit(types.SAVE_EDITED_CARD_DATA, sendData);
 }
 
-function likeToggle({ commit, getters }, cardId) {
+function likeToggleCard({ commit, getters }, cardId) {
   const card = getters.getCardByID(cardId);
   card.like = !card.like;
   
@@ -51,6 +51,6 @@ export default {
   addCardDataToStore,
   deleteCardDataFromStore,
   cardsDataInit,
-  likeToggle,
+  likeToggleCard,
   addCardDataToStoreAfterEdit
 };
