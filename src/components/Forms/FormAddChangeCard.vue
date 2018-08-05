@@ -17,7 +17,7 @@
 </template>
 <script>
   import { mapGetters, mapActions } from 'vuex';
-  import { getRandomID } from '../../helpers/index.js';
+  import { uniqueId } from 'lodash';
   import ButtonCardSave from '../Buttons/ButtonCardSave.vue';
   import ButtonCardDelete from '../Buttons/ButtonCardDelete.vue';
 
@@ -65,7 +65,7 @@
 
         if (title !== '' && description !== '') {
           const storeData = {
-            id: this.cardData ? this.cardData.id : getRandomID(),
+            id: this.cardData ? this.cardData.id : uniqueId('cardId_'),
             order: this.cardData ? this.cardData.order : this.cards.length,
             title: title,
             description: description,
