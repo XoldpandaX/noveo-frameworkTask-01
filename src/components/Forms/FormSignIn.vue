@@ -76,7 +76,7 @@
 
           (every(checkResults)) && this.prepareAndSendConfirmData(checkResults);
         } else {
-          alert('Fill in all fields'); // add modal to show error
+          alert('Fill in all fields'); // TODO add modal for error
         }
       },
 
