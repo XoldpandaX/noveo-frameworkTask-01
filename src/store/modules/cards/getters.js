@@ -1,11 +1,5 @@
 export default {
   cards: state => state.cards,
-  
-  getCardByID: (state) => (id) => {
-    return state.cards.find(card => card.id === id);
-  },
-  
-  getCardIndexByID: (state) => (id) => {
-    return state.cards.findIndex(el => el.id === id);
-  }
+  cardByID: state => id => state.cards.find(card => card.id === id),
+  cardIndexByID: state => id => state.cards.findIndex(el => el.id === id)
 }

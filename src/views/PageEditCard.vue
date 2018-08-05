@@ -30,12 +30,12 @@
     },
 
     computed: {
-      ...mapGetters('cards', ['getCardByID'])
+      ...mapGetters('cards', ['cardByID'])
     },
 
     methods: {
       routeDataHandler() {
-        const card = this.getCardByID(this.id);
+        const card = this.cardByID(this.id);
 
         if (card) {
           this.cardData = {

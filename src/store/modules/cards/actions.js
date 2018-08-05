@@ -10,7 +10,7 @@ function cardsDataInit({ commit }) {
 }
 
 function addCardDataToStore({ commit, dispatch, getters }, data) {
-  const isIdExist = getters.getCardByID(data.id);
+  const isIdExist = getters.cardByID(data.id);
   if (!isIdExist) {
     LocalStorageProvider.setObjItemInArray('cards', data);
     commit(types.SAVE_CARD_DATA, data);
@@ -23,23 +23,23 @@ function addCardDataToStoreAfterEdit({ commit, getters }, card) {
   LocalStorageProvider.setObjItemInArray('cards', card);
   commit(types.SAVE_EDITED_CARD_DATA, {
     card,
-    currStatePosition: getters.getCardIndexByID(card.id)
+    currStatePosition: getters.cardIndexByID(card.id)
   });
 }
 
 function likeToggleCard({ commit, getters }, cardId) {
-  const card = getters.getCardByID(cardId);
+  const card = getters.cardByID(cardId);
   card.like = !card.like;
   
   LocalStorageProvider.setObjItemInArray('cards', card);
   commit(types.SAVE_EDITED_CARD_DATA, {
     card,
-    currStatePosition: getters.getCardIndexByID(cardId)
+    currStatePosition: getters.cardIndexByID(cardId)
   });
 }
 
 function deleteCardDataFromStore({ commit, getters }, cardId) {
-  commit(types.DELETE_CARD_DATA, getters.getCardIndexByID(cardId));
+  commit(types.DELETE_CARD_DATA, getters.cardIndexByID(cardId));
   LocalStorageProvider.removeObjItemFromArray('cards', cardId);
 }
 
