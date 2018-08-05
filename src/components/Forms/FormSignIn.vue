@@ -17,11 +17,11 @@
 
 <script>
   import {
-    checkObjectFieldsForTrueValue,
     objFieldByValue,
     capitaliseFirstLetter,
     isObjFieldsAreEmpty
   } from '../../helpers/index';
+  import { every } from 'lodash';
   import AppButton from '../AppButton.vue';
 
   export default {
@@ -74,8 +74,7 @@
           const checkResults = this.checkResults(this.fieldData);
           this.toggleErrors(checkResults);
 
-          (checkObjectFieldsForTrueValue(checkResults)) &&
-          this.prepareAndSendConfirmData(checkResults);
+          (every(checkResults)) && this.prepareAndSendConfirmData(checkResults);
         } else {
           alert('Fill in all fields'); // add modal to show error
         }
