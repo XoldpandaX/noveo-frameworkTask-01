@@ -19,10 +19,10 @@
   import {
     checkObjectFieldsForTrueValue,
     objFieldByValue,
-    isNumeric,
     capitaliseFirstLetter,
     isObjFieldsAreEmpty
   } from '../../helpers/index';
+  import { isFinite } from 'lodash';
   import { mapActions } from 'vuex';
   import AppButton from '../AppButton.vue';
 
@@ -48,7 +48,7 @@
         const { regExp } = this.rules.name;
         const name = objFieldByValue(this.fieldData, 'name', 'name');
         return(
-          !isNumeric(name)
+          !isFinite(name)
           && name.length >= this.rules.name.necessaryLength
           && !regExp.test(name)
         );
