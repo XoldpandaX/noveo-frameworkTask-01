@@ -1,5 +1,5 @@
 import * as types from './mutation-types';
-import { sortByObjValue } from '../../../helpers/index.js';
+import { sortBy } from 'lodash';
 
 export default {
   [types.SAVE_CARD_DATA] (state, data) {
@@ -11,7 +11,7 @@ export default {
   },
   
   [types.INIT_CARD_DATA] (state, data) {
-    state.cards = data.sort(sortByObjValue('order'));
+    state.cards = sortBy(data, ['order']);
   },
   
   [types.DELETE_CARD_DATA](state, cardIndex) {
