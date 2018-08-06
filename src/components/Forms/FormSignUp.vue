@@ -40,33 +40,35 @@
 
       checkName() {
         const { regExp } = this.rules.name;
-        const name = find(this.fieldData, el => el.name === 'name');
+        const name = this.findFormValueByName('name');
         return(
-          !isFinite(name.value)
-          && name.value.length >= this.rules.name.necessaryLength
-          && !regExp.test(name.value)
+          !isFinite(name)
+          && name.length >= this.rules.name.necessaryLength
+          && !regExp.test(name)
         );
       },
 
       checkEmail() {
         const { regExp } = this.rules.email;
-        const email = find(this.fieldData, el => el.name === 'email');
-        return regExp.test(email.value);
+        return regExp.test(this.findFormValueByName('email'));
       },
 
       checkPassword() {
-        const password = find(this.fieldData, el => el.name === 'password');
-        return password.value.length >= this.rules.password.necessaryLength;
+        return this.findFormValueByName('password').length >= this.rules.password.necessaryLength;
       },
 
       checkPasswordEquality() {
-        const currentPassword = find(this.fieldData, el => el.name === 'password');
-        const confirmPassword = find(this.fieldData, el => el.name === 'confirmPassword');
+        const currentPassword = this.findFormValueByName('password');
+        const confirmPassword = this.findFormValueByName('confirmPassword');
         return(
-          currentPassword.value !== ''
+          currentPassword!== ''
           && this.checkPassword()
-          && currentPassword.value === confirmPassword.value
+          && currentPassword === confirmPassword
         );
+      },
+
+      findFormValueByName(name) {
+        return find(this.fieldData, el => el.name === name).value;
       },
 
       checkResults(arrOfFields) {
