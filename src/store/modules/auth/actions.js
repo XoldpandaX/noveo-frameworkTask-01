@@ -3,7 +3,7 @@ import auth from '../../../api/auth.requests.js'
 
 async function registerUser({ commit }, userData) {
   try {
-    //const { data } = await auth.registerUser(userData);
+    const { data } = await auth.registerUser(userData);
     console.log(data);
   } catch(err) {
     console.log(err);
