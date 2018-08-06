@@ -16,12 +16,7 @@
 </template>
 
 <script>
-  import {
-    objFieldByValue,
-    capitaliseFirstLetter,
-    isObjFieldsAreEmpty
-  } from '../../helpers/index';
-  import { every } from 'lodash';
+  import { every, some, capitalize, find } from 'lodash';
   import AppButton from '../AppButton.vue';
 
   export default {
@@ -42,20 +37,20 @@
     methods: {
       checkEmail() {
         const { regExp } = this.rules.email;
-        const email = objFieldByValue(this.fieldData, 'name', 'email');
-        return regExp.test(email);
+        const email = find(this.fieldData, el => el.name === 'email');
+        return regExp.test(email.value);
       },
 
       checkPassword() {
-        const password = objFieldByValue(this.fieldData, 'name', 'password');
-        return password.length >= this.rules.password.necessaryLength;
+        const password = find(this.fieldData, el => el.name === 'password');
+        return password.value.length >= this.rules.password.necessaryLength;
       },
 
       checkResults(arrOfFields) {
         let checkResults = {};
 
         arrOfFields.forEach(el => {
-          let functionName = `check${capitaliseFirstLetter(el.name)}`;
+          let functionName = `check${capitalize(el.name)}`;
           el.name !== 'confirmPassword' ?
             checkResults[el.name] = this[functionName]() :
             checkResults[el.name] = this.checkPasswordEquality();
@@ -70,7 +65,7 @@
       },
 
       confirmForm() {
-        if (!isObjFieldsAreEmpty(this.fieldData, 'value')) {
+        if (!some(this.fieldData, ['value', ''])) {
           const checkResults = this.checkResults(this.fieldData);
           this.toggleErrors(checkResults);
 

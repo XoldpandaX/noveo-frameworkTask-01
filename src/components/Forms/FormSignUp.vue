@@ -16,13 +16,7 @@
 </template>
 
 <script>
-  import {
-    checkObjectFieldsForTrueValue,
-    objFieldByValue,
-    capitaliseFirstLetter,
-    isObjFieldsAreEmpty
-  } from '../../helpers/index';
-  import { isFinite } from 'lodash';
+  import { isFinite, some, capitalize, find } from 'lodash';
   import { mapActions } from 'vuex';
   import AppButton from '../AppButton.vue';
 
@@ -46,32 +40,32 @@
 
       checkName() {
         const { regExp } = this.rules.name;
-        const name = objFieldByValue(this.fieldData, 'name', 'name');
+        const name = find(this.fieldData, el => el.name === 'name');
         return(
-          !isFinite(name)
-          && name.length >= this.rules.name.necessaryLength
-          && !regExp.test(name)
+          !isFinite(name.value)
+          && name.value.length >= this.rules.name.necessaryLength
+          && !regExp.test(name.value)
         );
       },
 
       checkEmail() {
         const { regExp } = this.rules.email;
-        const email = objFieldByValue(this.fieldData, 'name', 'email');
-        return regExp.test(email);
+        const email = find(this.fieldData, el => el.name === 'email');
+        return regExp.test(email.value);
       },
 
       checkPassword() {
-        const password = objFieldByValue(this.fieldData, 'name', 'password');
-        return password.length >= this.rules.password.necessaryLength;
+        const password = find(this.fieldData, el => el.name === 'password');
+        return password.value.length >= this.rules.password.necessaryLength;
       },
 
       checkPasswordEquality() {
-        const currentPassword = objFieldByValue(this.fieldData, 'name', 'password');
-        const confirmPassword = objFieldByValue(this.fieldData, 'name', 'confirmPassword');
+        const currentPassword = find(this.fieldData, el => el.name === 'password');
+        const confirmPassword = find(this.fieldData, el => el.name === 'confirmPassword');
         return(
-          currentPassword !== ''
+          currentPassword.value !== ''
           && this.checkPassword()
-          && currentPassword === confirmPassword
+          && currentPassword.value === confirmPassword.value
         );
       },
 
@@ -79,7 +73,7 @@
         let checkResults = {};
 
         arrOfFields.forEach(el => {
-          let functionName = `check${capitaliseFirstLetter(el.name)}`;
+          let functionName = `check${capitalize(el.name)}`;
           el.name !== 'confirmPassword' ?
             checkResults[el.name] = this[functionName]() :
             checkResults[el.name] = this.checkPasswordEquality();
@@ -94,12 +88,11 @@
       },
 
       confirmForm() {
-        if (!isObjFieldsAreEmpty(this.fieldData, 'value')) {
+        if (!some(this.fieldData, ['value', ''])) {
           const checkResults = this.checkResults(this.fieldData);
           this.toggleErrors(checkResults);
 
-          (checkObjectFieldsForTrueValue(checkResults)) &&
-          this.prepareAndSendConfirmData(checkResults);
+          (isFinite(checkResults)) && this.prepareAndSendConfirmData(checkResults);
         } else {
           alert('Fill in all fields'); // add modal to show error
         }
