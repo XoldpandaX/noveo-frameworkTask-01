@@ -17,6 +17,7 @@
 
 <script>
   import { every, some, capitalize, find } from 'lodash';
+  import { mapActions } from 'vuex';
   import AppButton from '../AppButton.vue';
 
   export default {
@@ -35,6 +36,8 @@
     },
 
     methods: {
+      ...mapActions('auth', ['registerUser']),
+
       checkEmail() {
         const { regExp } = this.rules.email;
         return regExp.test(this.findFormValueByName('email'));
@@ -68,10 +71,9 @@
 
       confirmForm() {
         if (!some(this.fieldData, ['value', ''])) {
-          const checkResults = this.checkResults(this.fieldData);
-          this.toggleErrors(checkResults);
-
-          (every(checkResults)) && this.prepareAndSendConfirmData(checkResults);
+          const results = this.checkResults(this.fieldData);
+          this.toggleErrors(results);
+          (every(results)) && this.prepareAndSendConfirmData(results);
         } else {
           alert('Fill in all fields'); // TODO add modal for error
         }

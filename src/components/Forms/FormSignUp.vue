@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import { isFinite, some, capitalize, find } from 'lodash';
+  import { isFinite, every, some, capitalize, find } from 'lodash';
   import { mapActions } from 'vuex';
   import AppButton from '../AppButton.vue';
 
@@ -91,10 +91,10 @@
 
       confirmForm() {
         if (!some(this.fieldData, ['value', ''])) {
-          const checkResults = this.checkResults(this.fieldData);
-          this.toggleErrors(checkResults);
+          const results = this.checkResults(this.fieldData);
+          this.toggleErrors(results);
 
-          (isFinite(checkResults)) && this.prepareAndSendConfirmData(checkResults);
+          (every(results)) && this.prepareAndSendConfirmData(results);
         } else {
           alert('Fill in all fields'); // add modal to show error
         }
