@@ -37,13 +37,15 @@
     methods: {
       checkEmail() {
         const { regExp } = this.rules.email;
-        const email = find(this.fieldData, el => el.name === 'email');
-        return regExp.test(email.value);
+        return regExp.test(this.findFormValueByName('email'));
       },
 
       checkPassword() {
-        const password = find(this.fieldData, el => el.name === 'password');
-        return password.value.length >= this.rules.password.necessaryLength;
+        return this.findFormValueByName('password').length >= this.rules.password.necessaryLength;
+      },
+
+      findFormValueByName(name) {
+        return find(this.fieldData, el => el.name === name).value;
       },
 
       checkResults(arrOfFields) {
