@@ -7,6 +7,8 @@ export default {
   },
   
   loginUser(userData) {
-    return Vue.axios.post(api.auth.login, userData);
+    return Vue.axios.post(api.auth.login, userData).catch((error) => {
+      alert(error.response.data.errors);
+    });
   }
 };
