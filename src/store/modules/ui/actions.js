@@ -1,6 +1,4 @@
 import * as types from './mutation-types.js';
-import { defaultState } from "./const";
-import Vue from "vue";
 
 function closeAllModals({ commit }) {
   commit(types.CLOSE_ALL_MODALS);
