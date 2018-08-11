@@ -17,7 +17,12 @@ function showModal({ commit }, modalId) {
   }
 }
 
+function toggleLoader({ commit }) {
+  commit(types.TOGGLE_LOADER);
+}
+
 export default {
   closeAllModals,
-  showModal
+  showModal,
+  toggleLoader
 };

@@ -7,5 +7,9 @@ export default {
   
   [types.CLOSE_ALL_MODALS] (state) {
     state.modals = [];
+  },
+  
+  [types.TOGGLE_LOADER] (state) {
+    state.isLoaderActive = !state.isLoaderActive;
   }
 }
