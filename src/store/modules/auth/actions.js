@@ -27,8 +27,9 @@ async function loginUser({ commit, dispatch }, userData) {
   }
 }
 
-async function getLoginUserData({ commit }) {
+async function getLoginUserData({ commit, dispatch }) {
   const { data: { data } } = await auth.getCurrentUserData();
+  dispatch('ui/changeNavigation', 'user', { root: true });
   commit(types.SAVE_USER_DATA, { ...data.user });
 }
 

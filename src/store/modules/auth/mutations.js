@@ -19,5 +19,6 @@ export default {
     for (let key in defaultState) {
       Vue.set(state, key, defaultState[key]);
     }
+    //replaceState(state, defaultState)
   }
 }

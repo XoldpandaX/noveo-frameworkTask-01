@@ -1,4 +1,6 @@
 import * as types from './mutation-types.js';
+import { defaultState } from "./const";
+import Vue from "vue";
 
 function closeAllModals({ commit }) {
   commit(types.CLOSE_ALL_MODALS);
@@ -21,8 +23,13 @@ function toggleLoader({ commit }) {
   commit(types.TOGGLE_LOADER);
 }
 
+function changeNavigation({ commit }, userRole) {
+  commit(types.CHANGE_NAVIGATION, userRole);
+}
+
 export default {
   closeAllModals,
   showModal,
-  toggleLoader
+  toggleLoader,
+  changeNavigation
 };
