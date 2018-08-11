@@ -34,6 +34,8 @@ async function getLoginUserData({ commit }) {
 
 async function logout({ commit }) {
   commit(types.LOGOUT);
+  LocalStorageProvider.removeItem('token');
+  delete Vue.axios.defaults.headers.common['Authorization'];
 }
 
 export default {

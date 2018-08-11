@@ -1,6 +1,5 @@
 import * as types from './mutation-types';
 import Vue from 'vue';
-import LocalStorageProvider from '../../../services/localStorageProvider.js';
 import { defaultState } from './const.js';
 
 export default {
@@ -14,7 +13,6 @@ export default {
   },
   
   [types.LOGOUT] (state) {
-    LocalStorageProvider.removeItem('token');
     for (let key in defaultState) {
       Vue.set(state, key, defaultState[key]);
     }
