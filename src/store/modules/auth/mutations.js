@@ -1,6 +1,11 @@
 import * as types from './mutation-types';
-import { sortByObjValue } from '../../../helpers/index.js';
 
 export default {
-
+  [types.HANDLE_LOGIN] (state, token) {
+    state.token = token;
+  },
+  
+  [types.SAVE_USER_DATA] (state, userData) {
+    state.user = userData;
+  }
 }

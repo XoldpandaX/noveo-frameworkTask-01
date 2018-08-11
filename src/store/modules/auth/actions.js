@@ -1,4 +1,5 @@
 import * as types from './mutation-types.js';
+import Vue from 'vue';
 import auth from '../../../api/auth.requests.js';
 import LocalStorageProvider from '../../../services/localStorageProvider.js';
 
@@ -11,12 +12,13 @@ async function registerUser({ commit }, userData) {
   }
 }
 
-async function loginUser({ commit }, userData) {
+async function loginUser({ commit, dispatch }, userData) {
   try {
-    const { data } = await auth.loginUser(userData);
-    const { token } = data.data;
+    const { data: { data: { token } } } = await auth.loginUser(userData);
     LocalStorageProvider.setItem('token', token);
-    
+    commit(types.HANDLE_LOGIN, token);
+    Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+    dispatch('getLoginUserData', token);
     return true;
   } catch(err) {
     LocalStorageProvider.removeItem('token');
@@ -25,7 +27,13 @@ async function loginUser({ commit }, userData) {
   }
 }
 
+async function getLoginUserData({ commit }) {
+  const { data: { data } } = await auth.getCurrentUserData();
+  commit(types.SAVE_USER_DATA, { ...data.user });
+}
+
 export default {
   registerUser,
-  loginUser
+  loginUser,
+  getLoginUserData
 };
