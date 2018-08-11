@@ -1,4 +1,4 @@
 export default {
-  //isAuthenticated: state => state.token.length,
+  isAuthenticated: state => !!state.status,
   authStatus: state => state.status
 }
