@@ -9,6 +9,9 @@ export default {
   },
   
   [types.SAVE_USER_DATA] (state, userData) {
+    if (state.status !== 'authorized') {
+      state.status = 'authorized';
+    }
     state.user = userData;
   },
   

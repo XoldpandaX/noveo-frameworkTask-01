@@ -70,14 +70,14 @@ export default {
         type: 'email',
         placeholder: 'Email',
         autocomplete: 'foo',
-        value: ''
+        value: 'first@noveogroup.com'
       },
       {
         name: 'password',
         type: 'password',
         placeholder: 'Password',
         autocomplete: 'foo',
-        value: ''
+        value: 'password'
       }
     ],
     fieldRules: {
