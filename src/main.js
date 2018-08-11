@@ -6,6 +6,7 @@ import VueAxios from 'vue-axios'
 import filters from './filters';
 import constants from './constants';
 import { store } from './store';
+import LocalStorageProvider from './services/localStorageProvider'
 
 // FILTERS
 Object.keys(filters).forEach(key => {
@@ -30,6 +31,11 @@ const axiosConfig = axios.create({
 });
 
 Vue.use(VueAxios, axiosConfig);
+const token = LocalStorageProvider.getItem('token');
+if (token) {
+  Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+}
+
 
 new Vue({
   router,
