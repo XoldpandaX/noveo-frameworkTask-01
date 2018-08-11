@@ -36,7 +36,7 @@
     },
 
     methods: {
-      ...mapActions('auth', ['registerUser']),
+      ...mapActions('auth', ['loginUser']),
 
       checkEmail() {
         const { regExp } = this.rules.email;
@@ -86,7 +86,11 @@
             sendData[el.name] = el.value;
           }
         });
-        this.registerUser(JSON.stringify(sendData)); // vuex action
+        this.loginUser(JSON.stringify(sendData)).then((success) => {
+          if (success) {
+            this.$router.push('/');
+          }
+        }); // vuex action
       }
     },
 
