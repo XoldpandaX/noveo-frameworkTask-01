@@ -1,5 +1,6 @@
 export default {
   auth: {
-    register: '/register'
+    register: '/register',
+    login: '/login'
   }
 };
