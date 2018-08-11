@@ -3,6 +3,7 @@
     container-header
     main-layout
     container-modal-wrapper
+    loader
 </template>
 
 <script>
@@ -10,6 +11,7 @@
   import MainLayout from './components/Base/MainLayout.vue';
   import ContainerModalWrapper from './containers/ModalContainer/ContainerModalWrapper.vue';
   import ContainerHeader from './containers/HeaderContainer/ContainerHeader.vue';
+  import Loader from './components/Loaders/Loader.vue';
 
   export default {
     name: 'app',
@@ -17,7 +19,8 @@
     components: {
       MainLayout,
       ContainerModalWrapper,
-      ContainerHeader
+      ContainerHeader,
+      Loader
     },
 
     methods: {
