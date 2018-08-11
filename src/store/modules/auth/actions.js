@@ -32,8 +32,13 @@ async function getLoginUserData({ commit }) {
   commit(types.SAVE_USER_DATA, { ...data.user });
 }
 
+async function logout({ commit }) {
+  commit(types.LOGOUT);
+}
+
 export default {
   registerUser,
   loginUser,
-  getLoginUserData
+  getLoginUserData,
+  logout
 };
