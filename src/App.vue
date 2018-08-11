@@ -12,6 +12,7 @@
   import ContainerModalWrapper from './containers/ModalContainer/ContainerModalWrapper.vue';
   import ContainerHeader from './containers/HeaderContainer/ContainerHeader.vue';
   import Loader from './components/Loaders/Loader.vue';
+  import LocalStorageProvider from './services/localStorageProvider'
 
   export default {
     name: 'app',
@@ -25,10 +26,22 @@
 
     methods: {
       ...mapActions('cards', ['cardsDataInit']),
-      ...mapActions('ui', ['showModal'])
+      ...mapActions('ui', ['showModal', 'toggleLoader']),
+      ...mapActions('auth', ['getLoginUserData']),
+
+      getUserData() {
+        this.toggleLoader();
+        this.getLoginUserData().then(() => {
+          this.toggleLoader();
+        });
+      }
     },
 
     created() {
+      if (LocalStorageProvider.getItem('token')) {
+        this.getUserData();
+      }
+
       this.cardsDataInit();
       setTimeout(() => {
         this.showModal('first-load-modal');
