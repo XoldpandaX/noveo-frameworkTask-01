@@ -1,22 +1,57 @@
 <template lang="pug">
   nav.navigation
     ul
-      router-link(v-for="el in navigation",
-                  :key="el.id",
-                  :to="el.route",
-                  tag="li",
-                  class="navigation__element") {{ el.title }}
-        div.navigation__icon(:class="el.iconClass")
+      template(v-if="userRole === 'user'")
+        li(v-for="el in navigation",
+           :key="el.id",
+           @click="switchActions(el.action)",
+           class="navigation__element") {{ el.title }}
+          div.navigation__icon(:class="el.iconClass")
+      template(v-else)
+        router-link(v-for="el in navigation",
+                    :key="el.id",
+                    :to="el.route !== '' ? el.route : ''",
+                    tag="li",
+                    class="navigation__element") {{ el.title }}
+          div.navigation__icon(:class="el.iconClass")
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+  import { mapGetters, mapActions } from 'vuex';
 
   export default {
     name: 'Navigation',
 
     computed: {
-      ...mapGetters('ui', ['navigation'])
+      ...mapGetters('ui', ['navigation']),
+      ...mapGetters('auth', ['userRole']),
+    },
+
+    methods: {
+      ...mapActions('auth', ['logout']),
+      ...mapActions('ui', ['changeNavigation']),
+
+      switchActions(action) {
+        switch(action) {
+          case 'exit':
+            this.exit();
+            break;
+          case 'profile':
+            this.showProfile();
+            break;
+        }
+      },
+
+      exit() {
+        this.logout().then(() => {
+          this.changeNavigation();
+          this.$router.push('/');
+        });
+      },
+
+      showProfile() {
+        console.log('profile');
+      }
     }
   };
 </script>
