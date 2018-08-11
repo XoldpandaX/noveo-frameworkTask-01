@@ -37,6 +37,7 @@
 
     methods: {
       ...mapActions('auth', ['loginUser']),
+      ...mapActions('ui', ['toggleLoader']),
 
       checkEmail() {
         const { regExp } = this.rules.email;
@@ -86,10 +87,13 @@
             sendData[el.name] = el.value;
           }
         });
+
+        this.toggleLoader();
         this.loginUser(JSON.stringify(sendData)).then((success) => {
           if (success) {
             this.$router.push('/');
           }
+          this.toggleLoader();
         }); // vuex action
       }
     },
