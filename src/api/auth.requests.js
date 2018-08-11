@@ -10,5 +10,9 @@ export default {
     return Vue.axios.post(api.auth.login, userData).catch((error) => {
       alert(error.response.data.errors);
     });
+  },
+  
+  getCurrentUserData() {
+    return Vue.axios.get(api.auth.currentUser);
   }
 };
