@@ -17,6 +17,7 @@ export default {
     {
       id: 0,
       title: 'my profile',
+      action: 'profile',
       iconClass: '-violet'
     },
     {
