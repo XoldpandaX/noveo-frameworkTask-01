@@ -24,12 +24,12 @@
 
     computed: {
       ...mapGetters('ui', ['navigation']),
-      ...mapGetters('auth', ['userRole']),
+      ...mapGetters('auth', ['userRole'])
     },
 
     methods: {
       ...mapActions('auth', ['logout']),
-      ...mapActions('ui', ['changeNavigation']),
+      ...mapActions('ui', ['changeNavigation', 'showModal']),
 
       switchActions(action) {
         switch(action) {
@@ -37,7 +37,7 @@
             this.exit();
             break;
           case 'profile':
-            this.showProfile();
+            this.showModal('profile-modal');
             break;
         }
       },
@@ -47,10 +47,6 @@
           this.changeNavigation();
           this.$router.push('/');
         });
-      },
-
-      showProfile() {
-        console.log('profile');
       }
     }
   };
