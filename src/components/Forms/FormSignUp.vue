@@ -31,7 +31,8 @@
       return {
         fieldData: [],
         rules: {},
-        errors: {}
+        errors: {},
+        successModalDelay: 800 // delay before show success register modal
       };
     },
 
@@ -107,8 +108,16 @@
             sendData[el.name] = el.value;
           }
         });
-        this.registerUser(JSON.stringify(sendData)); // vuex action
-      },
+
+        this.registerUser(JSON.stringify(sendData)).then((response) => {
+          if (response) {
+            this.$router.push('/sign-in');
+            setTimeout(() => {
+              console.log('denis');
+            }, this.successModalDelay);
+          }
+        });
+      }
     },
 
     created() {
@@ -116,6 +125,23 @@
       this.fieldData = inputs;
       this.rules = fieldRules;
       this.errors = errors;
+    },
+
+    beforeDestroy() {
+      // убираем поле value из константы
+      for (let key in this.$appConstants.forms.signUp) {
+        switch(key) {
+          case 'inputs':
+            const { inputs } = this.$appConstants.forms.signUp;
+            inputs.forEach(el => el.value = '');
+            break;
+          case 'errors':
+            const { errors } = this.$appConstants.forms.signUp;
+            for (let key in errors) {
+              errors[key].error = false;
+            }
+        }
+      }
     }
   };
 </script>
