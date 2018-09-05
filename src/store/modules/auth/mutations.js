@@ -12,7 +12,24 @@ export default {
     if (state.status !== 'authorized') {
       state.status = 'authorized';
     }
-    state.user = userData;
+    
+    const {
+      name,
+      email,
+      id,
+      role,
+      created_at: { date: createdDate },
+      updated_at: { date: updatedDate }
+    } = userData;
+  
+    state.user = {
+      id,
+      email,
+      name,
+      role,
+      register: createdDate,
+      updated: updatedDate
+    }
   },
   
   [types.LOGOUT] (state) {
