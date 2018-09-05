@@ -31,10 +31,23 @@ const axiosConfig = axios.create({
 });
 
 Vue.use(VueAxios, axiosConfig);
+
+// token exist logic
 const token = LocalStorageProvider.getItem('token');
 if (token) {
   Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 }
+
+// axios reject, response interceptors
+const handleSuccess = (response) => {
+  return response;
+};
+
+const handleError = (error) => {
+  //console.log(error.response.data.errors); // errorText
+  console.log(error.response);
+};
+axiosConfig.interceptors.response.use(handleSuccess, handleError);
 
 
 new Vue({
