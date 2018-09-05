@@ -5,10 +5,10 @@ import LocalStorageProvider from '../../../services/localStorageProvider.js';
 
 async function registerUser({ commit }, userData) {
   try {
-    const { data } = await auth.registerUser(userData);
-    console.log(data);
+    await auth.registerUser(userData);
+    return true;
   } catch(err) {
-    console.log(err);
+    return false;
   }
 }
 
