@@ -128,15 +128,16 @@
     },
 
     beforeDestroy() {
-      // убираем поле value из константы
       for (let key in this.$appConstants.forms.signUp) {
         switch(key) {
           case 'inputs':
             const { inputs } = this.$appConstants.forms.signUp;
+            // очищаем данные поля input из константы
             inputs.forEach(el => el.value = '');
             break;
           case 'errors':
             const { errors } = this.$appConstants.forms.signUp;
+            // очищаем данные поля error из константы
             for (let key in errors) {
               errors[key].error = false;
             }
