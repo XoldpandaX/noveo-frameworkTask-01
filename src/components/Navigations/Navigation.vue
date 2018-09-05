@@ -1,7 +1,7 @@
 <template lang="pug">
   nav.navigation
     ul
-      template(v-if="userRole === 'user'")
+      template(v-if="userRole === 'user' || userRole === 'admin'")
         li(v-for="el in navigation",
            :key="el.id",
            @click="switchActions(el.action)",
