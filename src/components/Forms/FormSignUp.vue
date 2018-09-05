@@ -29,9 +29,9 @@
 
     data() {
       return {
-        fieldData: [],
-        rules: {},
-        errors: {},
+        fieldData: [ ...this.$appConstants.forms.signUp.inputs ],
+        rules: { ...this.$appConstants.forms.signUp.fieldRules },
+        errors: { ...this.$appConstants.forms.signUp.errors },
         successModalDelay: 800 // delay before show success register modal
       };
     },
@@ -118,13 +118,6 @@
           }
         });
       }
-    },
-
-    created() {
-      const { inputs, fieldRules, errors } = this.$appConstants.forms.signUp;
-      this.fieldData = inputs;
-      this.rules = fieldRules;
-      this.errors = errors;
     },
 
     beforeDestroy() {
