@@ -19,6 +19,9 @@ export default {
       case 'user':
         state.navigationBar = CONSTANTS.navigationElements.userNav;
         break;
+      case 'admin':
+        state.navigationBar = CONSTANTS.navigationElements.userNav;
+        break;
       default:
         state.navigationBar = CONSTANTS.navigationElements.defaultNav;
     }
