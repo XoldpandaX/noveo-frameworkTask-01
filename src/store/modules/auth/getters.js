@@ -3,13 +3,13 @@ export default {
   authStatus: state => state.status,
   userRole: state => state.user.role,
   userData: state => {
-    const { email, id, name, role, created_at: { date } } = state.user;
+    const { email, id, name, role, created_at }  = state.user;
     return {
       id,
       email,
       name,
       role,
-      date
+      created_at
     }
   }
 }
