@@ -29,9 +29,9 @@
 
     data() {
       return {
-        fieldData: [],
-        rules: {},
-        errors: {}
+        fieldData: [ ...this.$appConstants.forms.signIn.inputs ],
+        rules: { ...this.$appConstants.forms.signIn.fieldRules },
+        errors: { ...this.$appConstants.forms.signIn.errors }
       };
     },
 
@@ -76,7 +76,7 @@
           this.toggleErrors(results);
           (every(results)) && this.prepareAndSendConfirmData(results);
         } else {
-          alert('Fill in all fields'); // TODO add modal for error
+          alert('Fill in all fields');
         }
       },
 
@@ -98,11 +98,24 @@
       }
     },
 
-    created() {
-      const { inputs, fieldRules, errors } = this.$appConstants.forms.signIn;
-      this.fieldData = inputs;
-      this.rules = fieldRules;
-      this.errors = errors;
+    beforeDestroy() {
+      const signInFromData = this.$appConstants.forms.signIn;
+
+      for (let key in signInFromData) {
+        switch(key) {
+          case 'inputs':
+            const { inputs } = signInFromData;
+            // очищаем данные поля input из константы
+            inputs.forEach(el => el.value = '');
+            break;
+          case 'errors':
+            const { errors } = signInFromData;
+            // очищаем данные поля error из константы
+            for (let key in errors) {
+              errors[key].error = false;
+            }
+        }
+      }
     }
   }
 </script>
