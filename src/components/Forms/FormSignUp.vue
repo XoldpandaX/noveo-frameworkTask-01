@@ -109,12 +109,11 @@
           }
         });
 
-        this.registerUser(JSON.stringify(sendData)).then((response) => {
-          if (response) {
+        this.registerUser(JSON.stringify(sendData)).then((successEmail) => {
+          if (successEmail) {
+            // присваиваем значение зарегестрированного email, input email в форме входа
+            this.$appConstants.forms.signIn.inputs[0].value = successEmail;
             this.$router.push('/sign-in');
-            setTimeout(() => {
-              console.log('denis');
-            }, this.successModalDelay);
           }
         });
       }
