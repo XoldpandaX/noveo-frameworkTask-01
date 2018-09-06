@@ -38,14 +38,15 @@ if (token) {
   Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 }
 
-// axios reject, response interceptors
+// axios [reject/response] interceptors
 const handleSuccess = (response) => {
   return response;
 };
 
 const handleError = (error) => {
-  //console.log(error.response.data.errors); // errorText
-  console.log(error.response);
+  console.log(error.response.data.errors); // errorText
+  console.log(error.response.status); // error status
+  
 };
 axiosConfig.interceptors.response.use(handleSuccess, handleError);
 
