@@ -17,6 +17,14 @@ function showModal({ commit }, modalId) {
   }
 }
 
+function showNotification({ commit }, notificationObj) {
+  commit(types.SHOW_NOTIFICATION, notificationObj);
+}
+
+function hideNotification({ commit }, notificationIndex) {
+  commit(types.HIDE_NOTIFICATION, notificationIndex);
+}
+
 function toggleLoader({ commit }) {
   commit(types.TOGGLE_LOADER);
 }
@@ -28,6 +36,8 @@ function changeNavigation({ commit }, userRole) {
 export default {
   closeAllModals,
   showModal,
+  showNotification,
+  hideNotification,
   toggleLoader,
   changeNavigation
 };

@@ -10,6 +10,14 @@ export default {
     state.modals = [];
   },
   
+  [types.SHOW_NOTIFICATION] (state, notificationObj) {
+    state.notifications.push(notificationObj);
+  },
+  
+  [types.HIDE_NOTIFICATION] (state, notificationIndex) {
+    state.notifications.splice(notificationIndex, 1);
+  },
+  
   [types.TOGGLE_LOADER] (state) {
     state.isLoaderActive = !state.isLoaderActive;
   },
