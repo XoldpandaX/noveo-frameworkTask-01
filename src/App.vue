@@ -4,15 +4,17 @@
     main-layout
     container-modal-wrapper
     loader
+    notification-service
 </template>
 
 <script>
   import { mapActions } from 'vuex';
+  import LocalStorageProvider from './services/localStorageProvider'
   import MainLayout from './components/Base/MainLayout.vue';
   import ContainerModalWrapper from './containers/ModalContainer/ContainerModalWrapper.vue';
   import ContainerHeader from './containers/HeaderContainer/ContainerHeader.vue';
   import Loader from './components/Loaders/Loader.vue';
-  import LocalStorageProvider from './services/localStorageProvider'
+  import NotificationService from './components/Notifications/NotificationService.vue';
 
   export default {
     name: 'app',
@@ -21,7 +23,8 @@
       MainLayout,
       ContainerModalWrapper,
       ContainerHeader,
-      Loader
+      Loader,
+      NotificationService
     },
 
     methods: {

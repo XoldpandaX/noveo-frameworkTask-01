@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
+  import { mapActions, mapGetters } from 'vuex';
   import NotificationElement from './NotificationElement.vue';
 
   export default {
@@ -19,11 +19,8 @@
       NotificationElement
     },
 
-    props: {
-      notifications: {
-        type: Array,
-        required: true
-      }
+    computed: {
+      ...mapGetters('ui', ['notifications'])
     },
 
     methods: {
