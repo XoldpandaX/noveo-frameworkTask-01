@@ -5,6 +5,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import filters from './filters';
 import constants from './constants';
+import { isPlainObject } from 'lodash';
 import { store } from './store';
 import LocalStorageProvider from './services/localStorageProvider'
 
@@ -32,7 +33,7 @@ const axiosConfig = axios.create({
 
 Vue.use(VueAxios, axiosConfig);
 
-// token exist logic
+// is token exist logic
 const token = LocalStorageProvider.getItem('token');
 if (token) {
   Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
@@ -43,10 +44,24 @@ const handleSuccess = (response) => {
   return response;
 };
 
-const handleError = (error) => {
-  console.log(error.response.data.errors); // errorText
-  console.log(error.response.status); // error status
+const handleError = (err) => {
+  const errNum = err.response.status;
+  const errMsg = err.response.data.errors;
   
+  if (isPlainObject(errMsg)) {
+    for (let key in errMsg) {
+      store.dispatch('ui/showNotification', {
+        errNum,
+        errMsg: errMsg[key].length === 1 ? errMsg[key][0] : 'errors array contains more than one error'
+      });
+    }
+  } else {
+    store.dispatch('ui/showNotification', {
+      errNum,
+      errMsg
+    });
+  }
+  console.log(err.response.data);
 };
 axiosConfig.interceptors.response.use(handleSuccess, handleError);
 
