@@ -4,8 +4,8 @@
         notification-element(v-for="(notification, i) in notifications",
                            :index="i",
                            @destroy="hideNotification(i)")
-          template(slot="error-num") {{ `${notification.errorNum}:` }}
-          template(slot="error-text") {{ notification.errorText }}
+          template(slot="error-num") {{ `ERROR#${notification.errNum}:` }}
+          template(slot="error-text") {{ notification.errMsg }}
 </template>
 
 <script>
