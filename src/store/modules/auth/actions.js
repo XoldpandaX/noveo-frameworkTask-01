@@ -5,8 +5,8 @@ import LocalStorageProvider from '../../../services/localStorageProvider.js';
 
 async function registerUser({ commit }, userData) {
   try {
-    await auth.registerUser(userData);
-    return true;
+    const { data: { data: { user } } } = await auth.registerUser(userData);
+    return user.email;
   } catch(err) {
     return false;
   }

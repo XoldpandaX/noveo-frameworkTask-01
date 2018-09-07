@@ -31,8 +31,7 @@
       return {
         fieldData: [ ...this.$appConstants.forms.signUp.inputs ],
         rules: { ...this.$appConstants.forms.signUp.fieldRules },
-        errors: { ...this.$appConstants.forms.signUp.errors },
-        successModalDelay: 800 // delay before show success register modal
+        errors: { ...this.$appConstants.forms.signUp.errors }
       };
     },
 
@@ -110,11 +109,9 @@
         });
 
         this.registerUser(JSON.stringify(sendData)).then((successEmail) => {
-          if (successEmail) {
-            // присваиваем значение зарегестрированного email, input email в форме входа
-            this.$appConstants.forms.signIn.inputs[0].value = successEmail;
-            this.$router.push('/sign-in');
-          }
+          // присваиваем значение успешно зарегестрированного email, input email в форме входа
+          this.$appConstants.forms.signIn.inputs[0].value = successEmail;
+          this.$router.push('/sign-in');
         });
       }
     },

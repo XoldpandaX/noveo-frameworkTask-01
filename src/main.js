@@ -61,7 +61,6 @@ const handleError = (err) => {
       errMsg
     });
   }
-  console.log(err.response.data);
 };
 axiosConfig.interceptors.response.use(handleSuccess, handleError);
 
