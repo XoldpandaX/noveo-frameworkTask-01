@@ -1,6 +1,7 @@
 import * as types from './mutation-types.js';
-import LocalStorageProvider from '../../../services/localStorageProvider'
 import { isUndefined } from 'lodash';
+import LocalStorageProvider from '../../../services/localStorageProvider'
+import card from '../../../api/card.requests.js';
 
 function cardsDataInit({ commit }) {
   const cards = LocalStorageProvider.getItem('cards');
@@ -43,10 +44,24 @@ function deleteCardDataFromStore({ commit, getters }, cardId) {
   LocalStorageProvider.removeObjItemFromArray('cards', cardId);
 }
 
+// API INTERACTION
+async function getAllCards({ commit }) {
+  try {
+    const { data:{ data:{ posts } } } = await card.getAllCards();
+    console.log(posts);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
 export default {
   addCardDataToStore,
   deleteCardDataFromStore,
   cardsDataInit,
   likeToggleCard,
-  addCardDataToStoreAfterEdit
+  addCardDataToStoreAfterEdit,
+  
+  // API INTERACTION
+  getAllCards
 };
