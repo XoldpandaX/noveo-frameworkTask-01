@@ -3,5 +3,8 @@ export default {
     register: '/register',
     login: '/login',
     currentUser: '/user'
+  },
+  posts: {
+    allPosts: '/posts'
   }
 };
