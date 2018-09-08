@@ -22,7 +22,6 @@ async function loginUser({ commit, dispatch }, userData) {
     return true;
   } catch(err) {
     LocalStorageProvider.removeItem('token');
-    console.error(err); // TODO отладочная информация, удалить после отладки
     return false;
   }
 }
