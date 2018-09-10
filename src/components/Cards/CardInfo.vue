@@ -6,7 +6,8 @@
     footer
       button-card-edit(:cardID="cardData.id")
       button-card-like(:cardID="cardData.id",
-                       :isCardLike="cardData.liked")
+                       :isCardLike="cardData.liked",
+                       :totalLikes="cardData.total_likes")
 </template>
 
 <script>
