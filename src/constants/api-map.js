@@ -4,9 +4,10 @@ export default {
     login: '/login',
     currentUser: '/user'
   },
-  posts: {
-    allPosts: '/posts',
-    removeCard: '/posts/{id}',
-    createCard: '/posts'
+  cards: {
+    allCards: '/posts', // GET
+    createCard: '/posts', // POST
+    editCard: 'posts/{id}', // PUT
+    removeCard: '/posts/{id}', // DELETE
   }
 };
