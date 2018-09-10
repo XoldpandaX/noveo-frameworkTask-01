@@ -55,9 +55,17 @@ async function getCardsFromServer({ commit }) {
   }
 }
 
+async function createCard({ commit, dispatch, getters }, data) {
+  try {
+    await card.createCard(data);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 async function removeCard({ commit, getters }, cardId) {
   try {
-    const { data } = await card.removeCard(Number(cardId));
+    await card.removeCard(Number(cardId));
     commit(types.DELETE_CARD_DATA, getters.cardIndexByID(cardId)); // remove from store
   } catch (err) {
     console.log(err);
@@ -74,5 +82,6 @@ export default {
   
   // API INTERACTION
   getCardsFromServer,
+  createCard,
   removeCard
 };
