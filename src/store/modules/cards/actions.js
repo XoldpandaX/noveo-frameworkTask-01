@@ -45,10 +45,11 @@ function deleteCardDataFromStore({ commit, getters }, cardId) {
 }
 
 // API INTERACTION
-async function getAllCards({ commit }) {
+async function getCardsFromServer({ commit }) {
   try {
-    const { data:{ data:{ posts } } } = await card.getAllCards();
-    console.log(posts);
+    const { data:{ data:{ posts: cards } } } = await card.getAllCards();
+    commit(types.INIT_CARD_DATA, cards);
+    console.log(cards);
   } catch (err) {
     console.log(err);
   }
@@ -63,5 +64,5 @@ export default {
   addCardDataToStoreAfterEdit,
   
   // API INTERACTION
-  getAllCards
+  getCardsFromServer
 };
