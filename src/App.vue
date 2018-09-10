@@ -28,7 +28,7 @@
     },
 
     methods: {
-      ...mapActions('cards', ['cardsDataInit', 'getAllCards']), // TODO get cards from server
+      ...mapActions('cards', ['cardsDataInit', 'getCardsFromServer']),
       ...mapActions('ui', ['showModal', 'toggleLoader']),
       ...mapActions('auth', ['getLoginUserData']),
 
@@ -46,7 +46,6 @@
       }
 
       //this.cardsDataInit();
-      this.getAllCards();
       setTimeout(() => {
         this.showModal('first-load-modal');
       }, 750);

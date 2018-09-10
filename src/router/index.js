@@ -1,3 +1,4 @@
+import { store } from '../store';
 import Vue from 'vue';
 import Router from 'vue-router';
 
@@ -16,7 +17,11 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: PageHome
+      component: PageHome,
+      beforeEnter(to, from, next) {
+        store.dispatch('cards/getCardsFromServer'); // get all cards from server
+        next();
+      }
     },
     {
       path: '/new-card',
