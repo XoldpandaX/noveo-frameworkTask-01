@@ -16,7 +16,7 @@
 
     props: {
       cardID: {
-        type: String,
+        type: [String, Number],
         required: true
       }
     },
@@ -28,11 +28,12 @@
     },
 
     methods: {
-      ...mapActions('cards', ['deleteCardDataFromStore']),
+      ...mapActions('cards', ['removeCard']),
 
       deleteCard() {
-        this.deleteCardDataFromStore(this.cardID);
-        this.$router.push({name: 'home'});
+        this.removeCard(this.cardID).then(() => {
+          this.$router.push({name: 'home'});
+        });
       },
     }
   };
