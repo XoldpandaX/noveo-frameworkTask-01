@@ -5,6 +5,7 @@ export default {
     currentUser: '/user'
   },
   posts: {
-    allPosts: '/posts'
+    allPosts: '/posts',
+    removeCard: '/posts/{id}'
   }
 };
