@@ -27,7 +27,7 @@ const axiosConfig = axios.create({
   baseURL: 'http://rest-api.noveogroup.com/api/v1',
   headers: {
     'Content-Type': 'application/json; charset=UTF-8',
-    'X-Application-Key': 'RIYAaHFdO8JyhLJQ4ZQlTmi1y3GM7y9xwmkqa0E4'
+    'X-Application-Key': 'RNSCEktcb0JvJXPoXQ54uWBGInKfKkSp23GziYmn'
   }
 });
 
