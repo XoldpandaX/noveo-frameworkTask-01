@@ -80,9 +80,9 @@
       },
 
       displayEditData() {
-        const { title, description } = this.cardData;
+        const { title, content } = this.cardData;
         this.userInput.title = title;
-        this.userInput.description = description;
+        this.userInput.description = content;
       }
     },
 
