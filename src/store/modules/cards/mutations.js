@@ -11,7 +11,7 @@ export default {
   },
   
   [types.INIT_CARD_DATA] (state, data) {
-    state.cards = sortBy(data, ['order']);
+    state.cards = data;
   },
   
   [types.DELETE_CARD_DATA](state, cardIndex) {
