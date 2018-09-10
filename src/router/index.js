@@ -19,8 +19,9 @@ export default new Router({
       name: 'home',
       component: PageHome,
       beforeEnter(to, from, next) {
-        store.dispatch('cards/getCardsFromServer'); // get all cards from server
-        next();
+        store.dispatch('cards/getCardsFromServer').then(() => {
+          next();
+        }); // get all cards from server
       }
     },
     {
