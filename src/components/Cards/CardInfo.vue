@@ -2,11 +2,11 @@
   .card
     .card__content
       h2 {{ cardData.title }}
-      p {{ cardData.description }}
+      p {{ cardData.content }}
     footer
       button-card-edit(:cardID="cardData.id")
       button-card-like(:cardID="cardData.id",
-                       :isCardLike="cardData.like")
+                       :isCardLike="cardData.liked")
 </template>
 
 <script>
