@@ -17,7 +17,6 @@
 </template>
 <script>
   import { mapGetters, mapActions } from 'vuex';
-  import { getRandomID } from '../../helpers';
   import ButtonCardSave from '../Buttons/ButtonCardSave.vue';
   import ButtonCardDelete from '../Buttons/ButtonCardDelete.vue';
 
@@ -50,7 +49,7 @@
     },
 
     computed: {
-      ...mapGetters('cards', ['cards']),
+      ...mapGetters('cards', ['cardByID']),
 
       symbolsLeft() {
         return this.userInput.description.length;
@@ -58,22 +57,27 @@
     },
 
     methods: {
-      ...mapActions('cards', ['addCardDataToStore']),
+      ...mapActions('cards', ['createCard', 'editCard']),
 
       formDataToStore() {
         const { title, description } = this.userInput;
 
         if (title !== '' && description !== '') {
           const storeData = {
-            id: this.cardData ? this.cardData.id : getRandomID(),
-            order: this.cardData ? this.cardData.order : this.cards.length,
             title: title,
-            description: description,
-            like: this.cardData ? this.cardData.like : false
+            content: description,
           };
 
-          this.addCardDataToStore(storeData);
-          this.$router.push({name: 'home'});
+          if (!this.cardData) {
+            this.createCard(storeData).then(() => {
+              this.$router.push({name: 'home'});
+            });
+          } else {
+            storeData.id = this.cardData.id;
+            this.editCard(storeData).then(() => {
+              this.$router.push({name: 'home'});
+            });
+          }
         } else {
           alert('Enter some text');
         }
