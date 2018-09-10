@@ -49,7 +49,6 @@ async function getCardsFromServer({ commit }) {
   try {
     const { data:{ data:{ posts: cards } } } = await card.getAllCards();
     commit(types.INIT_CARD_DATA, cards); // add to store
-    console.log(cards);
   } catch (err) {
     console.log(err);
   }
@@ -58,6 +57,14 @@ async function getCardsFromServer({ commit }) {
 async function createCard({ commit, dispatch, getters }, data) {
   try {
     await card.createCard(data);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function editCard({ commit }, editCardData) {
+  try {
+    await card.editCard(editCardData);
   } catch (err) {
     console.log(err);
   }
@@ -72,7 +79,6 @@ async function removeCard({ commit, getters }, cardId) {
   }
 }
 
-
 export default {
   addCardDataToStore,
   deleteCardDataFromStore,
@@ -83,5 +89,6 @@ export default {
   // API INTERACTION
   getCardsFromServer,
   createCard,
+  editCard,
   removeCard
 };
