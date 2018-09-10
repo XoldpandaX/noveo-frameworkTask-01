@@ -1,8 +1,10 @@
 <template lang="pug">
-  app-button(:onClick="likeCard",
-             :propButtonType="buttonAppearence",
-             :size="buttonSize",
-             :class="likeIconActive")
+  div
+    app-button(:onClick="likeCard",
+               :propButtonType="buttonAppearence",
+               :size="buttonSize",
+               :class="likeIconActive")
+    span(v-if="displayLikesTotal") {{ likesTotal }}
 </template>
 
 <script>
@@ -18,13 +20,17 @@
 
     props: {
       cardID: {
-        type: String,
+        type: [String, Number],
         required: true
       },
 
       isCardLike: {
         type: Boolean,
         required: true
+      },
+
+      likesTotal: {
+        type: Number
       }
     },
 
@@ -41,6 +47,10 @@
     computed: {
       likeIconActive() {
         return this.isCardLike ? '-active' : '';
+      },
+
+      displayLikesTotal() {
+        return !!this.likesTotal;
       }
     },
 
