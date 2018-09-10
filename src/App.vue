@@ -28,7 +28,6 @@
     },
 
     methods: {
-      ...mapActions('cards', ['cardsDataInit', 'getCardsFromServer']),
       ...mapActions('ui', ['showModal', 'toggleLoader']),
       ...mapActions('auth', ['getLoginUserData']),
 
@@ -45,7 +44,6 @@
         this.getUserData();
       }
 
-      //this.cardsDataInit();
       setTimeout(() => {
         this.showModal('first-load-modal');
       }, 750);
