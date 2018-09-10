@@ -8,5 +8,9 @@ export default {
   
   removeCard(cardId) {
     return Vue.axios.delete(api.posts.removeCard.replace('{id}', cardId));
+  },
+  
+  createCard(cardData) {
+    return Vue.axios.post(api.posts.createCard, cardData);
   }
 }

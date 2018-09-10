@@ -6,6 +6,7 @@ export default {
   },
   posts: {
     allPosts: '/posts',
-    removeCard: '/posts/{id}'
+    removeCard: '/posts/{id}',
+    createCard: '/posts'
   }
 };
