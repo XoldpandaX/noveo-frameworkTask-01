@@ -79,6 +79,15 @@ async function removeCard({ commit, getters }, cardId) {
   }
 }
 
+async function toggleCardLike({ commit }, cardId) {
+  try {
+    await card.toggleCardLike(cardId);
+    commit(types.LIKE_TOGGLE ,cardId);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export default {
   addCardDataToStore,
   deleteCardDataFromStore,
@@ -90,5 +99,6 @@ export default {
   getCardsFromServer,
   createCard,
   editCard,
-  removeCard
+  removeCard,
+  toggleCardLike
 };

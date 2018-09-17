@@ -51,10 +51,10 @@
     },
 
     methods: {
-      ...mapActions('cards', ['likeToggleCard']),
+      ...mapActions('cards', ['toggleCardLike', 'fg']),
 
       likeCard() {
-        this.likeToggleCard(this.cardID);
+        this.toggleCardLike(this.cardID);
       }
     }
   };
