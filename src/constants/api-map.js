@@ -9,5 +9,6 @@ export default {
     createCard: '/posts', // POST
     editCard: 'posts/{id}', // PUT
     removeCard: '/posts/{id}', // DELETE
+    likeToggle: '/posts/{id}/like' // POST
   }
 };
