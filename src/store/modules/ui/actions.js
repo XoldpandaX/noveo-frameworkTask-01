@@ -1,4 +1,5 @@
 import * as types from './mutation-types.js';
+import { getRandomID } from '../../../helpers';
 
 function closeAllModals({ commit }) {
   commit(types.CLOSE_ALL_MODALS);
@@ -17,12 +18,20 @@ function showModal({ commit }, modalId) {
   }
 }
 
-function showNotification({ commit }, notificationObj) {
+function showNotification({ commit, dispatch, state }, notificationObj) {
+  const timeout = 4000; // period of time for show notification
+  const id = getRandomID(); // notification id
+  
+  notificationObj.id = id;
   commit(types.SHOW_NOTIFICATION, notificationObj);
+  
+  setTimeout(() => {
+    dispatch('hideNotification', id);
+  }, timeout);
 }
 
-function hideNotification({ commit }, notificationIndex) {
-  commit(types.HIDE_NOTIFICATION, notificationIndex);
+function hideNotification({ commit }, notificationId) {
+  commit(types.HIDE_NOTIFICATION, notificationId);
 }
 
 function toggleLoader({ commit }) {

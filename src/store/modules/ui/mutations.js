@@ -14,8 +14,10 @@ export default {
     state.notifications.push(notificationObj);
   },
   
-  [types.HIDE_NOTIFICATION] (state, notificationIndex) {
-    state.notifications.splice(notificationIndex, 1);
+  [types.HIDE_NOTIFICATION] (state, notificationId) {
+    state.notifications.forEach((el, index) => {
+      el.id === notificationId && state.notifications.splice(index, 1);
+    });
   },
   
   [types.TOGGLE_LOADER] (state) {
