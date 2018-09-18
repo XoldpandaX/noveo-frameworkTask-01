@@ -14,7 +14,7 @@ export default {
   methods: {
     ...mapActions('ui', ['showNotification']),
     
-    checkAdmin() {
+    $_checkAdminMixin_checkAdmin() {
       return new Promise((resolve, reject) => {
         switch(this.userRole) {
           case 'admin':
@@ -31,8 +31,8 @@ export default {
       });
     },
     
-    enableFunctionComplete(func) {  // enable or (if role !== admin) disable
-      this.checkAdmin().then(() => {
+    $_checkAdminMixin_enableFunctionComplete(func) {  // enable or (if role !== admin) disable
+      this.$_checkAdminMixin_checkAdmin().then(() => {
         func();
       }).catch((notificationError) => {
         notificationError();
