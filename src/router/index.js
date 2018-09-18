@@ -1,6 +1,7 @@
-import { store } from '../store';
 import Vue from 'vue';
 import Router from 'vue-router';
+import { store } from '../store';
+import LocalStorageProvider from '../services/localStorageProvider.js';
 
 // route-level
 import PageHome from '../views/PageHome.vue';
@@ -19,9 +20,14 @@ export default new Router({
       name: 'home',
       component: PageHome,
       beforeEnter(to, from, next) {
-        store.dispatch('cards/getCardsFromServer').then(() => {
+        if (LocalStorageProvider.getItem('token')) {
+          store.dispatch('cards/getCardsFromServer')
+            .then(() => {
+              next();
+            }); // get all cards from server
+        } else {
           next();
-        }); // get all cards from server
+        }
       }
     },
     {

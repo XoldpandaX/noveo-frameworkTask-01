@@ -7,7 +7,7 @@ import filters from './filters';
 import constants from './constants';
 import { isPlainObject } from 'lodash';
 import { store } from './store';
-import LocalStorageProvider from './services/localStorageProvider'
+import LocalStorageProvider from './services/localStorageProvider.js';
 
 // FILTERS
 Object.keys(filters).forEach(key => {
