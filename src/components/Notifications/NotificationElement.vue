@@ -10,31 +10,7 @@
 
 <script>
   export default {
-    name: 'NotificationElement',
-
-    props: {
-      index: {
-        type: Number,
-        required: true
-      },
-
-      lifetime: {
-        type: Number,
-        default: 4000
-      }
-    },
-
-    methods: {
-      destroyNotification() {
-        setTimeout(() => {
-          this.$emit('destroy', this.index);
-        }, this.lifetime)
-      }
-    },
-
-    created() {
-      this.destroyNotification();
-    }
+    name: 'NotificationElement'
   }
 </script>
 

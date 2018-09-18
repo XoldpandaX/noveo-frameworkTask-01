@@ -2,14 +2,13 @@
   transition(leave-active-class="animated fadeOutRight")
     ul.notification-service(v-if="notifications.length > 0")
         notification-element(v-for="(notification, i) in notifications",
-                           :index="i",
-                           @destroy="hideNotification(i)")
+                           :key="i")
           template(slot="error-num") {{ `ERROR#${notification.errNum}:` }}
           template(slot="error-text") {{ notification.errMsg }}
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex';
+  import { mapGetters } from 'vuex';
   import NotificationElement from './NotificationElement.vue';
 
   export default {
@@ -21,10 +20,6 @@
 
     computed: {
       ...mapGetters('ui', ['notifications'])
-    },
-
-    methods: {
-      ...mapActions('ui', ['hideNotification'])
     }
   }
 </script>
