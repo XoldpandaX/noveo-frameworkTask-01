@@ -32,10 +32,11 @@
       ...mapActions('auth', ['getLoginUserData']),
 
       getUserData() {
-        this.toggleLoader();
-        this.getLoginUserData().then(() => {
-          this.toggleLoader();
-        });
+        // this.toggleLoader();
+        // this.getLoginUserData().then(() => {
+        //   this.toggleLoader();
+        // });
+        this.getLoginUserData();
       }
     },
 

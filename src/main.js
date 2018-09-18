@@ -41,10 +41,12 @@ if (token) {
 
 // axios [reject/response] interceptors
 const handleSuccess = (response) => {
+  store.dispatch('ui/toggleLoader');
   return response;
 };
 
 const handleError = (err) => {
+  store.dispatch('ui/toggleLoader');
   const errNum = err.response.status;
   const errMsg = err.response.data.errors;
   
@@ -62,7 +64,15 @@ const handleError = (err) => {
     });
   }
 };
+
+// axios request interceptors
+const handleSuccessRequest = (response) => {
+  store.dispatch('ui/toggleLoader');
+  return response;
+};
+
 axiosConfig.interceptors.response.use(handleSuccess, handleError);
+axiosConfig.interceptors.request.use(handleSuccessRequest, handleError);
 
 
 new Vue({

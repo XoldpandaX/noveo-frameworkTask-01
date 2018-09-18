@@ -46,6 +46,7 @@
         this.logout().then(() => {
           this.changeNavigation();
           this.$router.push('/');
+          window.location.reload();
         });
       }
     }
