@@ -108,10 +108,12 @@
           }
         });
 
-        this.registerUser(JSON.stringify(sendData)).then((successEmail) => {
+        this.registerUser(JSON.stringify(sendData)).then((response) => {
           // присваиваем значение успешно зарегестрированного email, input email в форме входа
-          this.$appConstants.forms.signIn.inputs[0].value = successEmail;
-          this.$router.push('/sign-in');
+          if (response) {
+            this.$appConstants.forms.signIn.inputs[0].value = response;
+            this.$router.push('/sign-in');
+          }
         });
       }
     },
