@@ -8,56 +8,21 @@
   &__content {
     flex: 1 0 auto;
 
-    &--form {
-      display: flex;
-      flex-flow: column;
-      padding: 10px;
-      align-items: center;
+    h2 {
+      margin: 0 0 5px 0;
+      color: $card-title-color;
+    }
 
-      input {
-        width: 100%;
-        margin-bottom: 10px;
-        height: 40px;
-      }
+    p {
+      color: #939393;
+      margin: 0 0 20px 0;
+      font-size: 13px;
 
-      div {
-        width: 100%;
-        display: flex;
-        flex-flow: column;
-
-        textarea {
-          resize: none;
-          height: 150px;
-        }
-
-        span {
-          margin-top: 2*$rem;
-          margin-bottom: 15*$rem;
-          color: $textarea-counter-color;
-        }
-      }
-
-      button {
-        @include reusable-button(#fff,$orange);
-        font-weight: bold;
-        text-transform: uppercase;
+      &:last-child {
+        color: $card-text-color;
+        font-size: 1rem;
       }
     }
-  }
-
-  h2 {
-    margin: 0;
-    color: $card-title-color;
-  }
-
-  p {
-    color: $card-text-color;
-  }
-
-  &__button-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   footer {

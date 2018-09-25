@@ -2,6 +2,7 @@
   .card
     .card__content
       h2 {{ cardData.title }}
+      p created at: {{ cardData.created_at.date|timeAgoUTC }}
       p {{ cardData.content }}
     footer
       button-card-edit(:cardID="cardData.id")
