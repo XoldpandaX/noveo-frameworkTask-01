@@ -1,6 +1,7 @@
 <template lang="pug">
   section.home.page
     h1.page__title Card List
+    button sort by created data
     card-list
     div(v-if="!isAuthenticated")
       h2 if you wont to see the content, please log in ;)
