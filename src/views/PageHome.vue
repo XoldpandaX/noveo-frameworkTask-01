@@ -7,8 +7,8 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
   import CardList from '../components/Cards/CardList.vue';
+  import { mapGetters } from 'vuex';
 
   export default {
     name: 'PageHome',
