@@ -11,7 +11,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import CardList from '../components/Cards/CardList.vue';
-import ButtonSort from '../components/Buttons/ButtonSort.vue';
+import ButtonSort from '../components/Buttons/ButtonSortCardByDate.vue';
 
 export default {
   name: 'PageHome',

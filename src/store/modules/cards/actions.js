@@ -11,6 +11,15 @@ async function getCardsFromServer ({ commit }) {
   }
 }
 
+async function getCardsFromServerByDate ({ commit }, params) {
+  try {
+    const { data: { data: { posts: cards } } } = await card.getAllCards(params);
+    commit(types.INIT_CARD_DATA, cards); // add to store ordered by date
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 async function createCard ({ commit, dispatch, getters }, data) {
   try {
     await card.createCard(data);
@@ -48,6 +57,7 @@ async function toggleCardLike ({ commit }, cardId) {
 export default {
   // API INTERACTION
   getCardsFromServer,
+  getCardsFromServerByDate,
   createCard,
   editCard,
   removeCard,
