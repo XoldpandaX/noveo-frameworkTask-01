@@ -1,3 +1,25 @@
 .home {
+  &__head-row {
+    display: flex;
+    padding-left: 5*$rem;
+    padding-right: 5*$rem;
+    margin-bottom: 20*$rem;
+  }
 
+  &__layout-buttons {
+    display: flex;
+
+    button {
+      cursor: pointer;
+
+      &:last-child {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  // redefinition styles
+  .sort-btn {
+    margin-right: auto;
+  }
 }
