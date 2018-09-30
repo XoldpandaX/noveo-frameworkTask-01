@@ -4,7 +4,11 @@
       h2 if you wont to see the content, please log in ;)
     template(v-else)
       h1.page__title Card List
-      button-sort
+      .home__head-row
+        button-sort
+        .home__layout-buttons
+          button display list
+          button display row
       card-list
 </template>
 
@@ -22,7 +26,8 @@ export default {
   },
 
   computed: {
-    ...mapGetters('auth', ['isAuthenticated'])
+    ...mapGetters('auth', ['isAuthenticated']),
+    ...mapGetters('ui', ['cardsLayout'])
   }
 };
 </script>
