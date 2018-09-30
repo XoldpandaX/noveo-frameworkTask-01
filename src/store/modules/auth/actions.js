@@ -3,7 +3,7 @@ import Vue from 'vue';
 import auth from '../../../api/auth.requests.js';
 import LocalStorageProvider from '../../../services/localStorageProvider.js';
 
-async function registerUser ({ commit }, userData) {
+async function registerUser (userData) {
   try {
     const { data: { data: { user } } } = await auth.registerUser(userData);
     return user.email;

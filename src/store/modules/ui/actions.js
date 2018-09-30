@@ -18,7 +18,7 @@ function showModal ({ commit }, modalId) {
   }
 }
 
-function showNotification ({ commit, dispatch, state }, notificationObj) {
+function showNotification ({ commit, dispatch }, notificationObj) {
   const timeout = 4000; // period of time for show notification
   const id = getRandomID(); // notification id
 
