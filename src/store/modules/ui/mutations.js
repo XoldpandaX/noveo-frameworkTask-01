@@ -35,5 +35,8 @@ export default {
       default:
         state.navigationBar = CONSTANTS.navigationElements.defaultNav;
     }
+  },
+  [types.CHANGE_CARDS_LAYOUT_VIEW] (state, layoutType) {
+    state.cardsLayoutView = layoutType;
   }
 };

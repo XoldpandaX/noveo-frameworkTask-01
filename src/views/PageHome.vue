@@ -7,13 +7,14 @@
       .home__head-row
         button-sort
         .home__layout-buttons
-          button display list
-          button display row
-      card-list
+          button(@click="changeCardLayout('list')") display list
+          button(@click="changeCardLayout('row')") display row
+      card-list(v-if="cardsLayout === 'row'")
+      card-list.card-list--list-view(v-else)
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import CardList from '../components/Cards/CardList.vue';
 import ButtonSort from '../components/Buttons/ButtonSortCardByDate.vue';
 
@@ -27,7 +28,12 @@ export default {
 
   computed: {
     ...mapGetters('auth', ['isAuthenticated']),
+
     ...mapGetters('ui', ['cardsLayout'])
+  },
+
+  methods: {
+    ...mapActions('ui', ['changeCardLayout'])
   }
 };
 </script>

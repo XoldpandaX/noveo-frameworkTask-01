@@ -1,5 +1,43 @@
 .card-list {
 
+// --- column view styles
+  @media(min-width: 481px) {
+    &--list-view {
+      .card-list__cards-container {
+        justify-content: center;
+        flex-flow: column;
+        align-items: center;
+      }
+
+      .card-list__element {
+        min-width: 100%;
+
+        &:first-child {
+          border: none;
+          min-height: 0;
+          min-width: 0;
+
+          .card-button-add {
+            min-height: 0;
+            width: 40*$rem;
+            height: 40*$rem;
+            background-color: $orange;
+            border: none;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .card {
+
+        &__content {
+          text-align: center;
+        }
+      }
+    }
+  }
+// --- end column view styles
+
   &__cards-container {
     display: flex;
     align-items: flex-start;

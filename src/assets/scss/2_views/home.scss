@@ -7,15 +7,19 @@
   }
 
   &__layout-buttons {
-    display: flex;
+    @media(min-width: 481px) {
+      display: flex;
 
-    button {
-      cursor: pointer;
+      button {
+        cursor: pointer;
 
-      &:last-child {
-        margin-left: 10px;
+        &:last-child {
+          margin-left: 10px;
+        }
       }
     }
+
+    display: none;
   }
 
   // redefinition styles

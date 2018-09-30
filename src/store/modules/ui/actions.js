@@ -42,11 +42,16 @@ function changeNavigation ({ commit }, userRole) {
   commit(types.CHANGE_NAVIGATION, userRole);
 }
 
+function changeCardLayout ({ commit }, layoutType) {
+  commit(types.CHANGE_CARDS_LAYOUT_VIEW, layoutType);
+}
+
 export default {
   closeAllModals,
   showModal,
   showNotification,
   hideNotification,
   toggleLoader,
-  changeNavigation
+  changeNavigation,
+  changeCardLayout
 };
