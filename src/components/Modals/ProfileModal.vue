@@ -6,29 +6,29 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
-  export default {
-    name: 'ProfileModal',
+export default {
+  name: 'ProfileModal',
 
-    computed: {
-      ...mapGetters('auth', ['userData'])
-    },
+  computed: {
+    ...mapGetters('auth', ['userData'])
+  },
 
-    data() {
-      return {
-        user: {}
-      };
-    },
+  data () {
+    return {
+      user: {}
+    };
+  },
 
-    methods: {
-      closeModal() {
-        this.$emit('closeModal')
-      }
-    },
+  created () {
+    this.user = this.userData;
+  },
 
-    created() {
-      this.user = this.userData;
+  methods: {
+    closeModal () {
+      this.$emit('closeModal');
     }
-  };
+  }
+};
 </script>

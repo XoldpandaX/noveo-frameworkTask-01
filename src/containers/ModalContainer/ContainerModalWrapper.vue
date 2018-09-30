@@ -5,28 +5,28 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex';
-  import FirstLoadModal from '../../components/Modals/FirstLoadModal.vue';
-  import ProfileModal from '../../components/Modals/ProfileModal.vue';
+import { mapGetters, mapActions } from 'vuex';
+import FirstLoadModal from '../../components/Modals/FirstLoadModal.vue';
+import ProfileModal from '../../components/Modals/ProfileModal.vue';
 
-  export default {
-    name: 'ContainerModalWrapper',
+export default {
+  name: 'ContainerModalWrapper',
 
-    components: {
-      FirstLoadModal,
-      ProfileModal
-    },
+  components: {
+    FirstLoadModal,
+    ProfileModal
+  },
 
-    computed: {
-      ...mapGetters('ui', ['modals'])
-    },
+  computed: {
+    ...mapGetters('ui', ['modals'])
+  },
 
-    methods: {
-      ...mapActions('ui', ['closeAllModals']),
+  methods: {
+    ...mapActions('ui', ['closeAllModals']),
 
-      closeModal() {
-        this.closeAllModals();
-      }
+    closeModal () {
+      this.closeAllModals();
     }
-  };
+  }
+};
 </script>

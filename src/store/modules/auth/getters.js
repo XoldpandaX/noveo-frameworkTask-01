@@ -3,4 +3,4 @@ export default {
   authStatus: state => state.status,
   userRole: state => state.user.role,
   userData: state => state.user
-}
+};

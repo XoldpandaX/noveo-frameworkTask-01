@@ -1,4 +1,4 @@
-import regularExpressions from "./regularExpressions";
+import regularExpressions from './regularExpressions';
 
 export default {
   signUp: {

@@ -6,49 +6,49 @@
 </template>
 
 <script>
-  import CONSTANTS from '../constants';
+import CONSTANTS from '../constants';
 
-  export default {
-    name: 'AppButton',
+export default {
+  name: 'AppButton',
 
-    props: {
-      onClick: {
-        type: Function,
-        required: true
-      },
-
-      propButtonType: {
-        type: String
-      },
-
-      size: {
-        type: Object
-      }
+  props: {
+    onClick: {
+      type: Function,
+      required: true
     },
 
-    data() {
-      return {
-        componentButtonTypes: []
-      };
+    propButtonType: {
+      type: String
     },
 
-    computed: {
-      arrayOfClasses() {
-        if (!!this.propButtonType) {
-          let obj = this.componentButtonTypes.find(el => el.type === this.propButtonType);
-          return obj.classes;
-        }
-      },
-
-      buttonSize() {
-        if (!!this.size) {
-          return this.size;
-        }
-      }
-    },
-
-    created() {
-      this.componentButtonTypes = CONSTANTS.buttonTypes;
+    size: {
+      type: Object
     }
-  };
+  },
+
+  data () {
+    return {
+      componentButtonTypes: []
+    };
+  },
+
+  computed: {
+    arrayOfClasses () {
+      if (this.propButtonType) {
+        let obj = this.componentButtonTypes.find(el => el.type === this.propButtonType);
+        return obj.classes;
+      }
+    },
+
+    buttonSize () {
+      if (this.size) {
+        return this.size;
+      }
+    }
+  },
+
+  created () {
+    this.componentButtonTypes = CONSTANTS.buttonTypes;
+  }
+};
 </script>

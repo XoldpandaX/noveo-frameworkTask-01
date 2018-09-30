@@ -19,7 +19,7 @@ export default new Router({
       path: '/',
       name: 'home',
       component: PageHome,
-      beforeEnter(to, from, next) {
+      beforeEnter (to, from, next) {
         if (LocalStorageProvider.getItem('token')) {
           store.dispatch('cards/getCardsFromServer')
             .then(() => {

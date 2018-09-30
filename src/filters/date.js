@@ -5,10 +5,10 @@ import moment from 'moment';
  * @param {string} time
  * @returns {string}
  */
-export function timeAgoUTC(time) {
+export function timeAgoUTC (time) {
   moment.locale('en');
   const minutesAtWeek = 10080;
-  
+
   /**
    * Get difference between current date and function argument[arg - time] data
    * moment return difference at milliseconds, then we transformed it in minutes

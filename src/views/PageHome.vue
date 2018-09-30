@@ -8,18 +8,18 @@
 </template>
 
 <script>
-  import CardList from '../components/Cards/CardList.vue';
-  import { mapGetters } from 'vuex';
+import CardList from '../components/Cards/CardList.vue';
+import { mapGetters } from 'vuex';
 
-  export default {
-    name: 'PageHome',
+export default {
+  name: 'PageHome',
 
-    components: {
-      CardList
-    },
+  components: {
+    CardList
+  },
 
-    computed: {
-      ...mapGetters('auth', ['isAuthenticated'])
-    }
+  computed: {
+    ...mapGetters('auth', ['isAuthenticated'])
   }
+};
 </script>

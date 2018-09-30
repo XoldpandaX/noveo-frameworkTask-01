@@ -17,38 +17,38 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
-  export default {
-    name: 'Navigation',
+export default {
+  name: 'Navigation',
 
-    computed: {
-      ...mapGetters('ui', ['navigation']),
-      ...mapGetters('auth', ['userRole'])
+  computed: {
+    ...mapGetters('ui', ['navigation']),
+    ...mapGetters('auth', ['userRole'])
+  },
+
+  methods: {
+    ...mapActions('auth', ['logout']),
+    ...mapActions('ui', ['changeNavigation', 'showModal']),
+
+    switchActions (action) {
+      switch (action) {
+        case 'exit':
+          this.exit();
+          break;
+        case 'profile':
+          this.showModal('profile-modal');
+          break;
+      }
     },
 
-    methods: {
-      ...mapActions('auth', ['logout']),
-      ...mapActions('ui', ['changeNavigation', 'showModal']),
-
-      switchActions(action) {
-        switch(action) {
-          case 'exit':
-            this.exit();
-            break;
-          case 'profile':
-            this.showModal('profile-modal');
-            break;
-        }
-      },
-
-      exit() {
-        this.logout().then(() => {
-          this.changeNavigation();
-          this.$router.push('/');
-          window.location.reload();
-        });
-      }
+    exit () {
+      this.logout().then(() => {
+        this.changeNavigation();
+        this.$router.push('/');
+        window.location.reload();
+      });
     }
-  };
+  }
+};
 </script>

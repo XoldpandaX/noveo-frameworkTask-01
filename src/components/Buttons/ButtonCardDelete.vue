@@ -4,37 +4,37 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
-  import AppButton from '../AppButton.vue';
+import { mapActions } from 'vuex';
+import AppButton from '../AppButton.vue';
 
-  export default {
-    name: 'ButtonCardDelete',
+export default {
+  name: 'ButtonCardDelete',
 
-    components: {
-      AppButton
-    },
+  components: {
+    AppButton
+  },
 
-    props: {
-      cardID: {
-        type: [String, Number],
-        required: true
-      }
-    },
-
-    data() {
-      return {
-        buttonAppearence: 'formButton'
-      };
-    },
-
-    methods: {
-      ...mapActions('cards', ['removeCard']),
-
-      deleteCard() {
-        this.removeCard(this.cardID).then(() => {
-          this.$router.push({name: 'home'});
-        });
-      },
+  props: {
+    cardID: {
+      type: [String, Number],
+      required: true
     }
-  };
+  },
+
+  data () {
+    return {
+      buttonAppearence: 'formButton'
+    };
+  },
+
+  methods: {
+    ...mapActions('cards', ['removeCard']),
+
+    deleteCard () {
+      this.removeCard(this.cardID).then(() => {
+        this.$router.push({ name: 'home' });
+      });
+    }
+  }
+};
 </script>

@@ -9,20 +9,20 @@
 </template>
 
 <script>
-  import ButtonCardAdd from '../Buttons/ButtonCardAdd.vue';
-  import CardInfo from './CardInfo.vue';
-  import { mapGetters } from 'vuex';
+import ButtonCardAdd from '../Buttons/ButtonCardAdd.vue';
+import CardInfo from './CardInfo.vue';
+import { mapGetters } from 'vuex';
 
-  export default {
-    name: 'CardList',
+export default {
+  name: 'CardList',
 
-    components: {
-      ButtonCardAdd,
-      CardInfo
-    },
+  components: {
+    ButtonCardAdd,
+    CardInfo
+  },
 
-    computed: {
-      ...mapGetters('cards', ['cards'])
-    }
-  };
+  computed: {
+    ...mapGetters('cards', ['cards'])
+  }
+};
 </script>

@@ -12,22 +12,22 @@
 </template>
 
 <script>
-  import ButtonCardEdit from '../Buttons/ButtonCardEdit.vue';
-  import ButtonCardLike from '../Buttons/ButtonCardLike.vue';
+import ButtonCardEdit from '../Buttons/ButtonCardEdit.vue';
+import ButtonCardLike from '../Buttons/ButtonCardLike.vue';
 
-  export default {
-    name: 'CardInfo',
+export default {
+  name: 'CardInfo',
 
-    components: {
-      ButtonCardEdit,
-      ButtonCardLike
-    },
+  components: {
+    ButtonCardEdit,
+    ButtonCardLike
+  },
 
-    props: {
-      cardData: {
-        type: Object,
-        required: true
-      }
+  props: {
+    cardData: {
+      type: Object,
+      required: true
     }
-  };
+  }
+};
 </script>

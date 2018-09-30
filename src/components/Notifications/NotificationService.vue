@@ -8,19 +8,18 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import NotificationElement from './NotificationElement.vue';
+import { mapGetters } from 'vuex';
+import NotificationElement from './NotificationElement.vue';
 
-  export default {
-    name: 'NotificationService',
+export default {
+  name: 'NotificationService',
 
-    components: {
-      NotificationElement
-    },
+  components: {
+    NotificationElement
+  },
 
-    computed: {
-      ...mapGetters('ui', ['notifications'])
-    }
+  computed: {
+    ...mapGetters('ui', ['notifications'])
   }
+};
 </script>
-
