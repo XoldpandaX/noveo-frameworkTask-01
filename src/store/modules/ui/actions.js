@@ -5,16 +5,16 @@ function closeAllModals ({ commit }) {
   commit(types.CLOSE_ALL_MODALS);
 }
 
-function showModal ({ commit }, modalId) {
-  switch (modalId) {
+function showModal ({ commit }, { id, config = {} }) {
+  switch (id) {
     case 'first-load-modal':
       if (!localStorage.getItem('wasHere')) {
         localStorage.setItem('wasHere', 'was');
-        commit(types.SHOW_MODAL, modalId);
+        commit(types.SHOW_MODAL, id);
       }
       break;
     default:
-      commit(types.SHOW_MODAL, modalId);
+      commit(types.SHOW_MODAL, { id, config });
   }
 }
 

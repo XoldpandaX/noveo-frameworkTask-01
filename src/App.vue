@@ -33,7 +33,7 @@ export default {
     }
 
     setTimeout(() => {
-      this.showModal('first-load-modal');
+      this.showModal({ id: 'first-load-modal' });
     }, 750);
   },
 

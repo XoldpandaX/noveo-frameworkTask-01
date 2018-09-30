@@ -2,8 +2,8 @@ import * as types from './mutation-types';
 import CONSTANTS from '../../../constants';
 
 export default {
-  [types.SHOW_MODAL] (state, modalID) {
-    state.modals.push({ id: modalID });
+  [types.SHOW_MODAL] (state, data) {
+    state.modals.push(data);
   },
 
   [types.CLOSE_ALL_MODALS] (state) {

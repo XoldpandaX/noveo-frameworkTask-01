@@ -37,7 +37,7 @@ export default {
           this.exit();
           break;
         case 'profile':
-          this.showModal('profile-modal');
+          this.showModal({ id: 'profile-modal' });
           break;
       }
     },
