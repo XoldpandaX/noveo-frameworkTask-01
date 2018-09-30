@@ -1,21 +1,24 @@
 <template lang="pug">
   section.home.page
-    h1.page__title Card List
-    button sort by created data
-    card-list
-    div(v-if="!isAuthenticated")
+    template(v-if="!isAuthenticated")
       h2 if you wont to see the content, please log in ;)
+    template(v-else)
+      h1.page__title Card List
+      button-sort
+      card-list
 </template>
 
 <script>
-import CardList from '../components/Cards/CardList.vue';
 import { mapGetters } from 'vuex';
+import CardList from '../components/Cards/CardList.vue';
+import ButtonSort from '../components/Buttons/ButtonSort.vue';
 
 export default {
   name: 'PageHome',
 
   components: {
-    CardList
+    CardList,
+    ButtonSort
   },
 
   computed: {
