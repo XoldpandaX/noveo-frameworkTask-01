@@ -9,24 +9,24 @@
 </template>
 
 <script>
-  export default {
-    name: 'FirstLoadModal',
+export default {
+  name: 'FirstLoadModal',
 
-    props: {
-      message: {
-        type: Object,
-        default: () => ({
-          welcomeText: 'Hello !',
-          description: 'This is the first time when you load this app.' +
+  props: {
+    message: {
+      type: Object,
+      default: () => ({
+        welcomeText: 'Hello !',
+        description: 'This is the first time when you load this app.' +
                        'To add a new card, please, push on black plus icon. Enjoy it :)'
-        })
-      }
-    },
-
-    methods: {
-      closeModal() {
-        this.$emit('closeModal')
-      }
+      })
     }
-  };
+  },
+
+  methods: {
+    closeModal () {
+      this.$emit('closeModal');
+    }
+  }
+};
 </script>

@@ -6,13 +6,13 @@
 </template>
 
 <script>
-  import FormSignIn from '../components/Forms/FormSignIn.vue';
+import FormSignIn from '../components/Forms/FormSignIn.vue';
 
-  export default {
-    name: 'PageSignIn',
+export default {
+  name: 'PageSignIn',
 
-    components: {
-      FormSignIn
-    }
+  components: {
+    FormSignIn
   }
+};
 </script>

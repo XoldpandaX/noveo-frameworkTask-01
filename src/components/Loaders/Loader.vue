@@ -6,13 +6,13 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
-  export default {
-    name: 'Loader',
+export default {
+  name: 'Loader',
 
-    computed: {
-      ...mapGetters('ui', ['isLoaderActive'])
-    }
+  computed: {
+    ...mapGetters('ui', ['isLoaderActive'])
   }
+};
 </script>

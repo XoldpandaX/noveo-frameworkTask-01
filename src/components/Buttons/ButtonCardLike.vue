@@ -8,56 +8,56 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
-  import AppButton from '../AppButton.vue';
+import { mapActions } from 'vuex';
+import AppButton from '../AppButton.vue';
 
-  export default {
-    name: 'CardButtonLike',
+export default {
+  name: 'CardButtonLike',
 
-    components: {
-      AppButton
+  components: {
+    AppButton
+  },
+
+  props: {
+    cardID: {
+      type: [String, Number],
+      required: true
     },
 
-    props: {
-      cardID: {
-        type: [String, Number],
-        required: true
-      },
-
-      isCardLike: {
-        type: Boolean,
-        required: true
-      },
-
-      totalLikes: {
-        type: Number
-      }
+    isCardLike: {
+      type: Boolean,
+      required: true
     },
 
-    data() {
-      return {
-        buttonAppearence: 'likeButton',
-        buttonSize: {
-          width: '25px',
-          height: '25px'
-        }
-      };
-    },
-
-    computed: {
-      likeIconActive() {
-        return this.isCardLike ? '-active' : '';
-      }
-    },
-
-    methods: {
-      ...mapActions('cards', ['toggleCardLike', 'fg']),
-
-      likeCard() {
-        this.toggleCardLike(this.cardID);
-      }
+    totalLikes: {
+      type: Number
     }
-  };
+  },
+
+  data () {
+    return {
+      buttonAppearence: 'likeButton',
+      buttonSize: {
+        width: '25px',
+        height: '25px'
+      }
+    };
+  },
+
+  computed: {
+    likeIconActive () {
+      return this.isCardLike ? '-active' : '';
+    }
+  },
+
+  methods: {
+    ...mapActions('cards', ['toggleCardLike', 'fg']),
+
+    likeCard () {
+      this.toggleCardLike(this.cardID);
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

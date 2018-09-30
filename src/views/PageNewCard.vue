@@ -6,13 +6,13 @@
 </template>
 
 <script>
-  import FormAddChangeCard from '../components/Forms/FormAddChangeCard.vue';
+import FormAddChangeCard from '../components/Forms/FormAddChangeCard.vue';
 
-  export default {
-    name: 'PageNewCard',
+export default {
+  name: 'PageNewCard',
 
-    components: {
-      FormAddChangeCard
-    }
+  components: {
+    FormAddChangeCard
   }
+};
 </script>

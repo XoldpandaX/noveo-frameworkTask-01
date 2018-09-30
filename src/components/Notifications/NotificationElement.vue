@@ -9,8 +9,7 @@
 </template>
 
 <script>
-  export default {
-    name: 'NotificationElement'
-  }
+export default {
+  name: 'NotificationElement'
+};
 </script>
-

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 import filters from './filters';
 import constants from './constants';
 import { isPlainObject } from 'lodash';
@@ -49,7 +49,7 @@ const handleError = (err) => {
   store.dispatch('ui/toggleLoader');
   const errNum = err.response.status;
   const errMsg = err.response.data.errors;
-  
+
   if (isPlainObject(errMsg)) {
     for (let key in errMsg) {
       store.dispatch('ui/showNotification', {
@@ -73,7 +73,6 @@ const handleSuccessRequest = (response) => {
 
 axiosConfig.interceptors.response.use(handleSuccess, handleError);
 axiosConfig.interceptors.request.use(handleSuccessRequest, handleError);
-
 
 new Vue({
   router,

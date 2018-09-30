@@ -1,22 +1,22 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  data() {
+  data () {
     return {
-    
+
     };
   },
-  
+
   computed: {
     ...mapGetters('auth', ['userRole'])
   },
-  
+
   methods: {
     ...mapActions('ui', ['showNotification']),
-    
-    $_checkAdminMixin_checkAdmin() {
+
+    $_checkAdminMixin_checkAdmin () {
       return new Promise((resolve, reject) => {
-        switch(this.userRole) {
+        switch (this.userRole) {
           case 'admin':
             resolve();
             break;
@@ -30,8 +30,8 @@ export default {
         }
       });
     },
-    
-    $_checkAdminMixin_enableFunctionComplete(func) {  // enable or (if role !== admin) disable
+
+    $_checkAdminMixin_enableFunctionComplete (func) { // enable or (if role !== admin) disable
       this.$_checkAdminMixin_checkAdmin().then(() => {
         func();
       }).catch((notificationError) => {
@@ -39,4 +39,4 @@ export default {
       });
     }
   }
-}
+};

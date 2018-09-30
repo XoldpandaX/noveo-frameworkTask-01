@@ -6,52 +6,52 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import FormAddChangeCard from '../components/Forms/FormAddChangeCard.vue'
+import { mapGetters } from 'vuex';
+import FormAddChangeCard from '../components/Forms/FormAddChangeCard.vue';
 
-  export default {
-    name: 'PageEditCard',
+export default {
+  name: 'PageEditCard',
 
-    props: {
-      id: {
-        type: [String, Number]
-      }
-    },
+  components: {
+    FormAddChangeCard
+  },
 
-    components: {
-      FormAddChangeCard
-    },
-
-    data() {
-      return {
-        showPage: false,
-        cardData: {}
-      };
-    },
-
-    computed: {
-      ...mapGetters('cards', ['cardByID'])
-    },
-
-    methods: {
-      routeDataHandler() {
-        const card = this.cardByID(this.id);
-
-        if (card) {
-          this.cardData = {
-            ...card
-          };
-
-          this.showPage = true;
-          return;
-        }
-
-        this.$router.push({path: '/'});
-      }
-    },
-
-    created() {
-      this.routeDataHandler();
+  props: {
+    id: {
+      type: [String, Number]
     }
-  };
+  },
+
+  data () {
+    return {
+      showPage: false,
+      cardData: {}
+    };
+  },
+
+  computed: {
+    ...mapGetters('cards', ['cardByID'])
+  },
+
+  created () {
+    this.routeDataHandler();
+  },
+
+  methods: {
+    routeDataHandler () {
+      const card = this.cardByID(this.id);
+
+      if (card) {
+        this.cardData = {
+          ...card
+        };
+
+        this.showPage = true;
+        return;
+      }
+
+      this.$router.push({ path: '/' });
+    }
+  }
+};
 </script>

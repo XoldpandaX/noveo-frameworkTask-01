@@ -6,15 +6,15 @@
 </template>
 
 <script>
-  import Logo from '../../components/Logo/Logo.vue';
-  import Navigation from '../../components/Navigations/Navigation.vue';
+import Logo from '../../components/Logo/Logo.vue';
+import Navigation from '../../components/Navigations/Navigation.vue';
 
-  export default {
-    name: 'ContainerHeader',
+export default {
+  name: 'ContainerHeader',
 
-    components: {
-      Logo,
-      Navigation
-    }
-  };
+  components: {
+    Logo,
+    Navigation
+  }
+};
 </script>

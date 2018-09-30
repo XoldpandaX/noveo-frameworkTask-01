@@ -5,32 +5,32 @@
 </template>
 
 <script>
-  import AppButton from '../AppButton.vue';
-  import mixins from '../../mixins';
+import AppButton from '../AppButton.vue';
+import mixins from '../../mixins';
 
-  export default {
-    name: 'ButtonCardAdd',
+export default {
+  name: 'ButtonCardAdd',
 
-    components: {
-      AppButton
+  components: {
+    AppButton
+  },
+
+  mixins: [mixins.checkAdmin],
+
+  data () {
+    return {
+      buttonAppearence: 'roundWithPlusIcon'
+    };
+  },
+
+  methods: {
+    checkAndRedirect () { // check user role if success then redirect
+      this.$_checkAdminMixin_enableFunctionComplete(this.redirectFunction);
     },
 
-    mixins: [mixins.checkAdmin],
-
-    data() {
-      return {
-        buttonAppearence: 'roundWithPlusIcon'
-      };
-    },
-
-    methods: {
-      checkAndRedirect() {  // check user role if success then redirect
-        this.$_checkAdminMixin_enableFunctionComplete(this.redirectFunction);
-      },
-
-      redirectFunction() {
-        this.$router.push({name: 'new-card'});
-      }
+    redirectFunction () {
+      this.$router.push({ name: 'new-card' });
     }
-  };
+  }
+};
 </script>

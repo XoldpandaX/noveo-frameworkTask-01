@@ -7,12 +7,12 @@ export default {
     state.token = token;
     state.status = 'authorized';
   },
-  
+
   [types.SAVE_USER_DATA] (state, userData) {
     if (state.status !== 'authorized') {
       state.status = 'authorized';
     }
-    
+
     const {
       name,
       email,
@@ -21,7 +21,7 @@ export default {
       created_at: { date: createdDate },
       updated_at: { date: updatedDate }
     } = userData;
-  
+
     state.user = {
       id,
       email,
@@ -29,12 +29,12 @@ export default {
       role,
       register: createdDate,
       updated: updatedDate
-    }
+    };
   },
-  
+
   [types.LOGOUT] (state) {
     for (let key in defaultState) {
       Vue.set(state, key, defaultState[key]);
     }
   }
-}
+};
