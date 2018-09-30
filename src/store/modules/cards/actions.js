@@ -2,19 +2,10 @@ import * as types from './mutation-types.js';
 import card from '../../../api/card.requests.js';
 
 // API INTERACTION
-async function getCardsFromServer ({ commit }) {
-  try {
-    const { data: { data: { posts: cards } } } = await card.getAllCards();
-    commit(types.INIT_CARD_DATA, cards); // add to store
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-async function getCardsFromServerByDate ({ commit }, params) {
+async function getCardsFromServer ({ commit }, params) {
   try {
     const { data: { data: { posts: cards } } } = await card.getAllCards(params);
-    commit(types.INIT_CARD_DATA, cards); // add to store ordered by date
+    commit(types.INIT_CARD_DATA, cards); // add to store
   } catch (err) {
     console.log(err);
   }
@@ -57,7 +48,6 @@ async function toggleCardLike ({ commit }, cardId) {
 export default {
   // API INTERACTION
   getCardsFromServer,
-  getCardsFromServerByDate,
   createCard,
   editCard,
   removeCard,

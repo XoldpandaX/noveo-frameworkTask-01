@@ -23,10 +23,10 @@ export default {
   },
 
   methods: {
-    ...mapActions('cards', ['getCardsFromServerByDate']),
+    ...mapActions('cards', ['getCardsFromServer']),
 
     getCardsSortingByDate () {
-      this.getCardsFromServerByDate({
+      this.getCardsFromServer({
         sort: this.currentSortType,
         order_by: 'created_at'
       });
