@@ -13,7 +13,8 @@
     .app-button__row
       button-card-delete(v-if="transform === 'edit-form'",
                          :cardID="cardData.id") Delete
-      button-card-save(:formDataToStore="formDataToStore") Save
+      button-card-save(:formDataToStore="formDataToStore",
+                       v-on:click.native="sendClickInfo") Save
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';
@@ -69,10 +70,12 @@ export default {
         };
 
         if (!this.cardData) {
+          // create new card
           this.createCard(storeData).then(() => {
             this.$router.push({ name: 'home' });
           });
         } else {
+          // edit exist card
           storeData.id = this.cardData.id;
           this.editCard(storeData).then(() => {
             this.$router.push({ name: 'home' });
@@ -87,6 +90,10 @@ export default {
       const { title, content } = this.cardData;
       this.userInput.title = title;
       this.userInput.description = content;
+    },
+
+    sendClickInfo () {
+      this.$emit('saveButtonClicked');
     }
   },
 
