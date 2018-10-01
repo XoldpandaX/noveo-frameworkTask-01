@@ -1,7 +1,7 @@
 <template lang="pug">
   .modal-wrapper(v-if="modals.length > 0")
     template(v-for="modal in modals")
-      component(:is="modal.id", :config="modal.config",  @closeModal="closeModal")
+      component(:is="modal.id", :config="modal.config",  @closeModal="closeAllModals")
 </template>
 
 <script>
@@ -24,11 +24,7 @@ export default {
   },
 
   methods: {
-    ...mapActions('ui', ['closeAllModals']),
-
-    closeModal () {
-      this.closeAllModals();
-    }
+    ...mapActions('ui', ['closeAllModals'])
   }
 };
 </script>
