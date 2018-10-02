@@ -1,12 +1,11 @@
 <template lang="pug">
-  AppButton(:onClick="checkAndRedirect",
+  AppButton(:onClick="redirectToEditPage",
             :propButtonType="buttonAppearence",
             :size="buttonSize")
 </template>
 
 <script>
 import AppButton from '../AppButton.vue';
-import mixins from '../../mixins';
 
 export default {
   name: 'ButtonCardEdit',
@@ -14,8 +13,6 @@ export default {
   components: {
     AppButton
   },
-
-  mixins: [mixins.checkAdmin],
 
   props: {
     cardID: {
@@ -37,10 +34,6 @@ export default {
   methods: {
     redirectToEditPage () {
       this.$router.push({ path: `/edit-card/${this.cardID}` });
-    },
-
-    checkAndRedirect () {
-      this.$_checkAdminMixin_enableFunctionComplete(this.redirectToEditPage);
     }
   }
 };
