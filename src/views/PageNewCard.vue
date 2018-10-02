@@ -29,7 +29,7 @@ export default {
 
   beforeRouteLeave (to, from, next) {
     const arrOfObjectValues = valuesIn(this.formCardData);
-    if (arrOfObjectValues.length > 0 && this.isConfirmButtonClicked) {
+    if (arrOfObjectValues.length <= 0 || this.isConfirmButtonClicked) {
       next();
     } else {
       this.showModal({ id: 'confirm-modal',
