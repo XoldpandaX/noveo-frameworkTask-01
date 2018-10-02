@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import { store } from '../store';
 import LocalStorageProvider from '../services/localStorageProvider.js';
+// import { checkUserPermissionToTransition } from './helpers';
 
 // route-level
 import PageHome from '../views/PageHome.vue';
@@ -33,7 +34,10 @@ export default new Router({
     {
       path: '/new-card',
       name: 'new-card',
-      component: PageNewCard
+      component: PageNewCard,
+      meta: {
+        forbiddenFor: ['user']
+      }
     },
     {
       path: '/edit-card/:id',
@@ -41,7 +45,10 @@ export default new Router({
       component: PageEditCard,
       props: (route) => ({
         id: route.params.id
-      })
+      }),
+      meta: {
+        forbiddenFor: ['user']
+      }
     },
     {
       path: '/sign-up',

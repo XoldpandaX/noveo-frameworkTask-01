@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import { valuesIn } from 'lodash';
 import FormAddChangeCard from '../components/Forms/FormAddChangeCard.vue';
 
@@ -16,6 +16,10 @@ export default {
 
   components: {
     FormAddChangeCard
+  },
+
+  computed: {
+    ...mapGetters('auth', ['userRole'])
   },
 
   data () {

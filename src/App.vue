@@ -9,7 +9,6 @@
 
 <script>
 import { mapActions } from 'vuex';
-import LocalStorageProvider from './services/localStorageProvider';
 import MainLayout from './components/Base/MainLayout.vue';
 import ContainerModalWrapper from './containers/ModalContainer/ContainerModalWrapper.vue';
 import ContainerHeader from './containers/HeaderContainer/ContainerHeader.vue';
@@ -27,21 +26,12 @@ export default {
     NotificationService
   },
 
-  created () {
-    if (LocalStorageProvider.getItem('token')) {
-      this.getUserData();
-    }
-
+  mounted () {
     this.showModal({ id: 'first-load-modal', config: {} });
   },
 
   methods: {
-    ...mapActions('ui', ['showModal', 'toggleLoader']),
-    ...mapActions('auth', ['getLoginUserData']),
-
-    getUserData () {
-      this.getLoginUserData();
-    }
+    ...mapActions('ui', ['showModal', 'toggleLoader'])
   }
 };
 </script>
