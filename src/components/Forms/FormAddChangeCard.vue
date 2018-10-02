@@ -63,10 +63,11 @@ export default {
   methods: {
     ...mapActions('cards', ['createCard', 'editCard']),
 
+    // event emmiter
     pushFormDataUp () {
       this.$emit('getFormData', this.userInput);
     },
-
+    // event emmiter
     isConfirmButtonClicked () {
       this.$emit('confirmButtonsClicked');
     },

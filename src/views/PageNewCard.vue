@@ -20,9 +20,9 @@ export default {
 
   data () {
     return {
-      // data received from form-add-change-card component
+      // data received from [form-add-change-card] component
       formCardData: {},
-      // save/delete button from form-add-change-card component
+      // save/delete button is clicked from [form-add-change-card] component
       isConfirmButtonClicked: false
     };
   },
