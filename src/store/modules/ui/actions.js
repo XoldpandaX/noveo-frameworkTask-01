@@ -10,7 +10,7 @@ function showModal ({ commit }, { id, config = {} }) {
     case 'first-load-modal':
       if (!localStorage.getItem('wasHere')) {
         localStorage.setItem('wasHere', 'was');
-        commit(types.SHOW_MODAL, id);
+        commit(types.SHOW_MODAL, { id, config });
       }
       break;
     default:
