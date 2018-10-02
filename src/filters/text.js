@@ -1,5 +1,5 @@
 export function makeUppercase (val) {
   if (!val) return '';
-  val = val.toString();
+  val.toString();
   return val.toUpperCase();
 }

@@ -1,5 +1,5 @@
 import * as types from './mutation-types';
-import { sortBy } from 'lodash';
+//  import { sortBy } from 'lodash';
 
 export default {
   [types.SAVE_CARD_DATA] (state, data) {

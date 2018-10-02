@@ -16,7 +16,7 @@ module.exports = {
     'array-callback-return': 'off',
     'no-return-assign': 'off',
     'semi': ['error', 'always'],
-    "no-extra-semi": "off",
+    'no-extra-semi': 'off'
   },
 
   parserOptions: {
