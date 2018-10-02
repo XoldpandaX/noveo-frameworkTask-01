@@ -4,17 +4,20 @@
       input(type="text",
             placeholder="Enter title",
             maxlength="42",
+            v-on:input="pushFormDataUp",
             v-model="userInput.title")
     .add-change-card-form__row
       textarea(placeholder="Enter description",
                :maxlength="maxSymbols",
+               v-on:input="pushFormDataUp",
                v-model="userInput.description")
       span.add-change-card-form__counter {{ symbolsLeft }}/{{ maxSymbols }}
     .app-button__row
       button-card-delete(v-if="transform === 'edit-form'",
-                         :cardID="cardData.id") Delete
+                         :cardID="cardData.id",
+                         v-on:click.native="isConfirmButtonClicked") Delete
       button-card-save(:formDataToStore="formDataToStore",
-                       v-on:click.native="sendClickInfo") Save
+                       v-on:click.native="isConfirmButtonClicked") Save
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';
@@ -60,6 +63,14 @@ export default {
   methods: {
     ...mapActions('cards', ['createCard', 'editCard']),
 
+    pushFormDataUp () {
+      this.$emit('getFormData', this.userInput);
+    },
+
+    isConfirmButtonClicked () {
+      this.$emit('confirmButtonsClicked');
+    },
+
     formDataToStore () {
       const { title, description } = this.userInput;
 
@@ -90,10 +101,6 @@ export default {
       const { title, content } = this.cardData;
       this.userInput.title = title;
       this.userInput.description = content;
-    },
-
-    sendClickInfo () {
-      this.$emit('saveButtonClicked');
     }
   },
 
