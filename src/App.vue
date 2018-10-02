@@ -32,9 +32,7 @@ export default {
       this.getUserData();
     }
 
-    setTimeout(() => {
-      this.showModal({ id: 'first-load-modal' });
-    }, 750);
+    this.showModal({ id: 'first-load-modal', config: {} });
   },
 
   methods: {
