@@ -27,7 +27,7 @@ export default {
   },
 
   mounted () {
-    this.showModal({ id: 'first-load-modal', config: {} });
+    this.showModal({ id: this.$appConstants.modalNames.firstLoad, config: {} });
   },
 
   methods: {

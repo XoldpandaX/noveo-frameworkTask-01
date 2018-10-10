@@ -29,9 +29,9 @@ async function loginUser ({ commit, dispatch }, userData) {
 async function getLoginUserData ({ commit, dispatch }, token) {
   const { data: { data } } = await auth.getCurrentUserData();
 
-  if (!token) { // не передан параметр, например: при перезагрузке страницы
-    commit(types.HANDLE_LOGIN, LocalStorageProvider.getItem('token'));
-  }
+  // if (!token) { // не передан параметр, например: при перезагрузке страницы
+  //   commit(types.HANDLE_LOGIN, LocalStorageProvider.getItem('token'));
+  // }
 
   const userRole = data.user.role;
   dispatch('ui/changeNavigation', userRole, { root: true });

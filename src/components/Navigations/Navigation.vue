@@ -37,7 +37,7 @@ export default {
           this.exit();
           break;
         case 'profile':
-          this.showModal({ id: 'profile-modal' });
+          this.showModal({ id: this.$appConstants.modalNames.profile });
           break;
       }
     },

@@ -36,7 +36,7 @@ export default {
     if (arrOfObjectValues.length <= 0 || this.isConfirmButtonClicked) {
       next();
     } else {
-      this.showModal({ id: 'confirm-modal',
+      this.showModal({ id: this.$appConstants.modalNames.confirm,
         config: {
           action: next,
           formData: this.formCardData
