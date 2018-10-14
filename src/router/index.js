@@ -19,6 +19,9 @@ export default new Router({
       path: '/',
       name: 'home',
       component: PageHome,
+      meta: {
+        forbiddenFor: []
+      },
       beforeEnter (to, from, next) {
         if (LocalStorageProvider.getItem('token')) {
           store.dispatch('cards/getCardsFromServer')
@@ -52,12 +55,18 @@ export default new Router({
     {
       path: '/sign-up',
       name: 'sign-up',
-      component: PageSignUp
+      component: PageSignUp,
+      meta: {
+        forbiddenFor: []
+      }
     },
     {
       path: '/sign-in',
       name: 'sign-in',
-      component: PageSignIn
+      component: PageSignIn,
+      meta: {
+        forbiddenFor: []
+      }
     }
   ]
 });
