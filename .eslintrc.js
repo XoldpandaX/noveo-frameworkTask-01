@@ -10,13 +10,14 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-param-reassign': ['error', { props: false }],
+    //'no-param-reassign': ['error', { props: false }],
+    "no-param-reassign": 0,
     'no-restricted-syntax': ['error', 'WithStatement'],
     'guard-for-in': 'off',
     'array-callback-return': 'off',
     'no-return-assign': 'off',
     'semi': ['error', 'always'],
-    'no-extra-semi': 'off'
+    'no-extra-semi': 'off',
   },
 
   parserOptions: {

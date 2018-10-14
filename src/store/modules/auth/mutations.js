@@ -1,5 +1,4 @@
 import * as types from './mutation-types';
-import Vue from 'vue';
 import { defaultState } from './const.js';
 
 export default {
@@ -33,8 +32,6 @@ export default {
   },
 
   [types.LOGOUT] (state) {
-    for (let key in defaultState) {
-      Vue.set(state, key, defaultState[key]);
-    }
+    state = { ...defaultState };
   }
 };
