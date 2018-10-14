@@ -1,10 +1,10 @@
-import { checkUserPermissionToTransition } from './helpers';
+import { checkUserRoutePermission } from './helpers';
 
 export default function (to, from, next, store, token) {
   if (token) {
     store.dispatch('auth/getLoginUserData').then(() => {
       const userRole = store.getters['auth/userRole'];
-      const isRouteForbidden = checkUserPermissionToTransition(to.meta.forbiddenFor, userRole);
+      const isRouteForbidden = checkUserRoutePermission(to.meta.forbiddenFor, userRole);
       if (isRouteForbidden) {
         next(from.path);
         store.dispatch('ui/showNotification', {
