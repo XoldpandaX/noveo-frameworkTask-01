@@ -1,5 +1,6 @@
 import * as types from './mutation-types';
-import CONSTANTS from '../../../constants';
+import navigationElements from '../../../constants/navigationElements.js';
+import userRoles from '../../../constants/roles.js';
 
 export default {
   [types.SHOW_MODAL] (state, data) {
@@ -28,14 +29,14 @@ export default {
 
   [types.CHANGE_NAVIGATION] (state, userRole) {
     switch (userRole) {
-      case 'user':
-        state.navigationBar = CONSTANTS.navigationElements.userNav;
+      case userRoles.user:
+        state.navigationBar = navigationElements.userNav;
         break;
-      case 'admin':
-        state.navigationBar = CONSTANTS.navigationElements.userNav;
+      case userRoles.admin:
+        state.navigationBar = navigationElements.userNav;
         break;
       default:
-        state.navigationBar = CONSTANTS.navigationElements.defaultNav;
+        state.navigationBar = navigationElements.defaultNav;
     }
   },
   [types.CHANGE_CARDS_LAYOUT_VIEW] (state, layoutType) {
