@@ -1,7 +1,6 @@
 import axios from 'axios';
 import config from '../../config';
 import errorHandler from './interceptors/errorHandler.js';
-import responseHandler from './interceptors/responseHadler.js';
 
 export default function (store) {
   const baseConfig = {
@@ -12,6 +11,6 @@ export default function (store) {
     }
   };
   const axiosInstance = axios.create(baseConfig);
-  axiosInstance.interceptors.response.use(responseHandler, errorHandler(store));
+  axiosInstance.interceptors.response.use(response => response, errorHandler(store));
   return axiosInstance;
 }
