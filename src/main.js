@@ -2,7 +2,6 @@ import Vue from 'vue';
 import VueAxios from 'vue-axios';
 import App from './App.vue';
 import createAxios from './services/axios';
-import LocalStorageProvider from './services/localStorageProvider.js';
 import router from './router';
 import routerBeforeEach from './router/beforeEach.js';
 import filters from './filters';
@@ -22,12 +21,6 @@ Object.defineProperty(Vue.prototype, '$appConstants', {
 
 Vue.use(VueAxios, createAxios(store));
 Vue.config.productionTip = false;
-
-// is token exist logic
-const token = LocalStorageProvider.getItem('token');
-if (token) {
-  Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-}
 
 // hooks router global
 router.beforeResolve((to, from, next) => routerBeforeEach(to, from, next, store));

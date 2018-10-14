@@ -19,7 +19,6 @@ async function loginUser ({ commit, dispatch }, userData) {
     dispatch('ui/showLoader', null, { root: true });
     const { data: { data: { token } } } = await auth.loginUser(userData);
     LocalStorageProvider.setItem('token', token);
-    Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     dispatch('getUserRole');
     dispatch('changeAuthStatus');
     return true;
