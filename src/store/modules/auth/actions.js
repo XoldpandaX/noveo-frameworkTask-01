@@ -3,9 +3,11 @@ import Vue from 'vue';
 import auth from '../../../api/auth.requests.js';
 import LocalStorageProvider from '../../../services/localStorageProvider.js';
 
-async function registerUser ({ commit }, userData) {
+async function registerUser ({ commit, dispatch }, userData) {
   try {
+    dispatch('ui/showLoader', null, { root: true });
     const { data: { data: { user } } } = await auth.registerUser(userData);
+    dispatch('ui/hideLoader', null, { root: true });
     return user.email;
   } catch (err) {
     return false;
@@ -14,6 +16,7 @@ async function registerUser ({ commit }, userData) {
 
 async function loginUser ({ commit, dispatch }, userData) {
   try {
+    dispatch('ui/showLoader', null, { root: true });
     const { data: { data: { token } } } = await auth.loginUser(userData);
     LocalStorageProvider.setItem('token', token);
     commit(types.HANDLE_LOGIN, token);
@@ -28,11 +31,7 @@ async function loginUser ({ commit, dispatch }, userData) {
 
 async function getLoginUserData ({ commit, dispatch }, token) {
   const { data: { data } } = await auth.getCurrentUserData();
-
-  // if (!token) { // не передан параметр, например: при перезагрузке страницы
-  //   commit(types.HANDLE_LOGIN, LocalStorageProvider.getItem('token'));
-  // }
-
+  dispatch('ui/hideLoader', null, { root: true });
   const userRole = data.user.role;
   dispatch('ui/changeNavigation', userRole, { root: true });
   commit(types.SAVE_USER_DATA, { ...data.user });

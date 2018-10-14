@@ -23,6 +23,12 @@ export default {
   [types.TOGGLE_LOADER] (state) {
     state.isLoaderActive = !state.isLoaderActive;
   },
+  [types.SHOW_LOADER] (state) {
+    state.isLoaderActive = true;
+  },
+  [types.HIDE_LOADER] (state) {
+    state.isLoaderActive = false;
+  },
 
   [types.CHANGE_NAVIGATION] (state, userRole) {
     switch (userRole) {

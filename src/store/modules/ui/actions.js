@@ -38,6 +38,14 @@ function toggleLoader ({ commit }) {
   commit(types.TOGGLE_LOADER);
 }
 
+function showLoader ({ commit }) {
+  commit(types.SHOW_LOADER);
+}
+
+function hideLoader ({ commit }) {
+  commit(types.HIDE_LOADER);
+}
+
 function changeNavigation ({ commit }, userRole) {
   commit(types.CHANGE_NAVIGATION, userRole);
 }
@@ -52,6 +60,8 @@ export default {
   showNotification,
   hideNotification,
   toggleLoader,
+  showLoader,
+  hideLoader,
   changeNavigation,
   changeCardLayout
 };
