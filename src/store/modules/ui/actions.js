@@ -34,10 +34,6 @@ function hideNotification ({ commit }, notificationId) {
   commit(types.HIDE_NOTIFICATION, notificationId);
 }
 
-function toggleLoader ({ commit }) {
-  commit(types.TOGGLE_LOADER);
-}
-
 function showLoader ({ commit }) {
   commit(types.SHOW_LOADER);
 }
@@ -59,7 +55,6 @@ export default {
   showModal,
   showNotification,
   hideNotification,
-  toggleLoader,
   showLoader,
   hideLoader,
   changeNavigation,

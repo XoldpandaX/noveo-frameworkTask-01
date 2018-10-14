@@ -19,10 +19,6 @@ export default {
       el.id === notificationId && state.notifications.splice(index, 1);
     });
   },
-
-  [types.TOGGLE_LOADER] (state) {
-    state.isLoaderActive = !state.isLoaderActive;
-  },
   [types.SHOW_LOADER] (state) {
     state.isLoaderActive = true;
   },
