@@ -30,7 +30,7 @@ if (token) {
 }
 
 // hooks router global
-router.beforeEach((to, from, next) => routerBeforeEach(to, from, next, store, token));
+router.beforeResolve((to, from, next) => routerBeforeEach(to, from, next, store, token));
 
 new Vue({
   router,

@@ -33,12 +33,36 @@ async function getLoginUserData ({ commit, dispatch }) {
   const { data: { data } } = await auth.getCurrentUserData();
   dispatch('ui/hideLoader', null, { root: true });
   const userRole = data.user.role;
+  const {
+    name,
+    email,
+    id,
+    role,
+    created_at: { date: createdDate },
+    updated_at: { date: updatedDate }
+  } = data.user;
+  const userData = {
+    id,
+    email,
+    name,
+    role,
+    register: createdDate,
+    updated: updatedDate
+  };
+  LocalStorageProvider.setStringifyItem('user', userData);
   dispatch('ui/changeNavigation', userRole, { root: true });
-  commit(types.SAVE_USER_DATA, { ...data.user });
+  commit(types.SAVE_USER_DATA, userData);
+}
+
+async function getLoggedInUserData ({ commit, dispatch }) {
+  const user = LocalStorageProvider.getParseItem('user');
+  dispatch('ui/changeNavigation', user.role, { root: true });
+  commit(types.SAVE_USER_DATA, user);
 }
 
 async function logout ({ commit }) {
   LocalStorageProvider.removeItem('token');
+  LocalStorageProvider.removeItem('user');
   commit(types.LOGOUT);
   delete Vue.axios.defaults.headers.common['Authorization'];
 }
@@ -47,5 +71,6 @@ export default {
   registerUser,
   loginUser,
   getLoginUserData,
+  getLoggedInUserData,
   logout
 };
