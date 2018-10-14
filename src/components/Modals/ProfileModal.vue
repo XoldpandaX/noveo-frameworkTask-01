@@ -16,11 +16,11 @@ export default {
   },
 
   created () {
-    this.getLoginUserData();
+    this.loggedInUserData();
   },
 
   methods: {
-    ...mapActions('auth', ['getLoginUserData']),
+    ...mapActions('auth', ['loggedInUserData']),
     closeModal () {
       this.$emit('closeModal');
     }

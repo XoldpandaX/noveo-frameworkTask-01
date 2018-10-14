@@ -20,7 +20,7 @@ async function loginUser ({ commit, dispatch }, userData) {
     const { data: { data: { token } } } = await auth.loginUser(userData);
     LocalStorageProvider.setItem('token', token);
     Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-    dispatch('getLoggedInUserRole');
+    dispatch('getUserRole');
     dispatch('changeAuthStatus');
     return true;
   } catch (err) {
@@ -29,7 +29,7 @@ async function loginUser ({ commit, dispatch }, userData) {
   }
 }
 
-async function getLoggedInUserRole ({ commit, dispatch }) {
+async function getUserRole ({ commit, dispatch }) {
   try {
     const { data: { data } } = await auth.getCurrentUserData();
     const { role } = data.user;
@@ -49,17 +49,11 @@ function changeAuthStatus ({ commit, dispatch }) {
   }
 }
 
-async function getLoginUserData ({ commit, dispatch }) {
+async function loggedInUserData ({ commit, dispatch }) {
   dispatch('ui/showLoader', null, { root: true });
   const { data: { data } } = await auth.getCurrentUserData();
   dispatch('ui/hideLoader', null, { root: true });
   commit(types.SAVE_USER_DATA, data.user);
-}
-
-async function getLoggedInUserData ({ commit, dispatch }) {
-  const user = LocalStorageProvider.getParseItem('user');
-  dispatch('ui/changeNavigation', user.role, { root: true });
-  commit(types.SAVE_USER_DATA, user);
 }
 
 async function logout ({ commit }) {
@@ -72,9 +66,8 @@ async function logout ({ commit }) {
 export default {
   registerUser,
   loginUser,
-  getLoggedInUserRole,
+  getUserRole,
   changeAuthStatus,
-  getLoginUserData,
-  getLoggedInUserData,
+  loggedInUserData,
   logout
 };
