@@ -2,11 +2,11 @@
   .profile-modal
     .cross-btn(@click="closeModal")
     .profile-modal__body
-      div(v-for="(val, key) in user") {{ `${key}: ${val}` }}
+      div(v-for="(val, key) in userData") {{ `${key}: ${val}` }}
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'ProfileModal',
@@ -15,17 +15,12 @@ export default {
     ...mapGetters('auth', ['userData'])
   },
 
-  data () {
-    return {
-      user: {}
-    };
-  },
-
   created () {
-    this.user = this.userData;
+    this.getLoginUserData();
   },
 
   methods: {
+    ...mapActions('auth', ['getLoginUserData']),
     closeModal () {
       this.$emit('closeModal');
     }

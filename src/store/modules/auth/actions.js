@@ -50,27 +50,10 @@ function changeAuthStatus ({ commit, dispatch }) {
 }
 
 async function getLoginUserData ({ commit, dispatch }) {
+  dispatch('ui/showLoader', null, { root: true });
   const { data: { data } } = await auth.getCurrentUserData();
   dispatch('ui/hideLoader', null, { root: true });
-  const userRole = data.user.role;
-  const {
-    name,
-    email,
-    id,
-    role,
-    created_at: { date: createdDate },
-    updated_at: { date: updatedDate }
-  } = data.user;
-  const userData = {
-    id,
-    email,
-    name,
-    role,
-    register: createdDate,
-    updated: updatedDate
-  };
-  dispatch('ui/changeNavigation', userRole, { root: true });
-  commit(types.SAVE_USER_DATA, userData);
+  commit(types.SAVE_USER_DATA, data.user);
 }
 
 async function getLoggedInUserData ({ commit, dispatch }) {
