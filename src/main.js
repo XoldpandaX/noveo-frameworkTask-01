@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueAxios from 'vue-axios';
 import App from './App.vue';
-import AxiosProvider from './services/axiosProvider.js';
+import createAxios from './services/axios';
 import LocalStorageProvider from './services/localStorageProvider.js';
 import router from './router';
 import filters from './filters';
@@ -20,7 +20,7 @@ Object.defineProperty(Vue.prototype, '$appConstants', {
   }
 });
 
-Vue.use(VueAxios, AxiosProvider);
+Vue.use(VueAxios, createAxios(store));
 Vue.config.productionTip = false;
 
 // is token exist logic
