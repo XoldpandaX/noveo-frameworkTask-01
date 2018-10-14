@@ -21,7 +21,7 @@ async function loginUser ({ commit, dispatch }, userData) {
     LocalStorageProvider.setItem('token', token);
     commit(types.HANDLE_LOGIN, token);
     Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-    dispatch('getLoginUserData', token);
+    dispatch('getLoginUserData');
     return true;
   } catch (err) {
     LocalStorageProvider.removeItem('token');
@@ -29,7 +29,7 @@ async function loginUser ({ commit, dispatch }, userData) {
   }
 }
 
-async function getLoginUserData ({ commit, dispatch }, token) {
+async function getLoginUserData ({ commit, dispatch }) {
   const { data: { data } } = await auth.getCurrentUserData();
   dispatch('ui/hideLoader', null, { root: true });
   const userRole = data.user.role;
