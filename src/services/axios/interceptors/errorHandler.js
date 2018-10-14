@@ -2,7 +2,6 @@ import isPlainObject from 'lodash/isPlainObject';
 
 export default function (store) {
   return (err) => {
-    store.dispatch('ui/toggleLoader');
     const errNum = err.response.status;
     const errMsg = err.response.data.errors;
     if (isPlainObject(errMsg)) {

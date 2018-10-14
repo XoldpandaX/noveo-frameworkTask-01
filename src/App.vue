@@ -31,7 +31,7 @@ export default {
   },
 
   methods: {
-    ...mapActions('ui', ['showModal', 'toggleLoader'])
+    ...mapActions('ui', ['showModal'])
   }
 };
 </script>

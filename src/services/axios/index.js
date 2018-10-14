@@ -13,7 +13,7 @@ export default function (store) {
     }
   };
   const axiosInstance = axios.create(baseConfig);
-  axiosInstance.interceptors.response.use(responseHandler(store), errorHandler(store));
-  axiosInstance.interceptors.request.use(requestHandler(store));
+  axiosInstance.interceptors.response.use(responseHandler, errorHandler(store));
+  axiosInstance.interceptors.request.use(requestHandler);
   return axiosInstance;
 }

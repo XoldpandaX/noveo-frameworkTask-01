@@ -1,6 +1,3 @@
-export default function (store) {
-  return response => {
-    store.dispatch('ui/toggleLoader');
-    return response;
-  };
+export default function (response) {
+  return response;
 }
