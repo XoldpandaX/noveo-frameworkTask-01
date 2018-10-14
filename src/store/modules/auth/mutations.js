@@ -5,15 +5,16 @@ import { defaultState } from './const.js';
 export default {
   [types.HANDLE_LOGIN] (state, token) {
     state.token = token;
-    state.status = 'authorized';
   },
 
   [types.SAVE_USER_DATA] (state, userData) {
-    if (state.status !== 'authorized') {
-      state.status = 'authorized';
-    }
-
     state.user = userData;
+  },
+  [types.SAVE_AUTH_STATUS] (state, role) {
+    if (role) {
+      state.status = 'authorized';
+      state.userRole = role;
+    }
   },
 
   [types.LOGOUT] (state) {

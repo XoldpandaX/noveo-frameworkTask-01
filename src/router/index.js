@@ -38,7 +38,10 @@ export default new Router({
       name: 'new-card',
       component: PageNewCard,
       meta: {
-        forbiddenFor: ['user']
+        forbiddenFor: [
+          'user',
+          'guest'
+        ]
       }
     },
     {
@@ -49,7 +52,10 @@ export default new Router({
         id: route.params.id
       }),
       meta: {
-        forbiddenFor: ['user']
+        forbiddenFor: [
+          'user',
+          'guest'
+        ]
       }
     },
     {

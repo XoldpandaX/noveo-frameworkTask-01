@@ -19,13 +19,33 @@ async function loginUser ({ commit, dispatch }, userData) {
     dispatch('ui/showLoader', null, { root: true });
     const { data: { data: { token } } } = await auth.loginUser(userData);
     LocalStorageProvider.setItem('token', token);
-    commit(types.HANDLE_LOGIN, token);
     Vue.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-    dispatch('getLoginUserData');
+    dispatch('getLoggedInUserRole');
+    dispatch('changeAuthStatus');
     return true;
   } catch (err) {
     LocalStorageProvider.removeItem('token');
     return false;
+  }
+}
+
+async function getLoggedInUserRole ({ commit, dispatch }) {
+  try {
+    const { data: { data } } = await auth.getCurrentUserData();
+    const { role } = data.user;
+    LocalStorageProvider.setItem('userRole', role);
+    dispatch('ui/hideLoader', null, { root: true });
+  } catch (err) {
+    return false;
+  }
+}
+
+function changeAuthStatus ({ commit, dispatch }) {
+  const role = LocalStorageProvider.getItem('userRole');
+  const token = LocalStorageProvider.getItem('token');
+  if (role && token) {
+    dispatch('ui/changeNavigation', role, { root: true });
+    commit(types.SAVE_AUTH_STATUS, role);
   }
 }
 
@@ -49,7 +69,6 @@ async function getLoginUserData ({ commit, dispatch }) {
     register: createdDate,
     updated: updatedDate
   };
-  LocalStorageProvider.setStringifyItem('user', userData);
   dispatch('ui/changeNavigation', userRole, { root: true });
   commit(types.SAVE_USER_DATA, userData);
 }
@@ -62,7 +81,7 @@ async function getLoggedInUserData ({ commit, dispatch }) {
 
 async function logout ({ commit }) {
   LocalStorageProvider.removeItem('token');
-  LocalStorageProvider.removeItem('user');
+  LocalStorageProvider.removeItem('userRole');
   commit(types.LOGOUT);
   delete Vue.axios.defaults.headers.common['Authorization'];
 }
@@ -70,6 +89,8 @@ async function logout ({ commit }) {
 export default {
   registerUser,
   loginUser,
+  getLoggedInUserRole,
+  changeAuthStatus,
   getLoginUserData,
   getLoggedInUserData,
   logout
