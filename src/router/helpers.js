@@ -1,7 +1,7 @@
-function checkUserRoutePermission (forbiddenFor, userRole) {
+function isRouteAvalible (forbiddenFor, userRole) {
   return forbiddenFor.length > 0 ? forbiddenFor.some(forbidden => forbidden === userRole) : false;
 }
 
 export {
-  checkUserRoutePermission
+  isRouteAvalible
 };
