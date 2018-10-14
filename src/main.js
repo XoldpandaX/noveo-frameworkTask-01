@@ -4,10 +4,10 @@ import App from './App.vue';
 import createAxios from './services/axios';
 import LocalStorageProvider from './services/localStorageProvider.js';
 import router from './router';
+import routerBeforeEach from './router/beforeEach.js';
 import filters from './filters';
 import constants from './constants';
 import { store } from './store';
-import { checkUserPermissionToTransition } from './router/helpers';
 
 // FILTERS
 Object.keys(filters).forEach(key => {
@@ -30,26 +30,7 @@ if (token) {
 }
 
 // hooks router global
-router.beforeEach((to, from, next) => {
-  if (token) {
-    store.dispatch('auth/getLoginUserData').then(() => {
-      const userRole = store.getters['auth/userRole'];
-      const isRouteForbidden = checkUserPermissionToTransition(to.meta.forbiddenFor, userRole);
-      if (isRouteForbidden) {
-        next(false);
-        store.dispatch('ui/showNotification', {
-          errNum: 0,
-          errMsg: 'Only an administrator can perform these actions.'
-        });
-        router.push('/');
-      } else {
-        next();
-      }
-    });
-  } else {
-    next();
-  }
-});
+router.beforeEach((to, from, next) => routerBeforeEach(to, from, next, store, token));
 
 new Vue({
   router,
