@@ -3,7 +3,7 @@
     container-header
     main-layout
     container-modal-wrapper
-    loader
+    loader-global
     notification-service
 </template>
 
@@ -12,7 +12,7 @@ import { mapActions } from 'vuex';
 import MainLayout from './components/Base/MainLayout.vue';
 import ContainerModalWrapper from './containers/ModalContainer/ContainerModalWrapper.vue';
 import ContainerHeader from './containers/HeaderContainer/ContainerHeader.vue';
-import Loader from './components/Loaders/Loader.vue';
+import LoaderGlobal from './components/Loaders/LoaderGlobal.vue';
 import NotificationService from './components/Notifications/NotificationService.vue';
 
 export default {
@@ -22,7 +22,7 @@ export default {
     MainLayout,
     ContainerModalWrapper,
     ContainerHeader,
-    Loader,
+    LoaderGlobal,
     NotificationService
   },
 

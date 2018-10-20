@@ -1,20 +1,20 @@
 <template lang="pug">
   .container-header
     .container-header__inner
-      logo(class="-margin-auto-right") Materializer
-      navigation
+      logo-main(class="-margin-auto-right") Materializer
+      navigation-main
 </template>
 
 <script>
-import Logo from '../../components/Logo/Logo.vue';
-import Navigation from '../../components/Navigations/Navigation.vue';
+import LogoMain from '../../components/Logo/LogoMain.vue';
+import NavigationMain from '../../components/Navigations/NavigationMain.vue';
 
 export default {
   name: 'ContainerHeader',
 
   components: {
-    Logo,
-    Navigation
+    LogoMain,
+    NavigationMain
   }
 };
 </script>

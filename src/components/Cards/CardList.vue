@@ -8,8 +8,10 @@
           propButtonType="roundWithPlusIcon"
           )
       .card-list__element(v-for="card in cards")
-        card-info(:cardData="card",
-                  :key="card.id")
+        card-info(
+        :key="card.id",
+        :cardData="card"
+        )
 </template>
 
 <script>

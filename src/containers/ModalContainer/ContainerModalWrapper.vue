@@ -1,7 +1,7 @@
 <template lang="pug">
   .modal-wrapper(v-if="modals.length > 0")
     template(v-for="modal in modals")
-      component(:is="modal.id", :config="modal.config",  @closeModal="closeAllModals")
+      component(:is="modal.id", :key="modal.id", :config="modal.config", @closeModal="closeAllModals")
 </template>
 
 <script>

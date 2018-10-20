@@ -1,14 +1,19 @@
 <template lang="pug">
   form.form-wrapper.-sign-in
     h3 write-in fields
-    .form-wrapper__field(v-for="input in fieldData")
-      input(:name="input.name",
-            :type="input.type",
-            :placeholder="input.placeholder",
-            :autocomplete="input.autocomplete",
-            v-model="input.value")
-      transition(enter-active-class="animated bounceIn",
-                 leave-active-class="animated fadeOutRight")
+    .form-wrapper__field(v-for="(input, i) in fieldData")
+      input(
+      :key="i",
+      :name="input.name",
+      :type="input.type",
+      :placeholder="input.placeholder",
+      :autocomplete="input.autocomplete",
+      v-model="input.value"
+      )
+      transition(
+      enter-active-class="animated bounceIn",
+      leave-active-class="animated fadeOutRight"
+      )
         .form-wrapper__error(v-if="errors[`${input.name}`].error")
           span {{ errors[`${input.name}`].errorMessage | makeUppercase }}
     .app-button__row.-margin-top-l
