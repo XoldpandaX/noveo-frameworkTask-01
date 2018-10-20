@@ -3,9 +3,10 @@ import Vue from 'vue';
 import auth from '../../../api/auth.requests.js';
 import LocalStorageProvider from '../../../services/localStorageProvider.js';
 
-async function registerUser ({ commit, dispatch }, userData) {
+async function registerUser ({ commit, dispatch }, { name, email, password }) {
   try {
     dispatch('ui/showLoader', null, { root: true });
+    const userData = JSON.stringify({ name, email, password });
     const { data: { data: { user } } } = await auth.registerUser(userData);
     dispatch('ui/hideLoader', null, { root: true });
     return user.email;
@@ -14,9 +15,10 @@ async function registerUser ({ commit, dispatch }, userData) {
   }
 }
 
-async function loginUser ({ commit, dispatch }, userData) {
+async function loginUser ({ commit, dispatch }, { email, password }) {
   try {
     dispatch('ui/showLoader', null, { root: true });
+    const userData = JSON.stringify({ email, password });
     const { data: { data: { token } } } = await auth.loginUser(userData);
     LocalStorageProvider.setItem('token', token);
     dispatch('getUserRole');

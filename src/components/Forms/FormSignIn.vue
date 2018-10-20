@@ -86,7 +86,7 @@ export default {
           sendData[el.name] = el.value;
         }
       });
-      this.loginUser(JSON.stringify(sendData)).then((success) => {
+      this.loginUser(sendData).then((success) => {
         if (success) {
           this.$router.push('/');
         }

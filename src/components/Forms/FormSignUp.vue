@@ -108,7 +108,7 @@ export default {
         }
       });
 
-      this.registerUser(JSON.stringify(sendData)).then((response) => {
+      this.registerUser(sendData).then((response) => {
         // присваиваем значение успешно зарегестрированного email, input email в форме входа
         if (response) {
           this.$appConstants.forms.signIn.inputs[0].value = response;
