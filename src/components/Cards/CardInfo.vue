@@ -5,22 +5,30 @@
       p created: {{ cardData.created_at.date|timeAgoUTC }}
       p {{ cardData.content }}
     footer
-      button-card-edit(:cardID="cardData.id")
-      button-card-like(:cardID="cardData.id",
-                       :isCardLike="cardData.liked",
-                       :totalLikes="cardData.total_likes")
+      app-button(
+      :onClick="() => $router.push({ path: `/edit-card/${this.cardData.id}` })",
+      propButtonType="editButton",
+      :size="{ width: '25px', height: '25px' }"
+      )
+      .button-card-like
+        app-button(
+        :class="likeIconActive",
+        :onClick="likeCard",
+        propButtonType="likeButton",
+        :size="{ width: '25px', height: '25px' }"
+        )
+        span(v-if="totalLikes >= 0") {{ totalLikes }}
 </template>
 
 <script>
-import ButtonCardEdit from '../Buttons/ButtonCardEdit.vue';
-import ButtonCardLike from '../Buttons/ButtonCardLike.vue';
+import { mapActions } from 'vuex';
+import AppButton from '../AppButton.vue';
 
 export default {
   name: 'CardInfo',
 
   components: {
-    ButtonCardEdit,
-    ButtonCardLike
+    AppButton
   },
 
   props: {
@@ -28,6 +36,32 @@ export default {
       type: Object,
       required: true
     }
+  },
+  computed: {
+    likeIconActive () {
+      return this.cardData.liked ? '-active' : '';
+    },
+    totalLikes () {
+      return this.cardData.total_likes;
+    }
+  },
+  methods: {
+    ...mapActions('cards', ['toggleCardLike']),
+    likeCard () {
+      this.toggleCardLike(this.cardData.id);
+    }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+  .button-card-like {
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: 10px;
+      margin-top: 5px;
+    }
+  }
+</style>

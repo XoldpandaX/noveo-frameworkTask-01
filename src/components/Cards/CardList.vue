@@ -2,14 +2,18 @@
   .card-list
     .card-list__cards-container
       .card-list__element
-        button-card-add
+        .card-button-add
+          app-button(
+          :onClick="() => $router.push({ name: 'new-card' })",
+          propButtonType="roundWithPlusIcon"
+          )
       .card-list__element(v-for="card in cards")
         card-info(:cardData="card",
                   :key="card.id")
 </template>
 
 <script>
-import ButtonCardAdd from '../Buttons/ButtonCardAdd.vue';
+import AppButton from '../AppButton.vue';
 import CardInfo from './CardInfo.vue';
 import { mapGetters } from 'vuex';
 
@@ -17,8 +21,8 @@ export default {
   name: 'CardList',
 
   components: {
-    ButtonCardAdd,
-    CardInfo
+    CardInfo,
+    AppButton
   },
 
   computed: {

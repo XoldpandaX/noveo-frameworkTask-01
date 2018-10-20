@@ -13,23 +13,27 @@
                v-model="userInput.description")
       span.add-change-card-form__counter {{ symbolsLeft }}/{{ maxSymbols }}
     .app-button__row
-      button-card-delete(v-if="transform === 'edit-form'",
-                         :cardID="cardData.id",
-                         v-on:click.native="isConfirmButtonClicked") Delete
-      button-card-save(:formDataToStore="formDataToStore",
-                       v-on:click.native="isConfirmButtonClicked") Save
+      app-button(
+      v-if="transform === 'edit-form'",
+      propButtonType="formButton",
+      :onClick="deleteCard",
+      v-on:click.native="isConfirmButtonClicked"
+      ) Delete
+      app-button(
+      :onClick="formDataToStore",
+      v-on:click.native="isConfirmButtonClicked",
+      propButtonType="formButton"
+      ) Save
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import ButtonCardSave from '../Buttons/ButtonCardSave.vue';
-import ButtonCardDelete from '../Buttons/ButtonCardDelete.vue';
+import AppButton from '../AppButton.vue';
 
 export default {
   name: 'FormAddChangeCard',
 
   components: {
-    ButtonCardSave,
-    ButtonCardDelete
+    AppButton
   },
 
   props: {
@@ -61,7 +65,7 @@ export default {
   },
 
   methods: {
-    ...mapActions('cards', ['createCard', 'editCard']),
+    ...mapActions('cards', ['createCard', 'editCard', 'removeCard']),
 
     // event emitter
     pushFormDataUp () {
@@ -102,6 +106,11 @@ export default {
       const { title, content } = this.cardData;
       this.userInput.title = title;
       this.userInput.description = content;
+    },
+    deleteCard () {
+      this.removeCard(this.cardData.id).then(() => {
+        this.$router.push({ name: 'home' });
+      });
     }
   },
 
