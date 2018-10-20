@@ -19,12 +19,10 @@ function showModal ({ commit }, { id, config = {} }) {
   }
 }
 
-function showNotification ({ commit, dispatch, state }, notificationObj) {
+function showNotification ({ commit, dispatch, state }, { errNum, errMsg }) {
   const timeout = 4000; // period of time for show notification
   const id = getRandomID(); // notification id
-
-  notificationObj.id = id;
-  commit(types.SHOW_NOTIFICATION, notificationObj);
+  commit(types.SHOW_NOTIFICATION, { id, errNum, errMsg });
 
   setTimeout(() => {
     dispatch('hideNotification', id);

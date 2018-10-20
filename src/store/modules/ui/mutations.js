@@ -3,16 +3,16 @@ import navigationElements from '../../../constants/navigationElements.js';
 import userRoles from '../../../constants/roles.js';
 
 export default {
-  [types.SHOW_MODAL] (state, data) {
-    state.modals.push(data);
+  [types.SHOW_MODAL] (state, { id, config }) {
+    state.modals.push({ id, config });
   },
 
   [types.CLOSE_ALL_MODALS] (state) {
     state.modals = [];
   },
 
-  [types.SHOW_NOTIFICATION] (state, notificationObj) {
-    state.notifications.push(notificationObj);
+  [types.SHOW_NOTIFICATION] (state, { errNum, errMsg }) {
+    state.notifications.push({ errNum, errMsg });
   },
 
   [types.HIDE_NOTIFICATION] (state, notificationId) {

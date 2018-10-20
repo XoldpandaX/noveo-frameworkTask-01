@@ -13,20 +13,24 @@ async function getCardsFromServer ({ commit, dispatch }, params) {
   }
 }
 
-async function createCard ({ commit, dispatch, getters }, data) {
+async function createCard ({ commit, dispatch, getters }, { title, content }) {
   try {
     dispatch('ui/showLoader', null, { root: true });
-    await card.createCard(data);
+    await card.createCard({ title, content });
     dispatch('ui/hideLoader', null, { root: true });
   } catch (err) {
     console.log(err);
   }
 }
 
-async function editCard ({ commit, dispatch }, editCardData) {
+async function editCard ({ commit, dispatch }, { id, title, content }) {
   try {
     dispatch('ui/showLoader', null, { root: true });
-    await card.editCard(editCardData);
+    await card.editCard({
+      id,
+      title,
+      content
+    });
     dispatch('ui/hideLoader', null, { root: true });
   } catch (err) {
     console.log(err);
@@ -38,7 +42,6 @@ async function removeCard ({ commit, getters, dispatch }, cardId) {
     dispatch('ui/showLoader', null, { root: true });
     await card.removeCard(Number(cardId));
     dispatch('ui/hideLoader', null, { root: true });
-    commit(types.DELETE_CARD_DATA, getters.cardIndexByID(cardId)); // remove from store
   } catch (err) {
     console.log(err);
   }
