@@ -5,7 +5,7 @@
     template(v-else)
       h1.page__title Card List
       .home__head-row
-        button-sort
+        sort-by-date
         .home__layout-buttons
           button(@click="changeCardLayout('list')") display list
           button(@click="changeCardLayout('row')") display row
@@ -16,14 +16,14 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import CardList from '../components/Cards/CardList.vue';
-import ButtonSort from '../components/Buttons/ButtonSortCardByDate.vue';
+import SortByDate from '../components/Filters/SortCardsByDate.vue';
 
 export default {
   name: 'PageHome',
 
   components: {
     CardList,
-    ButtonSort
+    SortByDate
   },
 
   computed: {
