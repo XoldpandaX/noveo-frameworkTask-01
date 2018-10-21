@@ -5,10 +5,7 @@ export default {
     currentUser: '/user'
   },
   cards: {
-    allCards: '/posts', // GET
-    createCard: '/posts', // POST
-    editCard: 'posts/{id}', // PUT
-    removeCard: '/posts/{id}', // DELETE
-    likeToggle: '/posts/{id}/like' // POST
+    cards: '/posts', // create, get all cards
+    cardInteraction: 'posts/{id}' // /like
   }
 };

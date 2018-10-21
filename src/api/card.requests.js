@@ -3,23 +3,23 @@ import api from '../constants/api-map.js';
 
 export default {
   getAllCards (params) {
-    return Vue.axios.get(api.cards.allCards, { params: params });
+    return Vue.axios.get(api.cards.cards, { params: params });
   },
 
   createCard (cardData) {
-    return Vue.axios.post(api.cards.createCard, cardData);
+    return Vue.axios.post(api.cards.cards, cardData);
   },
 
   editCard (data) {
     const { id, title, content } = data;
-    return Vue.axios.put(api.cards.editCard.replace('{id}', id), { title, content });
+    return Vue.axios.put(api.cards.cardInteraction.replace('{id}', id), { title, content });
   },
 
   removeCard (cardId) {
-    return Vue.axios.delete(api.cards.removeCard.replace('{id}', cardId));
+    return Vue.axios.delete(api.cards.cardInteraction.replace('{id}', cardId));
   },
 
   toggleCardLike (cardId) {
-    return Vue.axios.post(api.cards.likeToggle.replace('{id}', cardId));
+    return Vue.axios.post(`${api.cards.cardInteraction}/like`.replace('{id}', cardId));
   }
 };
