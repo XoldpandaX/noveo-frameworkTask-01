@@ -1,7 +1,9 @@
 <template lang="pug">
-  button.app-button(@click.prevent="onClick",
-                    :class="arrayOfClasses",
-                    :style="buttonSize")
+  button.app-button(
+  @click.prevent="onClick"
+  :class="arrayOfClasses"
+  :style="buttonSize"
+  )
     slot
 </template>
 

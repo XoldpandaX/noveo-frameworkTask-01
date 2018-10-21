@@ -1,28 +1,32 @@
 <template lang="pug">
   form.add-change-card-form
     .add-change-card-form__row
-      input(type="text",
-            placeholder="Enter title",
-            maxlength="42",
-            v-on:input="pushFormDataUp",
-            v-model="userInput.title")
+      input(
+      type="text"
+      placeholder="Enter title"
+      max-length="42"
+      @input="pushFormDataUp"
+      v-model="userInput.title"
+      )
     .add-change-card-form__row
-      textarea(placeholder="Enter description",
-               :maxlength="maxSymbols",
-               v-on:input="pushFormDataUp",
-               v-model="userInput.description")
+      textarea(
+      placeholder="Enter description"
+      :maxlength="maxSymbols"
+      @input="pushFormDataUp"
+      v-model="userInput.description"
+      )
       span.add-change-card-form__counter {{ symbolsLeft }}/{{ maxSymbols }}
     .app-button__row
       app-button(
       v-if="transform === 'edit-form'",
-      propButtonType="formButton",
-      :onClick="deleteCard",
-      v-on:click.native="isConfirmButtonClicked"
+      prop-button-type="formButton",
+      :on-click="deleteCard",
+      @click.native="isConfirmButtonClicked"
       ) Delete
       app-button(
-      :onClick="formDataToStore",
-      v-on:click.native="isConfirmButtonClicked",
-      propButtonType="formButton"
+      :on-click="formDataToStore",
+      @click.native="isConfirmButtonClicked",
+      prop-button-type="formButton"
       ) Save
 </template>
 <script>

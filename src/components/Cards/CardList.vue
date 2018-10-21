@@ -4,13 +4,13 @@
       .card-list__element
         .card-button-add
           app-button(
-          :onClick="() => $router.push({ name: 'new-card' })",
-          propButtonType="roundWithPlusIcon"
+          :on-click="() => $router.push({ name: 'new-card' })",
+          prop-button-type="roundWithPlusIcon"
           )
       .card-list__element(v-for="card in cards")
         card-info(
         :key="card.id",
-        :cardData="card"
+        :card-data="card"
         )
 </template>
 

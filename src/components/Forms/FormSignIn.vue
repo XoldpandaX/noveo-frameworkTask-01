@@ -3,18 +3,22 @@
     h3 write-in fields
     .form-wrapper__field(v-for="(input, i) in fieldData")
       input(
-      :key="i",
-      :name="input.name",
-      :type="input.type",
-      :placeholder="input.placeholder",
-      :autocomplete="input.autocomplete",
+      :key="i"
+      :name="input.name"
+      :type="input.type"
+      :placeholder="input.placeholder"
+      :autocomplete="input.autocomplete"
       v-model="input.value")
-      transition(enter-active-class="animated bounceIn",
-                 leave-active-class="animated fadeOutRight")
+      transition(
+      enter-active-class="animated bounceIn"
+      leave-active-class="animated fadeOutRight")
         .form-wrapper__error(v-if="errors[`${input.name}`].error")
           span {{ errors[`${input.name}`].errorMessage | makeUppercase }}
     .app-button__row.-margin-top-l
-      app-button(propButtonType="formButton", :onClick.enter="confirmForm") Sign In
+      app-button(
+      prop-button-type="formButton"
+      :on-click.enter="confirmForm"
+      ) Sign In
 </template>
 
 <script>

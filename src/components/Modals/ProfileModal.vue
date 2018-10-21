@@ -2,7 +2,10 @@
   .profile-modal
     .cross-btn(@click="closeModal")
     .profile-modal__body
-      div(v-for="(val, key) in userData", :key="key") {{ `${key}: ${val}` }}
+      div(
+      v-for="(val, key) in userData"
+      :key="key"
+      ) {{ `${key}: ${val}` }}
 </template>
 
 <script>

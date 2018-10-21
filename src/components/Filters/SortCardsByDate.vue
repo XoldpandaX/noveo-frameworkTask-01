@@ -1,5 +1,8 @@
 <template lang="pug">
-  button.sort-btn(@click="getCardsSortingByDate", :class="[btnClass]") sort by date
+  button.sort-btn(
+  @click="getCardsSortingByDate"
+  :class="[btnClass]"
+  ) sort by date
     .arrow-icon
 </template>
 

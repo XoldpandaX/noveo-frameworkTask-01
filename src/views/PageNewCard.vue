@@ -2,8 +2,10 @@
   section.add-new-card.page
     h1.page__title Add New Card
     .add-new-card__row
-      form-add-change-card(@getFormData="setFormData",
-                           @confirmButtonsClicked="isConfirmButtonClicked = true")
+      form-add-change-card(
+      @getFormData="setFormData"
+      @confirmButtonsClicked="isConfirmButtonClicked = true"
+      )
 </template>
 
 <script>

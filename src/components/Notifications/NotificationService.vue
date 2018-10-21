@@ -1,8 +1,10 @@
 <template lang="pug">
   transition(leave-active-class="animated fadeOutRight")
     ul.notification-service(v-if="notifications.length > 0")
-        notification-element(v-for="(notification, i) in notifications",
-                           :key="i")
+        notification-element(
+        v-for="(notification, i) in notifications"
+        :key="i"
+        )
           template(slot="error-num") {{ `ERROR#${notification.errNum}:` }}
           template(slot="error-text") {{ notification.errMsg }}
 </template>

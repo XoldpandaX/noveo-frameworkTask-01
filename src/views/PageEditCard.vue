@@ -2,7 +2,10 @@
   section.edit-card.page(v-if="showPage")
     h1.page__title Edit Selected Card Data
     .edit-card__row
-      form-add-change-card(:cardData="cardData", transform="edit-form")
+      form-add-change-card(
+      :cardData="cardData"
+      transform="edit-form"
+      )
 </template>
 
 <script>
