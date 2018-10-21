@@ -12,14 +12,14 @@ export default {
 
   editCard (data) {
     const { id, title, content } = data;
-    return Vue.axios.put(api.cards.cardInteraction.replace('{id}', id), { title, content });
+    return Vue.axios.put(api.cards.cardById.replace('{id}', id), { title, content });
   },
 
   removeCard (cardId) {
-    return Vue.axios.delete(api.cards.cardInteraction.replace('{id}', cardId));
+    return Vue.axios.delete(api.cards.cardById.replace('{id}', cardId));
   },
 
   toggleCardLike (cardId) {
-    return Vue.axios.post(`${api.cards.cardInteraction}/like`.replace('{id}', cardId));
+    return Vue.axios.post(`${api.cards.cardById}/like`.replace('{id}', cardId));
   }
 };

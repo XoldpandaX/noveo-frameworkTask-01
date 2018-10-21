@@ -6,6 +6,6 @@ export default {
   },
   cards: {
     cards: '/posts', // create, get all cards
-    cardInteraction: 'posts/{id}' // /like
+    cardById: 'posts/{id}' // /like
   }
 };
