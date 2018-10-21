@@ -1,39 +1,39 @@
 <template lang="pug">
   div(id="app")
+    container-header
+    main-layout
     container-modal-wrapper
-    transition(name="router-animation",
-               enter-active-class="animated fadeInLeft",
-               leave-active-class="animated fadeOutRight")
-      router-view
+    loader-global
+    notification-service
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
-  import containerModalWrapper from './containers/ContainerModalWrapper.vue';
+import { mapActions } from 'vuex';
+import MainLayout from './components/Base/MainLayout.vue';
+import ContainerModalWrapper from './containers/ModalContainer/ContainerModalWrapper.vue';
+import ContainerHeader from './containers/HeaderContainer/ContainerHeader.vue';
+import LoaderGlobal from './components/Loaders/LoaderGlobal.vue';
+import NotificationService from './components/Notifications/NotificationService.vue';
 
-  export default {
-    name: 'app',
+export default {
+  name: 'App',
 
-    components: {
-      containerModalWrapper
-    },
+  components: {
+    MainLayout,
+    ContainerModalWrapper,
+    ContainerHeader,
+    LoaderGlobal,
+    NotificationService
+  },
 
-    methods: {
-      ...mapActions('cards', ['cardsDataInit']),
-      ...mapActions('ui', ['showModal'])
-    },
+  mounted () {
+    this.showModal({ id: this.$appConstants.modalNames.firstLoad, config: {} });
+  },
 
-    created() {
-      this.cardsDataInit();
-      setTimeout(() => {
-        this.showModal('first-load-modal');
-      }, 750);
-    },
-
-    updated() {
-      this.cardsDataInit();
-    }
+  methods: {
+    ...mapActions('ui', ['showModal'])
   }
+};
 </script>
 
 <style lang="scss">

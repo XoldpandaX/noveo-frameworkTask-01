@@ -1,7 +1,7 @@
 .first-view-modal {
   $width: 400px;
   @extend %main-modal-styles;
-  @include modal-positioning($width, 12%);
+  @include modal-positioning($width, 10%);
   position: relative;
   background-color: $modal-first-load-background-color;
   color: $modal-first-load-text-color;

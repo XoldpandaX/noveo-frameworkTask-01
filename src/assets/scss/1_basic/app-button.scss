@@ -1,0 +1,60 @@
+.app-button {
+  cursor: pointer;
+  border: none;
+  padding: 15*$rem 40*$rem;
+  background-color: $app-button-background;
+  color: $app-button-text;
+  text-transform: capitalize;
+  font-weight: bold;
+
+  &:hover {
+    background-color: $app-button-background-hover;
+  }
+
+  &.-round {
+    @include drawCircle(40*$rem, 40*$rem);
+    padding: 0;
+  }
+
+  &.-no-background-color {
+    background-color: transparent;
+  }
+
+  &.-no-padding {
+    padding: 0;
+  }
+
+  &.-radius-corners {
+    border-radius: 6*$rem;
+  }
+
+
+  // svg as background
+  &.-plus-btn {
+    @include icon-plus($pure-black);
+
+    &:hover {
+      @include icon-plus($pure-white);
+    }
+  }
+
+  &.-edit-btn {
+    @include edit-icon($card-edit-btn-color);
+    width: 25*$rem;
+    height: 25*$rem;
+  }
+
+  &.-like-btn {
+    @include icon-like($card-like-btn-color);
+
+    &.-active {
+      @include icon-like-full-background($red);
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}

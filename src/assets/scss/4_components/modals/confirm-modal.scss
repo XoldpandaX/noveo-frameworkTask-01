@@ -1,0 +1,25 @@
+.confirm-modal {
+  z-index: 1000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__inner {
+    padding: 20px;
+    max-width: 650px;
+    background-color: black;
+    white-space: pre-line;
+    line-height: 1.5;
+
+    h3 {
+      text-align: center;
+      margin-bottom: 150px;
+    }
+  }
+
+  &__button-row {
+    display: flex;
+    justify-content: space-around;
+  }
+}

@@ -1,0 +1,5 @@
+.arrow-icon {
+  @include arrow-icon(black);
+  width: 15px;
+  height: 15px;
+}

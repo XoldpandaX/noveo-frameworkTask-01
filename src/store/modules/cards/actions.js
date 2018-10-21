@@ -1,74 +1,68 @@
 import * as types from './mutation-types.js';
+import card from '../../../api/card.requests.js';
 
-function cardsDataInit({ commit }) {
-  let cards = [];
-  Object.keys(localStorage).forEach(key => {
-    const firstSymbol = '#';
-    
-    if (key[0] === firstSymbol) {
-      cards.push(JSON.parse(localStorage.getItem(key)));
-    }
-  });
-  commit(types.INIT_CARD_DATA, cards);
-}
-
-function addCardDataToStore({ commit, dispatch, getters }, data) {
-  const isIdExist = getters.getCardByID(data.id);
-  if (!isIdExist) {
-    dispatch('localStorage/addToLocalStorageByID', data, { root: true });
-    commit(types.SAVE_CARD_DATA, data);
-  } else {
-    dispatch('addCardDataToStoreAfterEdit', data);
+// API INTERACTION
+async function getCardsFromServer ({ commit, dispatch }, params) {
+  try {
+    dispatch('ui/showLoader', null, { root: true });
+    const { data: { data: { posts: cards } } } = await card.getAllCards(params);
+    dispatch('ui/hideLoader', null, { root: true });
+    commit(types.INIT_CARD_DATA, cards); // add to store
+  } catch (err) {
+    console.log(err);
   }
 }
 
-function addCardDataToStoreAfterEdit({ commit, state, dispatch }, cardData) {
-  const currentCardsState = state.cards;
-  const { id, title, description, like, order } = cardData;
-  
-  currentCardsState.forEach((el, i) => {
-    if (el.id === id) {
-      
-      const storeData = {
-        id: id,
-        order: order,
-        title: title,
-        description: description,
-        like: like,
-      };
-      
-      let sendData = {
-        storeData,
-        positionInCurrentState: i,
-      };
-      
-      dispatch('localStorage/addToLocalStorageByID', storeData, { root: true });
-      commit(types.SAVE_EDITED_CARD_DATA, sendData);
-    }
-  });
+async function createCard ({ commit, dispatch, getters }, { title, content }) {
+  try {
+    dispatch('ui/showLoader', null, { root: true });
+    await card.createCard({ title, content });
+    dispatch('ui/hideLoader', null, { root: true });
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-function deleteCardDataFromStore({ commit, dispatch, state }, cardIdToDelete) {
-  state.cards.forEach((el, i) => {
-    if (el.id === cardIdToDelete) {
-      commit(types.DELETE_CARD_DATA, i);
-      dispatch('localStorage/deleteFromLocalStorageByID', el.id, { root: true });
-    }
-  });
+async function editCard ({ commit, dispatch }, { id, title, content }) {
+  try {
+    dispatch('ui/showLoader', null, { root: true });
+    await card.editCard({
+      id,
+      title,
+      content
+    });
+    dispatch('ui/hideLoader', null, { root: true });
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-function likeToggle({ commit, dispatch, state }, cardId) {
-  let storageData = JSON.parse(localStorage.getItem(cardId));
-  storageData.like = !storageData.like;
-  
-  dispatch('localStorage/addToLocalStorageByID', storageData, { root: true });
-  commit(types.LIKE_CARD, cardId)
+async function removeCard ({ commit, getters, dispatch }, cardId) {
+  try {
+    dispatch('ui/showLoader', null, { root: true });
+    await card.removeCard(Number(cardId));
+    dispatch('ui/hideLoader', null, { root: true });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function toggleCardLike ({ commit, dispatch }, cardId) {
+  try {
+    dispatch('ui/showLoader', null, { root: true });
+    await card.toggleCardLike(cardId);
+    dispatch('ui/hideLoader', null, { root: true });
+    commit(types.LIKE_TOGGLE, cardId);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export default {
-  addCardDataToStore,
-  deleteCardDataFromStore,
-  cardsDataInit,
-  likeToggle,
-  addCardDataToStoreAfterEdit
+  // API INTERACTION
+  getCardsFromServer,
+  createCard,
+  editCard,
+  removeCard,
+  toggleCardLike
 };

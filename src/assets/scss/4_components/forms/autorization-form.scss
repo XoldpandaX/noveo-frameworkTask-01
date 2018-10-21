@@ -1,0 +1,45 @@
+.form-wrapper {
+  @extend %form-box-shadow;
+  color: $main-text-color;
+  padding: 20*$rem 30*$rem 30*$rem 30*$rem;
+  background-color: #fff;
+  border-radius: 3px;
+
+  &.-sign-in,
+  &.-sign-up {
+    width: 360*$rem;
+  }
+
+  h3 {
+    margin-top: 0;
+    color: #777;
+    font-weight: normal;
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  &__field {
+    margin: 5*$rem 0;
+  }
+
+  &__error {
+    margin-bottom: 10*$rem;
+    padding-bottom: 2*$rem;
+    font-style: italic;
+    font-size: 13*$rem;
+    color: red;
+  }
+
+  &__button {
+    display: block;
+    padding: 15*$rem 40*$rem;
+    border: none;
+    cursor: pointer;
+    background-color: #6a1b9a;
+    color: $pure-white;
+
+    &:hover {
+      background-color: $orange;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.container-header {
+  @extend %convex-lower-shadow;
+
+  background-color: $container-header;
+  padding: 15*$rem 20*$rem;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+}

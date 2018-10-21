@@ -1,9 +1,5 @@
 .add-new-card {
 
-  h1 {
-    @extend %page-title;
-  }
-
   &__row {
     display: flex;
     justify-content: center;

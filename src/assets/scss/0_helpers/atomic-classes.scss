@@ -1,0 +1,31 @@
+.-margin {
+  &-auto {
+    &-left {
+      margin-left: auto;
+    }
+
+    &-right {
+      margin-right: auto;
+    }
+  }
+
+  &-bottom {
+    &-l {
+      margin-bottom: 20*$rem;
+    }
+
+    &-xl {
+      margin-bottom: 30*$rem !important;
+    }
+  }
+
+  &-top {
+    &-l {
+      margin-top: 20px;
+    }
+  }
+
+  &-block-center {
+    margin: 0 auto;
+  }
+}

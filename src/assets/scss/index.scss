@@ -5,17 +5,32 @@
 @import '0_helpers/extends.scss';
 @import '0_helpers/common-mixins.scss';
 @import '0_helpers/svg-mixins.scss';
+@import '0_helpers/atomic-classes.scss';
 
 @import '1_basic/layout.scss';
+@import '1_basic/basic-from.scss';
+@import '1_basic/app-button.scss';
+@import '1_basic/icons.scss';
 
 @import '2_views/home.scss';
 @import '2_views/add-new-card.scss';
 @import '2_views/edit-card.scss';
+@import '2_views/sign-in-page.scss';
 
 @import '3_containers/card-list.scss';
-@import '3_containers/card-edit.scss';
-@import '3_containers/modal-wrapper';
+@import '3_containers/modal-wrapper.scss';
+// styles in components folder
+@import '../../containers/HeaderContainer/container-header.scss';
 
-@import '4_components/add-card-btn.scss';
-@import '4_components/card.scss';
+@import '4_components/cards/card-button-add.scss';
+@import '4_components/cards/card.scss';
+@import '4_components/forms/form-add-change-card.scss';
+@import '4_components/forms/autorization-form.scss';
 @import '4_components/modals/first-view-modal.scss';
+@import '4_components/modals/profile-modal.scss';
+@import '4_components/modals/confirm-modal.scss';
+@import '4_components/loaders/loader.scss';
+@import '4_components/notifications/notification-service.scss';
+// styles in components folder
+@import '../../components/Logo/logo.scss';
+@import '../../components/Navigations/navigation.scss';
