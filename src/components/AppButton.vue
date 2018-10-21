@@ -19,7 +19,7 @@ export default {
       required: true
     },
 
-    propButtonType: {
+    type: {
       type: String
     },
 
@@ -36,8 +36,8 @@ export default {
 
   computed: {
     arrayOfClasses () {
-      if (this.propButtonType) {
-        let obj = this.componentButtonTypes.find(el => el.type === this.propButtonType);
+      if (this.type) {
+        let obj = this.componentButtonTypes.find(el => el.type === this.type);
         return obj.classes;
       }
     },

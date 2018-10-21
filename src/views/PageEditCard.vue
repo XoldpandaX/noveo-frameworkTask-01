@@ -3,7 +3,7 @@
     h1.page__title Edit Selected Card Data
     .edit-card__row
       form-add-change-card(
-      :cardData="cardData"
+      :card="cardData"
       transform="edit-form"
       )
 </template>

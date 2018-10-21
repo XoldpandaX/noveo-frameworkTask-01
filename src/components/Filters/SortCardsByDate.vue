@@ -1,6 +1,6 @@
 <template lang="pug">
   button.sort-btn(
-  @click="getCardsSortingByDate"
+  @click="getCardsByDate"
   :class="[btnClass]"
   ) sort by date
     .arrow-icon
@@ -28,7 +28,7 @@ export default {
   methods: {
     ...mapActions('cards', ['getCardsFromServer']),
 
-    getCardsSortingByDate () {
+    getCardsByDate () {
       this.getCardsFromServer({
         sort: this.currentSortType,
         order_by: 'created_at'

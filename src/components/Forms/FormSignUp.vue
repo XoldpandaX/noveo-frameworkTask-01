@@ -18,7 +18,7 @@
           span {{ errors[`${input.name}`].errorMessage | makeUppercase }}
     .app-button__row.-margin-top-l
       app-button(
-      prop-button-type="formButton"
+      type="formButton"
       :on-click.enter="confirmForm"
       ) Sign Up
 </template>

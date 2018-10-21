@@ -19,14 +19,14 @@
     .app-button__row
       app-button(
       v-if="transform === 'edit-form'"
-      prop-button-type="formButton"
+      type="formButton"
       :on-click="deleteCard"
       @click.native="isConfirmButtonClicked"
       ) Delete
       app-button(
       :on-click="formDataToStore"
       @click.native="isConfirmButtonClicked"
-      prop-button-type="formButton"
+      type="formButton"
       ) Save
 </template>
 <script>
@@ -41,7 +41,7 @@ export default {
   },
 
   props: {
-    cardData: {
+    card: {
       type: Object
     },
 
@@ -89,14 +89,14 @@ export default {
           content: description
         };
 
-        if (!this.cardData) {
+        if (!this.card) {
           // create new card
           this.createCard(storeData).then(() => {
             this.$router.push({ name: 'home' });
           });
         } else {
           // edit exist card
-          storeData.id = this.cardData.id;
+          storeData.id = this.card.id;
           this.editCard(storeData).then(() => {
             this.$router.push({ name: 'home' });
           });
@@ -107,19 +107,19 @@ export default {
     },
 
     displayEditData () {
-      const { title, content } = this.cardData;
+      const { title, content } = this.card;
       this.userInput.title = title;
       this.userInput.description = content;
     },
     deleteCard () {
-      this.removeCard(this.cardData.id).then(() => {
+      this.removeCard(this.card.id).then(() => {
         this.$router.push({ name: 'home' });
       });
     }
   },
 
   created () {
-    if (this.cardData) this.displayEditData();
+    if (this.card) this.displayEditData();
   }
 };
 </script>

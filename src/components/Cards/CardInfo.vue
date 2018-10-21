@@ -1,20 +1,20 @@
 <template lang="pug">
   .card
     .card__content
-      h2 {{ cardData.title }}
-      p created: {{ cardData.created_at.date|timeAgoUTC }}
-      p {{ cardData.content }}
+      h2 {{ card.title }}
+      p created: {{ card.created_at.date|timeAgoUTC }}
+      p {{ card.content }}
     footer
       app-button(
-      :on-click="() => $router.push({ path: `/edit-card/${this.cardData.id}` })"
-      prop-button-type="editButton"
+      :on-click="() => $router.push({ path: `/edit-card/${this.card.id}` })"
+      type="editButton"
       :size="{ width: '25px', height: '25px' }"
       )
       .button-card-like
         app-button(
         :class="likeIconActive"
         :on-click="likeCard"
-        prop-button-type="likeButton"
+        type="likeButton"
         :size="{ width: '25px', height: '25px' }"
         )
         span(v-if="totalLikes >= 0") {{ totalLikes }}
@@ -32,23 +32,23 @@ export default {
   },
 
   props: {
-    cardData: {
+    card: {
       type: Object,
       required: true
     }
   },
   computed: {
     likeIconActive () {
-      return this.cardData.liked ? '-active' : '';
+      return this.card.liked ? '-active' : '';
     },
     totalLikes () {
-      return this.cardData.total_likes;
+      return this.card.total_likes;
     }
   },
   methods: {
     ...mapActions('cards', ['toggleCardLike']),
     likeCard () {
-      this.toggleCardLike(this.cardData.id);
+      this.toggleCardLike(this.card.id);
     }
   }
 };
