@@ -85,18 +85,15 @@ export default {
       }
     },
 
-    prepareAndSendConfirmData () {
+    async prepareAndSendConfirmData () {
       const sendData = {};
       this.fieldData.forEach(el => {
         if (el.name !== 'confirmPassword') {
           sendData[el.name] = el.value;
         }
       });
-      this.loginUser(sendData).then((success) => {
-        if (success) {
-          this.$router.push('/');
-        }
-      }); // vuex action
+      const success = await this.loginUser(sendData);
+      success && this.$router.push('/');
     }
   },
 

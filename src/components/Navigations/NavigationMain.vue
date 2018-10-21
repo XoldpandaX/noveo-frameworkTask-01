@@ -46,12 +46,11 @@ export default {
       }
     },
 
-    exit () {
-      this.logout().then(() => {
-        this.changeNavigation();
-        this.$router.push('/');
-        window.location.reload();
-      });
+    async exit () {
+      await this.logout();
+      this.changeNavigation();
+      this.$router.push('/');
+      window.location.reload();
     }
   }
 };

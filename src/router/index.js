@@ -22,12 +22,10 @@ export default new Router({
       meta: {
         forbiddenFor: []
       },
-      beforeEnter (to, from, next) {
+      async beforeEnter (to, from, next) {
         if (LocalStorageProvider.getItem('token')) {
-          store.dispatch('cards/getCardsFromServer')
-            .then(() => {
-              next();
-            }); // get all cards from server
+          await store.dispatch('cards/getCardsFromServer');
+          next();
         } else {
           next();
         }

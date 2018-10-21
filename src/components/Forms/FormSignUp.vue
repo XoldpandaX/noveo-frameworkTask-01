@@ -108,21 +108,18 @@ export default {
       }
     },
 
-    prepareAndSendConfirmData () {
+    async prepareAndSendConfirmData () {
       const sendData = {};
       this.fieldData.forEach(el => {
         if (el.name !== 'confirmPassword') {
           sendData[el.name] = el.value;
         }
       });
-
-      this.registerUser(sendData).then((response) => {
-        // присваиваем значение успешно зарегестрированного email, input email в форме входа
-        if (response) {
-          this.$appConstants.forms.signIn.inputs[0].value = response;
-          this.$router.push('/sign-in');
-        }
-      });
+      const response = await this.registerUser(sendData);
+      if (response) {
+        this.$appConstants.forms.signIn.inputs[0].value = response;
+        this.$router.push('/sign-in');
+      }
     }
   },
 

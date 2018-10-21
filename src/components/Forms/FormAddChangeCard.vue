@@ -80,7 +80,7 @@ export default {
       this.$emit('confirmButtonsClicked');
     },
 
-    formDataToStore () {
+    async formDataToStore () {
       const { title, description } = this.userInput;
 
       if (title !== '' && description !== '') {
@@ -90,16 +90,13 @@ export default {
         };
 
         if (!this.card) {
-          // create new card
-          this.createCard(storeData).then(() => {
-            this.$router.push({ name: 'home' });
-          });
+          await this.createCard(storeData);
+          this.homeRedirect();
         } else {
           // edit exist card
           storeData.id = this.card.id;
-          this.editCard(storeData).then(() => {
-            this.$router.push({ name: 'home' });
-          });
+          await this.editCard(storeData);
+          this.homeRedirect();
         }
       } else {
         alert('Enter some text');
@@ -111,10 +108,12 @@ export default {
       this.userInput.title = title;
       this.userInput.description = content;
     },
-    deleteCard () {
-      this.removeCard(this.card.id).then(() => {
-        this.$router.push({ name: 'home' });
-      });
+    async deleteCard () {
+      await this.removeCard(this.card.id);
+      this.homeRedirect();
+    },
+    homeRedirect () {
+      this.$router.push({ name: 'home' });
     }
   },
 
