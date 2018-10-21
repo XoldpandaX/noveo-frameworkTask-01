@@ -18,14 +18,14 @@
       span.add-change-card-form__counter {{ symbolsLeft }}/{{ maxSymbols }}
     .app-button__row
       app-button(
-      v-if="transform === 'edit-form'",
-      prop-button-type="formButton",
-      :on-click="deleteCard",
+      v-if="transform === 'edit-form'"
+      prop-button-type="formButton"
+      :on-click="deleteCard"
       @click.native="isConfirmButtonClicked"
       ) Delete
       app-button(
-      :on-click="formDataToStore",
-      @click.native="isConfirmButtonClicked",
+      :on-click="formDataToStore"
+      @click.native="isConfirmButtonClicked"
       prop-button-type="formButton"
       ) Save
 </template>

@@ -6,15 +6,15 @@
       p {{ cardData.content }}
     footer
       app-button(
-      :on-click="() => $router.push({ path: `/edit-card/${this.cardData.id}` })",
-      prop-button-type="editButton",
+      :on-click="() => $router.push({ path: `/edit-card/${this.cardData.id}` })"
+      prop-button-type="editButton"
       :size="{ width: '25px', height: '25px' }"
       )
       .button-card-like
         app-button(
-        :class="likeIconActive",
-        :on-click="likeCard",
-        prop-button-type="likeButton",
+        :class="likeIconActive"
+        :on-click="likeCard"
+        prop-button-type="likeButton"
         :size="{ width: '25px', height: '25px' }"
         )
         span(v-if="totalLikes >= 0") {{ totalLikes }}

@@ -1,6 +1,8 @@
 <template lang="pug">
-  router-link(to="/",
-              tag="span",
-              class="logo")
+  router-link(
+  to="/"
+  tag="span"
+  class="logo"
+  )
     slot
 </template>
