@@ -10,7 +10,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import { valuesIn } from 'lodash';
+import valuesIn from 'lodash/valuesIn.js';
 import FormCard from '../components/Forms/FormCard.vue';
 
 export default {
@@ -26,9 +26,9 @@ export default {
 
   data () {
     return {
-      // data received from [form-add-change-card] component
+      // data received from [form-card] component
       formCardData: {},
-      // save/delete button is clicked from [form-add-change-card] component
+      // save/delete button is clicked from [form-card] component
       isConfirmButtonClicked: false
     };
   },
