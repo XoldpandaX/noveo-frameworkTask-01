@@ -22,7 +22,7 @@ async function loginUser ({ commit, dispatch }, { email, password }) {
     const { data: { data: { token } } } = await auth.loginUser(userData);
     LocalStorageProvider.setItem('token', token);
     dispatch('getUserRole');
-    dispatch('changeAuthStatus');
+    dispatch('ui/changeNavigation', LocalStorageProvider.getItem('userRole'), { root: true });
     return true;
   } catch (err) {
     LocalStorageProvider.removeItem('token');
@@ -41,10 +41,10 @@ async function getUserRole ({ commit, dispatch }) {
   }
 }
 
-function changeAuthStatus ({ commit, dispatch }) {
-  const role = LocalStorageProvider.getItem('userRole');
+function checkUserRole ({ commit, dispatch }) {
   const token = LocalStorageProvider.getItem('token');
-  if (role && token) {
+  if (token) {
+    const role = LocalStorageProvider.getItem('userRole');
     dispatch('ui/changeNavigation', role, { root: true });
     commit(types.SAVE_AUTH_STATUS, role);
   }
@@ -68,7 +68,7 @@ export default {
   registerUser,
   loginUser,
   getUserRole,
-  changeAuthStatus,
+  checkUserRole,
   loggedInUserData,
   logout
 };
