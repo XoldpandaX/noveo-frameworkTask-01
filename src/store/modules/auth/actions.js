@@ -1,7 +1,7 @@
 import * as types from './mutation-types.js';
 import Vue from 'vue';
 import auth from '../../../api/auth.requests.js';
-import LocalStorageProvider from '../../../services/localStorageProvider.js';
+import LocalStorage from '../../../services/localStorageProvider.js';
 
 async function registerUser ({ commit, dispatch }, { name, email, password }) {
   try {
@@ -20,11 +20,11 @@ async function loginUser ({ commit, dispatch }, { email, password }) {
     dispatch('ui/showLoader', null, { root: true });
     const userData = JSON.stringify({ email, password });
     const { data: { data: { token } } } = await auth.loginUser(userData);
-    LocalStorageProvider.setItem('token', token);
+    LocalStorage.setItem('token', token);
     dispatch('getUserRole');
     return true;
   } catch (err) {
-    LocalStorageProvider.removeItem('token');
+    LocalStorage.removeItem('token');
     return false;
   }
 }
@@ -33,7 +33,7 @@ async function getUserRole ({ commit, dispatch }) {
   try {
     const { data: { data } } = await auth.getCurrentUserData();
     const { role } = data.user;
-    LocalStorageProvider.setItem('userRole', role);
+    LocalStorage.setItem('userRole', role);
     dispatch('ui/hideLoader', null, { root: true });
   } catch (err) {
     return false;
@@ -41,10 +41,10 @@ async function getUserRole ({ commit, dispatch }) {
 }
 
 function checkUserRole ({ commit }) {
-  if (LocalStorageProvider.getItem('token')) {
-    commit(types.SAVE_AUTH_STATUS, LocalStorageProvider.getItem('userRole'));
+  if (LocalStorage.getItem('token')) {
+    commit(types.SAVE_AUTH_STATUS, LocalStorage.getItem('userRole'));
   } else {
-    LocalStorageProvider.setItem('userRole', 'guest');
+    LocalStorage.setItem('userRole', 'guest');
   }
 }
 
@@ -56,8 +56,8 @@ async function loggedInUserData ({ commit, dispatch }) {
 }
 
 async function logout ({ commit }) {
-  LocalStorageProvider.removeItem('token');
-  LocalStorageProvider.removeItem('userRole');
+  LocalStorage.removeItem('token');
+  LocalStorage.removeItem('userRole');
   commit(types.LOGOUT);
   delete Vue.axios.defaults.headers.common['Authorization'];
 }
