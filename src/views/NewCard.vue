@@ -12,6 +12,7 @@
 import { mapActions, mapGetters } from 'vuex';
 import valuesIn from 'lodash/valuesIn.js';
 import FormCard from '../components/Forms/FormCard.vue';
+import modalConfirm from '../mixins/modalConfirm.js';
 
 export default {
   name: 'PageNewCard',
@@ -19,7 +20,7 @@ export default {
   components: {
     FormCard
   },
-
+  mixins: [modalConfirm],
   computed: {
     ...mapGetters('auth', ['userRole'])
   },
@@ -38,10 +39,16 @@ export default {
     if (arrOfObjectValues.length <= 0 || this.isConfirmButtonClicked) {
       next();
     } else {
-      this.showModal({ id: this.$appConstants.modalNames.confirm,
-        config: {
-          action: next,
-          formData: this.formCardData
+      this.$_modalConfirm_call({
+        textFields: {
+          title: 'If you go to another page then the data will not to be saved !\n Are you sure ?',
+          leftBtn: 'move and delete',
+          rightBtn: 'stay and save'
+        },
+        leftBtnAction () {
+          next();
+        },
+        rightBtnAction () {
         }
       });
     }
