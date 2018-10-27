@@ -2,7 +2,7 @@
   section.edit-card.page(v-if="showPage")
     h1.page__title Edit Selected Card Data
     .edit-card__row
-      form-add-change-card(
+      form-card(
       :card="cardData"
       transform="edit-form"
       )
@@ -10,13 +10,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import FormAddChangeCard from '../components/Forms/FormAddChangeCard.vue';
+import FormCard from '../components/Forms/FormCard.vue';
 
 export default {
   name: 'PageEditCard',
 
   components: {
-    FormAddChangeCard
+    FormCard
   },
 
   props: {

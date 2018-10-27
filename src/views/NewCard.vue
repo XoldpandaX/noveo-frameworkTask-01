@@ -2,7 +2,7 @@
   section.add-new-card.page
     h1.page__title Add New Card
     .add-new-card__row
-      form-add-change-card(
+      form-card(
       @getFormData="setFormData"
       @confirmButtonsClicked="isConfirmButtonClicked = true"
       )
@@ -11,13 +11,13 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import { valuesIn } from 'lodash';
-import FormAddChangeCard from '../components/Forms/FormAddChangeCard.vue';
+import FormCard from '../components/Forms/FormCard.vue';
 
 export default {
   name: 'PageNewCard',
 
   components: {
-    FormAddChangeCard
+    FormCard
   },
 
   computed: {

@@ -34,7 +34,7 @@ import { mapGetters, mapActions } from 'vuex';
 import AppButton from '../AppButton.vue';
 
 export default {
-  name: 'FormAddChangeCard',
+  name: 'FormCard',
 
   components: {
     AppButton
