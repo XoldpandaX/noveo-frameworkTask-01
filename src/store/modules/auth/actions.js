@@ -3,7 +3,7 @@ import Vue from 'vue';
 import auth from '../../../api/auth.requests.js';
 import LocalStorage from '../../../services/localStorageProvider.js';
 
-async function registerUser ({ commit, dispatch }, { name, email, password }) {
+async function registerUser ({ dispatch }, { name, email, password }) {
   try {
     dispatch('ui/showLoader', null, { root: true });
     const userData = JSON.stringify({ name, email, password });
@@ -15,7 +15,7 @@ async function registerUser ({ commit, dispatch }, { name, email, password }) {
   }
 }
 
-async function loginUser ({ commit, dispatch }, { email, password }) {
+async function loginUser ({ dispatch }, { email, password }) {
   try {
     dispatch('ui/showLoader', null, { root: true });
     const userData = JSON.stringify({ email, password });
@@ -29,7 +29,7 @@ async function loginUser ({ commit, dispatch }, { email, password }) {
   }
 }
 
-async function getUserRole ({ commit, dispatch }) {
+async function getUserRole ({ dispatch }) {
   try {
     const { data: { data } } = await auth.getCurrentUserData();
     const { role } = data.user;
