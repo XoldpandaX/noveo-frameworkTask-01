@@ -4,11 +4,11 @@ import { store } from '../store';
 import LocalStorageProvider from '../services/localStorageProvider.js';
 
 // route-level
-import PageHome from '../views/PageHome.vue';
-import PageNewCard from '../views/PageNewCard.vue';
-import PageEditCard from '../views/PageEditCard.vue';
-import PageSignUp from '../views/PageSignUp.vue';
-import PageSignIn from '../views/PageSignIn.vue';
+import PageHome from '../views/Home.vue';
+import PageNewCard from '../views/NewCard.vue';
+import PageEditCard from '../views/EditCard.vue';
+import PageSignUp from '../views/SignUp.vue';
+import PageSignIn from '../views/SignIn.vue';
 
 Vue.use(Router);
 
