@@ -13,7 +13,7 @@ async function getCardsFromServer ({ commit, dispatch }, params) {
   }
 }
 
-async function createCard ({ commit, dispatch, getters }, { title, content }) {
+async function createCard ({ dispatch }, { title, content }) {
   try {
     dispatch('ui/showLoader', null, { root: true });
     await card.createCard({ title, content });
@@ -23,7 +23,7 @@ async function createCard ({ commit, dispatch, getters }, { title, content }) {
   }
 }
 
-async function editCard ({ commit, dispatch }, { id, title, content }) {
+async function editCard ({ dispatch }, { id, title, content }) {
   try {
     dispatch('ui/showLoader', null, { root: true });
     await card.editCard({
@@ -37,7 +37,7 @@ async function editCard ({ commit, dispatch }, { id, title, content }) {
   }
 }
 
-async function removeCard ({ commit, getters, dispatch }, cardId) {
+async function removeCard ({ dispatch }, cardId) {
   try {
     dispatch('ui/showLoader', null, { root: true });
     await card.removeCard(Number(cardId));
