@@ -22,7 +22,6 @@ async function loginUser ({ commit, dispatch }, { email, password }) {
     const { data: { data: { token } } } = await auth.loginUser(userData);
     LocalStorageProvider.setItem('token', token);
     dispatch('getUserRole');
-    // dispatch('ui/changeNavigation', LocalStorageProvider.getItem('userRole'), { root: true });
     return true;
   } catch (err) {
     LocalStorageProvider.removeItem('token');
@@ -41,12 +40,9 @@ async function getUserRole ({ commit, dispatch }) {
   }
 }
 
-function checkUserRole ({ commit, dispatch }) {
-  const token = LocalStorageProvider.getItem('token');
-  if (token) {
-    const role = LocalStorageProvider.getItem('userRole');
-    // dispatch('ui/changeNavigation', role, { root: true });
-    commit(types.SAVE_AUTH_STATUS, role);
+function checkUserRole ({ commit }) {
+  if (LocalStorageProvider.getItem('token')) {
+    commit(types.SAVE_AUTH_STATUS, LocalStorageProvider.getItem('userRole'));
   } else {
     LocalStorageProvider.setItem('userRole', 'guest');
   }
