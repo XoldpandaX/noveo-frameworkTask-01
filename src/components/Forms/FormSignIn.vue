@@ -22,7 +22,10 @@
 </template>
 
 <script>
-import { every, some, capitalize, find } from 'lodash';
+import every from 'lodash/every.js';
+import some from 'lodash/some.js';
+import capitalize from 'lodash/capitalize.js';
+import find from 'lodash/find.js';
 import { mapActions } from 'vuex';
 import AppButton from '../AppButton.vue';
 
