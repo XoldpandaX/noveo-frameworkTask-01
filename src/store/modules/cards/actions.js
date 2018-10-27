@@ -1,7 +1,6 @@
 import * as types from './mutation-types.js';
 import card from '../../../api/card.requests.js';
 
-// API INTERACTION
 async function getCardsFromServer ({ commit, dispatch }, params) {
   try {
     dispatch('ui/showLoader', null, { root: true });
