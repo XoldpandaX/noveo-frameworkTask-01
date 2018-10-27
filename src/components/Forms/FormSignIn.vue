@@ -12,8 +12,8 @@
       transition(
       enter-active-class="animated bounceIn"
       leave-active-class="animated fadeOutRight")
-        .form-wrapper__error(v-if="errors[`${input.name}`].error")
-          span {{ errors[`${input.name}`].errorMessage | makeUppercase }}
+        .form-wrapper__error(v-if="errors[input.name].error")
+          span {{ errors[input.name].errorMessage | makeUppercase }}
     .app-button__row.-margin-top-l
       app-button(
       type="formButton"
