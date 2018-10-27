@@ -1,6 +1,4 @@
 import * as types from './mutation-types';
-import navigationElements from '../../../constants/navigationElements.js';
-import userRoles from '../../../constants/roles.js';
 
 export default {
   [types.SHOW_MODAL] (state, { id, config }) {
@@ -25,19 +23,6 @@ export default {
   },
   [types.HIDE_LOADER] (state) {
     state.isLoaderActive = false;
-  },
-
-  [types.CHANGE_NAVIGATION] (state, userRole) {
-    switch (userRole) {
-      case userRoles.user:
-        state.navigationBar = navigationElements.userNav;
-        break;
-      case userRoles.admin:
-        state.navigationBar = navigationElements.userNav;
-        break;
-      default:
-        state.navigationBar = navigationElements.defaultNav;
-    }
   },
   [types.CHANGE_CARDS_LAYOUT_VIEW] (state, layoutType) {
     state.cardsLayoutView = layoutType;

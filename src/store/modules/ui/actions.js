@@ -41,10 +41,6 @@ function hideLoader ({ commit }) {
   commit(types.HIDE_LOADER);
 }
 
-function changeNavigation ({ commit }, userRole) {
-  commit(types.CHANGE_NAVIGATION, userRole);
-}
-
 function changeCardLayout ({ commit }, layoutType) {
   commit(types.CHANGE_CARDS_LAYOUT_VIEW, layoutType);
 }
@@ -56,6 +52,5 @@ export default {
   hideNotification,
   showLoader,
   hideLoader,
-  changeNavigation,
   changeCardLayout
 };
