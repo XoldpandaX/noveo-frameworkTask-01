@@ -3,8 +3,8 @@
     .confirm-modal__inner
       h3 {{ config.title }}
       .confirm-modal__button-row
-        button.app-button(@click="config.leftButton.action") {{ leftButtonText }}
-        button.app-button(@click="config.rightButton.action") {{ rightButtonText }}
+        button.app-button(@click="leftButtonAction") {{ leftButtonText }}
+        button.app-button(@click="rightButtonAction") {{ rightButtonText }}
 </template>
 
 <script>
@@ -22,6 +22,12 @@ export default {
     },
     rightButtonText () {
       return this.config.rightButton.text;
+    },
+    leftButtonAction () {
+      return this.config.leftButton.action;
+    },
+    rightButtonAction () {
+      return this.config.rightButton.action;
     }
   }
 };
