@@ -9,7 +9,7 @@ function showModal ({ commit }, { id, config = {} }) {
   commit(types.SHOW_MODAL, { id, config });
 }
 
-function showNotification ({ commit, dispatch, state }, { errNum, errMsg }) {
+function showNotification ({ commit, dispatch }, { errNum, errMsg }) {
   const timeout = 4000; // period of time for show notification
   const id = getRandomID(); // notification id
   commit(types.SHOW_NOTIFICATION, { id, errNum, errMsg });
