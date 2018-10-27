@@ -24,12 +24,12 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import isFinite from 'lodash/isFinite.js';
 import every from 'lodash/every.js';
 import some from 'lodash/some.js';
 import capitalize from 'lodash/capitalize.js';
 import find from 'lodash/find.js';
-import { mapActions } from 'vuex';
 import AppButton from '../AppButton.vue';
 
 export default {
