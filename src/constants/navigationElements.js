@@ -1,5 +1,5 @@
 export default {
-  defaultNav: [
+  guest: [
     {
       id: 0,
       title: 'sign up',
@@ -13,7 +13,7 @@ export default {
       iconClass: '-orange'
     }
   ],
-  userNav: [
+  authorized: [
     {
       id: 0,
       title: 'my profile',

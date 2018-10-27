@@ -1,20 +1,20 @@
 <template lang="pug">
   nav.navigation
     ul
-      template(v-if="userRole === 'user' || userRole === 'admin'")
-        li(
-        v-for="el in navigation"
+      template(v-if="userRole === 'guest'")
+        router-link(
+        v-for="el in navigationElements"
         :key="el.id"
-        @click="switchActions(el.action)"
+        :to="el.route !== '' ? el.route : ''"
+        tag="li"
         class="navigation__element"
         ) {{ el.title }}
           div.navigation__icon(:class="el.iconClass")
       template(v-else)
-        router-link(
-        v-for="el in navigation"
+        li(
+        v-for="el in navigationElements"
         :key="el.id"
-        :to="el.route !== '' ? el.route : ''"
-        tag="li"
+        @click="switchActions(el.action)"
         class="navigation__element"
         ) {{ el.title }}
           div.navigation__icon(:class="el.iconClass")
@@ -27,13 +27,16 @@ export default {
   name: 'Navigation',
 
   computed: {
-    ...mapGetters('ui', ['navigation']),
-    ...mapGetters('auth', ['userRole'])
+    ...mapGetters('auth', ['userRole']),
+    navigationElements () {
+      const { guest, authorized } = this.$appConstants.navigationElements;
+      return this.userRole !== 'guest' ? authorized : guest;
+    }
   },
 
   methods: {
     ...mapActions('auth', ['logout']),
-    ...mapActions('ui', ['changeNavigation', 'showModal']),
+    ...mapActions('ui', ['showModal']),
 
     switchActions (action) {
       switch (action) {
@@ -48,7 +51,6 @@ export default {
 
     async exit () {
       await this.logout();
-      this.changeNavigation();
       this.$router.push('/');
       window.location.reload();
     }
