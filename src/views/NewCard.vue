@@ -41,14 +41,13 @@ export default {
     } else {
       this.$_modalConfirm_call({
         textFields: {
-          title: 'If you go to another page then the data will not to be saved !\n Are you sure ?',
-          leftBtn: 'move and delete',
-          rightBtn: 'stay and save'
+          ...this.$appConstants.confirmTexts.unsavedCardData
         },
         leftBtnAction () {
-          next();
+          next(true);
         },
         rightBtnAction () {
+          next(false);
         }
       });
     }
