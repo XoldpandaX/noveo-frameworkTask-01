@@ -49,9 +49,9 @@ async function removeCard ({ dispatch }, cardId) {
 async function toggleCardLike ({ commit, dispatch }, cardId) {
   try {
     dispatch('ui/showLoader', null, { root: true });
-    await card.toggleCardLike(cardId);
+    const { data: { data: { post } } } = await card.toggleCardLike(cardId);
     dispatch('ui/hideLoader', null, { root: true });
-    commit(types.LIKE_TOGGLE, cardId);
+    commit(types.LIKE_TOGGLE, { cardId, post });
   } catch (err) {
     console.log(err);
   }
