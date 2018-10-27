@@ -1,9 +1,9 @@
 <template lang="pug">
   form.form-wrapper.-sign-up.-margin-block-center
     h3 write-in fields
-    .form-wrapper__field(v-for="(input, i) in fieldData")
+    .form-wrapper__field(v-for="(input, index) in fieldData")
       input(
-      :key="i"
+      :key="`input${index}`"
       :name="input.name"
       :type="input.type"
       :placeholder="input.placeholder"
