@@ -1,5 +1,4 @@
 import * as types from './mutation-types.js';
-import modalNames from '../../../constants/modal-names.js';
 import { getRandomID } from '../../../helpers';
 
 function closeAllModals ({ commit }) {
@@ -7,16 +6,7 @@ function closeAllModals ({ commit }) {
 }
 
 function showModal ({ commit }, { id, config = {} }) {
-  switch (id) {
-    case modalNames.firstLoad:
-      if (!localStorage.getItem('wasHere')) {
-        localStorage.setItem('wasHere', 'was');
-        commit(types.SHOW_MODAL, { id, config });
-      }
-      break;
-    default:
-      commit(types.SHOW_MODAL, { id, config });
-  }
+  commit(types.SHOW_MODAL, { id, config });
 }
 
 function showNotification ({ commit, dispatch, state }, { errNum, errMsg }) {
