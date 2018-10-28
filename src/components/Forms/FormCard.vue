@@ -20,11 +20,11 @@
       app-button(
       v-if="transform === 'edit-form'"
       type="formButton"
-      :on-click="deleteCard"
+      @btnClicked="deleteCard"
       @click.native="isConfirmButtonClicked"
       ) Delete
       app-button(
-      :on-click="formDataToStore"
+      @btnClicked="formDataToStore"
       @click.native="isConfirmButtonClicked"
       type="formButton"
       ) Save

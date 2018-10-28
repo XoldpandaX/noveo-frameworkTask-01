@@ -1,6 +1,6 @@
 <template lang="pug">
   button.app-button(
-  @click.prevent="onClick"
+  @click.prevent="clicked"
   :class="arrayOfClasses"
   :style="buttonSize"
   )
@@ -14,11 +14,6 @@ export default {
   name: 'AppButton',
 
   props: {
-    onClick: {
-      type: Function,
-      required: true
-    },
-
     type: {
       type: String
     },
@@ -48,7 +43,11 @@ export default {
       }
     }
   },
-
+  methods: {
+    clicked () {
+      this.$emit('btnClicked');
+    }
+  },
   created () {
     this.componentButtonTypes = CONSTANTS.buttonTypes;
   }

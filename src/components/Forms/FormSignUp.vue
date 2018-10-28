@@ -19,7 +19,7 @@
     .app-button__row.-margin-top-l
       app-button(
       type="formButton"
-      :on-click.enter="confirmForm"
+      @btnClicked.enter="confirmForm"
       ) Sign Up
 </template>
 
