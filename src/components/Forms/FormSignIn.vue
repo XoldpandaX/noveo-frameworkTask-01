@@ -17,17 +17,14 @@
     .app-button__row.-margin-top-l
       app-button(
       type="formButton"
-      @btnClicked="confirmForm"
+      @btnClicked="$_formCheck_confirmForm(prepareAndSendConfirmData)"
       ) Sign In
 </template>
 
 <script>
-import every from 'lodash/every.js';
-import some from 'lodash/some.js';
-import capitalize from 'lodash/capitalize.js';
-import find from 'lodash/find.js';
 import { mapActions } from 'vuex';
 import AppButton from '../AppButton.vue';
+import formValidator from '../../mixins/formValidator.js';
 
 export default {
   name: 'FormSignIn',
@@ -35,7 +32,7 @@ export default {
   components: {
     AppButton
   },
-
+  mixins: [formValidator],
   data () {
     return {
       fieldData: [ ...this.$appConstants.forms.signIn.inputs ],
@@ -46,47 +43,6 @@ export default {
 
   methods: {
     ...mapActions('auth', ['loginUser']),
-
-    checkEmail () {
-      const { regExp } = this.rules.email;
-      return regExp.test(this.findFormValueByName('email'));
-    },
-
-    checkPassword () {
-      return this.findFormValueByName('password').length >= this.rules.password.necessaryLength;
-    },
-
-    findFormValueByName (name) {
-      return find(this.fieldData, el => el.name === name).value;
-    },
-
-    checkResults (arrOfFields) {
-      let checkResults = {};
-
-      arrOfFields.forEach(el => {
-        let functionName = `check${capitalize(el.name)}`;
-        el.name !== 'confirmPassword'
-          ? checkResults[el.name] = this[functionName]()
-          : checkResults[el.name] = this.checkPasswordEquality();
-      });
-      return checkResults;
-    },
-
-    toggleErrors (results) {
-      for (let key in results) {
-        this.errors[key].error = !results[key];
-      }
-    },
-
-    confirmForm () {
-      if (!some(this.fieldData, ['value', ''])) {
-        const results = this.checkResults(this.fieldData);
-        this.toggleErrors(results);
-        (every(results)) && this.prepareAndSendConfirmData(results);
-      } else {
-        alert('Fill in all fields');
-      }
-    },
 
     async prepareAndSendConfirmData () {
       const sendData = {};
@@ -101,23 +57,7 @@ export default {
   },
 
   beforeDestroy () {
-    const signInFromData = this.$appConstants.forms.signIn;
-
-    for (let key in signInFromData) {
-      switch (key) {
-        case 'inputs':
-          const { inputs } = signInFromData;
-          // очищаем данные поля input из константы
-          inputs.forEach(el => el.value = '');
-          break;
-        case 'errors':
-          const { errors } = signInFromData;
-          // очищаем данные поля error из константы
-          for (let key in errors) {
-            errors[key].error = false;
-          }
-      }
-    }
+    this.cleanFormData(this.$appConstants.forms.signIn);
   }
 };
 </script>
