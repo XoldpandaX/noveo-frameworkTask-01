@@ -17,7 +17,7 @@
     .app-button__row.-margin-top-l
       app-button(
       type="formButton"
-      @btnClicked.enter="confirmForm"
+      @btnClicked="confirmForm"
       ) Sign In
 </template>
 
