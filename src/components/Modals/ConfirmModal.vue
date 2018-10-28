@@ -1,7 +1,7 @@
 <template lang="pug">
   .confirm-modal
     .confirm-modal__inner
-      h3 {{ config.title }}
+      h3 {{ title }}
       .confirm-modal__button-row
         button.app-button(@click="leftButtonAction") {{ leftButtonText }}
         button.app-button(@click="rightButtonAction") {{ rightButtonText }}
@@ -17,6 +17,9 @@ export default {
     }
   },
   computed: {
+    title () {
+      return this.config.title;
+    },
     leftButtonText () {
       return this.config.leftButton.text;
     },
