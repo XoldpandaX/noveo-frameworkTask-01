@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import AppButton from '../AppButton.vue';
-import CardInfo from './CardInfo.vue';
+import AppButton from '../AppButton';
+import CardInfo from './CardInfo';
 import { mapGetters } from 'vuex';
 
 export default {

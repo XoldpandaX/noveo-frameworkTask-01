@@ -4,10 +4,10 @@ import App from './App.vue';
 import createAxios from './services/axios';
 import router from './router';
 import moment from 'moment';
-import routerBeforeResolve from './router/beforeResolve.js';
+import routerBeforeResolve from './router/beforeResolve';
 import filters from './filters';
 import constants from './constants';
-import config from './config.js';
+import config from './config';
 import { store } from './store';
 
 // FILTERS

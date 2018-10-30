@@ -11,7 +11,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import NotificationElement from './NotificationElement.vue';
+import NotificationElement from './NotificationElement';
 
 export default {
   name: 'NotificationService',

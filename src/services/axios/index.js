@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from '../../config';
-import errorHandler from './interceptors/errorHandler.js';
-import requestHandler from './interceptors/requestHandler.js';
+import errorHandler from './interceptors/errorHandler';
+import requestHandler from './interceptors/requestHandler';
 
 export default function (store) {
   const axiosInstance = axios.create({

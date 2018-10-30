@@ -1,5 +1,5 @@
 import * as types from './mutation-types';
-import { defaultState } from './defaultState.js';
+import { defaultState } from './defaultState';
 
 export default {
   [types.HANDLE_LOGIN] (state, token) {

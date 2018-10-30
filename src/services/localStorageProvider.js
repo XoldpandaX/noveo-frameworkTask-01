@@ -1,8 +1,10 @@
-import isUndefined from 'lodash/isUndefined.js';
+import isUndefined from 'lodash/isUndefined';
 
 class LocalStorageProvider {
   constructor () {
-    Object.keys(localStorage).map(key => this[`_${key}`] = localStorage.getItem(key));
+    Object.keys(localStorage).map(key => {
+      this[`_${key}`] = localStorage.getItem(key);
+    });
   }
 
   getItem (key) {

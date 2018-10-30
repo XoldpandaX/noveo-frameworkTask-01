@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import FormSignUp from '../components/Forms/FormSignUp.vue';
+import FormSignUp from '../components/Forms/FormSignUp';
 
 export default {
   name: 'PageSignUp',

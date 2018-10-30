@@ -1,5 +1,5 @@
-import * as text from './text.js';
-import * as date from './date.js';
+import * as text from './text';
+import * as date from './date';
 
 export default {
   ...text,

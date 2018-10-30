@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import LogoMain from '../../components/Logo/LogoMain.vue';
-import NavigationMain from '../../components/Navigations/NavigationMain.vue';
+import LogoMain from '../../components/Logo/LogoMain';
+import NavigationMain from '../../components/Navigations/NavigationMain';
 
 export default {
   name: 'ContainerHeader',

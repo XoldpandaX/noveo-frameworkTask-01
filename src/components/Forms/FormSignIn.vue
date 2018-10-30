@@ -23,8 +23,8 @@
 
 <script>
 import { mapActions } from 'vuex';
-import AppButton from '../AppButton.vue';
-import formValidator from '../../mixins/formValidator.js';
+import AppButton from '../AppButton';
+import formValidator from '../../mixins/formValidator';
 
 export default {
   name: 'FormSignIn',

@@ -1,7 +1,7 @@
-import actions from './actions.js';
-import mutations from './mutations.js';
-import getters from './getters.js';
-import { defaultState } from './defaultState.js';
+import actions from './actions';
+import mutations from './mutations';
+import getters from './getters';
+import { defaultState } from './defaultState';
 
 const state = {
   ...defaultState

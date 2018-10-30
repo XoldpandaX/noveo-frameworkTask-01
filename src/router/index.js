@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import { store } from '../store';
-import LocalStorageProvider from '../services/localStorageProvider.js';
+import LocalStorageProvider from '../services/localStorageProvider';
 
 // route-level
 import PageHome from '../views/Home.vue';

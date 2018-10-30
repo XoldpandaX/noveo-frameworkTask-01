@@ -1,5 +1,5 @@
 import * as types from './mutation-types';
-import findIndex from 'lodash/findIndex.js';
+import findIndex from 'lodash/findIndex';
 
 export default {
   [types.INIT_CARD_DATA] (state, data) {

@@ -1,5 +1,5 @@
 import { createNamespacedHelpers } from 'vuex';
-import modalNames from '../constants/modal-names.js';
+import modalNames from '../constants/modal-names';
 
 const { mapActions } = createNamespacedHelpers('ui');
 

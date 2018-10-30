@@ -1,4 +1,4 @@
-import LocalStorageProvider from '../../../services/localStorageProvider.js';
+import LocalStorageProvider from '../../../services/localStorageProvider';
 
 export default function (config) {
   if (!config.headers.common['Authorization']) {

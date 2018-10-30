@@ -10,9 +10,9 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import valuesIn from 'lodash/valuesIn.js';
-import FormCard from '../components/Forms/FormCard.vue';
-import modalConfirm from '../mixins/modalConfirm.js';
+import valuesIn from 'lodash/valuesIn';
+import FormCard from '../components/Forms/FormCard';
+import modalConfirm from '../mixins/modalConfirm';
 
 export default {
   name: 'PageNewCard',

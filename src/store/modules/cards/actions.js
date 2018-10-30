@@ -1,5 +1,5 @@
-import * as types from './mutation-types.js';
-import card from '../../../api/card.requests.js';
+import * as types from './mutation-types';
+import card from '../../../api/card.requests';
 
 async function getCardsFromServer ({ commit, dispatch }, params) {
   try {

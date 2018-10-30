@@ -11,9 +11,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import FirstLoadModal from '../../components/Modals/FirstLoadModal.vue';
-import ProfileModal from '../../components/Modals/ProfileModal.vue';
-import ConfirmModal from '../../components/Modals/ConfirmModal.vue';
+import FirstLoadModal from '../../components/Modals/FirstLoadModal';
+import ProfileModal from '../../components/Modals/ProfileModal';
+import ConfirmModal from '../../components/Modals/ConfirmModal';
 
 export default {
   name: 'ContainerModalWrapper',

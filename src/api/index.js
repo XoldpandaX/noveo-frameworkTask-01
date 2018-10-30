@@ -1,5 +1,5 @@
-import auth from 'auth.requests.js';
-import card from 'card.requests.js';
+import auth from 'auth.requests';
+import card from 'card.requests';
 
 export {
   auth,

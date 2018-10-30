@@ -10,7 +10,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import FormCard from '../components/Forms/FormCard.vue';
+import FormCard from '../components/Forms/FormCard';
 
 export default {
   name: 'PageEditCard',

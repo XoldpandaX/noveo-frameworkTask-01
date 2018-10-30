@@ -22,7 +22,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import AppButton from '../AppButton.vue';
+import AppButton from '../AppButton';
 
 export default {
   name: 'CardInfo',

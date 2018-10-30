@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import api from '../constants/api-map.js';
+import api from '../constants/api-map';
 
 export default {
   getAllCards (params) {

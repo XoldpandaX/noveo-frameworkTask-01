@@ -14,7 +14,7 @@ import ContainerModalWrapper from './containers/ModalContainer/ContainerModalWra
 import ContainerHeader from './containers/HeaderContainer/ContainerHeader.vue';
 import LoaderGlobal from './components/Loaders/LoaderGlobal.vue';
 import NotificationService from './components/Notifications/NotificationService.vue';
-import LocalStorage from './services/localStorageProvider.js';
+import LocalStorage from './services/localStorageProvider';
 
 export default {
   name: 'App',

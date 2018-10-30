@@ -1,4 +1,4 @@
-import * as types from './mutation-types.js';
+import * as types from './mutation-types';
 import { getRandomID } from '../../../helpers';
 
 function closeAllModals ({ commit }) {

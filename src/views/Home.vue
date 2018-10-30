@@ -15,8 +15,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import CardList from '../components/Cards/CardList.vue';
-import SortByDate from '../components/Filters/SortCardsByDate.vue';
+import CardList from '../components/Cards/CardList';
+import SortByDate from '../components/Filters/SortCardsByDate';
 
 export default {
   name: 'PageHome',

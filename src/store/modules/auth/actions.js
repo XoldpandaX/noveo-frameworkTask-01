@@ -1,7 +1,7 @@
-import * as types from './mutation-types.js';
+import * as types from './mutation-types';
 import Vue from 'vue';
-import auth from '../../../api/auth.requests.js';
-import LocalStorage from '../../../services/localStorageProvider.js';
+import auth from '../../../api/auth.requests';
+import LocalStorage from '../../../services/localStorageProvider';
 
 async function registerUser ({ dispatch }, { name, email, password }) {
   try {
