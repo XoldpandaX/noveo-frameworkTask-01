@@ -11,6 +11,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     //'no-param-reassign': ['error', { props: false }],
+    'camelcase': 0,
     "no-param-reassign": 0,
     'no-restricted-syntax': ['error', 'WithStatement'],
     'guard-for-in': 'off',
