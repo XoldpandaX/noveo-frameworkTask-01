@@ -12,7 +12,7 @@ export default {
   data () {
     return {
       sortTypes: ['desc', 'asc'],
-      currentSortType: 'asc'
+      currentSortType: 'desc'
     };
   },
   computed: {
