@@ -3,9 +3,11 @@ import VueAxios from 'vue-axios';
 import App from './App.vue';
 import createAxios from './services/axios';
 import router from './router';
+import moment from 'moment';
 import routerBeforeResolve from './router/beforeResolve.js';
 import filters from './filters';
 import constants from './constants';
+import config from './config.js';
 import { store } from './store';
 
 // FILTERS
@@ -21,6 +23,7 @@ Object.defineProperty(Vue.prototype, '$appConstants', {
 
 Vue.use(VueAxios, createAxios(store));
 Vue.config.productionTip = false;
+moment.locale(config.defaultLocale);
 
 // hooks router global
 router.beforeResolve((to, from, next) => routerBeforeResolve(to, from, next, store));
