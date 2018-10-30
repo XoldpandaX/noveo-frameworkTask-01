@@ -5,7 +5,7 @@
     template(v-else)
       h1.page__title Card List
       .home__head-row
-        sort-by-date
+        sort-by-date(@sortCardsByDate="getCardsByDate")
         .home__layout-buttons
           button(@click="changeCardLayout('list')") display list
           button(@click="changeCardLayout('row')") display row
@@ -33,7 +33,11 @@ export default {
   },
 
   methods: {
-    ...mapActions('ui', ['changeCardLayout'])
+    ...mapActions('ui', ['changeCardLayout']),
+    ...mapActions('cards', ['getCardsFromServer']),
+    getCardsByDate ({ sort, order_by }) {
+      this.getCardsFromServer({ sort, order_by });
+    }
   }
 };
 </script>
