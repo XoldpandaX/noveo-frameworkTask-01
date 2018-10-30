@@ -10,7 +10,6 @@ import FormSignIn from '../components/Forms/FormSignIn.vue';
 
 export default {
   name: 'PageSignIn',
-
   components: {
     FormSignIn
   }

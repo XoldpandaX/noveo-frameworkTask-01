@@ -1,7 +1,7 @@
 import { isRouteAvalible } from './helpers';
+import LocalStorage from '../services/localStorageProvider';
 
 export default function (to, from, next, store) {
-  store.dispatch('auth/changeAuthStatus');
-  const userRole = store.getters['auth/userRole'];
-  isRouteAvalible(to.meta.forbiddenFor, userRole) ? next(from.path) : next();
+  store.dispatch('auth/checkUserRole');
+  isRouteAvalible(to.meta.forbiddenFor, LocalStorage.getItem('userRole')) ? next(from.path) : next();
 };

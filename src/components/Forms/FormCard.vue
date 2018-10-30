@@ -20,11 +20,11 @@
       app-button(
       v-if="transform === 'edit-form'"
       type="formButton"
-      :on-click="deleteCard"
+      @btnClicked="deleteCard"
       @click.native="isConfirmButtonClicked"
       ) Delete
       app-button(
-      :on-click="formDataToStore"
+      @btnClicked="formDataToStore"
       @click.native="isConfirmButtonClicked"
       type="formButton"
       ) Save
@@ -34,22 +34,18 @@ import { mapGetters, mapActions } from 'vuex';
 import AppButton from '../AppButton.vue';
 
 export default {
-  name: 'FormAddChangeCard',
-
+  name: 'FormCard',
   components: {
     AppButton
   },
-
   props: {
     card: {
       type: Object
     },
-
     transform: {
       type: String
     }
   },
-
   data () {
     return {
       maxSymbols: 196,
@@ -59,18 +55,14 @@ export default {
       }
     };
   },
-
   computed: {
     ...mapGetters('cards', ['cardByID']),
-
     symbolsLeft () {
       return this.userInput.description.length;
     }
   },
-
   methods: {
     ...mapActions('cards', ['createCard', 'editCard', 'removeCard']),
-
     // event emitter
     pushFormDataUp () {
       this.$emit('getFormData', this.userInput);
@@ -79,7 +71,6 @@ export default {
     isConfirmButtonClicked () {
       this.$emit('confirmButtonsClicked');
     },
-
     async formDataToStore () {
       const { title, description } = this.userInput;
 
@@ -102,7 +93,6 @@ export default {
         alert('Enter some text');
       }
     },
-
     displayEditData () {
       const { title, content } = this.card;
       this.userInput.title = title;
@@ -116,7 +106,6 @@ export default {
       this.$router.push({ name: 'home' });
     }
   },
-
   created () {
     if (this.card) this.displayEditData();
   }

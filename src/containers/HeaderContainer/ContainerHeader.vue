@@ -11,7 +11,6 @@ import NavigationMain from '../../components/Navigations/NavigationMain.vue';
 
 export default {
   name: 'ContainerHeader',
-
   components: {
     LogoMain,
     NavigationMain

@@ -1,7 +1,6 @@
 import * as types from './mutation-types.js';
 import card from '../../../api/card.requests.js';
 
-// API INTERACTION
 async function getCardsFromServer ({ commit, dispatch }, params) {
   try {
     dispatch('ui/showLoader', null, { root: true });
@@ -13,7 +12,7 @@ async function getCardsFromServer ({ commit, dispatch }, params) {
   }
 }
 
-async function createCard ({ commit, dispatch, getters }, { title, content }) {
+async function createCard ({ dispatch }, { title, content }) {
   try {
     dispatch('ui/showLoader', null, { root: true });
     await card.createCard({ title, content });
@@ -23,7 +22,7 @@ async function createCard ({ commit, dispatch, getters }, { title, content }) {
   }
 }
 
-async function editCard ({ commit, dispatch }, { id, title, content }) {
+async function editCard ({ dispatch }, { id, title, content }) {
   try {
     dispatch('ui/showLoader', null, { root: true });
     await card.editCard({
@@ -37,7 +36,7 @@ async function editCard ({ commit, dispatch }, { id, title, content }) {
   }
 }
 
-async function removeCard ({ commit, getters, dispatch }, cardId) {
+async function removeCard ({ dispatch }, cardId) {
   try {
     dispatch('ui/showLoader', null, { root: true });
     await card.removeCard(Number(cardId));
@@ -50,9 +49,9 @@ async function removeCard ({ commit, getters, dispatch }, cardId) {
 async function toggleCardLike ({ commit, dispatch }, cardId) {
   try {
     dispatch('ui/showLoader', null, { root: true });
-    await card.toggleCardLike(cardId);
+    const { data: { data: { post } } } = await card.toggleCardLike(cardId);
     dispatch('ui/hideLoader', null, { root: true });
-    commit(types.LIKE_TOGGLE, cardId);
+    commit(types.LIKE_TOGGLE, { cardId, post });
   } catch (err) {
     console.log(err);
   }

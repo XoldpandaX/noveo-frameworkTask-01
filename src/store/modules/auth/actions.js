@@ -1,9 +1,9 @@
 import * as types from './mutation-types.js';
 import Vue from 'vue';
 import auth from '../../../api/auth.requests.js';
-import LocalStorageProvider from '../../../services/localStorageProvider.js';
+import LocalStorage from '../../../services/localStorageProvider.js';
 
-async function registerUser ({ commit, dispatch }, { name, email, password }) {
+async function registerUser ({ dispatch }, { name, email, password }) {
   try {
     dispatch('ui/showLoader', null, { root: true });
     const userData = JSON.stringify({ name, email, password });
@@ -15,38 +15,36 @@ async function registerUser ({ commit, dispatch }, { name, email, password }) {
   }
 }
 
-async function loginUser ({ commit, dispatch }, { email, password }) {
+async function loginUser ({ dispatch }, { email, password }) {
   try {
     dispatch('ui/showLoader', null, { root: true });
     const userData = JSON.stringify({ email, password });
     const { data: { data: { token } } } = await auth.loginUser(userData);
-    LocalStorageProvider.setItem('token', token);
+    LocalStorage.setItem('token', token);
     dispatch('getUserRole');
-    dispatch('changeAuthStatus');
     return true;
   } catch (err) {
-    LocalStorageProvider.removeItem('token');
+    LocalStorage.removeItem('token');
     return false;
   }
 }
 
-async function getUserRole ({ commit, dispatch }) {
+async function getUserRole ({ dispatch }) {
   try {
     const { data: { data } } = await auth.getCurrentUserData();
     const { role } = data.user;
-    LocalStorageProvider.setItem('userRole', role);
+    LocalStorage.setItem('userRole', role);
     dispatch('ui/hideLoader', null, { root: true });
   } catch (err) {
     return false;
   }
 }
 
-function changeAuthStatus ({ commit, dispatch }) {
-  const role = LocalStorageProvider.getItem('userRole');
-  const token = LocalStorageProvider.getItem('token');
-  if (role && token) {
-    dispatch('ui/changeNavigation', role, { root: true });
-    commit(types.SAVE_AUTH_STATUS, role);
+function checkUserRole ({ commit }) {
+  if (LocalStorage.getItem('token')) {
+    commit(types.SAVE_AUTH_STATUS, LocalStorage.getItem('userRole'));
+  } else {
+    LocalStorage.setItem('userRole', 'guest');
   }
 }
 
@@ -58,8 +56,8 @@ async function loggedInUserData ({ commit, dispatch }) {
 }
 
 async function logout ({ commit }) {
-  LocalStorageProvider.removeItem('token');
-  LocalStorageProvider.removeItem('userRole');
+  LocalStorage.removeItem('token');
+  LocalStorage.removeItem('userRole');
   commit(types.LOGOUT);
   delete Vue.axios.defaults.headers.common['Authorization'];
 }
@@ -68,7 +66,7 @@ export default {
   registerUser,
   loginUser,
   getUserRole,
-  changeAuthStatus,
+  checkUserRole,
   loggedInUserData,
   logout
 };

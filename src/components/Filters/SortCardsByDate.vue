@@ -1,39 +1,31 @@
 <template lang="pug">
   button.sort-btn(
-  @click="getCardsByDate"
+  @click="btnClicked"
   :class="[btnClass]"
   ) sort by date
     .arrow-icon
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-
 export default {
   name: 'ButtonSortCardByDate',
-
   data () {
     return {
       sortTypes: ['desc', 'asc'],
       currentSortType: 'desc'
     };
   },
-
   computed: {
     btnClass () {
       return this.currentSortType === 'desc' ? '' : 'sort-btn--down';
     }
   },
-
   methods: {
-    ...mapActions('cards', ['getCardsFromServer']),
-
-    getCardsByDate () {
-      this.getCardsFromServer({
+    btnClicked () {
+      this.$emit('sortCardsByDate', {
         sort: this.currentSortType,
         order_by: 'created_at'
       });
-
       this.currentSortType = this.currentSortType === 'desc' ? this.sortTypes[1] : this.sortTypes[0];
     }
   }

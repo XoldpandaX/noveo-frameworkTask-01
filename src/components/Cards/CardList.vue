@@ -4,7 +4,7 @@
       .card-list__element
         .card-button-add
           app-button(
-          :on-click="() => $router.push({ name: 'new-card' })"
+          @btnClicked="() => $router.push({ name: 'new-card' })"
           type="roundWithPlusIcon"
           )
       .card-list__element(v-for="card in cards")
@@ -21,12 +21,10 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'CardList',
-
   components: {
     CardInfo,
     AppButton
   },
-
   computed: {
     ...mapGetters('cards', ['cards'])
   }

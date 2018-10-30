@@ -14,10 +14,10 @@ import ContainerModalWrapper from './containers/ModalContainer/ContainerModalWra
 import ContainerHeader from './containers/HeaderContainer/ContainerHeader.vue';
 import LoaderGlobal from './components/Loaders/LoaderGlobal.vue';
 import NotificationService from './components/Notifications/NotificationService.vue';
+import LocalStorage from './services/localStorageProvider.js';
 
 export default {
   name: 'App',
-
   components: {
     MainLayout,
     ContainerModalWrapper,
@@ -25,11 +25,12 @@ export default {
     LoaderGlobal,
     NotificationService
   },
-
   mounted () {
-    this.showModal({ id: this.$appConstants.modalNames.firstLoad, config: {} });
+    if (!LocalStorage.getItem('firstLoad')) {
+      this.showModal({ id: this.$appConstants.modalNames.firstLoad, config: {} });
+      LocalStorage.setItem('firstLoad', 'true');
+    }
   },
-
   methods: {
     ...mapActions('ui', ['showModal'])
   }

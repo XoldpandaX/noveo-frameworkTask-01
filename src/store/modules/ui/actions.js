@@ -1,5 +1,4 @@
 import * as types from './mutation-types.js';
-import modalNames from '../../../constants/modal-names.js';
 import { getRandomID } from '../../../helpers';
 
 function closeAllModals ({ commit }) {
@@ -7,19 +6,10 @@ function closeAllModals ({ commit }) {
 }
 
 function showModal ({ commit }, { id, config = {} }) {
-  switch (id) {
-    case modalNames.firstLoad:
-      if (!localStorage.getItem('wasHere')) {
-        localStorage.setItem('wasHere', 'was');
-        commit(types.SHOW_MODAL, { id, config });
-      }
-      break;
-    default:
-      commit(types.SHOW_MODAL, { id, config });
-  }
+  commit(types.SHOW_MODAL, { id, config });
 }
 
-function showNotification ({ commit, dispatch, state }, { errNum, errMsg }) {
+function showNotification ({ commit, dispatch }, { errNum, errMsg }) {
   const timeout = 4000; // period of time for show notification
   const id = getRandomID(); // notification id
   commit(types.SHOW_NOTIFICATION, { id, errNum, errMsg });
@@ -41,10 +31,6 @@ function hideLoader ({ commit }) {
   commit(types.HIDE_LOADER);
 }
 
-function changeNavigation ({ commit }, userRole) {
-  commit(types.CHANGE_NAVIGATION, userRole);
-}
-
 function changeCardLayout ({ commit }, layoutType) {
   commit(types.CHANGE_CARDS_LAYOUT_VIEW, layoutType);
 }
@@ -56,6 +42,5 @@ export default {
   hideNotification,
   showLoader,
   hideLoader,
-  changeNavigation,
   changeCardLayout
 };

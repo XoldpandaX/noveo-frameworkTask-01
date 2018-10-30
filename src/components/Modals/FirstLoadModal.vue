@@ -11,7 +11,6 @@
 <script>
 export default {
   name: 'FirstLoadModal',
-
   props: {
     message: {
       type: Object,
@@ -22,7 +21,6 @@ export default {
       })
     }
   },
-
   methods: {
     closeModal () {
       this.$emit('closeModal');

@@ -6,14 +6,14 @@
       p {{ card.content }}
     footer
       app-button(
-      :on-click="() => $router.push({ path: `/edit-card/${this.card.id}` })"
+      @btnClicked="() => $router.push({ path: `/edit-card/${this.card.id}` })"
       type="editButton"
       :size="{ width: '25px', height: '25px' }"
       )
       .button-card-like
         app-button(
         :class="likeIconActive"
-        :on-click="likeCard"
+        @btnClicked="likeCard"
         type="likeButton"
         :size="{ width: '25px', height: '25px' }"
         )
@@ -26,11 +26,9 @@ import AppButton from '../AppButton.vue';
 
 export default {
   name: 'CardInfo',
-
   components: {
     AppButton
   },
-
   props: {
     card: {
       type: Object,

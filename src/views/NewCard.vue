@@ -2,7 +2,7 @@
   section.add-new-card.page
     h1.page__title Add New Card
     .add-new-card__row
-      form-add-change-card(
+      form-card(
       @getFormData="setFormData"
       @confirmButtonsClicked="isConfirmButtonClicked = true"
       )
@@ -10,43 +10,45 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import { valuesIn } from 'lodash';
-import FormAddChangeCard from '../components/Forms/FormAddChangeCard.vue';
+import valuesIn from 'lodash/valuesIn.js';
+import FormCard from '../components/Forms/FormCard.vue';
+import modalConfirm from '../mixins/modalConfirm.js';
 
 export default {
   name: 'PageNewCard',
-
   components: {
-    FormAddChangeCard
+    FormCard
   },
-
+  mixins: [modalConfirm],
   computed: {
     ...mapGetters('auth', ['userRole'])
   },
-
   data () {
     return {
-      // data received from [form-add-change-card] component
+      // data received from [form-card] component
       formCardData: {},
-      // save/delete button is clicked from [form-add-change-card] component
+      // save/delete button is clicked from [form-card] component
       isConfirmButtonClicked: false
     };
   },
-
   beforeRouteLeave (to, from, next) {
     const arrOfObjectValues = valuesIn(this.formCardData);
     if (arrOfObjectValues.length <= 0 || this.isConfirmButtonClicked) {
       next();
     } else {
-      this.showModal({ id: this.$appConstants.modalNames.confirm,
-        config: {
-          action: next,
-          formData: this.formCardData
+      this.$_modalConfirm_call({
+        textFields: {
+          ...this.$appConstants.confirmTexts.unsavedCardData
+        },
+        leftBtnAction () {
+          next(true);
+        },
+        rightBtnAction () {
+          next(false);
         }
       });
     }
   },
-
   methods: {
     ...mapActions('ui', ['showModal']),
     setFormData (childrenFormData) {

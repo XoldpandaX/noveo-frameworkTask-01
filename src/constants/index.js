@@ -5,6 +5,7 @@ import forms from './forms.js';
 import apiMap from './api-map.js';
 import modalNames from './modal-names.js';
 import roles from './roles.js';
+import confirmTexts from './confirmTexts.js';
 
 export default {
   navigationElements,
@@ -13,5 +14,6 @@ export default {
   forms,
   apiMap,
   modalNames,
-  roles
+  roles,
+  confirmTexts
 };

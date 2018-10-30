@@ -13,15 +13,12 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'ProfileModal',
-
   computed: {
     ...mapGetters('auth', ['userData'])
   },
-
   created () {
     this.loggedInUserData();
   },
-
   methods: {
     ...mapActions('auth', ['loggedInUserData']),
     closeModal () {
