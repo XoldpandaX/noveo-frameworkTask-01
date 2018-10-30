@@ -1,8 +1,8 @@
-import every from 'lodash/every.js';
-import some from 'lodash/some.js';
-import find from 'lodash/find.js';
-import capitalize from 'lodash/capitalize.js';
-import isFinite from 'lodash/isFinite.js';
+import every from 'lodash/every';
+import some from 'lodash/some';
+import find from 'lodash/find';
+import capitalize from 'lodash/capitalize';
+import isFinite from 'lodash/isFinite';
 
 export default {
   methods: {
@@ -65,7 +65,9 @@ export default {
           case 'inputs':
             const { inputs } = formData;
             // очищаем данные поля input
-            inputs.forEach(el => el.value = '');
+            inputs.forEach(el => {
+              el.value = '';
+            });
             break;
           case 'errors':
             const { errors } = formData;

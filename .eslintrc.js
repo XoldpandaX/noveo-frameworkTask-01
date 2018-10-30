@@ -10,7 +10,6 @@ module.exports = {
   rules: {
     noConsole: process.env.NODE_ENV === 'production' ? 'error' : 'off',
     noDebugger: process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    //'no-param-reassign': ['error', { props: false }],
     camelcase: 0,
     noParamReassign: 0,
     guardForIn: 'off',
