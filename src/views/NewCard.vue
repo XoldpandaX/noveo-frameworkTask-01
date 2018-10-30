@@ -16,7 +16,6 @@ import modalConfirm from '../mixins/modalConfirm.js';
 
 export default {
   name: 'PageNewCard',
-
   components: {
     FormCard
   },
@@ -24,7 +23,6 @@ export default {
   computed: {
     ...mapGetters('auth', ['userRole'])
   },
-
   data () {
     return {
       // data received from [form-card] component
@@ -33,7 +31,6 @@ export default {
       isConfirmButtonClicked: false
     };
   },
-
   beforeRouteLeave (to, from, next) {
     const arrOfObjectValues = valuesIn(this.formCardData);
     if (arrOfObjectValues.length <= 0 || this.isConfirmButtonClicked) {
@@ -52,7 +49,6 @@ export default {
       });
     }
   },
-
   methods: {
     ...mapActions('ui', ['showModal']),
     setFormData (childrenFormData) {

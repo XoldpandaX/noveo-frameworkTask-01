@@ -25,7 +25,6 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Navigation',
-
   computed: {
     ...mapGetters('auth', ['userRole']),
     navigationElements () {
@@ -33,11 +32,9 @@ export default {
       return this.userRole !== 'guest' ? authorized : guest;
     }
   },
-
   methods: {
     ...mapActions('auth', ['logout']),
     ...mapActions('ui', ['showModal']),
-
     switchActions (action) {
       switch (action) {
         case 'exit':
@@ -48,7 +45,6 @@ export default {
           break;
       }
     },
-
     async exit () {
       await this.logout();
       this.$router.push('/');

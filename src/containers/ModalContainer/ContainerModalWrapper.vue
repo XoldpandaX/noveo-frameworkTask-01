@@ -17,17 +17,14 @@ import ConfirmModal from '../../components/Modals/ConfirmModal.vue';
 
 export default {
   name: 'ContainerModalWrapper',
-
   components: {
     FirstLoadModal,
     ProfileModal,
     ConfirmModal
   },
-
   computed: {
     ...mapGetters('ui', ['modals'])
   },
-
   methods: {
     ...mapActions('ui', ['closeAllModals'])
   }

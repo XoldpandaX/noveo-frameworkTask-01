@@ -10,7 +10,6 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'Loader',
-
   computed: {
     ...mapGetters('ui', ['isLoaderActive'])
   }

@@ -15,11 +15,9 @@ import NotificationElement from './NotificationElement.vue';
 
 export default {
   name: 'NotificationService',
-
   components: {
     NotificationElement
   },
-
   computed: {
     ...mapGetters('ui', ['notifications'])
   }

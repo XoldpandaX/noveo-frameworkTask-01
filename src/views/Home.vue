@@ -20,18 +20,15 @@ import SortByDate from '../components/Filters/SortCardsByDate.vue';
 
 export default {
   name: 'PageHome',
-
   components: {
     CardList,
     SortByDate
   },
-
   computed: {
     ...mapGetters('auth', ['isAuthenticated']),
 
     ...mapGetters('ui', ['cardsLayout'])
   },
-
   methods: {
     ...mapActions('ui', ['changeCardLayout']),
     ...mapActions('cards', ['getCardsFromServer']),

@@ -18,7 +18,6 @@ import LocalStorage from './services/localStorageProvider.js';
 
 export default {
   name: 'App',
-
   components: {
     MainLayout,
     ContainerModalWrapper,
@@ -26,14 +25,12 @@ export default {
     LoaderGlobal,
     NotificationService
   },
-
   mounted () {
     if (!LocalStorage.getItem('firstLoad')) {
       this.showModal({ id: this.$appConstants.modalNames.firstLoad, config: {} });
       LocalStorage.setItem('firstLoad', 'true');
     }
   },
-
   methods: {
     ...mapActions('ui', ['showModal'])
   }

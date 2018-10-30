@@ -41,7 +41,6 @@ export default {
       errors: { ...this.$appConstants.forms.signUp.errors }
     };
   },
-
   methods: {
     ...mapActions('auth', ['registerUser']),
     async prepareAndSendConfirmData () {

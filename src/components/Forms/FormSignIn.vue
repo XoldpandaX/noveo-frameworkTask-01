@@ -28,7 +28,6 @@ import formValidator from '../../mixins/formValidator.js';
 
 export default {
   name: 'FormSignIn',
-
   components: {
     AppButton
   },
@@ -40,10 +39,8 @@ export default {
       errors: { ...this.$appConstants.forms.signIn.errors }
     };
   },
-
   methods: {
     ...mapActions('auth', ['loginUser']),
-
     async prepareAndSendConfirmData () {
       const sendData = {};
       this.fieldData.forEach(el => {
@@ -55,7 +52,6 @@ export default {
       success && this.$router.push('/');
     }
   },
-
   beforeDestroy () {
     this.cleanFormData(this.$appConstants.forms.signIn);
   }

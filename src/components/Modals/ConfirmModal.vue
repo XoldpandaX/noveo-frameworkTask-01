@@ -10,7 +10,6 @@
 <script>
 export default {
   name: 'ConfirmModal',
-
   props: {
     config: {
       type: Object

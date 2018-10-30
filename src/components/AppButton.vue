@@ -12,23 +12,19 @@ import CONSTANTS from '../constants';
 
 export default {
   name: 'AppButton',
-
   props: {
     type: {
       type: String
     },
-
     size: {
       type: Object
     }
   },
-
   data () {
     return {
       componentButtonTypes: []
     };
   },
-
   computed: {
     arrayOfClasses () {
       if (this.type) {
@@ -36,7 +32,6 @@ export default {
         return obj.classes;
       }
     },
-
     buttonSize () {
       if (this.size) {
         return this.size;

@@ -21,12 +21,10 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'CardList',
-
   components: {
     CardInfo,
     AppButton
   },
-
   computed: {
     ...mapGetters('cards', ['cards'])
   }

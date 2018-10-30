@@ -26,11 +26,9 @@ import AppButton from '../AppButton.vue';
 
 export default {
   name: 'CardInfo',
-
   components: {
     AppButton
   },
-
   props: {
     card: {
       type: Object,

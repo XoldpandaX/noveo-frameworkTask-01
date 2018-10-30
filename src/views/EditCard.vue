@@ -14,36 +14,29 @@ import FormCard from '../components/Forms/FormCard.vue';
 
 export default {
   name: 'PageEditCard',
-
   components: {
     FormCard
   },
-
   props: {
     id: {
       type: [String, Number]
     }
   },
-
   data () {
     return {
       showPage: false,
       cardData: {}
     };
   },
-
   computed: {
     ...mapGetters('cards', ['cardByID'])
   },
-
   created () {
     this.routeDataHandler();
   },
-
   methods: {
     routeDataHandler () {
       const card = this.cardByID(this.id);
-
       if (card) {
         this.cardData = {
           ...card
