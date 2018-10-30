@@ -58,7 +58,7 @@ export default {
       });
       return checkResults;
     },
-    // this method should be used in beforeDestroy or destroyed hooks at component
+    // this method should be used in beforeDestroy hook at component
     cleanFormData (formData) {
       for (let key in formData) {
         switch (key) {

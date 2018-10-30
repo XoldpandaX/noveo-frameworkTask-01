@@ -15,7 +15,7 @@
       leave-active-class="animated fadeOutRight"
       )
         .form-wrapper__error(v-if="errors[input.name].error")
-          span {{ errors[input.name].errorMessage | makeUppercase }}
+          span {{ errors[input.name].errorMessage }}
     .app-button__row.-margin-top-l
       app-button(
       type="formButton"
